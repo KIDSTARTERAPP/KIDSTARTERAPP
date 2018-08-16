@@ -1,4 +1,4 @@
-package ru.javamentor.dao_impl;
+package com.javamentor.kidstarter.dao_impl;
 
 
 
@@ -12,11 +12,10 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 @Transactional
-public abstract class AbstractDao<PK extends Serializable, T> {
-
+public abstract class AbstractDao<PK, T> {
 
 	@PersistenceContext
-	EntityManager entityManager;
+	private EntityManager entityManager;
 
 	private final Class<T> persistentClass;
 
@@ -31,7 +30,7 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 	}
 
 	public void update(T entity) {
-			entityManager.merge(entity);
+		entityManager.merge(entity);
 	}
 
 	public List<T> getAll() {
@@ -42,7 +41,7 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 	}
 
 	public void persist(T entity) {
-			entityManager.persist(entity);
+		entityManager.persist(entity);
 	}
 
 	public void deleteByKey(PK pk) {
@@ -51,6 +50,6 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 	}
 
 	protected Session getSession() {
-		 return (Session) entityManager.getDelegate();
+		return (Session) entityManager.getDelegate();
 	}
 }

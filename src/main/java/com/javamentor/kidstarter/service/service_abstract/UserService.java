@@ -1,4 +1,4 @@
-package com.javamentor.kidstarter.service_abstract;
+package com.javamentor.kidstarter.service.service_abstract;
 
 
 import com.javamentor.kidstarter.model.User;

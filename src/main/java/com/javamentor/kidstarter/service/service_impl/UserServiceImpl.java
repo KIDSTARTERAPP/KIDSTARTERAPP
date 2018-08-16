@@ -1,10 +1,10 @@
-package com.javamentor.kidstarter.service_impl;
+package com.javamentor.kidstarter.service.service_impl;
 
 
 
 import com.javamentor.kidstarter.dao_abstract.UserDao;
 import com.javamentor.kidstarter.model.User;
-import com.javamentor.kidstarter.service_abstract.UserService;
+import com.javamentor.kidstarter.service.service_abstract.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
