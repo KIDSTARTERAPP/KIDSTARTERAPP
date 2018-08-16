@@ -2,6 +2,9 @@ package com.javamentor.kidstarter.model;
 
 import java.time.LocalDateTime;
 
+/**
+ * Account transaction entry model.
+ */
 public class Transaction {
 
     private Long id;
@@ -9,6 +12,6 @@ public class Transaction {
     private Account toAccount;
     private Long amount;
     private LocalDateTime transactionDate;
-    private Enum transactionType;
-    private Enum transactionStatus;
+    private TransactionTypes transactionType;
+    private TransactionStatus transactionStatus;
 }
