@@ -27,7 +27,8 @@ public class Comment {
     @Column (name = "createdate")
     private LocalDateTime createDate;
 
-    @Column (name = "author")
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn (name = "author", foreignKey = @ForeignKey(name = "author_user_fk"))
     private User author;
 
     @Column (name = "header")
