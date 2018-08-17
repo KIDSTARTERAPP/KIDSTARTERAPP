@@ -1,19 +1,38 @@
 package com.javamentor.kidstarter.model;
 
-import java.time.LocalDateTime;
+import javax.persistence.*;
 
-public abstract class User {
+import static javax.persistence.GenerationType.AUTO;
 
-    private Long id;
-    private String firstName;
-    private String lastname;
-    private String initials;
-    private Role role;
-    private LocalDateTime createDate;
-    private Integer age;
-    private String sex;
-    private Integer phone;
-    private String email;
-    private String country;
-    private String address;
+@Entity                                     // означает что этот класс является представлениемм в базе данных.
+@Table(name = "users")
+public class User {
+
+	@Id
+	@GeneratedValue(strategy = AUTO)        // указывает что ID автогенерируемый.
+	@Column(name = "id")
+	private Long id;
+
+	@Column(name = "password", length = 30, nullable = false)
+	private String password;
+
+	@Column(name = "firstName")
+	private String firstName;
+
+	@Column(name = "lastName")
+	private String lastName;
+
+	@Column(name = "sex")
+	private String sex;
+
+	@Column(name = "phoneNumber")
+	private int phoneNumber;
+
+	@Column(name = "country")
+	private String country;
 }
+
+
+
+
+
