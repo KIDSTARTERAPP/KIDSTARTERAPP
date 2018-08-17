@@ -1,9 +1,16 @@
 package com.javamentor.kidstarter.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.AUTO;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity                                     // означает что этот класс является представлениемм в базе данных.
 @Table(name = "users")
 public class User {
