@@ -2,6 +2,7 @@ package com.javamentor.kidstarter.service.service_abstract;
 
 
 import com.javamentor.kidstarter.model.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
