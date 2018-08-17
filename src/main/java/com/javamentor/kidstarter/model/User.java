@@ -14,40 +14,32 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
+@Data
 public  class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    @Getter
-    @Setter
+
     private Long id;
 
     @Column(name ="firstName", nullable = false)
-    @Getter
-    @Setter
     private String firstName;
 
     @Column(name = "lastName", nullable = false)
-    @Getter
-    @Setter
+
     private String lastname;
 
     @Column(name = "initial", nullable = false)
-    @Getter
-    @Setter
+
     private String initial;
 
     @Column(name = "login", unique = true, nullable = false)
-    @Getter
-    @Setter
+
     private String login;
 
     @Column(name = "password", nullable = false)
-    @Getter
-    @Setter
+
     private String password;
 
     @NotNull
@@ -55,43 +47,35 @@ public  class User implements UserDetails {
     @JoinTable(name = "permissions",
             joinColumns = {@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_USER"))},
             inverseJoinColumns = {@JoinColumn(name = "role_id", foreignKey = @ForeignKey(name = "FK_ROLE"))})
-    @Getter
-    @Setter
+
     private List<Role> roles = new ArrayList<>();
 
     @Column(name = "createDate", nullable = false)
-    @Getter
-    @Setter
+
     private LocalDateTime createDate;
 
     @Column(name = "age", nullable = false)
-    @Getter
-    @Setter
+
     private Integer age;
 
     @Column(name = "sex", nullable = false)
-    @Getter
-    @Setter
+
     private String sex;
 
     @Column(name ="phone", nullable = false)
-    @Getter
-    @Setter
+
     private Integer phone;
 
     @Column(name = "email", nullable = false)
-    @Getter
-    @Setter
+
     private String email;
 
     @Column(name = "country", nullable = false)
-    @Getter
-    @Setter
+
     private String country;
 
     @Column(name = "address", nullable = false)
-    @Getter
-    @Setter
+
     private String address;
 
     public User(String firstName, String lastname, String initial, String login, String password,
