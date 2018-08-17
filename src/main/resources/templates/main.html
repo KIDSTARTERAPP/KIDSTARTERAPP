@@ -3,8 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Kidstarter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="/scripts/all_scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style/styles.css"><meta charset="UTF-8">
 </head>
 <body>
-
+<div id="header">
+    <table width="1000px">
+        <tr>
+            <td width="60%">
+                Kidstarter
+            </td>
+            <td width="20%" id="currentuser">
+            </td>
+            <td width="10%" align="right">
+                <form id="register" action="./register" method="get"><input type="submit" value="Register"></form>
+            </td>
+            <td width="10%" align="right">
+                <form id="logout" action="./logout" method="post"><input type="submit" value="Logout"></form>
+            </td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>

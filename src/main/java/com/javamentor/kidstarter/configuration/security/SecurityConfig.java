@@ -15,12 +15,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/main");
+		web.ignoring().antMatchers("/main", "/scripts/**", "/style/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/main").permitAll()
+		http.authorizeRequests()
+				.antMatchers("/main", "/scripts/**", "/styles/**").permitAll()
 				.anyRequest().authenticated()
 				.and().formLogin().defaultSuccessUrl("/main")
 				.and().httpBasic()
