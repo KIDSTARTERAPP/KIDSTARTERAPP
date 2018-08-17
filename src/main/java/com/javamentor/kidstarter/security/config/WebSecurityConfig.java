@@ -1,6 +1,6 @@
 package com.javamentor.kidstarter.security.config;
 
-import com.javamentor.kidstarter.security.handlers.SecurityHandler;
+import com.javamentor.kidstarter.security.handler.SecurityHandler;
 import com.javamentor.kidstarter.security.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/insert_user", "/hello_user").permitAll()
+                .antMatchers("/insert_user").permitAll()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .antMatchers("/user/**").hasAnyRole("USER")
                 .anyRequest().authenticated()
@@ -51,9 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(securityHandler)
                 .and()
                 .logout()
-                .permitAll()
-                .and()
-                .exceptionHandling().accessDeniedPage("/403");
+                .permitAll();
     }
 
 

@@ -12,13 +12,6 @@ import javax.persistence.EntityManager;
 @Transactional
 @Repository
 public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
-    private final EntityManager entityManager;
-
-    @Autowired
-    public UserDaoImpl (EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
 
     public User  getByLogin(String login){
         return  (User) entityManager.createQuery("SELECT u from  User u WHERE u.login = :login",User.class).setParameter("login",login).getSingleResult();

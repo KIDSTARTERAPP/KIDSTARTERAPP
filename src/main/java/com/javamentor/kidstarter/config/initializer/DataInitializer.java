@@ -20,17 +20,33 @@ public class DataInitializer {
 
     public void init(){
 
-        Role rol1e1 = new Role("ADMIN");
-        Role role2 = new Role("USER");
+        Role role1 = new Role("ADMIN");
+        Role role2 = new Role("TEACHER");
+        Role role3 = new Role("SPONSOR");
+        Role role4 = new Role("OWNER");
+        Role role5 = new Role("MENTOR");
+        Role role6 = new Role("MODERATOR");
+        Role role7 = new Role("KID");
 
-        roleService.addRole(rol1e1);
+        roleService.addRole(role1);
         roleService.addRole(role2);
+        roleService.addRole(role3);
+        roleService.addRole(role4);
+        roleService.addRole(role5);
+        roleService.addRole(role6);
+        roleService.addRole(role7);
 
         Role roleAdmin = roleService.getByName("ADMIN");
-        Role roleUser = roleService.getByName("USER");
+        Role roleTeacher = roleService.getByName("TEACHER");
+        Role roleSponsor = roleService.getByName("SPONSOR");
+        Role roleOwner = roleService.getByName("OWNER");
+        Role roleMentor = roleService.getByName("MENTOR");
+        Role roleModerator = roleService.getByName("MODERATOR");
+        Role roleKid = roleService.getByName("KID");
 
         User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
-                Arrays.asList(roleAdmin,roleUser), LocalDateTime.now(), 23, "MALE",23-12-34,
+                Arrays.asList(roleAdmin,roleTeacher,roleSponsor, roleOwner, roleMentor, roleModerator, roleKid),
+                LocalDateTime.now(), 23, "MALE",23-12-34,
                 "admin@mail.ru","RUSSIA","house 8");
 
 

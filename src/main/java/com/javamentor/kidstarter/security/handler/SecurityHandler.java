@@ -1,4 +1,4 @@
-package com.javamentor.kidstarter.security.handlers;
+package com.javamentor.kidstarter.security.handler;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;

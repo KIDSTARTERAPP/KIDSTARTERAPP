@@ -11,6 +11,7 @@ public class KidstarterApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(KidstarterApplication.class, args);
 	}
+
 	@Bean(initMethod = "init")
 	public DataInitializer initializer() {
 		return  new DataInitializer();

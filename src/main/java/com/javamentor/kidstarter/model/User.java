@@ -1,11 +1,15 @@
 package com.javamentor.kidstarter.model;
 
-import lombok.*;
+import com.javamentor.kidstarter.util.pattern.ValidationPattern;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,22 +28,21 @@ public  class User implements UserDetails {
     private Long id;
 
     @Column(name ="firstName", nullable = false)
+    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     private String firstName;
 
     @Column(name = "lastName", nullable = false)
-
+    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     private String lastname;
 
     @Column(name = "initial", nullable = false)
-
+    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     private String initial;
 
     @Column(name = "login", unique = true, nullable = false)
-
     private String login;
 
     @Column(name = "password", nullable = false)
-
     private String password;
 
     @NotNull
@@ -47,35 +50,28 @@ public  class User implements UserDetails {
     @JoinTable(name = "permissions",
             joinColumns = {@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_USER"))},
             inverseJoinColumns = {@JoinColumn(name = "role_id", foreignKey = @ForeignKey(name = "FK_ROLE"))})
-
     private List<Role> roles = new ArrayList<>();
 
     @Column(name = "createDate", nullable = false)
-
     private LocalDateTime createDate;
 
     @Column(name = "age", nullable = false)
-
     private Integer age;
 
     @Column(name = "sex", nullable = false)
-
     private String sex;
 
     @Column(name ="phone", nullable = false)
-
     private Integer phone;
 
     @Column(name = "email", nullable = false)
-
+    @Email(regexp = ValidationPattern.EMAIL_PATTERN)
     private String email;
 
     @Column(name = "country", nullable = false)
-
     private String country;
 
     @Column(name = "address", nullable = false)
-
     private String address;
 
     public User(String firstName, String lastname, String initial, String login, String password,
