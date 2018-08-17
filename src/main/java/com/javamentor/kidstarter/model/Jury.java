@@ -1,12 +1,14 @@
 package com.javamentor.kidstarter.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.AUTO;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
