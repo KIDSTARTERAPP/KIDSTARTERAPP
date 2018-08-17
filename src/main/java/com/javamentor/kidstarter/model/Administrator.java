@@ -9,9 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Data
-@EqualsAndHashCode (callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table (name = "administrator")
 public class Administrator extends User {
