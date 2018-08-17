@@ -1,8 +1,8 @@
 package com.javamentor.kidstarter.security.service;
 
 
-import com.ewp.crm.models.User;
-import com.ewp.crm.service.interfaces.UserService;
+import com.javamentor.kidstarter.model.User;
+import com.javamentor.kidstarter.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,10 +19,10 @@ public class AuthenticationService implements UserDetailsService {
 		this.userService = userService;
 	}
 
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userService.getByEmailOrPhone(username, username);
+	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+		User user = userService.getByLogin(login);
 		if (user == null) {
-			throw new UsernameNotFoundException("Username " + username + " not found");
+			throw new UsernameNotFoundException("Login " + login + " not found");
 		}
 		return user;
 	}

@@ -13,4 +13,5 @@ public interface GenericDao<PK, T> {
 	void update(T group);
 
 	void deleteByKey(PK id);
+
 }

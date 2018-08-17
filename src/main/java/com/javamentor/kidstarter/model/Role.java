@@ -7,8 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "roles")
-@NoArgsConstructor
-@AllArgsConstructor
+
 @EqualsAndHashCode
 @ToString
 public class Role implements GrantedAuthority {
@@ -17,12 +16,20 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
     @Getter
+    @Setter
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", unique = true, nullable = false)
     @Getter
     @Setter
     private String name;
+
+    public Role() {
+    }
+
+    public Role(String name) {
+        this.name = name;
+    }
 
     @Override
     public String getAuthority() {

@@ -7,13 +7,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode
 @ToString
 public  class User implements UserDetails {
@@ -22,6 +22,7 @@ public  class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     @Getter
+    @Setter
     private Long id;
 
     @Column(name ="firstName", nullable = false)
@@ -34,7 +35,12 @@ public  class User implements UserDetails {
     @Setter
     private String lastname;
 
-    @Column(name = "login", nullable = false)
+    @Column(name = "initial", nullable = false)
+    @Getter
+    @Setter
+    private String initial;
+
+    @Column(name = "login", unique = true, nullable = false)
     @Getter
     @Setter
     private String login;
@@ -44,11 +50,6 @@ public  class User implements UserDetails {
     @Setter
     private String password;
 
-    @Column(name = "initial", nullable = false)
-    @Getter
-    @Setter
-    private String initial;
-
     @NotNull
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class)
     @JoinTable(name = "permissions",
@@ -56,7 +57,7 @@ public  class User implements UserDetails {
             inverseJoinColumns = {@JoinColumn(name = "role_id", foreignKey = @ForeignKey(name = "FK_ROLE"))})
     @Getter
     @Setter
-    private List<Role> roles;
+    private List<Role> roles = new ArrayList<>();
 
     @Column(name = "createDate", nullable = false)
     @Getter
@@ -92,6 +93,24 @@ public  class User implements UserDetails {
     @Getter
     @Setter
     private String address;
+
+    public User(String firstName, String lastname, String initial, String login, String password,
+                @NotNull List<Role> roles, LocalDateTime createDate, Integer age, String sex, Integer phone,
+                String email, String country, String address) {
+        this.firstName = firstName;
+        this.lastname = lastname;
+        this.initial = initial;
+        this.login = login;
+        this.password = password;
+        this.roles = roles;
+        this.createDate = createDate;
+        this.age = age;
+        this.sex = sex;
+        this.phone = phone;
+        this.email = email;
+        this.country = country;
+        this.address = address;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
