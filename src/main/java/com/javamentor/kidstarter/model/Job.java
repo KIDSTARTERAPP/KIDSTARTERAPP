@@ -24,9 +24,14 @@ public class Job {
     @Column (name = "name")
     private String name;
 
-    @Column (name = "tag")
+    @ManyToMany (cascade = CascadeType.ALL)
+    @JoinColumn (name = "tag", foreignKey = @ForeignKey(name = "job_tag_fk"))
     private Set<Tag> tag;
 
     @Column (name = "description")
     private String description;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn (name = "willer", foreignKey = @ForeignKey(name = "job_kid_fk"))
+    private Set<User> willer;
 }

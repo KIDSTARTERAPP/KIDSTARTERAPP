@@ -20,7 +20,8 @@ public class Jury {
     @Column(name = "id")
     private Long id;
 
-    @Column (name = "account")
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn (name = "account", foreignKey = @ForeignKey(name = "jury_account_fk"))
     private Account account;
 
     @Column (name = "shortname")
