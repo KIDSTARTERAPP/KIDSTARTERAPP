@@ -44,9 +44,6 @@ public class Organization {
     @Column (name = "createdate")
     private LocalDateTime createDate;
 
-    @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn (name = "account", foreignKey = @ForeignKey(name = "organization_account_fk"))
-    private Account account;
 
     @ManyToMany (cascade = CascadeType.ALL)
     @JoinColumn (name = "request", foreignKey = @ForeignKey(name = "organization_request_fk"))
