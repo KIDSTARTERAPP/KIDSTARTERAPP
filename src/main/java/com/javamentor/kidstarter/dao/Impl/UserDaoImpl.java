@@ -2,12 +2,9 @@ package com.javamentor.kidstarter.dao.Impl;
 
 
 import com.javamentor.kidstarter.dao.interfaces.UserDao;
-import com.javamentor.kidstarter.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.javamentor.kidstarter.model.user.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EntityManager;
 
 @Transactional
 @Repository

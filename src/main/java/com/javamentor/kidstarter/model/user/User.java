@@ -1,4 +1,4 @@
-package com.javamentor.kidstarter.model;
+package com.javamentor.kidstarter.model.user;
 
 import com.javamentor.kidstarter.util.pattern.ValidationPattern;
 import lombok.Data;
@@ -19,7 +19,7 @@ import java.util.List;
 @Table(name = "users")
 @NoArgsConstructor
 @Data
-public  class User implements UserDetails {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

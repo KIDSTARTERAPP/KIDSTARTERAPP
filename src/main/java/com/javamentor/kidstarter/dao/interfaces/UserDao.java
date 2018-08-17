@@ -1,6 +1,6 @@
 package com.javamentor.kidstarter.dao.interfaces;
 
-import com.javamentor.kidstarter.model.User;
+import com.javamentor.kidstarter.model.user.User;
 
 
 public interface UserDao extends GenericDao<Long , User> {

@@ -1,5 +1,6 @@
 package com.javamentor.kidstarter.model;
 
+import com.javamentor.kidstarter.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

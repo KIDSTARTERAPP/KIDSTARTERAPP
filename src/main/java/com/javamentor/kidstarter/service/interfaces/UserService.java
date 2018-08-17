@@ -1,7 +1,7 @@
 package com.javamentor.kidstarter.service.interfaces;
 
 
-import com.javamentor.kidstarter.model.User;
+import com.javamentor.kidstarter.model.user.User;
 
 import java.util.List;
 

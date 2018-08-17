@@ -2,7 +2,7 @@ package com.javamentor.kidstarter.service.Impl;
 
 
 import com.javamentor.kidstarter.dao.interfaces.UserDao;
-import com.javamentor.kidstarter.model.User;
+import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.security.config.PassEncode;
 import com.javamentor.kidstarter.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
