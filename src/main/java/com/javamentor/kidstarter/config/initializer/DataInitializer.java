@@ -1,6 +1,5 @@
 package com.javamentor.kidstarter.config.initializer;
 
-
 import com.javamentor.kidstarter.model.user.Role;
 import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.service.interfaces.RoleService;
