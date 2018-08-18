@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="registr">
+    <form class="form-signup"  action="/home/registration" method='POST'>
+        <h2 class="form-signin-heading">Registration</h2>
+        <input class="form-control" placeholder="First Name" type="text" name="firstname"/>
+        <input class="form-control" placeholder="Last Name" type="text" name="lastname"/>
+        <input class="form-control" placeholder="Last Name" type="text" name="lastname"/>
+        <input class="form-control" placeholder="Initial" type="text" name="initial"/>
+        <input class="form-control" placeholder="Login" type="text" name="username"/>
+        <input class="form-control" placeholder="Password" type="password" name="password"/>
+        <input class="form-control" placeholder="Age" type="number" name="age"/>
+        <label for="sex">Пол</label>
+        <select id="sex" name="sex">
+            <option>Мужской</option>
+            <option>Женский</option>
+        </select>
+        <input class="form-control" placeholder="Phone" type="number" name="phone"/>
+        <input class="form-control" placeholder="Email" type="email" name="email"/>
+        <input class="form-control" placeholder="Country" type="text" name="country"/>
+        <input class="form-control" placeholder="Address" type="text" name="address"/>
+        <br/>
+        <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit"  onclick='addUser()'/>
+    </form>
+</div>
+</body>
+<script  type="text/javascript" th:src="@{/scripts/home.js}"></script>
+
+</html>
