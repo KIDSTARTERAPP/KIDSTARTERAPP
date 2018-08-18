@@ -1,109 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Kidstarter</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
+
+    <title>KidStarter</title>
+
     <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.9/css/mdb.min.css" rel="stylesheet">
+    <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body class="fixed-sn white-skin">
-<header>
 
+<body>
 
-<!-- Sidebar navigation -->
-<div id="slide-out" class="side-nav sn-bg-4 fixed">
-    <ul class="custom-scrollbar">
-        <!-- Side navigation links -->
-        <li><a class="waves-effect" href="#"><i class="fa fa-diamond"></i>MDB Pro</a></li>
-        <li><a class="waves-effect" href="#"><i class="fa fa-magic"></i> Free templates</a></li>
-        <li><a class="waves-effect" href="#"><i class="fa fa-photo"></i>Premium templates</a></li>
-
-        <!-- /. Side navigation links -->
-    </ul>
-    <div class="sidenav-bg mask-strong"></div>
-</div>
-<!--/. Sidebar navigation -->
-    <!--Navbar -->
-    <nav class="mb-1 navbar navbar-expand-lg navbar-dark blue">
-        <a class="navbar-brand" href="#">Kidstarter</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-envelope"></i> Contact
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-gear"></i> Settings</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user"></i> Profile </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                        <a class="dropdown-item" href="#">My account</a>
-                        <a class="dropdown-item" href="#">Log out</a>
-                    </div>
-                </li>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">KidStarter</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><a id="current-user" href="#Profile">Ivan</a></li>-->
+                <!--<li><a>:</a></li>-->
+                <!--<li><a id="user-role">User</a></li>-->
+                <li><a href="#">Стать спонсором</a></li>
+                <li><a href="/register">Регистрация</a></li>
+                <li><a href="/login">Войти</a></li>
+                <!--<li><a href="/logout">Выйти</a></li>-->
             </ul>
         </div>
-    </nav>
-    <!--/.Navbar -->
-
-</header>
-<main>
-<p>Hello kids!</p>
-</main>
-
-<!-- Footer -->
-<footer class="page-footer font-small blue">
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
-        <a href="http://localhost:9999"> Kidstarter.com</a>
     </div>
-    <!-- Copyright -->
+</div>
 
-</footer>
-<!-- Footer -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">Главная</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Здравствуй, добрый человек!</h1>
+            <div>
+                <p>На этом портале ты можешь помочь детям стать лучше.</p>
+            </div>
+            <h2 class="sub-header">Список активных запросов:</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Организация</th>
+                        <th>Адрес</th>
+                        <th>Количество детей</th>
+                        <th>Количество учетелей</th>
+                        <th>Потребность</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Школа №1</td>
+                        <td>Бобруйск</td>
+                        <td>12</td>
+                        <td>0</td>
+                        <td>Рисование</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<!-- SCRIPTS -->
-<!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.9/js/mdb.min.js"></script>
-
-<script>
-    // SideNav Button Initialization
-    $(".button-collapse").sideNav();
-    // SideNav Scrollbar Initialization
-    var sideNavScrollbar = document.querySelector('.custom-scrollbar');
-    Ps.initialize(sideNavScrollbar);
-</script>
-
-<style>
-    header, main, footer {
-        padding-left: 240px;
-    }
-
-    @media only screen and (max-width : 992px) {
-        header, main, footer {
-            padding-left: 0;
-        }
-    }
-</style>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
+<script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
+<script src="/scripts/all_scripts.js"></script>
 </body>
 </html>
