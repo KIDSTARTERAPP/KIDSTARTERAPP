@@ -1,5 +1,7 @@
-package com.javamentor.kidstarter.model;
+package com.javamentor.kidstarter.model.user;
 
+import com.javamentor.kidstarter.model.Job;
+import com.javamentor.kidstarter.model.user.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
