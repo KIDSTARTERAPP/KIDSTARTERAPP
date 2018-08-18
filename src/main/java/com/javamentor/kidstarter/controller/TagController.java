@@ -44,10 +44,8 @@ public class TagController {
 		return new ResponseEntity<>(currentTag, HttpStatus.OK);
 	}
 
-	@PutMapping("/tag/{id}")
-	public ResponseEntity<?>  editTag(@ModelAttribute("tag") Tag currentTag, @PathVariable("id") long id) {
-		Tag newTag = tagService.getTagId(id);
-		newTag.setName(currentTag.getName());
+	@PutMapping("/tag")
+	public ResponseEntity<?> updateTag(@ModelAttribute("tag") Tag newTag) {
 		tagService.updateTag(newTag);
 		return new ResponseEntity<>(newTag, HttpStatus.OK);
 	}

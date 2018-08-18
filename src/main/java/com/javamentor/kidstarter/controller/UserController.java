@@ -43,13 +43,7 @@ public class UserController {
     }
 
     @PutMapping("/user/{id}")
-    public ResponseEntity<?>  editTag(@ModelAttribute("user") User currentUser, @PathVariable("id") long id) {
-        User newUser = userService.getUserById(id);
-        newUser.setFirstName(currentUser.getFirstName());
-        newUser.setLastname(currentUser.getLastname());
-        newUser.setLogin(currentUser.getLogin());
-        newUser.setLastname(currentUser.getLastname());
-        newUser.setPassword(currentUser.getPassword());
+    public ResponseEntity<?>  updateTag(@ModelAttribute("user") User newUser, @PathVariable("id") long id) {
         userService.updateUser(newUser);
         return new ResponseEntity<>(newUser, HttpStatus.OK);
     }
