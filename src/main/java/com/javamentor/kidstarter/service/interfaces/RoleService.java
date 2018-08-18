@@ -1,7 +1,9 @@
 package com.javamentor.kidstarter.service.interfaces;
 
 
-import javax.management.relation.Role;
+
+import com.javamentor.kidstarter.model.user.Role;
+
 import java.util.List;
 
 

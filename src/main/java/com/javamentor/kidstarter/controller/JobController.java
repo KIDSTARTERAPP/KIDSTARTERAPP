@@ -47,9 +47,7 @@ public class JobController {
     }
 
     @PutMapping("/job/{id}")
-    public ResponseEntity<?>  editJob(@ModelAttribute("job") Job currentJob, @PathVariable("id") long id) {
-        Job newJob = jobService.getJobById(id);
-        newJob.setName(currentJob.getName());
+    public ResponseEntity<?>  updateJob(@ModelAttribute("job") Job newJob, @PathVariable("id") long id) {
         jobService.updateJob(newJob);
         return new ResponseEntity<>(newJob, HttpStatus.OK);
     }

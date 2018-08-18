@@ -1,7 +1,7 @@
 package com.javamentor.kidstarter.dao.interfaces;
 
 
-import javax.management.relation.Role;
+import com.javamentor.kidstarter.model.user.Role;
 
 public interface RoleDao extends GenericDao<Long,Role> {
 

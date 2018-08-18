@@ -1,7 +1,7 @@
 package com.javamentor.kidstarter.security.service;
 
 
-import com.javamentor.kidstarter.model.User;
+import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
