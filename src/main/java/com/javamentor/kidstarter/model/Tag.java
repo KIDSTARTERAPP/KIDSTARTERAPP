@@ -1,16 +1,15 @@
 package com.javamentor.kidstarter.model;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "tag")
@@ -26,5 +25,10 @@ public class Tag {
 
     @ManyToMany (cascade = CascadeType.ALL)
     @JoinColumn (name = "job", foreignKey = @ForeignKey(name = "tag_job_fk"))
-    private Set<Job> job;
+    private List<Job> job;
+
+    public Tag(String name, List<Job> job) {
+        this.name = name;
+        this.job = job;
+    }
 }

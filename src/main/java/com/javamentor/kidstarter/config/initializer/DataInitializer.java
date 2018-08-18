@@ -1,6 +1,8 @@
 package com.javamentor.kidstarter.config.initializer;
 
+import com.javamentor.kidstarter.model.Job;
 import com.javamentor.kidstarter.model.Role;
+import com.javamentor.kidstarter.model.Tag;
 import com.javamentor.kidstarter.model.User;
 import com.javamentor.kidstarter.service.interfaces.RoleService;
 import com.javamentor.kidstarter.service.interfaces.UserService;
@@ -49,9 +51,9 @@ public class DataInitializer {
                 LocalDateTime.now(), 23, "MALE",23-12-34,
                 "admin@mail.ru","RUSSIA","house 8");
 
-
         userService.addUser(user1);
 
-
+        Job job1 = new Job("Java","Программирование на Java",Arrays.asList(user1));
+        Tag tag1  = new Tag("Языки программирования",Arrays.asList(job1));
     }
 }
