@@ -1,5 +1,4 @@
-package com.javamentor.kidstarter.service.service_abstract;
-
+package com.javamentor.kidstarter.service.interfaces;
 
 import com.javamentor.kidstarter.model.Job;
 

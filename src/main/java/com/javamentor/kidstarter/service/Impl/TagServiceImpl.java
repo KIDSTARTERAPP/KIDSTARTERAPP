@@ -1,8 +1,8 @@
-package com.javamentor.kidstarter.service.service_impl;
+package com.javamentor.kidstarter.service.Impl;
 
-import com.javamentor.kidstarter.dao_abstract.TagDao;
+import com.javamentor.kidstarter.dao.interfaces.TagDao;
 import com.javamentor.kidstarter.model.Tag;
-import com.javamentor.kidstarter.service.service_abstract.TagService;
+import com.javamentor.kidstarter.service.interfaces.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +11,13 @@ import java.util.List;
 @Service
 public class TagServiceImpl implements TagService {
 
-	@Autowired
+
 	private TagDao tagDao;
+
+	@Autowired
+	public TagServiceImpl(TagDao tagDao) {
+		this.tagDao = tagDao;
+	}
 
 	public Tag getTagId(Long id) {
 		return tagDao.getByKey(id);

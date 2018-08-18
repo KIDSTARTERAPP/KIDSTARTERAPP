@@ -1,7 +1,7 @@
 package com.javamentor.kidstarter.controller;
 
 import com.javamentor.kidstarter.model.Tag;
-import com.javamentor.kidstarter.service.service_abstract.TagService;
+import com.javamentor.kidstarter.service.interfaces.TagService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class TagController {
 	}
 
 	@PostMapping("/tag")
-	public ResponseEntity<?> addTag(@ModelAttribute("name") Tag currentTag) {
+	public ResponseEntity<?> addTag(@ModelAttribute("tag") Tag currentTag) {
 		tagService.addTag(currentTag);
 		return new ResponseEntity<>(currentTag, HttpStatus.OK);
 	}

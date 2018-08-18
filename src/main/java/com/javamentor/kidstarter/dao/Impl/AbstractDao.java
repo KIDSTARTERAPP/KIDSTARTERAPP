@@ -1,4 +1,4 @@
-package com.javamentor.kidstarter.dao_impl;
+package com.javamentor.kidstarter.dao.Impl;
 
 
 
@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
 public abstract class AbstractDao<PK, T> {
 
 	@PersistenceContext
-	private EntityManager entityManager;
+	 EntityManager entityManager;
 
 	private final Class<T> persistentClass;
 
@@ -48,6 +47,7 @@ public abstract class AbstractDao<PK, T> {
 		T entity =  entityManager.find(persistentClass, pk);
 		entityManager.remove(entity);
 	}
+
 
 	protected Session getSession() {
 		return (Session) entityManager.getDelegate();

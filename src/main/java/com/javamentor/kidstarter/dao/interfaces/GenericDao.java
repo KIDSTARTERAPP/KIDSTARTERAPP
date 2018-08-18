@@ -1,4 +1,4 @@
-package com.javamentor.kidstarter.dao_abstract;
+package com.javamentor.kidstarter.dao.interfaces;
 
 import java.util.List;
 
@@ -13,4 +13,5 @@ public interface GenericDao<PK, T> {
 	void update(T group);
 
 	void deleteByKey(PK id);
+
 }
