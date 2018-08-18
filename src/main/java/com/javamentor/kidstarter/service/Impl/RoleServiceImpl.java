@@ -1,12 +1,13 @@
 package com.javamentor.kidstarter.service.Impl;
 
 import com.javamentor.kidstarter.dao.interfaces.RoleDao;
-import com.javamentor.kidstarter.model.Role;
+import com.javamentor.kidstarter.model.user.Role;
 import com.javamentor.kidstarter.service.interfaces.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class RoleServiceImpl  implements RoleService{
 

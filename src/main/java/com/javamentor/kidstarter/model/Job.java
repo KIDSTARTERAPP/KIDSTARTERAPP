@@ -1,5 +1,6 @@
 package com.javamentor.kidstarter.model;
 
+import com.javamentor.kidstarter.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ public class Job {
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column (name = "name")
     private String name;

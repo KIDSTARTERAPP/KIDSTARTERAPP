@@ -9,7 +9,9 @@ import com.javamentor.kidstarter.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class DataInitializer {
 
@@ -45,9 +47,11 @@ public class DataInitializer {
         Role roleMentor = roleService.getByName("MENTOR");
         Role roleModerator = roleService.getByName("MODERATOR");
         Role roleKid = roleService.getByName("KID");
+        List<Role> roles = new ArrayList<>();
+        Collections.addAll (roles, roleAdmin,roleTeacher,roleSponsor, roleOwner, roleMentor, roleModerator, roleKid);
 
         User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
-                Arrays.asList(roleAdmin,roleTeacher,roleSponsor, roleOwner, roleMentor, roleModerator, roleKid),
+                roles,
                 LocalDateTime.now(), 23, "MALE",23-12-34,
                 "admin@mail.ru","RUSSIA","house 8");
 
