@@ -71,11 +71,6 @@
             <version>1.18.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>3.2.1</version>
-        </dependency>
 
 
     </dependencies>
