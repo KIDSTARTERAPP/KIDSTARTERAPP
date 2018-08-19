@@ -3,7 +3,7 @@ function addUser() {
     let wrap = {
         firstName: $('#firstname').val(),
         lastName: $('#lastname').val(),
-        initial: $('#initial').val(),
+        patronymic: $('#patronymic').val(),
         login: $('#login').val(),
         password: $('#password').val(),
         age: $('#age').val(),

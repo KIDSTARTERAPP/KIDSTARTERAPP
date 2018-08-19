@@ -32,7 +32,6 @@ public class User implements UserDetails {
     private String lastName;
 
     @Column(name = "patronymic", nullable = false)
-    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     //    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     private String patronymic;
 
@@ -71,12 +70,12 @@ public class User implements UserDetails {
     @Column(name = "address", nullable = false)
     private String address;
 
-    public User(String firstName, String lastName, String initial, String login, String password,
+    public User(String firstName, String lastName, String patronymic, String login, String password,
                 @NotNull List<Role> roles, LocalDateTime createDate, Integer age, String sex, Integer phone,
                 String email, String country, String address) {
         this.firstName = firstName;
-        this.lastname = lastname;
-        this.patronymic = initial;
+        this.lastName = lastName;
+        this.patronymic = patronymic;
         this.login = login;
         this.password = password;
         this.roles = roles;
