@@ -7,12 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
-
     <title>KidStarter</title>
-
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -51,40 +48,50 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">Главная</a></li>
-                <li><a href="/cretejobtag">Создать интерес/тэг</a></li>
+                <li><a href="#">Главная</a></li>
+                <li class="active"><a href="/cretejobtag">Создать интерес/тэг</a></li>
                 <li><a href="#">Контакты</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Здравствуй, добрый человек!</h1>
+            <h1 class="page-header">Создать интерес:</h1>
             <div>
-                <p>На этом портале ты можешь помочь детям стать лучше.</p>
+                <form action="/api/job" method="post">
+                    <table>
+                        <tr>
+                            <td><label for="jobname">Введите имя интереса:</label></td>
+                            <td colspan="2"><input width="100%" id="jobname" type="text" name="jobname"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="jobdesc">Введите описание интереса:</label></td>
+                            <td colspan="2"><input id="jobdesc" type="text" name="jobdesc"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="tagselect">Добавьте тэги:</label></td>
+                            <td>
+                                <select id="tagselect" onselect="filltagselect()">
+                                    <option>Select job</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Создать интерес"></td>
+                        </tr>
+                    </table>
+                </form>
             </div>
-            <h2 class="sub-header">Список активных запросов:</h2>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Организация</th>
-                        <th>Адрес</th>
-                        <th>Количество детей</th>
-                        <th>Количество учетелей</th>
-                        <th>Потребность</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Школа №1</td>
-                        <td>Бобруйск</td>
-                        <td>12</td>
-                        <td>0</td>
-                        <td>Рисование</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <h2 class="sub-header">Добавить новый тэг:</h2>
+            <div>
+                <form action="/api/tag" method="post">
+                    <table>
+                        <tr>
+                            <td><label>Введите имя тэга:</label></td>
+                            <td><input id="newtagname" type="text"></td>
+                            <td><input type="submit" value="Добавить тэг"></td>
+                        </tr>
+                    </table>
+                </form>
             </div>
         </div>
     </div>
@@ -97,5 +104,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<script src="/scripts/createjobtag.js"></script>
 </body>
 </html>
