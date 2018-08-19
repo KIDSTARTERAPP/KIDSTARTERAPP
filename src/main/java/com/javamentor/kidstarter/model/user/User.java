@@ -1,15 +1,12 @@
 package com.javamentor.kidstarter.model.user;
 
-import com.javamentor.kidstarter.util.pattern.ValidationPattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,19 +21,18 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-
     private Long id;
 
     @Column(name ="firstName", nullable = false)
-    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
+  // @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     private String firstName;
 
     @Column(name = "lastName", nullable = false)
-    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
-    private String lastname;
+ //   @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
+    private String lastName;
 
     @Column(name = "initial", nullable = false)
-    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
+//    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     private String initial;
 
     @Column(name = "login", unique = true, nullable = false)
@@ -65,7 +61,7 @@ public class User implements UserDetails {
     private Integer phone;
 
     @Column(name = "email", nullable = false)
-    @Email(regexp = ValidationPattern.EMAIL_PATTERN)
+  //  @Email(regexp = ValidationPattern.EMAIL_PATTERN)
     private String email;
 
     @Column(name = "country", nullable = false)
@@ -74,11 +70,11 @@ public class User implements UserDetails {
     @Column(name = "address", nullable = false)
     private String address;
 
-    public User(String firstName, String lastname, String initial, String login, String password,
+    public User(String firstName, String lastName, String initial, String login, String password,
                 @NotNull List<Role> roles, LocalDateTime createDate, Integer age, String sex, Integer phone,
                 String email, String country, String address) {
         this.firstName = firstName;
-        this.lastname = lastname;
+        this.lastName = lastName;
         this.initial = initial;
         this.login = login;
         this.password = password;

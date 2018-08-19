@@ -9,8 +9,10 @@
 <div class="login">
     <form class="form-signin" name='loginForm' action="/home/login" method='POST'>
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input class="form-control" placeholder="Login" type="text" name="username"/>
-        <input class="form-control" placeholder="Password" type="password" name="password"/>
+        <label for="login">Login</label>
+        <input  id="login" class="form-control"  required placeholder="Login" type="text" name="username"/>
+        <label for="password">Password</label>
+        <input id="password" class="form-control" required placeholder="Password" type="password" name="password"/>
         <br/>
         <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Login"/>
     </form>

@@ -1,4 +1,4 @@
-package com.javamentor.kidstarter.controller;
+package com.javamentor.kidstarter.controller.api;
 
 import com.javamentor.kidstarter.model.Tag;
 import com.javamentor.kidstarter.service.interfaces.TagService;

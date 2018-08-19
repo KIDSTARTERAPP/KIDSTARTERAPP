@@ -4,32 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" th:src="@{/scripts/home.js}"></script>
+    <script
+            src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="registr">
-    <form class="form-signup"  action="/home/registration" method='POST'>
+    <form class="form-signup" onsubmit= " addUser();return false">
         <h2 class="form-signin-heading">Registration</h2>
-        <input class="form-control" placeholder="First Name" type="text" name="firstname"/>
-        <input class="form-control" placeholder="Last Name" type="text" name="lastname"/>
-        <input class="form-control" placeholder="Last Name" type="text" name="lastname"/>
-        <input class="form-control" placeholder="Initial" type="text" name="initial"/>
-        <input class="form-control" placeholder="Login" type="text" name="username"/>
-        <input class="form-control" placeholder="Password" type="password" name="password"/>
-        <input class="form-control" placeholder="Age" type="number" name="age"/>
+
+        <label for="firstname">First Name</label>
+        <input id="firstname" class="form-control" required placeholder="First Name" type="text" name="firstname"/>
+
+        <label for="lastname">Last Name</label>
+        <input id="lastname" class="form-control" required placeholder="Last Name" type="text" name="lastname"/>
+
+        <label for="initial">Initial</label>
+        <input id="initial" class="form-control" required placeholder="Initial" type="text" name="initial"/>
+
+        <label for="login">Login</label>
+        <input id="login" class="form-control" required placeholder="Login" type="text" name="username"/>
+
+        <label for="password">Password</label>
+        <input id="password" class="form-control" required placeholder="Password" type="password" name="password"/>
+
+        <label for="age">Age</label>
+        <input id="age" class="form-control" required placeholder="Age" type="number" name="age"/>
+
         <label for="sex">Пол</label>
-        <select id="sex" name="sex">
+        <select id="sex" name="sex" required>
             <option>Мужской</option>
             <option>Женский</option>
         </select>
-        <input class="form-control" placeholder="Phone" type="number" name="phone"/>
-        <input class="form-control" placeholder="Email" type="email" name="email"/>
-        <input class="form-control" placeholder="Country" type="text" name="country"/>
-        <input class="form-control" placeholder="Address" type="text" name="address"/>
+
+        <label for="phone">Phone</label>
+        <input id="phone" class="form-control" required placeholder="Phone" type="number" name="phone"/>
+
+        <label for="email">Email</label>
+        <input id="email" class="form-control" required placeholder="Email" type="email" name="email"/>
+
+        <label for="country">Country</label>
+        <input id="country" class="form-control" required placeholder="Country" type="text" name="country"/>
+
+        <label for="address">Address</label>
+        <input id="address" class="form-control" required placeholder="Address" type="text" name="address"/>
         <br/>
-        <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit"  onclick='addUser()'/>
+        <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit" />
     </form>
 </div>
 </body>
-<script  type="text/javascript" th:src="@{/scripts/home.js}"></script>
-
 </html>

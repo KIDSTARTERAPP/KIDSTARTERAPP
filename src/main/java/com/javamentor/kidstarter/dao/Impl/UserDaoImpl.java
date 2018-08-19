@@ -11,7 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 
-    public User  getByLogin(String login){
-        return  (User) entityManager.createQuery("SELECT u from  User u WHERE u.login = :login",User.class).setParameter("login",login).getSingleResult();
+    public User getByLogin(String login) {
+        User user;
+        try {
+            user = entityManager.createQuery("SELECT u from  User u WHERE u.login = :login", User.class).setParameter("login", login).getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+        return user;
     }
 }

@@ -40,6 +40,7 @@ public abstract class AbstractDao<PK, T> {
 	}
 
 	public void persist(T entity) {
+
 		entityManager.persist(entity);
 	}
 

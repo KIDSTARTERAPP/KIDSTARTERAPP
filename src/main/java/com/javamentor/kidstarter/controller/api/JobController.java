@@ -1,4 +1,4 @@
-package com.javamentor.kidstarter.controller;
+package com.javamentor.kidstarter.controller.api;
 
 import com.javamentor.kidstarter.model.Job;
 import com.javamentor.kidstarter.service.interfaces.JobService;
