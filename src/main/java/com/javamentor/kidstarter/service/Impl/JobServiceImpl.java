@@ -25,8 +25,9 @@ public class JobServiceImpl implements JobService {
 		return jobDao.getByKey(id);
 	}
 
-	public void addJob(Job job) {
+	public Job addJob(Job job) {
 		jobDao.persist(job);
+		return job;
 	}
 
 	public List<Job> getAllJob() {

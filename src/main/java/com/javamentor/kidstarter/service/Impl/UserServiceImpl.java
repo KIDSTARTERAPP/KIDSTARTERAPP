@@ -30,9 +30,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void addUser(User user) {
+	public User addUser(User user) {
 		user.setPassword(passwordEncoder.passwordEncoder().encode(user.getPassword()));
 		userDAO.persist(user);
+		return user;
 	}
 
 	@Override
