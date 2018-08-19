@@ -31,9 +31,10 @@ public class User implements UserDetails {
  //   @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     private String lastName;
 
-    @Column(name = "initial", nullable = false)
-//    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
-    private String initial;
+    @Column(name = "patronymic", nullable = false)
+    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
+    //    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
+    private String patronymic;
 
     @Column(name = "login", unique = true, nullable = false)
     private String login;
@@ -74,8 +75,8 @@ public class User implements UserDetails {
                 @NotNull List<Role> roles, LocalDateTime createDate, Integer age, String sex, Integer phone,
                 String email, String country, String address) {
         this.firstName = firstName;
-        this.lastName = lastName;
-        this.initial = initial;
+        this.lastname = lastname;
+        this.patronymic = initial;
         this.login = login;
         this.password = password;
         this.roles = roles;

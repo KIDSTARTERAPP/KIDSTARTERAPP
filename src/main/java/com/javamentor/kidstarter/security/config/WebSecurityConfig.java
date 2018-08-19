@@ -23,6 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SecurityHandler securityHandler;
 
     private final PassEncode passwordEncoder;
+
     @Autowired
     public WebSecurityConfig(SecurityHandler securityHandler, AuthenticationService authenticationService, PassEncode passwordEncoder) {
         this.securityHandler = securityHandler;
@@ -41,7 +42,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/home/**").permitAll()
+
                 .antMatchers("/main", "/style/**", "/scripts/**", "/", "/api/**").permitAll()
+                // TODO удалить "/tagPage", "/jobPage"
+                .antMatchers("/main","/tagPage", "/jobPage", "/createUser", "/style/**", "/scripts/**", "/").permitAll()
                 .antMatchers("/insert_user").permitAll()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .antMatchers("/user/**").hasAnyRole("USER")
@@ -56,9 +60,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
-
-
-
     @Bean
     public DaoAuthenticationProvider authProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -67,12 +68,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return authProvider;
     }
 
-
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authProvider());
     }
+
 
 
 }

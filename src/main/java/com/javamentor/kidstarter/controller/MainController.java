@@ -10,4 +10,19 @@ public class MainController {
     public String showMain() {
         return "main";
     }
+
+    @RequestMapping("/tagPage")
+    public String tagPage() {
+        return "tagPage";
+    }
+
+    @RequestMapping("/jobPage")
+    public String jobPage() {
+        return "jobPage";
+    }
+
+    @RequestMapping("/createUser")
+    public String createUserPage() {
+        return "createUser";
+    }
 }

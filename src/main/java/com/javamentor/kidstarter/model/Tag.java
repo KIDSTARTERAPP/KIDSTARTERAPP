@@ -1,15 +1,16 @@
 package com.javamentor.kidstarter.model;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import java.util.Set;
 import javax.persistence.*;
-import java.util.List;
+
 
 import static javax.persistence.GenerationType.AUTO;
 
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "tag")
@@ -23,12 +24,12 @@ public class Tag {
     @Column (name = "name")
     private String name;
 
-    @ManyToMany (cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinColumn (name = "job", foreignKey = @ForeignKey(name = "tag_job_fk"))
-    private List<Job> job;
+    private Set<Job> job;
 
-    public Tag(String name, List<Job> job) {
-        this.name = name;
-        this.job = job;
-    }
+	public Tag(String name, Set<Job> job) {
+		this.name = name;
+		this.job = job;
+	}
 }

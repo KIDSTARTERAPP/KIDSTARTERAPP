@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -25,20 +25,23 @@ public class Job {
     @Column (name = "name")
     private String name;
 
-    @ManyToMany (cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinColumn (name = "tag", foreignKey = @ForeignKey(name = "job_tag_fk"))
-    private List<Tag> tag;
+    private Set<Tag> tag;
 
     @Column (name = "description")
     private String description;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn (name = "willer", foreignKey = @ForeignKey(name = "job_kid_fk"))
-    private List<User> willer;
 
-    public Job(String name, String description, List<User> willer) {
-        this.name = name;
-        this.description = description;
-        this.willer = willer;
-    }
+    @ManyToMany
+    @JoinColumn (name = "willer", foreignKey = @ForeignKey(name = "job_kid_fk"))
+    private Set<User> willer;
+
+
+	public Job(String name, String description ,Set<Tag> tag, Set<User> willer) {
+		this.name = name;
+		this.tag = tag;
+		this.description = description;
+		this.willer = willer;
+	}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,34 +58,58 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Здравствуй, добрый человек!</h1>
-            <div>
-                <p>На этом портале ты можешь помочь детям стать лучше.</p>
-            </div>
-            <h2 class="sub-header">Список активных запросов:</h2>
+            <h1 class="page-header">Создание пользователя</h1>
             <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Организация</th>
-                        <th>Адрес</th>
-                        <th>Количество детей</th>
-                        <th>Количество учетелей</th>
-                        <th>Потребность</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Школа №1</td>
-                        <td>Бобруйск</td>
-                        <td>12</td>
-                        <td>0</td>
-                        <td>Рисование</td>
-                    </tr>
-                    </tbody>
-                </table>
+                    <form class="form-horizontal" method="post" action="/createUser">
+                        <label>Имя:
+                            <input type="text" name="firstname"><br/>
+                        </label>
+
+                        <label>Фамилиия:
+                            <input type="number" name="lastname"><br/>
+                        </label>
+
+                        <label>Отчество:
+                            <input type="number" name="patronymic"><br/>
+                        </label>
+
+                        <label>Логин:
+                            <input type="text" name="login"><br/>
+                        </label>
+
+                        <label>Пароль:
+                            <input type="password" name="password"><br/>
+                        </label>
+
+                        <label>Роли:
+                            <input type="text" name="roles"><br/>
+                        </label>
+
+                        <label>Возраст:
+                            <input type="text" name="age"><br/>
+                        </label>
+
+                        <label>Пол:
+                            <input type="text" name="sex"><br/>
+                        </label>
+
+                        <label>Номер телефона:
+                            <input type="text" name="pnoneNumber"><br/>
+                        </label>
+
+                        <label>Электронная почта:
+                            <input type="text" name="email"><br/>
+                        </label>
+
+                        <label>Страна:
+                            <input type="text" name="country"><br/>
+                        </label>
+
+                        <label>Адрес:
+                            <input type="text" name="adress"><br/>
+                        </label>
+                        <button type="submit">Submit</button>
+                    </form>
             </div>
         </div>
     </div>

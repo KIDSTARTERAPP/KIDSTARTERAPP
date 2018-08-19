@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface GenericDao<PK, T> {
 
-	void persist(T entity);
+	T persist(T entity);
 
 	T getByKey(PK id);
 

@@ -23,8 +23,9 @@ public class TagServiceImpl implements TagService {
 		return tagDao.getByKey(id);
 	}
 
-	public void addTag(Tag tag) {
+	public Tag addTag(Tag tag) {
 		tagDao.persist(tag);
+		return tag;
 	}
 
 	public List<Tag> getAllTag() {
