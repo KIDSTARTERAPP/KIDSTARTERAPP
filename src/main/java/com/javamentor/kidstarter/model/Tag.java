@@ -24,7 +24,12 @@ public class Tag {
     @Column (name = "name")
     private String name;
 
-    @ManyToMany (cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinColumn (name = "job", foreignKey = @ForeignKey(name = "tag_job_fk"))
     private Set<Job> job;
+
+	public Tag(String name, Set<Job> job) {
+		this.name = name;
+		this.job = job;
+	}
 }

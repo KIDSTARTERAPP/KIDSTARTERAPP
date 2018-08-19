@@ -39,8 +39,10 @@ public abstract class AbstractDao<PK, T> {
 		return entityManager.createQuery(hql).getResultList();
 	}
 
-	public void persist(T entity) {
+	public T persist(T entity) {
 		entityManager.persist(entity);
+		entityManager.flush();
+		return entity;
 	}
 
 	public void deleteByKey(PK pk) {

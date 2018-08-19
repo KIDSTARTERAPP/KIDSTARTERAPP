@@ -25,14 +25,22 @@ public class Job {
     @Column (name = "name")
     private String name;
 
-    @ManyToMany (cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinColumn (name = "tag", foreignKey = @ForeignKey(name = "job_tag_fk"))
     private Set<Tag> tag;
 
     @Column (name = "description")
     private String description;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinColumn (name = "willer", foreignKey = @ForeignKey(name = "job_kid_fk"))
     private Set<User> willer;
+
+
+	public Job(String name, String description ,Set<Tag> tag, Set<User> willer) {
+		this.name = name;
+		this.tag = tag;
+		this.description = description;
+		this.willer = willer;
+	}
 }
