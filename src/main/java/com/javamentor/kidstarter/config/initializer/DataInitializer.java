@@ -76,16 +76,12 @@ public class DataInitializer {
 	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>()));
 	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>()));
 
-	    tag1.setJob(new HashSet<>(Arrays.asList(job1, job2)));
-	    tag2.setJob(new HashSet<>(Arrays.asList(job2)));
-	    tag3.setJob(new HashSet<>(Arrays.asList(job1)));
-
-	    tagService.updateTag(tag1);
-	    tagService.updateTag(tag2);
-	    tagService.updateTag(tag3);
-
-	    job1.setTag(new HashSet<>(Arrays.asList(tag1, tag3)));
-	    job2.setTag(new HashSet<>(Arrays.asList(tag1, tag2)));
+//	    tag1.setJob(new HashSet<>(Arrays.asList(job1, job2)));
+//	    tag2.setJob(new HashSet<>(Collections.singletonList(job2)));
+//	    tag3.setJob(new HashSet<>(Collections.singletonList(job1)));
+//
+//	    job1.setTag(new HashSet<>(Arrays.asList(tag1, tag3)));
+//	    job2.setTag(new HashSet<>(Arrays.asList(tag1, tag2)));
 
 //	    job1.setWiller(new HashSet<>(Arrays.asList(user3, user4)));
 //	    job2.setWiller(new HashSet<>(Arrays.asList(user3, user4)));

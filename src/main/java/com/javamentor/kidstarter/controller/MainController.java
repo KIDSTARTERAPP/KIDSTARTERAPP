@@ -20,4 +20,9 @@ public class MainController {
     public String jobPage() {
         return "jobPage";
     }
+
+    @RequestMapping("/createUser")
+    public String createUserPage() {
+        return "createUser";
+    }
 }

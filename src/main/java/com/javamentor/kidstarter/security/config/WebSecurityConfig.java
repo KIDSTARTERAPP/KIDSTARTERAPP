@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 // TODO удалить "/tagPage", "/jobPage"
-                .antMatchers("/main","/tagPage", "/jobPage", "/style/**", "/scripts/**", "/").permitAll()
+                .antMatchers("/main","/tagPage", "/jobPage", "/createUser", "/style/**", "/scripts/**", "/").permitAll()
                 .antMatchers("/insert_user").permitAll()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .antMatchers("/user/**").hasAnyRole("USER")

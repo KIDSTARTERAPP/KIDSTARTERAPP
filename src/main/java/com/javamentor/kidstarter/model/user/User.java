@@ -35,9 +35,9 @@ public class User implements UserDetails {
     @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     private String lastname;
 
-    @Column(name = "initial", nullable = false)
+    @Column(name = "patronymic", nullable = false)
     @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
-    private String initial;
+    private String patronymic;
 
     @Column(name = "login", unique = true, nullable = false)
     private String login;
@@ -79,7 +79,7 @@ public class User implements UserDetails {
                 String email, String country, String address) {
         this.firstName = firstName;
         this.lastname = lastname;
-        this.initial = initial;
+        this.patronymic = initial;
         this.login = login;
         this.password = password;
         this.roles = roles;
