@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 
 @RestController
-@RequestMapping("/api/home")
+@RequestMapping("/api/main")
 public class HomeRestController {
 
     private final UserService userService;
