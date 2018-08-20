@@ -27,6 +27,11 @@ public class MainController {
         return "useredit";
     }
 
+    @RequestMapping("/jobPage")
+    public String jobPage() {
+        return "jobPage";
+    }
+
     @RequestMapping("/createUser")
     public String createUserPage() {
         return "createUser";
