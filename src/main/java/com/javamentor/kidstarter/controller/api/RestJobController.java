@@ -28,6 +28,11 @@ public class RestJobController {
         return new ResponseEntity<>(job, HttpStatus.OK);
     }
 
+    @GetMapping("/job/{id}/tags")
+    public ResponseEntity<?> getJobsById(@PathVariable("id") long id) {
+        return new ResponseEntity<>(jobService.getJobById(id).getTag(), HttpStatus.OK);
+    }
+
     @GetMapping("/jobs")
     public ResponseEntity<List<Job>> listAllJobs() {
         List<Job> job = jobService.getAllJob();

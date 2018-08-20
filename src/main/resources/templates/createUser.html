@@ -60,56 +60,65 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Создание пользователя</h1>
             <div class="table-responsive">
-                    <form class="form-horizontal" method="post" action="/createUser">
-                        <label>Имя:
-                            <input type="text" name="firstname"><br/>
-                        </label>
+                <form class="form-signup" onsubmit= " createUser();return false">
 
-                        <label>Фамилиия:
-                            <input type="number" name="lastname"><br/>
-                        </label>
+                    <label for="firstname">First Name</label>
+                    <input id="firstname" class="form-control" required placeholder="First Name" type="text" name="firstname"/>
 
-                        <label>Отчество:
-                            <input type="number" name="patronymic"><br/>
-                        </label>
+                    <label for="lastname">Last Name</label>
+                    <input id="lastname" class="form-control" required placeholder="Last Name" type="text" name="lastname"/>
 
-                        <label>Логин:
-                            <input type="text" name="login"><br/>
-                        </label>
+                    <label for="patronymic">Patronymic</label>
+                    <input id="patronymic" class="form-control" required placeholder="Patronymic" type="text" name="patronymic"/>
 
-                        <label>Пароль:
-                            <input type="password" name="password"><br/>
-                        </label>
+                    <label for="login">Login</label>
+                    <input id="login" class="form-control" required placeholder="Login" type="text" name="username"/>
 
-                        <label>Роли:
-                            <input type="text" name="roles"><br/>
-                        </label>
+                    <label for="password">Password</label>
+                    <input id="password" class="form-control" required placeholder="Password" type="password" name="password"/>
 
-                        <label>Возраст:
-                            <input type="text" name="age"><br/>
-                        </label>
+                    <div class="form-group">
+                        <label class="control-label center" for="role">Выберите роль пользователя</label>
+                        <div class="">
+                            <select name="role" class="form-control input-width center-block" id="role">
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="TEACHER">TEACHER</option>
+                                <option value="SPONSOR">SPONSOR</option>
+                                <option value="OWNER">OWNER</option>
+                                <option value="MENTOR">MENTOR</option>
+                                <option value="MODERATOR">MODERATOR</option>
+                                <option value="KID">KID</option>
+                            </select>
+                        </div>
+                    </div>
 
-                        <label>Пол:
-                            <input type="text" name="sex"><br/>
-                        </label>
+                    <label for="age">Age</label>
+                    <input id="age" class="form-control" required placeholder="Age" type="number" name="age"/>
 
-                        <label>Номер телефона:
-                            <input type="text" name="pnoneNumber"><br/>
-                        </label>
+                    <div class="form-group">
+                        <label class="control-label center" for="sex">Выбрать пол полльзователя</label>
+                        <div class="">
+                            <select name="sex" class="form-control input-width center-block" id="sex">
+                                <option value="Мужской">Мужской</option>
+                                <option value="Женский">Женский</option>
+                            </select>
+                        </div>
+                    </div>
 
-                        <label>Электронная почта:
-                            <input type="text" name="email"><br/>
-                        </label>
+                    <label for="phone">Phone</label>
+                    <input id="phone" class="form-control" required placeholder="Phone" type="number" name="phone"/>
 
-                        <label>Страна:
-                            <input type="text" name="country"><br/>
-                        </label>
+                    <label for="email">Email</label>
+                    <input id="email" class="form-control" required placeholder="Email" type="email" name="email"/>
 
-                        <label>Адрес:
-                            <input type="text" name="adress"><br/>
-                        </label>
-                        <button type="submit">Submit</button>
-                    </form>
+                    <label for="country">Country</label>
+                    <input id="country" class="form-control" required placeholder="Country" type="text" name="country"/>
+
+                    <label for="address">Address</label>
+                    <input id="address" class="form-control" required placeholder="Address" type="text" name="address"/>
+                    <br/>
+                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit" />
+                </form>
             </div>
         </div>
     </div>
@@ -122,5 +131,7 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<script src="/scripts/createjobtag.js"></script>
+<script src="/scripts/user.js"></script>
 </body>
 </html>

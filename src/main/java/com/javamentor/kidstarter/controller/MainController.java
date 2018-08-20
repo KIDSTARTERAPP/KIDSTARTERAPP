@@ -6,14 +6,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
+
     @RequestMapping("/main")
     public String showMain() {
         return "main";
     }
 
-    @RequestMapping("/tagPage")
-    public String tagPage() {
-        return "tagPage";
+    @RequestMapping("/cretejobtag")
+    public String showCreateJobTag() {
+        return "cretejobtag";
     }
 
     @RequestMapping("/jobPage")
