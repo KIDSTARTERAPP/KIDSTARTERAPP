@@ -7,7 +7,7 @@
 <body>
 
 <div class="login">
-    <form class="form-signin" name='loginForm' action="/home/login" method='POST'>
+    <form class="form-signin" name='loginForm' action="/main/login" method='POST'>
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="login">Login</label>
         <input  id="login" class="form-control"  required placeholder="Login" type="text" name="username"/>
@@ -15,9 +15,6 @@
         <input id="password" class="form-control" required placeholder="Password" type="password" name="password"/>
         <br/>
         <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Login"/>
-    </form>
-    <form  action="/home/registration" method="GET">
-        <button  type="submit" class="btn btn-primary btn-block">Registration</button>
     </form>
 </div>
 </body>
