@@ -49,7 +49,6 @@ public class RestTagController {
 
 	@PostMapping("/tag")
 	public ResponseEntity<?> addTag(@ModelAttribute("name") Tag newTag) {
-		System.out.println(newTag);
 		tagService.addTag(newTag);
 		return new ResponseEntity<>(newTag, HttpStatus.CREATED);
 	}
