@@ -22,6 +22,11 @@ public class MainController {
         return "adminpage";
     }
 
+    @RequestMapping("/useredit")
+    public String showUserEdit() {
+        return "useredit";
+    }
+
     @RequestMapping("/createUser")
     public String createUserPage() {
         return "createUser";
