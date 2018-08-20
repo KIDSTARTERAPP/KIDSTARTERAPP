@@ -1,4 +1,4 @@
-package com.javamentor.kidstarter.controller;
+package com.javamentor.kidstarter.controller.api;
 
 import com.javamentor.kidstarter.service.Impl.TagServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

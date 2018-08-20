@@ -21,4 +21,9 @@ public class MainController {
     public String showAdminPage() {
         return "adminpage";
     }
+
+    @RequestMapping("/createUser")
+    public String createUserPage() {
+        return "createUser";
+    }
 }

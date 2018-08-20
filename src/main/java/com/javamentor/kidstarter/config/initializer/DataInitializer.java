@@ -79,6 +79,7 @@ public class DataInitializer {
 	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(Collections.singletonList(user1))));
 	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(Collections.singletonList(user2))));
 
+
         tag1.setJobs(new HashSet<>(Arrays.asList(job1, job2)));
 	    tag2.setJobs(new HashSet<>(Arrays.asList(job2)));
 	    tag3.setJobs(new HashSet<>(Arrays.asList(job1)));
@@ -86,5 +87,6 @@ public class DataInitializer {
         tagService.updateTag(tag1);
         tagService.updateTag(tag2);
         tagService.updateTag(tag3);
+
     }
 }

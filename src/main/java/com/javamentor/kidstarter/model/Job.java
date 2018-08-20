@@ -38,6 +38,7 @@ public class Job {
     @Column (name = "description")
     private String description;
 
+
     @ManyToMany
     @JoinColumn (name = "willer", foreignKey = @ForeignKey(name = "job_kid_fk"))
     private Set<User> willer;

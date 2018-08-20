@@ -1,4 +1,4 @@
-package com.javamentor.kidstarter.controller;
+package com.javamentor.kidstarter.controller.api;
 
 import com.javamentor.kidstarter.service.interfaces.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
