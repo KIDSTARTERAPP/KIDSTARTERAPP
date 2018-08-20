@@ -12,8 +12,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table (name = "administrators")
 public class Administrator   {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "admin_id")
     private Long id;
+
+    @OneToOne
+    @JoinColumn(name =  "user_fk")
+    private User user;
+
 }

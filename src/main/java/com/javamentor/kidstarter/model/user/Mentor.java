@@ -1,5 +1,6 @@
 package com.javamentor.kidstarter.model.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javamentor.kidstarter.model.Job;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,12 +19,20 @@ public class Mentor  {
     @Column(name = "mentor_id")
     private Long id;
 
+    @JsonIgnore
+    @EqualsAndHashCode.Exclude
     @OneToMany
-    @JoinColumn(name = "jobs", foreignKey = @ForeignKey(name = "mentor_job_fk"))
+    @JoinTable(name = "mentor_to_jobs",
+            joinColumns = @JoinColumn(name = "mentor_id"),
+            inverseJoinColumns = @JoinColumn(name = "job_id") )
     private Set<Job> job;
 
-    @Column (name = "experience")
+    @Column (name = "experience", nullable = false)
     private Integer experience;
+
+    @OneToOne
+    @JoinColumn(name = "user_fk")
+    private User user;
 
 //    @OneToMany (cascade = CascadeType.ALL)
 //    @JoinColumn (name = "comment", foreignKey = @ForeignKey(name = "mentor_comment_fk"))

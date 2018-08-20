@@ -6,15 +6,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-
 import javax.persistence.*;
 import java.util.HashSet;
-
 import java.util.Set;
-import javax.persistence.*;
-import java.util.Set;
-
-import static javax.persistence.GenerationType.AUTO;
 
 @Data
 @AllArgsConstructor
@@ -24,11 +18,11 @@ import static javax.persistence.GenerationType.AUTO;
 public class Tag {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column (name = "name")
+    @Column (name = "name", nullable = false)
     private String name;
 
     @JsonIgnore

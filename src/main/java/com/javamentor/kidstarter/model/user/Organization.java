@@ -23,10 +23,6 @@ public class Organization {
     @Column (name = "name", nullable = false)
     private String name;
 
-    @OneToOne
-    @JoinColumn (name = "owners", foreignKey = @ForeignKey(name = "organization_owner_fk"))
-    private  Owner owner;
-
     @Column (name = "address",nullable = false)
     private String address;
 
@@ -43,7 +39,7 @@ public class Organization {
     private LocalDateTime createDate;
 
     @OneToOne
-    @JoinColumn (name = "account", foreignKey = @ForeignKey(name = "organization_account_fk"))
+    @JoinColumn (name = "account_fk")
     private Account account;
 
 //    @ManyToMany (cascade = CascadeType.ALL)

@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 
 @Data
-@EqualsAndHashCode()
+@EqualsAndHashCode
 @Entity
 @Table(name = "owners")
 public class Owner  {
@@ -17,11 +17,11 @@ public class Owner  {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "organizations", foreignKey = @ForeignKey(name = "owner_organization_fk"))
+    @JoinColumn(name = "organization_fk")
     private Organization organization;
 
 
     @OneToOne
-    @JoinColumn(name= "users", foreignKey = @ForeignKey(name ="owner_user_fk"))
+    @JoinColumn(name ="user_fk")
     private User user;
 }
