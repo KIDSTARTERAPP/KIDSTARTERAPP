@@ -1,6 +1,5 @@
 package com.javamentor.kidstarter.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,18 +30,18 @@ public class Tag {
     @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
-    @JoinTable(name = "job_tag",
+    @JoinTable(name = "job_to_tag",
             joinColumns = @JoinColumn(name = "tag_id"),
             inverseJoinColumns = @JoinColumn(name = "job_id"))
-    private Set<Job> job;
+    private Set<Job> jobs;
 
-	public Tag(String name, Set<Job> job) {
+	public Tag(String name, Set<Job> jobs) {
 		this.name = name;
-		this.job = job;
+		this.jobs = jobs;
 	}
 
     public Tag(String name) {
         this.name = name;
-        this.job = new HashSet<>();
+        this.jobs = new HashSet<>();
     }
 }

@@ -32,7 +32,7 @@ public class RestTagController {
 
 	@GetMapping("/tag/{id}/jobs")
 	public ResponseEntity<?> getJobsById(@PathVariable("id") long id) {
-		return new ResponseEntity<>(tagService.getTagId(id).getJob(), HttpStatus.OK);
+		return new ResponseEntity<>(tagService.getTagId(id).getJobs(), HttpStatus.OK);
 	}
 
 	@GetMapping("/tags")

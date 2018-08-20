@@ -30,10 +30,10 @@ public class Job {
 
     @EqualsAndHashCode.Exclude
     @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
-    @JoinTable(name = "job_tag",
+    @JoinTable(name = "job_to_tag",
             joinColumns = @JoinColumn(name = "job_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private Set<Tag> tag;
+    private Set<Tag> tags;
 
     @Column (name = "description")
     private String description;
@@ -43,9 +43,9 @@ public class Job {
     private Set<User> willer;
 
 
-	public Job(String name, String description ,Set<Tag> tag, Set<User> willer) {
+	public Job(String name, String description ,Set<Tag> tags, Set<User> willer) {
 		this.name = name;
-		this.tag = tag;
+		this.tags = tags;
 		this.description = description;
 		this.willer = willer;
 	}
