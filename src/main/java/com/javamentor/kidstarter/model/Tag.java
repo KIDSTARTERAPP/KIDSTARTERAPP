@@ -1,10 +1,14 @@
 package com.javamentor.kidstarter.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.AUTO;
@@ -24,12 +28,21 @@ public class Tag {
     @Column (name = "name")
     private String name;
 
-    @ManyToMany
-    @JoinColumn (name = "job", foreignKey = @ForeignKey(name = "tag_job_fk"))
+    @JsonIgnore
+    @EqualsAndHashCode.Exclude
+    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JoinTable(name = "job_tag",
+            joinColumns = @JoinColumn(name = "tag_id"),
+            inverseJoinColumns = @JoinColumn(name = "job_id"))
     private Set<Job> job;
 
 	public Tag(String name, Set<Job> job) {
 		this.name = name;
 		this.job = job;
 	}
+
+    public Tag(String name) {
+        this.name = name;
+        this.job = new HashSet<>();
+    }
 }

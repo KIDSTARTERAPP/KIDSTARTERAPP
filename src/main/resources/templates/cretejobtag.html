@@ -14,7 +14,6 @@
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -56,7 +55,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Создать интерес:</h1>
             <div>
-                <form action="/api/job" method="post">
+                <form onsubmit="createtag(document.getElementById('input_tag_name').value); return false">
                     <table>
                         <tr>
                             <td><label for="jobname">Введите имя интереса:</label></td>
@@ -69,7 +68,7 @@
                         <tr>
                             <td><label for="tagselect">Добавьте тэги:</label></td>
                             <td>
-                                <select id="tagselect" onselect="filltagselect()">
+                                <select id="tagselect" name="tagselect">
                                     <option>Select job</option>
                                 </select>
                             </td>
@@ -83,15 +82,16 @@
             </div>
             <h2 class="sub-header">Добавить новый тэг:</h2>
             <div>
-                <form action="/api/tag" method="post">
+                <form onsubmit="createtag(document.getElementById('input_tag_name').value); return false">
                     <table>
                         <tr>
-                            <td><label>Введите имя тэга:</label></td>
-                            <td><input id="newtagname" type="text"></td>
-                            <td><input type="submit" value="Добавить тэг"></td>
+                            <td><label for="input_tag_name">Введите имя тэга:</label></td>
+                            <td><input id="input_tag_name" name="name" type="text"></td>
+                            <td><input type="submit" value="Создать тэг"></td>
                         </tr>
                     </table>
                 </form>
+                <label id="label_tag_result" name="label_tag_result"></label>
             </div>
         </div>
     </div>

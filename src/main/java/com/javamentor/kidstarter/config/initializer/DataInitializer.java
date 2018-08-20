@@ -66,33 +66,22 @@ public class DataInitializer {
 			    LocalDateTime.now(), 28, "MALE",23-12-34,
 			    "admin@mail.ru","Moscow","house 8");
 
-        User user3 = userService.addUser(user1);
-	    User user4 = userService.addUser(user2);
+        user1 = userService.addUser(user1);
+	    user2 = userService.addUser(user2);
 
 	    Tag tag1 = tagService.addTag(new Tag("Программирование", new HashSet<>()));
 	    Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
 	    Tag tag3 = tagService.addTag(new Tag("Бэкаенд", new HashSet<>()));
 
-	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>()));
-	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>()));
+	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(Collections.singletonList(user1))));
+	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(Collections.singletonList(user2))));
 
-	    tag1.setJob(new HashSet<>(Arrays.asList(job1, job2)));
+        tag1.setJob(new HashSet<>(Arrays.asList(job1, job2)));
 	    tag2.setJob(new HashSet<>(Arrays.asList(job2)));
 	    tag3.setJob(new HashSet<>(Arrays.asList(job1)));
 
-	    tagService.updateTag(tag1);
-	    tagService.updateTag(tag2);
-	    tagService.updateTag(tag3);
-
-	    job1.setTag(new HashSet<>(Arrays.asList(tag1, tag3)));
-	    job2.setTag(new HashSet<>(Arrays.asList(tag1, tag2)));
-
-//	    job1.setWiller(new HashSet<>(Arrays.asList(user3, user4)));
-//	    job2.setWiller(new HashSet<>(Arrays.asList(user3, user4)));
-
-	    System.out.println(job1);
-	    System.out.println(job2);
-//	    jobService.updateJob(job1);
-//	    jobService.updateJob(job2);
+        tagService.updateTag(tag1);
+        tagService.updateTag(tag2);
+        tagService.updateTag(tag3);
     }
 }
