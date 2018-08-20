@@ -2,20 +2,38 @@
 <head>
     <meta charset="utf-8"/>
     <title>Kidstarter</title>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
+    <!-- Bootstrap core CSS -->
+    <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
 <body>
 
 <div class="login">
-    <form class="form-signin" name='loginForm' action="/main/login" method='POST'>
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="login">Login</label>
-        <input  id="login" class="form-control"  required placeholder="Login" type="text" name="username"/>
-        <label for="password">Password</label>
-        <input id="password" class="form-control" required placeholder="Password" type="password" name="password"/>
-        <br/>
-        <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Login"/>
-    </form>
+    <div th:replace="fragments/htmlFragment::main-header"></div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">Авторизация</h1>
+
+        <div class="table-responsive">
+
+            <form class="form-signin" name='loginForm' action="/main/login" method='POST'>
+                <label for="login">Login</label>
+                <input id="login" class="form-control" required placeholder="Login" type="text" name="username"/>
+                <label for="password">Password</label>
+                <input id="password" class="form-control" required placeholder="Password" type="password"
+                       name="password"/>
+                <br/>
+                <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Login"/>
+            </form>
+        </div>
+    </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
+<script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 </body>
 </html>

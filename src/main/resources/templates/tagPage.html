@@ -22,30 +22,8 @@
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">KidStarter</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <!--<li><a id="current-user" href="#Profile">Ivan</a></li>-->
-                <!--<li><a>:</a></li>-->
-                <!--<li><a id="user-role">User</a></li>-->
-                <li><a href="#">Стать спонсором</a></li>
-                <li><a href="/register">Регистрация</a></li>
-                <li><a href="/login">Войти</a></li>
-                <!--<li><a href="/logout">Выйти</a></li>-->
-            </ul>
-        </div>
-    </div>
-</div>
+<div th:replace="fragments/htmlFragment::main-header"></div>
+
 
 <div class="container-fluid">
     <div class="row">
