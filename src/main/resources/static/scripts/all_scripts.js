@@ -1,1 +1,1 @@
-console.log("work");
+console.log("all_scripts");

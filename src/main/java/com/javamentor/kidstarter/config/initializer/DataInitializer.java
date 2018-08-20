@@ -29,6 +29,7 @@ public class DataInitializer {
 
     public void init(){
 
+        Role role0 = new Role("USER");
         Role role1 = new Role("ADMIN");
         Role role2 = new Role("TEACHER");
         Role role3 = new Role("SPONSOR");
@@ -37,6 +38,7 @@ public class DataInitializer {
         Role role6 = new Role("MODERATOR");
         Role role7 = new Role("KID");
 
+        roleService.addRole(role0);
         roleService.addRole(role1);
         roleService.addRole(role2);
         roleService.addRole(role3);
@@ -45,6 +47,7 @@ public class DataInitializer {
         roleService.addRole(role6);
         roleService.addRole(role7);
 
+        Role roleUser = roleService.getByName("USER");
         Role roleAdmin = roleService.getByName("ADMIN");
         Role roleTeacher = roleService.getByName("TEACHER");
         Role roleSponsor = roleService.getByName("SPONSOR");
@@ -53,7 +56,7 @@ public class DataInitializer {
         Role roleModerator = roleService.getByName("MODERATOR");
         Role roleKid = roleService.getByName("KID");
         List<Role> roles = new ArrayList<>();
-        Collections.addAll (roles, roleAdmin,roleTeacher,roleSponsor, roleOwner, roleMentor, roleModerator, roleKid);
+        Collections.addAll(roles, roleUser, roleSponsor);
 
         User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
                 roles,
@@ -61,34 +64,29 @@ public class DataInitializer {
                 "admin@mail.ru","RUSSIA","house 8");
 
 
-	    User user2  = new User("Vovan","Vovanov","Huevich","qwer22","12345",
+	    User user2  = new User("Vovan","Vovanov","Huevich","1234","qwer",
 			    roles,
 			    LocalDateTime.now(), 28, "MALE",23-12-34,
-			    "admin@mail.ru","Moscow","house 8");
+			    "user@mail.ru","Ukraine","house 15");
 
-        User user3 = userService.addUser(user1);
-	    User user4 = userService.addUser(user2);
+        user1 = userService.addUser(user1);
+	    user2 = userService.addUser(user2);
 
 	    Tag tag1 = tagService.addTag(new Tag("Программирование", new HashSet<>()));
 	    Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
 	    Tag tag3 = tagService.addTag(new Tag("Бэкаенд", new HashSet<>()));
 
-	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>()));
-	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>()));
+	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(Collections.singletonList(user1))));
+	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(Collections.singletonList(user2))));
 
-//	    tag1.setJob(new HashSet<>(Arrays.asList(job1, job2)));
-//	    tag2.setJob(new HashSet<>(Collections.singletonList(job2)));
-//	    tag3.setJob(new HashSet<>(Collections.singletonList(job1)));
-//
-//	    job1.setTag(new HashSet<>(Arrays.asList(tag1, tag3)));
-//	    job2.setTag(new HashSet<>(Arrays.asList(tag1, tag2)));
 
-//	    job1.setWiller(new HashSet<>(Arrays.asList(user3, user4)));
-//	    job2.setWiller(new HashSet<>(Arrays.asList(user3, user4)));
+        tag1.setJobs(new HashSet<>(Arrays.asList(job1, job2)));
+	    tag2.setJobs(new HashSet<>(Arrays.asList(job2)));
+	    tag3.setJobs(new HashSet<>(Arrays.asList(job1)));
 
-	    System.out.println(job1);
-	    System.out.println(job2);
-//	    jobService.updateJob(job1);
-//	    jobService.updateJob(job2);
+        tagService.updateTag(tag1);
+        tagService.updateTag(tag2);
+        tagService.updateTag(tag3);
+
     }
 }
