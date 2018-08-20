@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
-
     <title>KidStarter</title>
-
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -35,13 +32,13 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a id="current-user" href="#Profile">Ivan</a></li>
-                <li><a>:</a></li>
-                <li><a id="user-role">User</a></li>
+                <!--<li><a id="current-user" href="#Profile">Ivan</a></li>-->
+                <!--<li><a>:</a></li>-->
+                <!--<li><a id="user-role">User</a></li>-->
                 <li><a href="#">Стать спонсором</a></li>
                 <li><a href="/register">Регистрация</a></li>
                 <li><a href="/login">Войти</a></li>
-                <li><a href="/logout">Выйти</a></li>
+                <!--<li><a href="/logout">Выйти</a></li>-->
             </ul>
         </div>
     </div>
@@ -50,42 +47,41 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="/main">Главная</a></li>
+            <ul class="nav nav-sidebar nav-stacked">
+                <li><a href="/main">Главная</a></li>
                 <li><a href="/tagPage">Теги</a></li>
                 <li><a href="/cretejobtag">Создать интерес/тэг</a></li>
                 <li><a href="/jobPage">Интересы</a></li>
-                <li><a href="/adminpage">Пользователи</a></li>
+                <li class="active"><a href="/adminpage">Пользователи</a></li>
                 <li><a href="#">Контакты</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Здравствуй, добрый человек!</h1>
-            <div>
-                <p>На этом портале ты можешь помочь детям стать лучше.</p>
-            </div>
-            <h2 class="sub-header">Список активных запросов:</h2>
+            <h1 class="page-header">Список пользователей:</h1>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table id="table_userlist"  class="table table-striped">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Организация</th>
+                        <th>Фамилия</th>
+                        <th>Имя</th>
+                        <th>Отчество</th>
+                        <th>Логин</th>
+                        <th>Роли</th>
+                        <th>Дата создания</th>
+                        <th>Возраст</th>
+                        <th>Пол</th>
+                        <th>Телефон</th>
+                        <th>Почта</th>
+                        <th>Страна</th>
                         <th>Адрес</th>
-                        <th>Количество детей</th>
-                        <th>Количество учетелей</th>
-                        <th>Потребность</th>
+                        <th>Включен</th>
+                        <th>Изменить</th>
+                        <th>Удалить</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Школа №1</td>
-                        <td>Бобруйск</td>
-                        <td>12</td>
-                        <td>0</td>
-                        <td>Рисование</td>
-                    </tr>
+                    <tbody id="table_body_userlist">
+
                     </tbody>
                 </table>
             </div>
@@ -100,5 +96,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<script src="/scripts/adminpage.js"></script>
 </body>
 </html>
