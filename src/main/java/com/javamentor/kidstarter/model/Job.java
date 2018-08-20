@@ -1,8 +1,11 @@
 package com.javamentor.kidstarter.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.javamentor.kidstarter.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -25,9 +28,12 @@ public class Job {
     @Column (name = "name")
     private String name;
 
-    @ManyToMany
-    @JoinColumn (name = "tags", foreignKey = @ForeignKey(name = "job_tag_fk"))
-    private Set<Tag> tag;
+    @EqualsAndHashCode.Exclude
+    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JoinTable(name = "job_to_tag",
+            joinColumns = @JoinColumn(name = "job_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private Set<Tag> tags;
 
     @Column (name = "description")
     private String description;
@@ -38,9 +44,9 @@ public class Job {
     private Set<User> willer;
 
 
-	public Job(String name, String description ,Set<Tag> tag, Set<User> willer) {
+	public Job(String name, String description ,Set<Tag> tags, Set<User> willer) {
 		this.name = name;
-		this.tag = tag;
+		this.tags = tags;
 		this.description = description;
 		this.willer = willer;
 	}

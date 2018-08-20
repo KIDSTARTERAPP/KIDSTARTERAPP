@@ -1,5 +1,6 @@
 package com.javamentor.kidstarter.controller.api;
 
+import com.javamentor.kidstarter.model.Job;
 import com.javamentor.kidstarter.model.Tag;
 import com.javamentor.kidstarter.service.interfaces.TagService;
 import org.slf4j.Logger;
@@ -9,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
@@ -27,6 +30,11 @@ public class RestTagController {
 		return new ResponseEntity<>(tag, HttpStatus.OK);
 	}
 
+	@GetMapping("/tag/{id}/jobs")
+	public ResponseEntity<?> getJobsById(@PathVariable("id") long id) {
+		return new ResponseEntity<>(tagService.getTagId(id).getJobs(), HttpStatus.OK);
+	}
+
 	@GetMapping("/tags")
 	public ResponseEntity<List<Tag>> listAllTags() {
 		List<Tag>tag = tagService.getAllTag();
@@ -40,9 +48,9 @@ public class RestTagController {
 	}
 
 	@PostMapping("/tag")
-	public ResponseEntity<?> addTag(@ModelAttribute("tag") Tag currentTag) {
-		tagService.addTag(currentTag);
-		return new ResponseEntity<>(currentTag, HttpStatus.OK);
+	public ResponseEntity<?> addTag(@ModelAttribute("name") Tag newTag) {
+		tagService.addTag(newTag);
+		return new ResponseEntity<>(newTag, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/tag")
