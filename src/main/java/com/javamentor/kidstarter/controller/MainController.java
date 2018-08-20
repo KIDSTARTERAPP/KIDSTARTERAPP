@@ -17,6 +17,11 @@ public class MainController {
         return "cretejobtag";
     }
 
+    @RequestMapping("/adminpage")
+    public String showAdminPage() {
+        return "adminpage";
+    }
+
     @RequestMapping("/jobPage")
     public String jobPage() {
         return "jobPage";

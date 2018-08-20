@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "/home")
+@RequestMapping(value = "/main")
 public class HomeController {
 
      private final UserService userService;

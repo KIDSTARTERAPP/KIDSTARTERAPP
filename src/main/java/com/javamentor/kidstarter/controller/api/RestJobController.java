@@ -30,7 +30,7 @@ public class RestJobController {
 
     @GetMapping("/job/{id}/tags")
     public ResponseEntity<?> getJobsById(@PathVariable("id") long id) {
-        return new ResponseEntity<>(jobService.getJobById(id).getTag(), HttpStatus.OK);
+        return new ResponseEntity<>(jobService.getJobById(id).getTags(), HttpStatus.OK);
     }
 
     @GetMapping("/jobs")

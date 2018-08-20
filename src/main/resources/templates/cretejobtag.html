@@ -47,47 +47,52 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
             <ul class="nav nav-sidebar">
-                <li><a href="#">Главная</a></li>
-                <li class="active"><a href="/cretejobtag">Создать интерес/тэг</a></li>
+                <li><a href="/main">Главная</a></li>
+                <li><a href="/tagPage">Теги</a></li>
+                <li  class="active"><a href="/cretejobtag">Создать интерес/тэг</a></li>
+                <li class="active"><a href="/createUser">Создать пользователя</a></li>
+                <li><a href="/jobPage">Интересы</a></li>
+                <li><a href="/adminpage">Пользователи</a></li>
                 <li><a href="#">Контакты</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Создать интерес:</h1>
             <div>
-                <form onsubmit="createtag(document.getElementById('input_tag_name').value); return false">
+                <form class="navbar-form" onsubmit="createjob(); return false">
                     <table>
                         <tr>
-                            <td><label for="jobname">Введите имя интереса:</label></td>
-                            <td colspan="2"><input width="100%" id="jobname" type="text" name="jobname"></td>
+                            <td><label for="input_jobname">Введите имя интереса:</label></td>
+                            <td colspan="2"><input class="form-control" id="input_jobname" width="100%" type="text" name="input_jobname"></td>
                         </tr>
                         <tr>
-                            <td><label for="jobdesc">Введите описание интереса:</label></td>
-                            <td colspan="2"><input id="jobdesc" type="text" name="jobdesc"></td>
+                            <td><label for="input_jobdesc">Введите описание интереса:</label></td>
+                            <td colspan="2"><input class="form-control" id="input_jobdesc" type="text" name="input_jobdesc"></td>
                         </tr>
                         <tr>
-                            <td><label for="tagselect">Добавьте тэги:</label></td>
+                            <td><label for="select_tagselect">Добавьте тэги:</label></td>
                             <td>
-                                <select id="tagselect" name="tagselect">
+                                <select class="btn btn-default dropdown-toggle" id="select_tagselect" name="select_tagselect">
                                     <option>Select job</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="submit" value="Создать интерес"></td>
+                            <td><input class="btn btn-default" type="submit" value="Создать интерес"></td>
                         </tr>
                     </table>
                 </form>
+                <label id="label_job_result" name="label_job_result"></label>
             </div>
             <h2 class="sub-header">Добавить новый тэг:</h2>
             <div>
-                <form onsubmit="createtag(document.getElementById('input_tag_name').value); return false">
+                <form class="navbar-form" onsubmit="createtag(document.getElementById('input_tag_name').value); return false">
                     <table>
                         <tr>
                             <td><label for="input_tag_name">Введите имя тэга:</label></td>
-                            <td><input id="input_tag_name" name="name" type="text"></td>
-                            <td><input type="submit" value="Создать тэг"></td>
+                            <td><input class="form-control" id="input_tag_name" name="name" type="text"></td>
+                            <td><input class="btn btn-default" type="submit" value="Создать тэг"></td>
                         </tr>
                     </table>
                 </form>

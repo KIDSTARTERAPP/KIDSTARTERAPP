@@ -32,7 +32,7 @@ public class RestTagController {
 
 	@GetMapping("/tag/{id}/jobs")
 	public ResponseEntity<?> getJobsById(@PathVariable("id") long id) {
-		return new ResponseEntity<>(tagService.getTagId(id).getJob(), HttpStatus.OK);
+		return new ResponseEntity<>(tagService.getTagId(id).getJobs(), HttpStatus.OK);
 	}
 
 	@GetMapping("/tags")
@@ -49,7 +49,6 @@ public class RestTagController {
 
 	@PostMapping("/tag")
 	public ResponseEntity<?> addTag(@ModelAttribute("name") Tag newTag) {
-		System.out.println(newTag);
 		tagService.addTag(newTag);
 		return new ResponseEntity<>(newTag, HttpStatus.CREATED);
 	}
