@@ -3,17 +3,24 @@ package com.javamentor.kidstarter.model.user;
 import com.javamentor.kidstarter.model.Job;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode()
 @Entity
-@Table(name = "teacher")
-public class Teacher extends User {
+@Table(name = "teachers")
+@NoArgsConstructor
+public class Teacher  {
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "teacher_id")
+    private Long id;
+
+    @OneToMany
     @JoinColumn(name = "specialization", foreignKey = @ForeignKey(name = "teacher_job_fk"))
     private Set<Job> specialization;
 }

@@ -36,6 +36,7 @@ public class DataInitializer {
         Role role5 = new Role("MENTOR");
         Role role6 = new Role("MODERATOR");
         Role role7 = new Role("KID");
+        Role role8 = new Role("USER");
 
         roleService.addRole(role1);
         roleService.addRole(role2);
@@ -44,6 +45,7 @@ public class DataInitializer {
         roleService.addRole(role5);
         roleService.addRole(role6);
         roleService.addRole(role7);
+        roleService.addRole(role8);
 
         Role roleAdmin = roleService.getByName("ADMIN");
         Role roleTeacher = roleService.getByName("TEACHER");
@@ -52,8 +54,11 @@ public class DataInitializer {
         Role roleMentor = roleService.getByName("MENTOR");
         Role roleModerator = roleService.getByName("MODERATOR");
         Role roleKid = roleService.getByName("KID");
+        Role roleUser = roleService.getByName("USER");
+
         List<Role> roles = new ArrayList<>();
-        Collections.addAll (roles, roleAdmin,roleTeacher,roleSponsor, roleOwner, roleMentor, roleModerator, roleKid);
+        Collections.addAll (roles, roleAdmin,roleTeacher,roleSponsor, roleOwner,
+                roleMentor, roleModerator, roleKid, roleUser);
 
         User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
                 roles,

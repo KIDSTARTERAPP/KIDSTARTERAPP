@@ -26,7 +26,7 @@ public class Job {
     private String name;
 
     @ManyToMany
-    @JoinColumn (name = "tag", foreignKey = @ForeignKey(name = "job_tag_fk"))
+    @JoinColumn (name = "tags", foreignKey = @ForeignKey(name = "job_tag_fk"))
     private Set<Tag> tag;
 
     @Column (name = "description")

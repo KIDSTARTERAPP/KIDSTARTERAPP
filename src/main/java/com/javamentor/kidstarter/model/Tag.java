@@ -3,9 +3,9 @@ package com.javamentor.kidstarter.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Set;
-import javax.persistence.*;
 
+import javax.persistence.*;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -13,7 +13,7 @@ import static javax.persistence.GenerationType.AUTO;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tag")
+@Table(name = "tags")
 public class Tag {
 
     @Id
@@ -25,7 +25,7 @@ public class Tag {
     private String name;
 
     @ManyToMany
-    @JoinColumn (name = "job", foreignKey = @ForeignKey(name = "tag_job_fk"))
+    @JoinColumn (name = "jobs", foreignKey = @ForeignKey(name = "tag_job_fk"))
     private Set<Job> job;
 
 	public Tag(String name, Set<Job> job) {
