@@ -1,13 +1,19 @@
+function getRoles() {
+    $.get('api/role', function (role) {
+        return role;
+    })
+}
+
 function createUser() {
     console.log("WORK");
-    let url = '/api/user';
+    console.log(getRoles());
     let wrap = {
         firstName: $('#firstname').val(),
         lastName: $('#lastname').val(),
         patronymic: $('#patronymic').val(),
         login: $('#login').val(),
         password: $('#password').val(),
-        role: $('#role').find('option:selected').text(),
+        // roles:[{"id":1,"name":"ADMIN","authority":"ADMIN"}],
         age: $('#age').val(),
         sex: $('#sex').val(),
         phone: $('#phone').val(),
@@ -19,9 +25,9 @@ function createUser() {
 
     $.ajax({
         type: "POST",
-        url: url,
+        url: '/api/user',
         contentType: "application/json; charset=utf-8",
-        data: data, rz
+        data: data,
         success: function () {
             console.log("Добавить огику")
         },
@@ -29,6 +35,5 @@ function createUser() {
             console.log("errrrrrr");
         }
     });
-
-
 }
+

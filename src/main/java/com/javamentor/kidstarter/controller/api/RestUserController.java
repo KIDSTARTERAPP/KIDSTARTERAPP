@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class RestUserController {
 
@@ -57,11 +57,16 @@ public class RestUserController {
     }
 
 
-
     @PutMapping("/user/{id}")
     public ResponseEntity<?>  updateTag(@ModelAttribute("user") User newUser, @PathVariable("id") long id) {
         userService.updateUser(newUser);
         return new ResponseEntity<>(newUser, HttpStatus.OK);
+    }
+
+    @GetMapping("/role")
+    public ResponseEntity<List<Role>> getRoles(){
+        List<Role> roles = roleService.getAllRoles();
+        return ResponseEntity.ok(roles);
     }
 }
 
