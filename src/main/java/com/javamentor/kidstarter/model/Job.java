@@ -3,7 +3,6 @@ package com.javamentor.kidstarter.model;
 import com.javamentor.kidstarter.model.user.Kid;
 import com.javamentor.kidstarter.model.user.Mentor;
 import com.javamentor.kidstarter.model.user.Teacher;
-import com.javamentor.kidstarter.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -37,8 +36,6 @@ public class Job {
     private String description;
 
     @EqualsAndHashCode.Exclude
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "job_to_user",
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "job_to_kid",
             joinColumns = @JoinColumn(name = "job_id"),
