@@ -21,10 +21,10 @@ function addUser() {
         contentType: "application/json; charset=utf-8",
         data: data,
         success: function () {
-            window.location.replace('/home/login');
+            window.location.replace('/main/login');
         },
         error: function (e) {
-            window.location.replace("/home/registration");
+            window.location.replace("/main/registration");
         }
 });
 

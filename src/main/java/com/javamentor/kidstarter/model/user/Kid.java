@@ -1,20 +1,36 @@
 package com.javamentor.kidstarter.model.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javamentor.kidstarter.model.Job;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode (callSuper = true)
+@EqualsAndHashCode()
 @Entity
-@Table(name = "kid")
-public class Kid extends User {
+@Table(name = "kids")
+@NoArgsConstructor
+public class Kid {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "kid_id")
+    private Long id;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn (name = "jobinterest", foreignKey = @ForeignKey(name = "kid_job_fk"))
+    @OneToOne
+    @JoinColumn(name = "user_fk")
+    private User user;
+
+    @JsonIgnore
+    @EqualsAndHashCode.Exclude
+    @ManyToMany
+    @JoinTable(name = "kids_to_jobs",
+            joinColumns = @JoinColumn(name = "kid_id"),
+            inverseJoinColumns = @JoinColumn(name = "job_id") )
     private Set<Job> jobInterest;
+
 }

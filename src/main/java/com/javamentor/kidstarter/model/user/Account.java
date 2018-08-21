@@ -6,18 +6,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.AUTO;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table (name = "account")
+@Table (name = "accounts")
 public class Account {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
-    @Column (name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "account_id")
     private Long id;
 
     @Column (name = "amount")
