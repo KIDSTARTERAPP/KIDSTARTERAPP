@@ -68,15 +68,10 @@ public class DataInitializer {
                 roleMentor, roleModerator, roleKid, roleUser);
 
         User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
-                roles,
-                LocalDateTime.now(), 23, "MALE",23-12-34,
-                "admin@mail.ru","RUSSIA","house 8");
-
+                roles, 23, "MALE",23-12-34,"admin@mail.ru","RUSSIA","house 8");
 
 	    User user2  = new User("Vovan","Vovanov","Huevich","1234","qwer",
-			    roles,
-			    LocalDateTime.now(), 28, "MALE",23-12-34,
-			    "user@mail.ru","Ukraine","house 15");
+			    roles,28, "MALE",23-12-34,"user@mail.ru","Ukraine","house 15");
 
         user1 = userService.addUser(user1);
 	    user2 = userService.addUser(user2);

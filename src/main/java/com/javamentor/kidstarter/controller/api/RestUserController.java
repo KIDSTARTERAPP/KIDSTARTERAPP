@@ -49,16 +49,15 @@ public class RestUserController {
 
     @PostMapping("/user")
     public ResponseEntity<?> addUser(@RequestBody User currentUser) {
-        Role currentRole = roleService.getByName("ADMIN");
-        currentUser.setRoles(Collections.singletonList(currentRole));
         currentUser.setCreateDate(LocalDateTime.now());
         userService.addUser(currentUser);
         return new ResponseEntity<>(currentUser, HttpStatus.OK);
     }
 
 
-    @PutMapping("/user/{id}")
-    public ResponseEntity<?>  updateTag(@ModelAttribute("user") User newUser, @PathVariable("id") long id) {
+
+    @PutMapping("/user")
+    public ResponseEntity<User> updateUser(@RequestBody User newUser) {
         userService.updateUser(newUser);
         return new ResponseEntity<>(newUser, HttpStatus.OK);
     }
