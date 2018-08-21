@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class RestUserController {
 
@@ -25,9 +25,6 @@ public class RestUserController {
 
     @Autowired
     public RoleService roleService;
-
-
-
 
     @GetMapping("/user/{id}")
     public ResponseEntity<?> getUserId(@PathVariable("id") long id) {
@@ -49,8 +46,7 @@ public class RestUserController {
 
     @PostMapping("/user")
     public ResponseEntity<?> addUser(@RequestBody User currentUser) {
-        Role currentRole = roleService.getByName("ADMIN");
-        currentUser.setRoles(Collections.singletonList(currentRole));
+        System.out.println("!!!! " + currentUser);
         currentUser.setCreateDate(LocalDateTime.now());
         userService.addUser(currentUser);
         return new ResponseEntity<>(currentUser, HttpStatus.OK);
@@ -58,8 +54,8 @@ public class RestUserController {
 
 
 
-    @PutMapping("/user/{id}")
-    public ResponseEntity<?>  updateTag(@ModelAttribute("user") User newUser, @PathVariable("id") long id) {
+    @PutMapping("/user")
+    public ResponseEntity<User> updateUser(@RequestBody User newUser) {
         userService.updateUser(newUser);
         return new ResponseEntity<>(newUser, HttpStatus.OK);
     }

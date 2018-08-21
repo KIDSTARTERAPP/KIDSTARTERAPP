@@ -71,7 +71,7 @@ public class User implements UserDetails {
     private String address;
 
     public User(String firstName, String lastName, String patronymic, String login, String password,
-                @NotNull List<Role> roles, LocalDateTime createDate, Integer age, String sex, Integer phone,
+                @NotNull List<Role> roles, Integer age, String sex, Integer phone,
                 String email, String country, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -79,7 +79,7 @@ public class User implements UserDetails {
         this.login = login;
         this.password = password;
         this.roles = roles;
-        this.createDate = createDate;
+        this.createDate = LocalDateTime.now();
         this.age = age;
         this.sex = sex;
         this.phone = phone;

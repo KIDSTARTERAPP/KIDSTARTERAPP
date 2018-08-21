@@ -6,7 +6,7 @@ function fillusertable(){
     $("#table_body_userlist").empty();
     $.ajax({
         type: "GET",
-        url: "./users",
+        url: "./api/users",
         datatype: "JSON",
         success: function (response) {
             for (var i in response) {
@@ -37,12 +37,12 @@ function fillusertable(){
 }
 
 function edit_user(userid) {
-    console.log("edit");
-    console.log(userid);
+    var url = "/editUser/" + userid;
+    window.location.replace(url);
 }
 
 function delete_user(userid) {
-    var url = "./user/" + userid;
+    var url = "./api/user/" + userid;
     $.ajax({
         type: "DELETE",
         url: url,

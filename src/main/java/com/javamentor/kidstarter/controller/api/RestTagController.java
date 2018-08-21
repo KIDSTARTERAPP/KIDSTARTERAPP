@@ -1,6 +1,5 @@
 package com.javamentor.kidstarter.controller.api;
 
-import com.javamentor.kidstarter.model.Job;
 import com.javamentor.kidstarter.model.Tag;
 import com.javamentor.kidstarter.service.interfaces.TagService;
 import org.slf4j.Logger;
@@ -9,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
