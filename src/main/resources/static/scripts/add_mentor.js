@@ -20,7 +20,7 @@ function getJobs() {
 }
 
 function addMentor() {
-    let url = "/api/add_mentor";
+    let url = "/api/mentor/add";
 
     let wrap = {
         description: $('#description').val()

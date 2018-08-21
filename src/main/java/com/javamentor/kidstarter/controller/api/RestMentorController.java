@@ -23,7 +23,7 @@ public class RestMentorController {
         this.mentorService = mentorService;
     }
 
-    @PostMapping(value = "/add_mentor")
+    @PostMapping(value = "/mentor/add")
     public ResponseEntity registrationMentor(@RequestBody Mentor mentor) {
 
         User userFromSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/main")
+@RequestMapping("/api")
 public class RestHomeController {
 
     private final UserService userService;
