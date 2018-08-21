@@ -40,8 +40,8 @@ public class MainController {
     }
 
     @GetMapping("/jobPage")
-    public String showJobPage(Model model) {
-        model.addAttribute("tags", jobService.getAllJob());
+    public String showJobPage() {
+//        model.addAttribute("tags", jobService.getAllJob());
         return "jobPage";
     }
 

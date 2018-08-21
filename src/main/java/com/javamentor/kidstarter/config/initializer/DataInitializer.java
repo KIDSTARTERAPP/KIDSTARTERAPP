@@ -1,8 +1,8 @@
 package com.javamentor.kidstarter.config.initializer;
 
+import com.javamentor.kidstarter.model.Job;
 import com.javamentor.kidstarter.model.Tag;
-import com.javamentor.kidstarter.model.user.Role;
-import com.javamentor.kidstarter.model.user.User;
+import com.javamentor.kidstarter.model.user.*;
 import com.javamentor.kidstarter.service.interfaces.JobService;
 import com.javamentor.kidstarter.service.interfaces.RoleService;
 import com.javamentor.kidstarter.service.interfaces.TagService;
@@ -10,10 +10,7 @@ import com.javamentor.kidstarter.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class DataInitializer {
 
@@ -74,17 +71,25 @@ public class DataInitializer {
 	    Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
 	    Tag tag3 = tagService.addTag(new Tag("Бэкаенд", new HashSet<>()));
 
-//	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(Collections.singletonList(user1))));
-//	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(Collections.singletonList(user2))));
-//
-//
-//        tag1.setJobs(new HashSet<>(Arrays.asList(job1, job2)));
-//	    tag2.setJobs(new HashSet<>(Arrays.asList(job2)));
-//	    tag3.setJobs(new HashSet<>(Arrays.asList(job1)));
-//
-//        tagService.updateTag(tag1);
-//        tagService.updateTag(tag2);
-//        tagService.updateTag(tag3);
+	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
+	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
+
+	    //TODO kidService
+//        Kid kid1 =
+
+        //TODO teacherService
+//        Teacher teacher1 =
+
+        //TODO mentorService
+//        Mentor mentor1=
+
+        tag1.setJobs(new HashSet<>(Arrays.asList(job1, job2)));
+	    tag2.setJobs(new HashSet<>(Arrays.asList(job2)));
+	    tag3.setJobs(new HashSet<>(Arrays.asList(job1)));
+
+        tagService.updateTag(tag1);
+        tagService.updateTag(tag2);
+        tagService.updateTag(tag3);
 
     }
 }
