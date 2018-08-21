@@ -41,23 +41,25 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Job page</h1>
-            <h2 class="sub-header">Список тегов:</h2>
+            <h2 class="sub-header">Список интересов:</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Тег</th>
-                        <th>Интересы</th>
+                        <th>Интерес</th>
+                        <th>Описание</th>
+                        <th>Теги</th>
+                        <!--<th>Дети</th>-->
+                        <!--<th>Учителя</th>-->
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr th:each= "tag,stat : ${tags}">
-                        <td th:text="${stat.count}"></td>
-                        <td th:text="${tag.name}"></td>
-                        <td>Бобруйск</td>
-                    </tr>
+                    <tbody id="table_joblist">
+                    <!--<tr th:each= "tag,stat : ${tags}">-->
+                        <!--<td th:text="${stat.count}"></td>-->
+                        <!--<td th:text="${tag.name}"></td>-->
+                        <!--<td>Бобруйск</td>-->
+                    <!--</tr>-->
                     </tbody>
                 </table>
             </div>
@@ -72,6 +74,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="/scripts/jobPage.js"></script>
 </body>
 </html>
