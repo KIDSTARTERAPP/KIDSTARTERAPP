@@ -6,9 +6,13 @@ import java.util.List;
 
 public interface TagService {
 
-	Tag getTagId(Long id);
-	Tag addTag(Tag tag);
-	List<Tag> getAllTag();
-	void deleteTagById(Long id);
-	void updateTag(Tag tag);
+    Tag getTagId(Long id);
+
+    Tag addTag(Tag tag);
+
+    List<Tag> getAllTag();
+
+    void deleteTagById(Long id);
+
+    void updateTag(Tag tag);
 }

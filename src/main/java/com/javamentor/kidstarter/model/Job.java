@@ -3,7 +3,6 @@ package com.javamentor.kidstarter.model;
 import com.javamentor.kidstarter.model.user.Kid;
 import com.javamentor.kidstarter.model.user.Mentor;
 import com.javamentor.kidstarter.model.user.Teacher;
-import com.javamentor.kidstarter.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

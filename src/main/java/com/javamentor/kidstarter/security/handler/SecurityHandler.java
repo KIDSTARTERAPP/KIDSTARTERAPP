@@ -16,11 +16,11 @@ public class SecurityHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ADMIN")) {
-            response.sendRedirect("admin/users_all");
+            response.sendRedirect("/main");
             return;
         }
         if ( roles.contains("USER")) {
-            response.sendRedirect("/user");
+            response.sendRedirect("/main");
             return;
         }
     }
