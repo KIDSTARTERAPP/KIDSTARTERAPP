@@ -21,10 +21,10 @@ import java.util.List;
 public class RestUserController {
 
     @Autowired
-    public UserService userService;
+    private UserService userService;
 
     @Autowired
-    public RoleService roleService;
+    private RoleService roleService;
 
     @GetMapping("/user/{id}")
     public ResponseEntity<?> getUserId(@PathVariable("id") long id) {
@@ -46,7 +46,6 @@ public class RestUserController {
 
     @PostMapping("/user")
     public ResponseEntity<?> addUser(@RequestBody User currentUser) {
-        System.out.println("!!!! " + currentUser);
         currentUser.setCreateDate(LocalDateTime.now());
         userService.addUser(currentUser);
         return new ResponseEntity<>(currentUser, HttpStatus.OK);

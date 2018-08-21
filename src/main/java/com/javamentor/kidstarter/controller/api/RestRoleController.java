@@ -21,7 +21,7 @@ public class RestRoleController {
     static final Logger logger = LoggerFactory.getLogger(RestTagController.class);
 
     @Autowired
-    public RoleService roleService;
+    private RoleService roleService;
 
     @Autowired
     private UserService userService;
