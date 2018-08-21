@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +9,7 @@
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
 
     <title>KidStarter</title>
-    <script
-            src="http://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
+
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -30,44 +27,41 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="/main">Главная</a></li>
+            <ul class="nav nav-sidebar nav-stacked">
+
+                <li><a href="/main">Главная</a></li>
                 <li><a href="/tagPage">Теги</a></li>
                 <li><a href="/cretejobtag">Создать интерес/тэг</a></li>
                 <li class="active"><a href="/createUser">Создать пользователя</a></li>
                 <li class="active"><a href="/createOrganization">Создать организацию</a></li>
-                <li><a href="/jobPage">Интересы</a></li>
+                <li class="active"><a href="/jobPage">Интересы</a></li>
                 <li><a href="/adminpage">Пользователи</a></li>
                 <li><a href="#">Контакты</a></li>
 
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Здравствуй, добрый человек!</h1>
-            <div>
-                <p>На этом портале ты можешь помочь детям стать лучше.</p>
-            </div>
-            <h2 class="sub-header">Список активных запросов:</h2>
+            <h1 class="page-header">Organization page</h1>
+            <h2 class="sub-header">Список организаций:</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Организация</th>
-                        <th>Адрес</th>
-                        <th>Количество детей</th>
-                        <th>Количество учетелей</th>
-                        <th>Потребность</th>
+                        <th>Тег</th>
+                        <th>Интересы</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Школа №1</td>
+                    <tr th:each= "organization,stat : ${organizations}">
+                        <td th:text="${stat.count}"></td>
+                        <td th:text="${organization.name}"></td>
+                        <td th:text="${organization.address}"></td>
+                        <td th:text="${organization.country}"></td>
+                        <td th:text="${organization.email}"></td>
+                        <td th:text="${organization.phone}"></td>
+                        <td th:text="${organization.createDate}"></td>
                         <td>Бобруйск</td>
-                        <td>12</td>
-                        <td>0</td>
-                        <td>Рисование</td>
                     </tr>
                     </tbody>
                 </table>

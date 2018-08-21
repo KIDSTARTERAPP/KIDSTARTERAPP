@@ -31,4 +31,9 @@ public class MainController {
     public String createUserPage() {
         return "createUser";
     }
+
+    @RequestMapping("/createOrganization")
+    public String createOrganization() {
+        return "createOrganization";
+    }
 }

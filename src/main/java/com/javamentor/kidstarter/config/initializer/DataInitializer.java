@@ -1,12 +1,12 @@
 package com.javamentor.kidstarter.config.initializer;
 
+import com.javamentor.kidstarter.dao.interfaces.AccountDao;
 import com.javamentor.kidstarter.model.Tag;
+import com.javamentor.kidstarter.model.user.Account;
+import com.javamentor.kidstarter.model.user.Organization;
 import com.javamentor.kidstarter.model.user.Role;
 import com.javamentor.kidstarter.model.user.User;
-import com.javamentor.kidstarter.service.interfaces.JobService;
-import com.javamentor.kidstarter.service.interfaces.RoleService;
-import com.javamentor.kidstarter.service.interfaces.TagService;
-import com.javamentor.kidstarter.service.interfaces.UserService;
+import com.javamentor.kidstarter.service.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
@@ -28,6 +28,12 @@ public class DataInitializer {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+	private AccountService accountService;
+
+    @Autowired
+    private OrganizationService organizationService;
 
     public void init(){
 
@@ -78,6 +84,27 @@ public class DataInitializer {
 	    Tag tag1 = tagService.addTag(new Tag("Программирование", new HashSet<>()));
 	    Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
 	    Tag tag3 = tagService.addTag(new Tag("Бэкаенд", new HashSet<>()));
+
+	    Account acc1 = new Account();
+	    Account acc2 = new Account();
+	    Account acc3 = new Account();
+	    Account acc4 = new Account();
+
+	    acc1 = accountService.addAccount(acc1);
+	    acc2 = accountService.addAccount(acc2);
+	    acc3 = accountService.addAccount(acc3);
+	    acc4 = accountService.addAccount(acc4);
+
+        Organization org1 = new Organization("Name1","adress1","Мавродия", "mak@l2ff.ru", 8944,LocalDateTime.now(), acc1);
+        Organization org2 = new Organization("Name2","adress2","Мавродия", "mak@lf4f.ru", 8944,LocalDateTime.now(), acc2);
+        Organization org3 = new Organization("Name3","adress3","Мавродия", "mak@lf5f.ru", 8944,LocalDateTime.now(), acc3);
+        Organization org4 = new Organization("Name4","adress4","Мавродия", "mak@lf6f.ru", 8944,LocalDateTime.now(), acc4);
+
+        org1 = organizationService.addOrganization(org1);
+        org2 = organizationService.addOrganization(org2);
+        org3 = organizationService.addOrganization(org3);
+        org4 = organizationService.addOrganization(org4);
+
 
 //	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(Collections.singletonList(user1))));
 //	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(Collections.singletonList(user2))));
