@@ -18,13 +18,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/main")
-public class HomeRestController {
+public class RestHomeController {
 
     private final UserService userService;
     private final RoleService roleService;
 
     @Autowired
-    public HomeRestController(UserService userService, RoleService roleService) {
+    public RestHomeController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
