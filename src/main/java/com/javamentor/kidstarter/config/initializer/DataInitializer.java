@@ -2,8 +2,7 @@ package com.javamentor.kidstarter.config.initializer;
 
 import com.javamentor.kidstarter.model.Job;
 import com.javamentor.kidstarter.model.Tag;
-import com.javamentor.kidstarter.model.user.Role;
-import com.javamentor.kidstarter.model.user.User;
+import com.javamentor.kidstarter.model.user.*;
 import com.javamentor.kidstarter.service.interfaces.JobService;
 import com.javamentor.kidstarter.service.interfaces.RoleService;
 import com.javamentor.kidstarter.service.interfaces.TagService;
@@ -27,7 +26,7 @@ public class DataInitializer {
     @Autowired
     private RoleService roleService;
 
-    public void init() {
+    public void init(){
 
         Role role0 = new Role("USER");
         Role role1 = new Role("ADMIN");
@@ -59,16 +58,14 @@ public class DataInitializer {
         Collections.addAll(roles, roleAdmin, roleTeacher, roleSponsor, roleOwner,
                 roleMentor, roleModerator, roleKid, roleUser);
 
-        User user1 = new User("Ivan", "Ivanov", "Ivanovich", "qwer", "1234",
-                roles,
-                LocalDateTime.now(), 23, "MALE", 23 - 12 - 34,
-                "admin@mail.ru", "RUSSIA", "house 8");
 
 
-        User user2 = new User("Vovan", "Vovanov", "Huevich", "1234", "qwer",
-                roles,
-                LocalDateTime.now(), 28, "MALE", 23 - 12 - 34,
-                "user@mail.ru", "Ukraine", "house 15");
+        User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
+                roles, 23, "MALE",23-12-34,"admin@mail.ru","RUSSIA","house 8");
+
+
+	    User user2  = new User("Vovan","Vovanov","Huevich","1234","qwer",
+			    roles,28, "MALE",23-12-34,"user@mail.ru","Ukraine","house 15");
 
         user1 = userService.addUser(user1);
         user2 = userService.addUser(user2);

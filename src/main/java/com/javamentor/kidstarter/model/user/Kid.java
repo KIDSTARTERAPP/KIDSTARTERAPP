@@ -28,7 +28,7 @@ public class Kid {
     @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ManyToMany
-    @JoinTable(name = "kids_to_jobs",
+    @JoinTable(name = "job_to_kid",
             joinColumns = @JoinColumn(name = "kid_id"),
             inverseJoinColumns = @JoinColumn(name = "job_id") )
     private Set<Job> jobInterest;

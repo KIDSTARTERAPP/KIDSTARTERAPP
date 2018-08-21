@@ -24,7 +24,7 @@ public class Teacher  {
     @JsonIgnore
     @EqualsAndHashCode.Exclude
     @OneToMany
-    @JoinTable(name = "teacher_to_jobs",
+    @JoinTable(name = "job_to_teacher",
             joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "job_id") )
     private Set<Job> specialization;
