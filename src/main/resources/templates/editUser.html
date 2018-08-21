@@ -31,8 +31,8 @@
                 <li><a href="/main">Главная</a></li>
                 <li><a href="/tagPage">Теги</a></li>
                 <li><a href="/cretejobtag">Создать интерес/тэг</a></li>
-                <li class="active"><a href="/createUser">Создать пользователя</a></li>
-                <li><a href="/editUser/1">Изменить пользователя</a></li>
+                <li><a href="/createUser">Создать пользователя</a></li>
+                <li class="active"><a href="/editUser/1">Изменить пользователя</a></li>
                 <li><a href="/jobPage">Интересы</a></li>
                 <li><a href="/adminpage">Пользователи</a></li>
                 <li><a href="#">Контакты</a></li>
@@ -41,22 +41,22 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Создание пользователя</h1>
             <div class="table-responsive">
-                <form class="form-signup" onsubmit= " createUser();return false">
-
+                <form class="form-signup" onsubmit= "updateUser();return false">
+                    <input id="hidden_id" type="hidden">
                     <label for="firstname">First Name</label>
-                    <input id="firstname" class="form-control" required placeholder="First Name" type="text" name="firstname"/>
+                    <input id="firstname" class="form-control" required type="text" name="firstname"/>
 
                     <label for="lastname">Last Name</label>
-                    <input id="lastname" class="form-control" required placeholder="Last Name" type="text" name="lastname"/>
+                    <input id="lastname" class="form-control" required type="text" name="lastname"/>
 
                     <label for="patronymic">Patronymic</label>
-                    <input id="patronymic" class="form-control" required placeholder="Patronymic" type="text" name="patronymic"/>
+                    <input id="patronymic" class="form-control" required type="text" name="patronymic"/>
 
                     <label for="login">Login</label>
-                    <input id="login" class="form-control" required placeholder="Login" type="text" name="username"/>
+                    <input id="login" class="form-control" required type="text" name="username"/>
 
                     <label for="password">Password</label>
-                    <input id="password" class="form-control" required placeholder="Password" type="password" name="password"/>
+                    <input id="password" class="form-control" required type="password" name="password"/>
 
                     <div class="form-group">
                         <label class="control-label center" for="role">Выберите роль пользователя</label>
@@ -72,33 +72,33 @@
                             </select>
                         </div>
                     </div>
-
+                    <input id="createDate" type="hidden">
                     <label for="age">Age</label>
-                    <input id="age" class="form-control" required placeholder="Age" type="number" name="age"/>
+                    <input id="age" class="form-control" required type="number" name="age"/>
 
                     <div class="form-group">
                         <label class="control-label center" for="sex">Выбрать пол полльзователя</label>
                         <div class="">
                             <select name="sex" class="form-control input-width center-block" id="sex">
-                                <option value="Мужской">Мужской</option>
-                                <option value="Женский">Женский</option>
+                                <option value="MALE">Мужской</option>
+                                <option value="FEMALE">Женский</option>
                             </select>
                         </div>
                     </div>
 
                     <label for="phone">Phone</label>
-                    <input id="phone" class="form-control" required placeholder="Phone" type="number" name="phone"/>
+                    <input id="phone" class="form-control" required type="number" name="phone"/>
 
                     <label for="email">Email</label>
-                    <input id="email" class="form-control" required placeholder="Email" type="email" name="email"/>
+                    <input id="email" class="form-control" required type="email" name="email"/>
 
                     <label for="country">Country</label>
-                    <input id="country" class="form-control" required placeholder="Country" type="text" name="country"/>
+                    <input id="country" class="form-control" required type="text" name="country"/>
 
                     <label for="address">Address</label>
-                    <input id="address" class="form-control" required placeholder="Address" type="text" name="address"/>
+                    <input id="address" class="form-control" required type="text" name="address"/>
                     <br/>
-                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit" />
+                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit" value="Обновить пользователя" />
                 </form>
             </div>
         </div>
@@ -109,9 +109,10 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
-<script src="/scripts/createUser.js"></script>
+<script src="/scripts/editUser.js"></script>
 </body>
 </html>
