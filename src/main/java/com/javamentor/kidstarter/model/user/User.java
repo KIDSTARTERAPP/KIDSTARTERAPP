@@ -1,6 +1,7 @@
 package com.javamentor.kidstarter.model.user;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,6 +42,7 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @EqualsAndHashCode.Exclude
     @NotNull
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class)
     @JoinTable(name = "permissions",
@@ -69,6 +71,8 @@ public class User implements UserDetails {
 
     @Column(name = "address", nullable = false)
     private String address;
+
+
 
     public User(String firstName, String lastName, String patronymic, String login, String password,
                 @NotNull List<Role> roles, LocalDateTime createDate, Integer age, String sex, Integer phone,

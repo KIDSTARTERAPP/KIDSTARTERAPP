@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/main")
@@ -31,10 +32,16 @@ public class HomeRestController {
     @PostMapping(value = "/registration")
     public ResponseEntity registration(@RequestBody User user) {
 
-        Role role = roleService.getByName("ADMIN");
+        Role roleUser = roleService.getByName("USER");
+        Role roleSponsor = roleService.getByName("SPONSOR");
 
-        user.setRoles(Collections.singletonList(role));
+        List<Role> roles = new ArrayList<>();
+        roles.add(roleUser);
+        roles.add(roleSponsor);
+        user.setRoles(roles);
+
         user.setCreateDate(LocalDateTime.now());
+
         userService.addUser(user);
 
         return ResponseEntity.ok(HttpStatus.OK);

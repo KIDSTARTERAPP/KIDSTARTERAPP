@@ -2,12 +2,24 @@ package com.javamentor.kidstarter.model.user;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Data
-@EqualsAndHashCode (callSuper = true)
+@EqualsAndHashCode ()
 @Entity
-@Table (name = "administrator")
-public class Administrator extends User {
+@NoArgsConstructor
+@Table (name = "administrators")
+public class Administrator   {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "admin_id")
+    private Long id;
+
+    @OneToOne
+    @JoinColumn(name =  "user_fk")
+    private User user;
+
 }
