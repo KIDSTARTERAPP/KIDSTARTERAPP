@@ -46,9 +46,10 @@ public class Mentor  {
 //    private Set<Comment> comment;
 
 
-    public Mentor(User user, Set<Job> job, Integer experience) {
+    public Mentor(User user, Set<Job> job, Integer experience, String description) {
         this.user = user;
         this.job = job;
         this.experience = experience;
+        this.description = description;
     }
 }

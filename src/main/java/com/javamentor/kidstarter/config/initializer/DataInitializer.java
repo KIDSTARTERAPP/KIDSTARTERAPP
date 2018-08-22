@@ -1,5 +1,6 @@
 package com.javamentor.kidstarter.config.initializer;
 
+import com.javamentor.kidstarter.model.Job;
 import com.javamentor.kidstarter.model.Tag;
 import com.javamentor.kidstarter.model.user.*;
 import com.javamentor.kidstarter.service.interfaces.*;
@@ -11,7 +12,6 @@ import com.javamentor.kidstarter.service.interfaces.JobService;
 import com.javamentor.kidstarter.service.interfaces.RoleService;
 import com.javamentor.kidstarter.service.interfaces.TagService;
 import com.javamentor.kidstarter.service.interfaces.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -96,7 +96,7 @@ public class DataInitializer {
 
 
       user1 = userService.addUser(user1);
-	    user2 = userService.addUser(user2);
+      user2 = userService.addUser(user2);
       kidUser = userService.addUser(kidUser);
       teacherUser = userService.addUser(teacherUser);
       mentorUser = userService.addUser(mentorUser);
@@ -112,14 +112,12 @@ public class DataInitializer {
 
         Teacher teacher1 = teacherService.addTeacher(new Teacher(teacherUser, new HashSet<>(Collections.singletonList(job1))));
 
-        Mentor mentor1= mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job1)), 3));
+        Mentor mentor1 = mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job2)), 3, "Description"));
 
-        Tag tag1 = tagService.addTag(new Tag("Программирование", new HashSet<>()));
-        Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
-        Tag tag3 = tagService.addTag(new Tag("Бэкаенд", new HashSet<>()));
-        
-        tagService.updateTag(tag1);
-        tagService.updateTag(tag2);
-        tagService.updateTag(tag3);
+        job1.setTags(new HashSet<>(Arrays.asList(tag1, tag3)));
+        job2.setTags(new HashSet<>(Arrays.asList(tag1, tag2)));
+
+        jobService.updateJob(job1);
+        jobService.updateJob(job2);
     }
 }
