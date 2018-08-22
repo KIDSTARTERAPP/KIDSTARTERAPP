@@ -2,7 +2,6 @@ package com.javamentor.kidstarter.service.interfaces;
 
 import com.javamentor.kidstarter.model.user.Mentor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

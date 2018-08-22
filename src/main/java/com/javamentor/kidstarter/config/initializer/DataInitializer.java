@@ -1,12 +1,23 @@
 package com.javamentor.kidstarter.config.initializer;
 
-import com.javamentor.kidstarter.model.Job;
 import com.javamentor.kidstarter.model.Tag;
 import com.javamentor.kidstarter.model.user.*;
 import com.javamentor.kidstarter.service.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.*;
+import com.javamentor.kidstarter.model.user.Role;
+import com.javamentor.kidstarter.model.user.User;
+import com.javamentor.kidstarter.service.interfaces.JobService;
+import com.javamentor.kidstarter.service.interfaces.RoleService;
+import com.javamentor.kidstarter.service.interfaces.TagService;
+import com.javamentor.kidstarter.service.interfaces.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+
 
 public class DataInitializer {
 
@@ -61,7 +72,7 @@ public class DataInitializer {
         Role roleKid = roleService.getByName("KID");
 
         List<Role> roles = new ArrayList<>();
-        Collections.addAll (roles, roleAdmin,roleTeacher,roleSponsor, roleOwner,
+        Collections.addAll(roles, roleAdmin, roleTeacher, roleSponsor, roleOwner,
                 roleMentor, roleModerator, roleKid, roleUser);
         List<Role> kidRoles = new ArrayList<>(Arrays.asList(roleUser, roleKid, roleSponsor));
         List<Role> teacherRoles = new ArrayList<>(Arrays.asList(roleUser, roleTeacher, roleSponsor));
@@ -69,6 +80,7 @@ public class DataInitializer {
 
         User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
                 roles, 23, "MALE",23-12-34,"admin@mail.ru","RUSSIA","house 8");
+
 
 	    User user2  = new User("Vovan","Vovanov","Huevich","1234","qwer",
 			    roles,28, "MALE",23-12-34,"user@mail.ru","Ukraine","house 15");
@@ -83,11 +95,11 @@ public class DataInitializer {
                 mentorRoles,28, "MALE",23-12-34,"Mentor@mail.ru","RUSSIA","house 15");
 
 
-        user1 = userService.addUser(user1);
+      user1 = userService.addUser(user1);
 	    user2 = userService.addUser(user2);
-        kidUser = userService.addUser(kidUser);
-        teacherUser = userService.addUser(teacherUser);
-        mentorUser = userService.addUser(mentorUser);
+      kidUser = userService.addUser(kidUser);
+      teacherUser = userService.addUser(teacherUser);
+      mentorUser = userService.addUser(mentorUser);
 
 	    Tag tag1 = tagService.addTag(new Tag("Программирование", new HashSet<>()));
 	    Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
@@ -102,10 +114,10 @@ public class DataInitializer {
 
         Mentor mentor1= mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job1)), 3));
 
-        tag1.setJobs(new HashSet<>(Arrays.asList(job1, job2)));
-	    tag2.setJobs(new HashSet<>(Arrays.asList(job2)));
-	    tag3.setJobs(new HashSet<>(Arrays.asList(job1)));
-
+        Tag tag1 = tagService.addTag(new Tag("Программирование", new HashSet<>()));
+        Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
+        Tag tag3 = tagService.addTag(new Tag("Бэкаенд", new HashSet<>()));
+        
         tagService.updateTag(tag1);
         tagService.updateTag(tag2);
         tagService.updateTag(tag3);

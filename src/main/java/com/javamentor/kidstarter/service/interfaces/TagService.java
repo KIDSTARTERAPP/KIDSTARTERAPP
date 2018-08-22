@@ -1,7 +1,6 @@
 package com.javamentor.kidstarter.service.interfaces;
 
 import com.javamentor.kidstarter.model.Tag;
-
 import java.util.List;
 
 public interface TagService {

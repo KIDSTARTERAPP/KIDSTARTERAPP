@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script
+            src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/scripts/add_mentor.js}"></script>
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+<body>
+<div class="registrMentor">
+    <div th:replace="fragments/htmlFragment::main-header"></div>
+
+    <div class="text-center">
+        <h1 class="page-header">Регистрация наставника</h1>
+        <div class="table-responsive">
+            <form class="form-signup-mentor" onsubmit="addMentor();return false">
+                <!--<label for="select-jobs">Выберите работы по которым вы имеете опыт</label>-->
+                <!--<br>-->
+                <!--<select class="btn btn-default dropdown-toggle" multiple id="select-jobs" name="select-jobs">-->
+                <!--</select>-->
+                <br>
+                <label for="description">Расскажите о себе </label>
+                <input id="description" class="form-control" required  type="text"
+                       name="description"/>
+                <br/>
+                <input class="btn btn-lg btn-primary btn-block" name="saveMentor" type="submit"/>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
+<script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
+</body>
+</html>

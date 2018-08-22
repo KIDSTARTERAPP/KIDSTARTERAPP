@@ -1,5 +1,5 @@
 function addUser() {
-    let url = '/api/main/registration';
+    let url = '/api/registration';
     let wrap = {
         firstName: $('#firstname').val(),
         lastName: $('#lastname').val(),
