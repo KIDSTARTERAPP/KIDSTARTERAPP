@@ -39,13 +39,13 @@ public class RestJobController {
     }
 
     @DeleteMapping("/job/{id}")
-    public ResponseEntity<?> deleteJobTag(@PathVariable("id") long id) {
+    public HttpStatus deleteJobById(@PathVariable("id") long id) {
         jobService.deleteJobById(id);
-        return new ResponseEntity<Job>(HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @PostMapping("/job")
-    public ResponseEntity<?> addJob(@ModelAttribute("job") Job currentJob) {
+    public ResponseEntity<?> addJob(@RequestBody Job currentJob) {
         jobService.addJob(currentJob);
         return new ResponseEntity<>(currentJob, HttpStatus.OK);
     }

@@ -26,7 +26,7 @@ public class Job {
     private String name;
 
     @EqualsAndHashCode.Exclude
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name = "job_to_tag",
             joinColumns = @JoinColumn(name = "job_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))

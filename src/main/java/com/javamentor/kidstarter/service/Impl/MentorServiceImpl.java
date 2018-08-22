@@ -5,13 +5,12 @@ import com.javamentor.kidstarter.model.user.Mentor;
 import com.javamentor.kidstarter.service.interfaces.MentorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
 public class MentorServiceImpl implements MentorService {
 
-    private final MentorDao mentorDao;
+    private MentorDao mentorDao;
 
     @Autowired
     public MentorServiceImpl(MentorDao mentorDao) {
@@ -25,7 +24,8 @@ public class MentorServiceImpl implements MentorService {
 
     @Override
     public Mentor addMentor(Mentor mentor) {
-        return mentorDao.persist(mentor);
+        mentorDao.persist(mentor);
+        return mentor;
     }
 
     @Override

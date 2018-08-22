@@ -19,4 +19,5 @@ public interface RoleService {
     void updateRole(Role role);
 
     Role getByName(String name);
+    List<Role> getRolesByNameList(List<String> names);
 }
