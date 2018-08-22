@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 public class JobServiceImpl implements JobService {
 
-
 	private JobDao jobDao;
 
     @Autowired
