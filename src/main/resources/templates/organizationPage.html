@@ -41,25 +41,28 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header">Список интересов:</h2>
+            <h2 class="sub-header">Список организаций:</h2>
             <div class="table-responsive">
+                <form class="navbar-form" action="/createOrganization" method="get">
+                    <input class="form-control" type="submit" value="Создать организацию">
+                </form>
+
+
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Интерес</th>
-                        <th>Описание</th>
-                        <th>Теги</th>
-                        <!--<th>Дети</th>-->
-                        <!--<th>Учителя</th>-->
+                        <th>Название организации</th>
+                        <th>Имя организации</th>
+                        <th>Адресс организации</th>
+                        <th>Страна расположения</th>
+                        <th>Электронная почта</th>
+                        <th>Номер телефона</th>
+                        <th>Дата создания</th>
                     </tr>
                     </thead>
-                    <tbody id="table_joblist">
-                    <!--<tr th:each= "tag,stat : ${tags}">-->
-                        <!--<td th:text="${stat.count}"></td>-->
-                        <!--<td th:text="${tag.name}"></td>-->
-                        <!--<td>Бобруйск</td>-->
-                    <!--</tr>-->
+                    <tbody id="table_body_organizationlist">
+
                     </tbody>
                 </table>
             </div>
@@ -74,6 +77,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
-<script src="/scripts/jobPage.js"></script>
+<script src="/scripts/createorganization.js"></script>
 </body>
 </html>

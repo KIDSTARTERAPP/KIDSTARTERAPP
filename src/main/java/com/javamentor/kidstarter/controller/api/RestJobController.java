@@ -19,8 +19,7 @@ public class RestJobController {
     static final Logger logger = LoggerFactory.getLogger(RestJobController.class);
 
     @Autowired
-    public JobService jobService;
-
+    private JobService jobService;
 
     @GetMapping("/job/{id}")
     public ResponseEntity<?> getJobId(@PathVariable("id") long id) {
