@@ -1,7 +1,6 @@
 package com.javamentor.kidstarter.service.interfaces;
 
 import com.javamentor.kidstarter.model.Tag;
-
 import java.util.List;
 
 public interface TagService {
@@ -11,4 +10,5 @@ public interface TagService {
 	List<Tag> getAllTag();
 	void deleteTagById(Long id);
 	void updateTag(Tag tag);
+	List<Tag> getTagsByNameList(List<String> names);
 }

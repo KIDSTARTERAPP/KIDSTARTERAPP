@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 
 
 @Configuration
@@ -42,9 +44,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
 
-                .antMatchers("/main", "/style/**", "/scripts/**", "/", "/**").permitAll()
+                .antMatchers("/main", "/style/**", "/scripts/**", "/").permitAll()
                 .antMatchers("/insert_user").permitAll()
-                .antMatchers("/main/**", "/createUser","/", "/style/**", "/scripts/**","/api/**").permitAll()
+                .antMatchers("/main/**", "/createUser", "/", "/style/**", "/scripts/**", "/api/**").permitAll()
 
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
@@ -56,6 +58,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
+
+        http
+                .sessionManagement()
+                .maximumSessions(10000)
+                .maxSessionsPreventsLogin(false)
+                .expiredUrl("/main/login?logout")
+                .sessionRegistry(sessionRegistry());
+    }
+
+    @Bean
+    public SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
     }
 
     @Bean
@@ -70,7 +84,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authProvider());
     }
-
 
 
 }

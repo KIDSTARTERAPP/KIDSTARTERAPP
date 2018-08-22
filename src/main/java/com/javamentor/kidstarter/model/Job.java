@@ -3,7 +3,6 @@ package com.javamentor.kidstarter.model;
 import com.javamentor.kidstarter.model.user.Kid;
 import com.javamentor.kidstarter.model.user.Mentor;
 import com.javamentor.kidstarter.model.user.Teacher;
-import com.javamentor.kidstarter.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -27,7 +26,7 @@ public class Job {
     private String name;
 
     @EqualsAndHashCode.Exclude
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name = "job_to_tag",
             joinColumns = @JoinColumn(name = "job_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))

@@ -2,6 +2,7 @@ package com.javamentor.kidstarter.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javamentor.kidstarter.model.Job;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -10,10 +11,11 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode()
 @Entity
 @Table(name = "kids")
-@NoArgsConstructor
 public class Kid {
 
     @Id
@@ -33,4 +35,8 @@ public class Kid {
             inverseJoinColumns = @JoinColumn(name = "job_id") )
     private Set<Job> jobInterest;
 
+    public Kid(User user, Set<Job> jobInterest) {
+        this.user = user;
+        this.jobInterest = jobInterest;
+    }
 }

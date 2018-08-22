@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,10 +26,14 @@
                     <!--<li><a id="current-user" href="#Profile">Ivan</a></li>-->
                     <!--<li><a>:</a></li>-->
                     <!--<li><a id="user-role">User</a></li>-->
-                    <li><a href="#">Стать спонсором</a></li>
+                    <th:block sec:authorize="hasAnyAuthority('USER')">
+                        <li><a href="/home/mentor/add">Стать наставником</a></li>
+                    </th:block>
                     <li><a href="/main/registration">Регистрация</a></li>
                     <li><a href="/main/login">Войти</a></li>
-                    <!--<li><a href="/logout">Выйти</a></li>-->
+                    <th:block sec:authorize="hasAnyAuthority('USER')">
+                        <li><a href="/logout">Выйти</a></li>
+                    </th:block>
                 </ul>
             </div>
         </div>

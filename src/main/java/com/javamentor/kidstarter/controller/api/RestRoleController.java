@@ -10,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -46,13 +45,10 @@ public class RestRoleController {
 
     @GetMapping("/select_roles")
     public ResponseEntity<List<Role>> getRolesByStringArray(@RequestParam("roles") String list) {
-        List<Role> allRoles = roleService.getAllRoles();
-        List<Role> roles = new ArrayList<>();
-        for (Role role : allRoles) {
-            if (list.contains(role.getName())) {
-                roles.add(role);
-            }
-        }
-        return new ResponseEntity<>(roles, HttpStatus.OK);
+        List<String> roles = Arrays.asList(list.replace("\"","")
+                .replace("]","")
+                .replace("[","")
+                .split(","));
+        return new ResponseEntity<>(roleService.getRolesByNameList(roles), HttpStatus.OK);
     }
 }
