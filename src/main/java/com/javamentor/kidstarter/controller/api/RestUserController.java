@@ -39,9 +39,9 @@ public class RestUserController {
     }
 
     @DeleteMapping("/user/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("id") long id) {
+    public HttpStatus deleteUser(@PathVariable("id") long id) {
         userService.deleteUserById(id);
-        return new ResponseEntity<User>(HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @PostMapping("/user")

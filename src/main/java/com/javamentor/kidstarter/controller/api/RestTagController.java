@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -53,5 +55,17 @@ public class RestTagController {
 	public ResponseEntity<?> updateTag(@ModelAttribute("tag") Tag newTag) {
 		tagService.updateTag(newTag);
 		return new ResponseEntity<>(newTag, HttpStatus.OK);
+	}
+
+	@GetMapping("/select_tags")
+	public ResponseEntity<List<Tag>> getRolesByStringArray(@RequestParam("tags") String list) {
+		List<Tag> allTags = tagService.getAllTag();
+		List<Tag> tags = new ArrayList<>();
+		for (Tag tag : allTags) {
+			if (list.contains(tag.getName())) {
+				tags.add(tag);
+			}
+		}
+		return new ResponseEntity<>(tags, HttpStatus.OK);
 	}
 }

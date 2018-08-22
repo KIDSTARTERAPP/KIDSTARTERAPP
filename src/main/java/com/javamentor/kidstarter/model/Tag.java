@@ -1,10 +1,7 @@
 package com.javamentor.kidstarter.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -27,6 +24,7 @@ public class Tag {
 
     @JsonIgnore
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "job_to_tag",
             joinColumns = @JoinColumn(name = "tag_id"),
