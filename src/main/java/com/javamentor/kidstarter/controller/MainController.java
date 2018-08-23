@@ -20,7 +20,7 @@ public class MainController {
     private TagService tagService;
 
     @RequestMapping("/main")
-    public String showMain() {
+    public String showMain(Model model) {
         return "main";
     }
 

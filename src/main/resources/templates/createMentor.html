@@ -9,32 +9,39 @@
             crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script type="text/javascript" th:src="@{/scripts/add_mentor.js}"></script>
 
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="/scripts/all_scripts.js"></script>
+
 </head>
 <body>
-<div class="registrMentor">
     <div th:replace="fragments/htmlFragment::main-header"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-    <div class="text-center">
-        <h1 class="page-header">Регистрация наставника</h1>
-        <div class="table-responsive">
-            <form class="form-signup-mentor" onsubmit="addMentor();return false">
-                <!--<label for="select-jobs">Выберите работы по которым вы имеете опыт</label>-->
-                <!--<br>-->
-                <!--<select class="btn btn-default dropdown-toggle" multiple id="select-jobs" name="select-jobs">-->
-                <!--</select>-->
-                <br>
-                <label for="description">Расскажите о себе </label>
-                <input id="description" class="form-control" required  type="text"
-                       name="description"/>
-                <br/>
-                <input class="btn btn-lg btn-primary btn-block" name="saveMentor" type="submit"/>
-            </form>
+            <h1 class="text-center">Регистрация наставника</h1>
+                <div class="table-responsive">
+                    <form class="form-signup-mentor" onsubmit="addMentor();return false">
+                        <!--<label for="select-jobs">Выберите работы по которым вы имеете опыт</label>-->
+                        <!--<br>-->
+                        <!--<select class="btn btn-default dropdown-toggle" multiple id="select-jobs" name="select-jobs">-->
+                        <!--</select>-->
+                        <br>
+                        <label for="description">Расскажите о себе </label>
+                        <input id="description" class="form-control" required type="text"
+                               name="description"/>
+                        <br/>
+                        <input class="btn btn-lg btn-primary btn-block" name="saveMentor" type="submit"/>
+                    </form>
+                </div>
+
         </div>
     </div>
 </div>
