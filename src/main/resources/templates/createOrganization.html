@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
+
+    <title>KidStarter</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div th:replace="fragments/htmlFragment::main-header"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="/main">Главная</a></li>
+                <li><a href="/tagPage">Теги</a></li>
+                <li><a href="/cretejobtag">Создать интерес/тэг</a></li>
+                <li class="active"><a href="/createUser">Создать пользователя</a></li>
+                <li class="active"><a href="/organizationPage">Список организаций</a></li>
+                <li class="active"><a href="/createOrganization">Создать организацию</a></li>
+                <li><a href="/editOrganization/1">Изменить организацию</a></li>
+                <li><a href="/editUser/1">Изменить пользователя</a></li>
+                <li><a href="/jobPage">Интересы</a></li>
+                <li><a href="/adminpage">Пользователи</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Создать организацию</h1>
+            <div class="table-responsive">
+                <form class="form-signup" onsubmit= " createOrganization();return false">
+
+                    <label for="name">Название организации</label>
+                    <input id="name" class="form-control" required placeholder="Название организации" type="text" name="name"/>
+
+                    <label for="address">Адрес организации</label>
+                    <input id="address" class="form-control" required placeholder="Адрес организации" type="text" name="address"/>
+
+                    <label for="country">Страна расположения</label>
+                    <input id="country" class="form-control" required placeholder="Страна расположения" type="text" name="country"/>
+
+                    <label for="phone">Номер телефона</label>
+                    <input id="phone" class="form-control" required placeholder="Номер телефона" type="number" name="phone"/>
+
+                    <label for="email">Электронная почта</label>
+                    <input id="email" class="form-control" required placeholder="Электронная почта" type="email" name="email"/>
+                    <br/>
+                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
+<script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
+<script src="/scripts/all_scripts.js"></script>
+<script src="/scripts/createOrganization.js"></script>
+</body>
+</html>

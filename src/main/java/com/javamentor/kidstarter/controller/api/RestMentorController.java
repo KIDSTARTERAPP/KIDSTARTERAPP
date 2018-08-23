@@ -1,36 +1,51 @@
 package com.javamentor.kidstarter.controller.api;
 
 import com.javamentor.kidstarter.model.user.Mentor;
-import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.service.interfaces.MentorService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping("/api")
 public class RestMentorController {
 
-    private final MentorService mentorService;
+    static final Logger logger = LoggerFactory.getLogger(RestMentorController.class);
 
     @Autowired
-    public RestMentorController(MentorService mentorService) {
-        this.mentorService = mentorService;
+    private MentorService mentorService;
+
+    @GetMapping("/mentor/{id}")
+    public ResponseEntity<?> getMentorById(@PathVariable("id") long id) {
+        Mentor mentor = mentorService.getMentorById(id);
+        return new ResponseEntity<>(mentor, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/mentor/add")
-    public ResponseEntity registrationMentor(@RequestBody Mentor mentor) {
+    @GetMapping("/mentors")
+    public ResponseEntity<List<Mentor>> listAllMentors() {
+        List<Mentor> mentor = mentorService.getAllMentors();
+        return new ResponseEntity<>(mentor, HttpStatus.OK);
+    }
 
-        User userFromSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        mentor.setUser(userFromSession);
+    @DeleteMapping("/mentor/{id}")
+    public HttpStatus deleteMentorById(@PathVariable("id") long id) {
+        mentorService.deleteMentorById(id);
+        return HttpStatus.OK;
+    }
+
+    @PostMapping("/mentor")
+    public ResponseEntity<?> addMentor(@RequestBody Mentor mentor) {
         mentorService.addMentor(mentor);
-
-        return ResponseEntity.ok(HttpStatus.OK);
+        return new ResponseEntity<>(mentor, HttpStatus.OK);
     }
 
+    @PutMapping("/mentor")
+    public ResponseEntity<?>  updateMentor(@ModelAttribute("mentor") Mentor mentor) {
+        mentorService.updateMentor(mentor);
+        return new ResponseEntity<>(mentor, HttpStatus.OK);
+    }
 }

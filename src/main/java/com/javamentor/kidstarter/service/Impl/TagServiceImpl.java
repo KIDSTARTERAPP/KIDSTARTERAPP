@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class TagServiceImpl implements TagService {
 
-
 	private TagDao tagDao;
 
 	@Autowired
@@ -38,5 +37,9 @@ public class TagServiceImpl implements TagService {
 
 	public void updateTag(Tag tag) {
 		tagDao.update(tag);
+	}
+
+	public List<Tag> getTagsByNameList(List<String> names) {
+		return tagDao.getTagsByNameList(names);
 	}
 }
