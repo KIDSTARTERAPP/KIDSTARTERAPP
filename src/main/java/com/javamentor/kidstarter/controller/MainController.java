@@ -69,8 +69,13 @@ public class MainController {
     public String showListOrganizationPage() {
         return "organizationPage";
     }
+
     @RequestMapping("/createOrganization")
     public String createOrganizationPage() {
         return "createOrganization";
+    }
+    @RequestMapping("/createTeacher")
+    public String createTeacher(){
+        return "createTeacher";
     }
 }

@@ -9,8 +9,12 @@ import java.util.List;
 public interface TeacherService {
 
     Teacher getTeacherById(Long id);
+
     Teacher addTeacher(Teacher teacher);
+
     List<Teacher> getAllTeachers();
+
     void deleteTeacherById(Long id);
+
     void updateTeacher(Teacher teacher);
 }
