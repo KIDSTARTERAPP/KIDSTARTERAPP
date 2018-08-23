@@ -24,7 +24,7 @@ public class MainController {
     OrganizationService organizationService;
 
     @RequestMapping("/main")
-    public String showMain() {
+    public String showMain(Model model) {
         return "main";
     }
 
