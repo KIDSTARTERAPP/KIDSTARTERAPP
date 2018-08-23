@@ -66,8 +66,7 @@
                             <li id="create-user-link"><a href="/createUser">Создать пользователя</a></li>
                             <li id="edit-user-link"><a href="/editUser/1">Изменить пользователя</a></li>
                         </th:block>
-                        <th:block sec:authorize="hasAnyAuthority('ADMIN','OWNER')">
-                            <li id="create-organization"><a href="/createOrganization">Создать организацию</a></li>
+                        <th:block sec:authorize="hasAnyAuthority('ADMIN')">
                             <li id="organization-page"><a href="/organizationPage">Организации</a></li>
                         </th:block>
                         <th:block sec:authorize="hasAnyAuthority('USER')">
