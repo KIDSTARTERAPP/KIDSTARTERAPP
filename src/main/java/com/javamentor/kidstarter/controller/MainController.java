@@ -74,4 +74,8 @@ public class MainController {
     public String createOrganizationPage() {
         return "createOrganization";
     }
+    @RequestMapping("/createTeacher")
+    public String createTeacher(){
+        return "createTeacher";
+    }
 }
