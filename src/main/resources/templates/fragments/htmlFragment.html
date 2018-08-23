@@ -28,9 +28,9 @@
                     <th:block sec:authorize="hasAnyAuthority('USER')">
                         <li><a href="/mentor/add">Стать наставником</a></li>
                     </th:block>
-                    <th:block sec:authorize= "isAnonymous()">
-                    <li><a href="/main/registration">Регистрация</a></li>
-                    <li><a href="/main/login">Войти</a></li>                                                                                                                                                                                                                                                                                        
+                    <th:block sec:authorize="isAnonymous()">
+                        <li><a href="/main/registration">Регистрация</a></li>
+                        <li><a href="/main/login">Войти</a></li>
                     </th:block>
                     <th:block sec:authorize="hasAnyAuthority('USER')">
                         <button data-toggle="dropdown" class="user-icon"
@@ -66,7 +66,14 @@
                             <li id="create-user-link"><a href="/createUser">Создать пользователя</a></li>
                             <li id="edit-user-link"><a href="/editUser/1">Изменить пользователя</a></li>
                         </th:block>
-                        <li id="jobs-link"><a href="/jobPage">Интересы</a></li>
+                        <th:block sec:authorize="hasAnyAuthority('ADMIN','OWNER')">
+                            <li id="create-organization"><a href="/createOrganization">Создать организацию</a></li>
+                            <li id="organization-page"><a href="/organizationPage">Организации</a></li>
+                        </th:block>
+                        <th:block sec:authorize="hasAnyAuthority('USER')">
+
+                            <li id="jobs-link"><a href="/jobPage">Интересы</a></li>
+                        </th:block>
                         <th:block sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')">
                             <li id="users-link"><a href="/adminpage">Пользователи</a></li>
                         </th:block>
