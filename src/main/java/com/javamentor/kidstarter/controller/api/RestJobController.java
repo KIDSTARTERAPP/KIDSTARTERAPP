@@ -1,12 +1,19 @@
 package com.javamentor.kidstarter.controller.api;
 
 import com.javamentor.kidstarter.model.Job;
+import com.javamentor.kidstarter.model.user.Kid;
+import com.javamentor.kidstarter.model.user.Teacher;
+import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.service.interfaces.JobService;
+import com.javamentor.kidstarter.service.interfaces.KidService;
+import com.javamentor.kidstarter.service.interfaces.RoleService;
+import com.javamentor.kidstarter.service.interfaces.TeacherService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +27,15 @@ public class RestJobController {
 
     @Autowired
     private JobService jobService;
+
+    @Autowired
+    private KidService kidService;
+
+    @Autowired
+    private TeacherService teacherService;
+
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("/job/{id}")
     public ResponseEntity<?> getJobId(@PathVariable("id") long id) {
@@ -51,9 +67,34 @@ public class RestJobController {
     }
 
     @PutMapping("/job/{id}")
-    public ResponseEntity<?>  updateJob(@ModelAttribute("job") Job newJob, @PathVariable("id") long id) {
+    public ResponseEntity<?> updateJob(@ModelAttribute("job") Job newJob, @PathVariable("id") long id) {
         jobService.updateJob(newJob);
         return new ResponseEntity<>(newJob, HttpStatus.OK);
+    }
+
+    @PutMapping("/job/wish_job/{id}")
+    public HttpStatus addJobToWishList(@PathVariable("id") Long jobId) {
+        System.out.println("!!! " + jobId);
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        HttpStatus status = HttpStatus.NOT_MODIFIED;
+        if (principal.getAuthorities().contains(roleService.getByName("KID"))) {
+            Kid currentKid = kidService.getUserKidById(principal.getId());
+            Job currentJob = jobService.getJobById(jobId);
+            if (!currentKid.getJobInterest().contains(currentJob)) {
+                currentKid.getJobInterest().add(currentJob);
+                kidService.updateKid(currentKid);
+                status = HttpStatus.OK;
+            }
+        } else if (principal.getAuthorities().contains(roleService.getByName("TEACHER"))) {
+            Teacher currentTeacher = teacherService.getUserTeacherById(principal.getId());
+            Job currentJob = jobService.getJobById(jobId);
+            if (!currentTeacher.getSpecialization().contains(currentJob)) {
+                currentTeacher.getSpecialization().add(jobService.getJobById(jobId));
+                teacherService.updateTeacher(currentTeacher);
+                status = HttpStatus.OK;
+            }
+        }
+        return status;
     }
 }
 

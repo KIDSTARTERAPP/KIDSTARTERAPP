@@ -1,6 +1,5 @@
 package com.javamentor.kidstarter.controller.api;
 
-import com.javamentor.kidstarter.model.user.Role;
 import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.service.interfaces.RoleService;
 import com.javamentor.kidstarter.service.interfaces.UserService;
@@ -23,9 +22,6 @@ public class RestUserController {
     @Autowired
     public RoleService roleService;
 
-
-
-
     @GetMapping("/user/{id}")
     public ResponseEntity<?> getUserId(@PathVariable("id") long id) {
         User user = userService.getUserById(id);
@@ -34,7 +30,7 @@ public class RestUserController {
 
     @GetMapping("/users")
     public ResponseEntity<List<User>> listAllUser() {
-        List<User>tag = userService.getAllUser();
+        List<User> tag = userService.getAllUser();
         return new ResponseEntity<>(tag, HttpStatus.OK);
     }
 
@@ -57,13 +53,4 @@ public class RestUserController {
         userService.updateUser(newUser);
         return new ResponseEntity<>(newUser, HttpStatus.OK);
     }
-
-    @GetMapping("/role")
-    public ResponseEntity<List<Role>> getRoles(){
-        List<Role> roles = roleService.getAllRoles();
-        return ResponseEntity.ok(roles);
-    }
 }
-
-
-

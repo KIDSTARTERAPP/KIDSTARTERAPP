@@ -4,4 +4,5 @@ import com.javamentor.kidstarter.model.user.Mentor;
 
 public interface MentorDao extends GenericDao<Long, Mentor> {
 
+    Mentor getUserMentorById(Long id);
 }

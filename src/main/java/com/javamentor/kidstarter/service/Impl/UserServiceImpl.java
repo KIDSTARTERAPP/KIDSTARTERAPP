@@ -1,7 +1,7 @@
 package com.javamentor.kidstarter.service.Impl;
 
 
-import com.javamentor.kidstarter.dao.interfaces.UserDao;
+import com.javamentor.kidstarter.dao.interfaces.*;
 import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.security.config.PassEncode;
 import com.javamentor.kidstarter.service.interfaces.UserService;
@@ -13,48 +13,46 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	private final UserDao userDAO;
+    private final UserDao userDAO;
 
-	@Autowired
-	private PassEncode passwordEncoder;
+    private final PassEncode passwordEncoder;
 
-	@Autowired
-	public UserServiceImpl(UserDao userDAO) {
-		this.userDAO = userDAO;
-	}
+    @Autowired
+    public UserServiceImpl(UserDao userDAO, PassEncode passwordEncoder) {
+        this.userDAO = userDAO;
+        this.passwordEncoder = passwordEncoder;
+    }
 
+    @Override
+    public User getUserById(Long id) {
+        return userDAO.getByKey(id);
+    }
 
-	@Override
-	public User getUserById(Long id) {
-		return userDAO.getByKey(id);
-	}
+    @Override
+    public User addUser(User user) {
+        user.setPassword(passwordEncoder.passwordEncoder().encode(user.getPassword()));
+        userDAO.persist(user);
+        return user;
+    }
 
-	@Override
-	public User addUser(User user) {
-		user.setPassword(passwordEncoder.passwordEncoder().encode(user.getPassword()));
-		userDAO.persist(user);
-		return user;
-	}
+    @Override
+    public List<User> getAllUser() {
+        return userDAO.getAll();
+    }
 
-	@Override
-	public List<User> getAllUser() {
-		return userDAO.getAll();
-	}
+    @Override
+    public void deleteUserById(Long id) {
+        userDAO.deleteByKey(id);
+    }
 
-	@Override
-	public void deleteUserById(Long id) {
-		userDAO.deleteByKey(id);
-	}
+    @Override
+    public void updateUser(User user) {
+        user.setPassword(passwordEncoder.passwordEncoder().encode(user.getPassword()));
+        userDAO.update(user);
+    }
 
-	@Override
-	public void updateUser(User user) {
-		user.setPassword(passwordEncoder.passwordEncoder().encode(user.getPassword()));
-		userDAO.update(user);
-	}
-
-	@Override
-	public User getByLogin(String login) {
-		return userDAO.getByLogin(login);
-	}
+    @Override
+    public User getByLogin(String login) {
+        return userDAO.getByLogin(login);
+    }
 }
