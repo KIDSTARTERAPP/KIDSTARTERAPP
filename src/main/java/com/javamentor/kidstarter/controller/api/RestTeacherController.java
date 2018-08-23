@@ -55,7 +55,7 @@ public class RestTeacherController {
     }
 
     @PostMapping("/teacher")
-    public ResponseEntity addTeacher(@RequestBody User user) {
+    public HttpStatus addTeacher(@RequestBody User user) {
 
         List<Role> roles = new ArrayList<>();
         Role roleUser = roleService.getByName("USER");
@@ -68,7 +68,7 @@ public class RestTeacherController {
         Teacher teacher = new Teacher();
         teacher.setUser(user);
         teacherService.addTeacher(teacher);
-        return ResponseEntity.ok(HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @PutMapping("/teacher")
