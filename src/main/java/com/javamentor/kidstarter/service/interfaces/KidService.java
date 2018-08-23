@@ -12,4 +12,5 @@ public interface KidService {
     List<Kid> getAllKids();
     void deleteKidById(Long id);
     void updateKid(Kid kid);
+    Kid getUserKidById(Long id);
 }

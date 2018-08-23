@@ -87,25 +87,23 @@ public class DataInitializer {
         List<Role> roles = new ArrayList<>();
         Collections.addAll(roles, roleAdmin, roleTeacher, roleSponsor, roleOwner,
                 roleMentor, roleModerator, roleKid, roleUser);
-
         List<Role> kidRoles = new ArrayList<>(Arrays.asList(roleUser, roleKid, roleSponsor));
         List<Role> teacherRoles = new ArrayList<>(Arrays.asList(roleUser, roleTeacher, roleSponsor));
         List<Role> mentorRoles = new ArrayList<>(Arrays.asList(roleUser, roleMentor, roleSponsor));
 
-        User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","12345",
+        User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
                 roles, 23, "MALE",23-12-34,"admin@mail.ru","RUSSIA","house 8");
 
-
-	    User user2  = new User("Vovan","Vovanov","Huevich","12434","qwer12",
+	    User user2  = new User("Vovan","Vovanov","Huevich","user2","qwer",
 			    roles,28, "MALE",23-12-34,"user@mail.ru","Ukraine","house 15");
 
-        User kidUser  = new User("Kid","Kid","Kid","12334","qwer",
+        User kidUser  = new User("Kid","Kid","Kid","kid","qwer",
                 kidRoles,28, "MALE",23-12-34,"Kid@mail.ru","RUSSIA","house 15");
 
-        User teacherUser  = new User("Teacher","Teacher","Teacher","11234","qwer",
+        User teacherUser  = new User("Teacher","Teacher","Teacher","teacher","qwer",
                 teacherRoles,28, "MALE",23-12-34,"Teacher@mail.ru","RUSSIA","house 15");
 
-        User mentorUser  = new User("Mentor","Mentor","Mentor","12364","qwer",
+        User mentorUser  = new User("Mentor","Mentor","Mentor","mentor","qwer",
                 mentorRoles,28, "MALE",23-12-34,"Mentor@mail.ru","RUSSIA","house 15");
 
 
@@ -146,17 +144,6 @@ public class DataInitializer {
 	    ownerService.addOwner(owner2);
 
 
-//	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(Collections.singletonList(user1))));
-//	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(Collections.singletonList(user2))));
-//
-//
-//        tag1.setJobs(new HashSet<>(Arrays.asList(job1, job2)));
-//	    tag2.setJobs(new HashSet<>(Arrays.asList(job2)));
-//	    tag3.setJobs(new HashSet<>(Arrays.asList(job1)));
-//
-//        tagService.updateTag(tag1);
-//        tagService.updateTag(tag2);
-//        tagService.updateTag(tag3);
 	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
 	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
 
@@ -168,9 +155,6 @@ public class DataInitializer {
 
         job1.setTags(new HashSet<>(Arrays.asList(tag1, tag3)));
         job2.setTags(new HashSet<>(Arrays.asList(tag1, tag2)));
-	    tag1.setJobs(new HashSet<>(Arrays.asList(job1, job2)));
-	    tag2.setJobs(new HashSet<>(Arrays.asList(job2)));
-	    tag3.setJobs(new HashSet<>(Arrays.asList(job1)));
 
         jobService.updateJob(job1);
         jobService.updateJob(job2);
