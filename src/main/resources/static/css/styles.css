@@ -4,3 +4,14 @@
     width: 1000px;
 }
 
+.user-icon {
+    border: black;
+    border-radius: 40px;
+    padding: 10px;
+    float: right;
+    background: yellow;
+    text-align: center;
+    color: red;
+    min-width: 17%;
+    margin-top: 6px;
+}
