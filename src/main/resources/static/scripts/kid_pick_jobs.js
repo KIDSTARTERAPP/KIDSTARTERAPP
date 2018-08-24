@@ -8,7 +8,6 @@ function get_kid_jobs_and_fill_list() {
         url: "/api/jobs/kid",
         dataType: "JSON",
         success: function (response) {
-            // fill_job_list(JSON.stringify(response));
             fill_job_list(response);
         }
     })
@@ -22,10 +21,13 @@ function fill_job_list(kid_jobs) {
         dataType: "JSON",
         success: function (response) {
             for (var i in response) {
-                // console.log(response[i]);
-                console.log($.inArray(response[i], kid_jobs));
-                // $.inArray(response[i], kid_jobs);
-                if ($.inArray(response[i], kid_jobs)) {
+                var notContains = true;
+                for (var j in kid_jobs) {
+                    if (response[i].id == kid_jobs[j].id) {
+                        notContains = false;
+                    }
+                }
+                if (notContains) {
                     var tags = [];
                     for (var j in response[i].tags) {
                         tags.push(response[i].tags[j].name);
