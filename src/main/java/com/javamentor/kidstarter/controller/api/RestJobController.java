@@ -66,10 +66,14 @@ public class RestJobController {
         return new ResponseEntity<>(currentJob, HttpStatus.OK);
     }
 
-    @PutMapping("/job/{id}")
-    public ResponseEntity<?> updateJob(@ModelAttribute("job") Job newJob, @PathVariable("id") long id) {
-        jobService.updateJob(newJob);
-        return new ResponseEntity<>(newJob, HttpStatus.OK);
+    @PutMapping("/job")
+    public ResponseEntity<?> updateJob(@RequestBody Job job) {
+        Job currentJob = jobService.getJobById(job.getId());
+        job.setKids(currentJob.getKids());
+        job.setMentors(currentJob.getMentors());
+        job.setTeachers(currentJob.getTeachers());
+        jobService.updateJob(job);
+        return new ResponseEntity<>(job, HttpStatus.OK);
     }
 
     @PutMapping("/job/wish_job/{id}")

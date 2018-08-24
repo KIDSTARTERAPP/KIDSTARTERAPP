@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -50,7 +51,6 @@ public class MainController {
 
     @GetMapping("/jobPage")
     public String showJobPage() {
-//        model.addAttribute("tags", jobService.getAllJob());
         return "jobPage";
     }
 
@@ -73,5 +73,10 @@ public class MainController {
     @RequestMapping("/createOrganization")
     public String createOrganizationPage() {
         return "createOrganization";
+    }
+
+    @GetMapping("/editJob/{id}")
+    public String showEditJob(@PathVariable("id") Long id) {
+        return "editJob";
     }
 }
