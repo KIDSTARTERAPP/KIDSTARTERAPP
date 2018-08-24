@@ -43,4 +43,9 @@ public class TeacherServiceImpl implements TeacherService {
     public void updateTeacher(Teacher teacher) {
         teacherDao.update(teacher);
     }
+
+    @Override
+    public Teacher getUserTeacherById(Long id) {
+        return teacherDao.getUserTeacherById(id);
+    }
 }

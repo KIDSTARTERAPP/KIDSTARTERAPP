@@ -24,7 +24,7 @@ public class MainController {
     OrganizationService organizationService;
 
     @RequestMapping("/main")
-    public String showMain() {
+    public String showMain(Model model) {
         return "main";
     }
 
@@ -78,5 +78,9 @@ public class MainController {
     @RequestMapping("/createOrganization")
     public String createOrganizationPage() {
         return "createOrganization";
+    }
+    @RequestMapping("/createTeacher")
+    public String createTeacher(){
+        return "createTeacher";
     }
 }

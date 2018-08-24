@@ -40,9 +40,9 @@ function fill_organization_table(){
                     response[i].name + "</td><td>" +
                     response[i].createDate + "</td><td>" +
                     response[i].phone + "</td><td>" +
-                    response[i].email + "</td><td>" +
-                    response[i].country + "</td><td>" +
                     response[i].address + "</td><td>" +
+                    response[i].country + "</td><td>" +
+                    response[i].email + "</td><td>" +
                     "<form class='navbar-form' onsubmit='edit_organization(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Изменить'></form></td><td>" +
                     "<form class='navbar-form' onsubmit='delete_organization(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Удалить'></form></td><td>" +
                     "<form class='navbar-form' onsubmit='show_organization_list(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Просмотреть организацию'></form></td><td>" +

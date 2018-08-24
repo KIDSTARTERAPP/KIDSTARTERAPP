@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MentorController {
-
-
-    @GetMapping(value = "/home/mentor/add")
+    @GetMapping(value = "/mentor/add")
     public String  getRegistrationMentor(Model model){
         return "createMentor";
     }
