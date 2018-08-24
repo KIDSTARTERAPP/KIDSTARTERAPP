@@ -59,6 +59,11 @@ public class MainController {
         return "createUser";
     }
 
+    @GetMapping("/createKid")
+    public String createKidPage() {
+        return "createKid";
+    }
+
     @GetMapping("/tagPage")
     public String showTagsPage(Model model) {
         model.addAttribute("tags", tagService.getAllTag());
