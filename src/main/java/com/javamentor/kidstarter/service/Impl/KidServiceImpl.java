@@ -37,4 +37,9 @@ public class KidServiceImpl implements KidService {
     public void updateKid(Kid job) {
         kidDao.update(job);
     }
+
+    @Override
+    public Kid getUserKidById(Long id) {
+        return kidDao.getUserKidbyId(id);
+    }
 }
