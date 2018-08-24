@@ -39,9 +39,9 @@ public class RestTagController {
 	}
 
 	@DeleteMapping("/tag/{id}")
-	public ResponseEntity<?> deleteTag(@PathVariable("id") long id) {
+	public HttpStatus deleteTag(@PathVariable("id") long id) {
 		tagService.deleteTagById(id);
-		return new ResponseEntity<Tag>(HttpStatus.OK);
+		return HttpStatus.OK;
 	}
 
 	@PostMapping("/tag")
