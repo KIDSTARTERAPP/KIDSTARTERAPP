@@ -59,6 +59,11 @@ public class MainController {
         return "createUser";
     }
 
+    @GetMapping("/createKid")
+    public String createKidPage() {
+        return "createKid";
+    }
+
     @GetMapping("/tagPage")
     public String showTagsPage(Model model) {
         model.addAttribute("tags", tagService.getAllTag());
@@ -78,5 +83,9 @@ public class MainController {
     @GetMapping("/editJob/{id}")
     public String showEditJob(@PathVariable("id") Long id) {
         return "editJob";
+    }
+    @RequestMapping("/createTeacher")
+    public String createTeacher() {
+        return "createTeacher";
     }
 }
