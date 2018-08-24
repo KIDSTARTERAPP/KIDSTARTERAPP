@@ -65,8 +65,7 @@ public class MainController {
     }
 
     @GetMapping("/tagPage")
-    public String showTagsPage(Model model) {
-        model.addAttribute("tags", tagService.getAllTag());
+    public String showTagsPage() {
         return "tagPage";
     }
 
