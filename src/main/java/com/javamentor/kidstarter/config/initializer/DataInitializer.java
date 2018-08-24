@@ -14,8 +14,7 @@ import com.javamentor.kidstarter.service.interfaces.JobService;
 import com.javamentor.kidstarter.service.interfaces.RoleService;
 import com.javamentor.kidstarter.service.interfaces.TagService;
 import com.javamentor.kidstarter.service.interfaces.UserService;
-import com.javamentor.kidstarter.service.interfaces.*;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -139,11 +138,11 @@ public class DataInitializer {
         org3 = organizationService.addOrganization(org3);
         org4 = organizationService.addOrganization(org4);
 
-	    Owner owner1 = new Owner(null, user1);
-	    Owner owner2 = new Owner(null, user2);
-
-	    ownerService.addOwner(owner1);
-	    ownerService.addOwner(owner2);
+//	    Owner owner1 = new Owner(null, user1);
+//	    Owner owner2 = new Owner(null, user2);
+//
+//	    ownerService.addOwner(owner1);
+//	    ownerService.addOwner(owner2);
 
 
 //	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(Collections.singletonList(user1))));

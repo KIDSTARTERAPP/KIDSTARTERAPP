@@ -55,6 +55,11 @@ public class OrganizationRestController {
 	public ResponseEntity<?> addOrganization(@RequestBody Organization currentOrganization) {
 		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Owner currentOwner = ownerService.getUserOwner(principal.getId());
+		if (currentOwner == null) {
+			currentOwner = ownerService.addOwner(new Owner());
+			currentOwner.setUser(principal);
+			ownerService.updateOwner(currentOwner);
+		}
 		currentOrganization.setCreateDate(LocalDateTime.now());
 		Organization organization = organizationService.addOrganization(currentOrganization);
 		currentOwner.setOrganization(organization);
