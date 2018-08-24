@@ -2,6 +2,7 @@ package com.javamentor.kidstarter.service.Impl;
 
 
 import com.javamentor.kidstarter.dao.interfaces.*;
+import com.javamentor.kidstarter.model.user.Role;
 import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.security.config.PassEncode;
 import com.javamentor.kidstarter.service.interfaces.UserService;
@@ -16,6 +17,21 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDAO;
 
     private final PassEncode passwordEncoder;
+
+    @Autowired
+    private RoleDao roleDao;
+
+    @Autowired
+    private KidDao kidDao;
+
+    @Autowired
+    private TeacherDao teacherDao;
+
+    @Autowired
+    private MentorDao mentorDao;
+
+    @Autowired
+    private OwnerDao ownerDao;
 
     @Autowired
     public UserServiceImpl(UserDao userDAO, PassEncode passwordEncoder) {
@@ -42,6 +58,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUserById(Long id) {
+        List<Role> roles = userDAO.getByKey(id).getRoles();
+        if (roles.contains(roleDao.getByName("KID"))) {
+            kidDao.deleteByKey(kidDao.getUserKidbyId(id).getId());
+        }
+        if (roles.contains(roleDao.getByName("TEACHER"))) {
+            teacherDao.deleteByKey(teacherDao.getUserTeacherById(id).getId());
+        }
+        if (roles.contains(roleDao.getByName("MENTOR"))) {
+            mentorDao.deleteByKey(mentorDao.getUserMentorById(id).getId());
+        }
+        if (roles.contains(roleDao.getByName("OWNER"))) {
+            ownerDao.deleteByKey(ownerDao.getUserOwner(id).getId());
+        }
         userDAO.deleteByKey(id);
     }
 

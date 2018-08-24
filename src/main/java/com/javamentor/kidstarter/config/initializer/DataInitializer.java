@@ -85,8 +85,7 @@ public class DataInitializer {
         Role roleKid = roleService.getByName("KID");
 
         List<Role> roles = new ArrayList<>();
-        Collections.addAll(roles, roleAdmin, roleTeacher, roleSponsor, roleOwner,
-                roleMentor, roleModerator, roleKid, roleUser);
+        Collections.addAll(roles, roleAdmin, roleSponsor, roleModerator, roleUser, roleOwner);
         List<Role> kidRoles = new ArrayList<>(Arrays.asList(roleUser, roleKid, roleSponsor));
         List<Role> teacherRoles = new ArrayList<>(Arrays.asList(roleUser, roleTeacher, roleSponsor));
         List<Role> mentorRoles = new ArrayList<>(Arrays.asList(roleUser, roleMentor, roleSponsor));
