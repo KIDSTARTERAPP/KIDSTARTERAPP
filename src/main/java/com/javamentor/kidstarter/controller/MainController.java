@@ -59,11 +59,6 @@ public class MainController {
         return "createUser";
     }
 
-    @GetMapping("/createKid")
-    public String createKidPage() {
-        return "createKid";
-    }
-
     @GetMapping("/tagPage")
     public String showTagsPage(Model model) {
         model.addAttribute("tags", tagService.getAllTag());
@@ -79,8 +74,26 @@ public class MainController {
     public String createOrganizationPage() {
         return "createOrganization";
     }
-    @RequestMapping("/createTeacher")
+
+    @GetMapping("/organization/kids/add")
+    public String createKidPage() {
+        return "createKid";
+    }
+    @GetMapping("/organization/kids")
+    public String getAllKids() {
+        return "getAllKids";
+    }
+    @GetMapping("/organization/kids/{id}")
+    public String showKidEdit(@PathVariable("id") String id) {
+        return "editKid";
+    }
+
+    @GetMapping("/organization/teachers/add")
     public String createTeacher(){
         return "createTeacher";
+    }
+    @GetMapping("/organization/teachers")
+    public String getAllTeachers() {
+        return "getAllTeachers";
     }
 }

@@ -36,10 +36,14 @@ public class RestKidController {
         return new ResponseEntity<>(kid, HttpStatus.OK);
     }
 
-    @GetMapping("/kids")
-    public ResponseEntity<List<Kid>> listAllKids() {
-        List<Kid> kid = kidService.getAllKids();
-        return new ResponseEntity<>(kid, HttpStatus.OK);
+    @GetMapping("/organization/kids/all")
+    public ResponseEntity<List<User>> listAllKids() {
+        List<User> kids = new ArrayList<>();
+        for (Kid kid : kidService.getAllKids()) {
+            User user = kid.getUser();
+            kids.add(user);
+        }
+        return new ResponseEntity<>(kids, HttpStatus.OK);
     }
 
     @DeleteMapping("/kid/{id}")
@@ -48,7 +52,7 @@ public class RestKidController {
         return HttpStatus.OK;
     }
 
-    @PostMapping("/kid/create")
+    @PostMapping("/organization/kid/create")
     public HttpStatus addKid(@RequestBody User user) {
         List<Role> roles = new ArrayList<>();
         Role userRole = roleService.getByName("USER");
@@ -64,9 +68,12 @@ public class RestKidController {
         return HttpStatus.OK;
     }
 
-    @PutMapping("/kid")
-    public ResponseEntity<?>  updateKid(@ModelAttribute("kid") Kid kid) {
-        kidService.updateKid(kid);
+    @PutMapping("/organization/kid")
+    public ResponseEntity<?> updateKid(@RequestBody User user) {
+        Kid kid = kidService.getUserKidById(user.getId());
+        userService.addUser(user);
+        kid.setUser(user);
+        kidService.addKid(kid);
         return new ResponseEntity<>(kid, HttpStatus.OK);
     }
 }

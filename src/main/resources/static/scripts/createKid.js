@@ -1,5 +1,5 @@
 function createKid() {
-    let url = '/api/kid/create';
+    let url = '/api/organization/kid/create';
     let wrap = {
         firstName: $('#firstname').val(),
         lastName: $('#lastname').val(),
@@ -21,7 +21,7 @@ function createKid() {
         contentType: "application/json; charset=utf-8",
         data: data,
         success: function () {
-
+            window.location.replace("/organization/kids");
         },
         error: function (e) {
 
