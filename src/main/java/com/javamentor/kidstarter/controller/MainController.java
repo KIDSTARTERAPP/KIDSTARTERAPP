@@ -59,11 +59,6 @@ public class MainController {
         return "createUser";
     }
 
-    @GetMapping("/createKid")
-    public String createKidPage() {
-        return "createKid";
-    }
-
     @GetMapping("/tagPage")
     public String showTagsPage() {
         return "tagPage";
@@ -83,10 +78,6 @@ public class MainController {
     public String showEditJob(@PathVariable("id") Long id) {
         return "editJob";
     }
-    @RequestMapping("/createTeacher")
-    public String createTeacher() {
-        return "createTeacher";
-    }
 
     @GetMapping("/kid")
     public String showKidPage() {
@@ -101,5 +92,27 @@ public class MainController {
     @GetMapping("/teacher/jobs")
     public String showTeacherJobPickPage() {
     return "teacher_pick_jobs";
+    }
+
+    @GetMapping("/organization/kids/add")
+    public String createKidPage() {
+        return "createKid";
+    }
+    @GetMapping("/organization/kids")
+    public String getAllKids() {
+        return "getAllKids";
+    }
+    @GetMapping("/organization/kids/{id}")
+    public String showKidEdit(@PathVariable("id") String id) {
+        return "editKid";
+    }
+
+    @GetMapping("/organization/teachers/add")
+    public String createTeacher(){
+        return "createTeacher";
+    }
+    @GetMapping("/organization/teachers")
+    public String getAllTeachers() {
+        return "getAllTeachers";
     }
 }
