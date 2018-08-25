@@ -17,7 +17,7 @@ function setActiveLink() {
         var createTag = document.getElementById("create-tag-link");
         createTag.className += "active";
     }
-    if (pathname.includes('/createUser')) {
+    if (pathname.includes('/create_user')) {
         var createUser = document.getElementById("create-user-link");
         createUser.className += "active";
     }
