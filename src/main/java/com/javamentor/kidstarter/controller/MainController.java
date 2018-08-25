@@ -65,7 +65,7 @@ public class MainController {
         return "tagPage";
     }
 
-    @RequestMapping("/organizationInfoPage")
+    @RequestMapping("/organizationInfoPage/{id}")
     public String showListOrganizationPage() {
         return "organizationInfoPage";
     }
