@@ -23,7 +23,7 @@ public class MainController {
     OrganizationService organizationService;
 
     @RequestMapping("/main")
-    public String showMain(Model model) {
+    public String showMain() {
         return "main";
     }
 
@@ -75,8 +75,7 @@ public class MainController {
     }
 
     @GetMapping("/tagPage")
-    public String showTagsPage(Model model) {
-        model.addAttribute("tags", tagService.getAllTag());
+    public String showTagsPage() {
         return "tagPage";
     }
 
@@ -94,7 +93,6 @@ public class MainController {
     public String showEditJob(@PathVariable("id") Long id) {
         return "editJob";
     }
-
     @RequestMapping("/createTeacher")
     public String createTeacher() {
         return "createTeacher";
