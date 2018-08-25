@@ -68,6 +68,7 @@ public class MainController {
         return "tagPage";
     }
 
+
     @GetMapping("/requestPage")
     public String showRequestPage(Model model) {
         model.addAttribute("tags", requestService.getAllRequest());
@@ -84,7 +85,7 @@ public class MainController {
         return "organizationPage";
     }
 
-    @RequestMapping("/createOrganization")
+    @GetMapping("/createOrganization")
     public String createOrganizationPage() {
         return "createOrganization";
     }
