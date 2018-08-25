@@ -42,8 +42,8 @@
                         <li><a href="/main/login">Войти</a></li>
                     </th:block>
                     <th:block sec:authorize="hasAnyAuthority('USER')">
-                        <button data-toggle="dropdown" class="user-icon"
-                                th:text="${#authentication.principal.login}">
+                        <button data-toggle="dropdown" class="user-icon">
+                                <!--th:text="${#authentication.principal.login}">-->
                         </button>
                         <ul class="dropdown-menu">
                             <th:block sec:authorize="hasAnyAuthority('USER')">
