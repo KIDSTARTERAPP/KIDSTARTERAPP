@@ -24,6 +24,7 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
+<div th:replace="fragments/htmlFragment::crumbs"></div>
 
 <div class="container-fluid">
     <div class="row">
@@ -78,7 +79,7 @@
                     </div>
 
                     <label for="phone">Phone</label>
-                    <input id="phone" class="form-control" required placeholder="Phone" type="number" name="phone"/>
+                    <input id="phone" class="form-control" required placeholder="Phone" type="text" name="phone"/>
 
                     <label for="email">Email</label>
                     <input id="email" class="form-control" required placeholder="Email" type="email" name="email"/>

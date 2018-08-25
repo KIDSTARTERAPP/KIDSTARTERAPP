@@ -65,16 +65,16 @@ public class MainController {
         return "tagPage";
     }
 
-    @RequestMapping("/organizationPage")
+    @GetMapping("/organizationPage")
     public String showListOrganizationPage() {
         return "organizationPage";
     }
 
-    @RequestMapping("/createOrganization")
+    @GetMapping("/createOrganization")
     public String createOrganizationPage() {
         return "createOrganization";
     }
-    @RequestMapping("/createTeacher")
+    @GetMapping("/createTeacher")
     public String createTeacher(){
         return "createTeacher";
     }

@@ -8,19 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import com.javamentor.kidstarter.model.user.Role;
-import com.javamentor.kidstarter.model.user.User;
-import com.javamentor.kidstarter.service.interfaces.JobService;
-import com.javamentor.kidstarter.service.interfaces.RoleService;
-import com.javamentor.kidstarter.service.interfaces.TagService;
-import com.javamentor.kidstarter.service.interfaces.UserService;
-import com.javamentor.kidstarter.service.interfaces.*;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 
 
 public class DataInitializer {
@@ -92,19 +79,19 @@ public class DataInitializer {
         List<Role> mentorRoles = new ArrayList<>(Arrays.asList(roleUser, roleMentor, roleSponsor));
 
         User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
-                roles, 23, "MALE",23-12-34,"admin@mail.ru","RUSSIA","house 8");
+                roles, 23, "MALE","231","admin@mail.ru","RUSSIA","house 8");
 
 	    User user2  = new User("Vovan","Vovanov","Huevich","user2","qwer",
-			    roles,28, "MALE",23-12-34,"user@mail.ru","Ukraine","house 15");
+			    roles,28, "MALE","32131","user@mail.ru","Ukraine","house 15");
 
         User kidUser  = new User("Kid","Kid","Kid","kid","qwer",
-                kidRoles,28, "MALE",23-12-34,"Kid@mail.ru","RUSSIA","house 15");
+                kidRoles,28, "MALE","2131","Kid@mail.ru","RUSSIA","house 15");
 
         User teacherUser  = new User("Teacher","Teacher","Teacher","teacher","qwer",
-                teacherRoles,28, "MALE",23-12-34,"Teacher@mail.ru","RUSSIA","house 15");
+                teacherRoles,28, "MALE","21312","Teacher@mail.ru","RUSSIA","house 15");
 
         User mentorUser  = new User("Mentor","Mentor","Mentor","mentor","qwer",
-                mentorRoles,28, "MALE",23-12-34,"Mentor@mail.ru","RUSSIA","house 15");
+                mentorRoles,28, "MALE","32131","Mentor@mail.ru","RUSSIA","house 15");
 
 
       user1 = userService.addUser(user1);
