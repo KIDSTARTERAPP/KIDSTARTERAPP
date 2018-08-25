@@ -1,36 +1,85 @@
 $(document).ready(function () {
-    setActiveLink();
+    setLinks();
+    setBreadCrumb();
+
 });
 
-function setActiveLink() {
+function setBreadCrumb() {
+    let pathname = document.location.pathname;
+    var link = "";
+    var name;
+    var myArray = {
+
+        "main": "Главная",
+        "createorganization": "Добавление организации",
+        "mentor": "Главная страница ментора",
+        "requests": "Список не активных заявок",
+        "activerequests": "Список активных заявок",
+        "profile": "Профиль",
+        "admin": "Главная страница админа",
+        "organizations": "Список организаций",
+        "users": "Список пользователей",
+        "tags": "Теги",
+        "jobs": "Интересы",
+        "organization": "Главная страница организации",
+        "kids": "Дети",
+        "add": "Добавление",
+        "teachers": "Учителя",
+        "addrequest": "Добавление  запроса",
+        "kid": "Главная страница ребёнка",
+        "registration": "Регистрация",
+        "login": "Логин"
+
+    };
+
+    var linksArray = ["editUser"];
+
+    let splitter = pathname.split("/");
+    for (let i  in splitter) {
+
+        if (i == 0) {
+            continue;
+        }
+
+        name = myArray[splitter[i]];
+        if (linksArray.includes(splitter[i])) {
+            link += "/" + splitter[i];
+            continue;
+        }
+        link += "/" + splitter[i];
+        console.log(link);
+        if (i == splitter.length - 1) {
+            $('#breadcrumbMain').append("<li class='breadcrumb-item active' >" + name + "</li>");
+        }
+        else {
+            $('#breadcrumbMain').append("<li class='breadcrumb-item'><a href=" + link + " >" + name + "</li>");
+        }
+    }
+
+}
+
+function setLinks() {
     let pathname = document.location.pathname;
 
     if (pathname.includes('/main')) {
-        var main = document.getElementById("main-link");
-        main.className += "active";
+        $('#main-link').attr('class', 'active');
     }
-    if (pathname.includes('/tagPage')) {
-        var tag = document.getElementById("tage-link");
-        tag.className += "active";
+    if (pathname.includes('/activerequests')) {
+        $('#active-requests-link').attr('class', 'active');
     }
-    if (pathname.includes('/cretejobtag')) {
-        var createTag = document.getElementById("create-tag-link");
-        createTag.className += "active";
+    if (pathname == ('/profile')) {
+        $('#profile-link').attr('class', 'active');
     }
-    if (pathname.includes('/create_user')) {
-        var createUser = document.getElementById("create-user-link");
-        createUser.className += "active";
+
+
+    if (pathname.includes('/mentor')) {
+        $('#mentor-link').attr('class', 'active');
     }
-    if (pathname.includes('/editUser')) {
-        var editUser = document.getElementById("edit-user-link");
-        editUser.className += "active";
+
+    if (pathname.includes('/organization')) {
+        $('#organization-link').attr('class', 'active');
     }
-    if (pathname.includes("/jobPage")) {
-        var job = document.getElementById("jobs-link");
-        job.className += "active";
-    }
-    if (pathname.includes("/adminpage")) {
-        var admin = document.getElementById("users-link");
-        admin.className += "active";
+    if (pathname.includes('/kid')) {
+        $('#kid-link').attr('class', 'active');
     }
 }
