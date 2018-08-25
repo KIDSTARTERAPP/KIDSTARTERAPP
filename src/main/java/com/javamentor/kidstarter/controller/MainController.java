@@ -103,4 +103,9 @@ public class MainController {
     public String showTeacherJobPickPage() {
     return "teacher_pick_jobs";
     }
+
+    @GetMapping ("/organizationInfoPage/{id}/createRequest")
+    public String showNewRequestPage() {
+        return "create_request";
+    }
 }
