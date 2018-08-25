@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -107,28 +106,36 @@ public class MainController {
 
     @GetMapping("/teacher/jobs")
     public String showTeacherJobPickPage() {
-    return "teacher_pick_jobs";
+        return "teacher_pick_jobs";
     }
 
     @GetMapping("/organization/kids/add")
     public String createKidPage() {
         return "createKid";
     }
+
     @GetMapping("/organization/kids")
     public String getAllKids() {
         return "getAllKids";
     }
+
     @GetMapping("/organization/kids/{id}")
     public String showKidEdit(@PathVariable("id") String id) {
         return "editKid";
     }
 
     @GetMapping("/organization/teachers/add")
-    public String createTeacher(){
+    public String createTeacher() {
         return "createTeacher";
     }
+
+    @GetMapping("/organization/teachers/{id}")
+    public String editTeacher(@PathVariable("id") String id) {
+        return "editTeacher";
+    }
+
     @GetMapping("/organization/teachers")
     public String getAllTeachers() {
-        return "getAllTeachers";
+        return "allTeachers";
     }
 }

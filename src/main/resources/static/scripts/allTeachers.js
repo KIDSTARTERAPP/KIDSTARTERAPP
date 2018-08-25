@@ -1,20 +1,17 @@
 $(document).ready(function () {
-    fillusertable();
+    fillteacherstable();
 });
 
-function fillusertable(){
-    $("#table_body_kidlist").empty();
+function fillteacherstable(){
+    $("#table_body_teacherslist").empty();
     $.ajax({
         type: "GET",
-        url: "/api/organization/kids/all",
+        url: "/api/organization/teachers",
         datatype: "JSON",
         success: function (response) {
             for (var i in response) {
-                var roles = [];
-                for (var j in response[i].roles) {
-                    roles.push(response[i].roles[j].name);
-                }
-                $("#table_body_kidlist").append("<tr><td>" +
+
+                $("#table_body_teacherslist").append("<tr><td>" +
                     response[i].id + "</td><td>" +
                     response[i].firstName + "</td><td>" +
                     response[i].lastName + "</td><td>" +
@@ -27,27 +24,27 @@ function fillusertable(){
                     response[i].email + "</td><td>" +
                     response[i].country + "</td><td>" +
                     response[i].address + "</td><td>" +
-                    "<form class='navbar-form' onsubmit='edit_kid(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Изменить'></form></td><td>" +
-                    "<form class='navbar-form' onsubmit='delete_kid(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Удалить'></form></td><td>" +
+                    "<form class='navbar-form' onsubmit='edit_teacher(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Изменить'></form></td><td>" +
+                    "<form class='navbar-form' onsubmit='delete_teacher(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Удалить'></form></td><td>" +
                     "</tr>");
             }
         }
     })
 }
 
-function edit_kid(userid) {
-    var url = "/organization/kids/" + userid;
+function edit_teacher(userid) {
+    var url = "/organization/teachers/" + userid;
     window.location.replace(url);
 }
 
-function delete_kid(userid) {
-    var url = "/api/organization/kid/" + userid;
+function delete_teacher(userid) {
+    var url = "/api/organization/teacher/" + userid;
     $.ajax({
         type: "DELETE",
         url: url,
         datatype: "JSON",
         success: function () {
-            fillusertable();
+            fillteacherstable();
         }
     });
 }

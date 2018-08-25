@@ -36,25 +36,30 @@ public class RestTeacherController {
         this.roleService = roleService;
     }
 
-    @GetMapping("/teacher/{id}")
+    @GetMapping("/organization/teachers/{id}")
     public ResponseEntity<?> getTeacherById(@PathVariable("id") long id) {
-        Teacher teacher = teacherService.getTeacherById(id);
+        User  teacher = userService.getUserById(id);
         return new ResponseEntity<>(teacher, HttpStatus.OK);
     }
 
-    @GetMapping("/teachers")
-    public ResponseEntity<List<Teacher>> listAllTeachers() {
-        List<Teacher> teachers = teacherService.getAllTeachers();
+    @GetMapping("/organization/teachers")
+    public ResponseEntity<List<User>> listAllTeachers() {
+        List<User> teachers = new ArrayList<>();
+        for (Teacher teacher : teacherService.getAllTeachers()) {
+            User user = teacher.getUser();
+            teachers.add(user);
+        }
         return new ResponseEntity<>(teachers, HttpStatus.OK);
     }
 
-    @DeleteMapping("/teacher/{id}")
+    @DeleteMapping("/organization/teacher/{id}")
     public HttpStatus deleteTeacherById(@PathVariable("id") long id) {
-        teacherService.deleteTeacherById(id);
+        Teacher teacher = teacherService.getUserTeacherById(id);
+        teacherService.deleteTeacherById(teacher.getId());
         return HttpStatus.OK;
     }
 
-    @PostMapping("/teacher")
+    @PostMapping("/organization/teacher")
     public HttpStatus addTeacher(@RequestBody User user) {
 
         List<Role> roles = new ArrayList<>();
@@ -71,9 +76,9 @@ public class RestTeacherController {
         return HttpStatus.OK;
     }
 
-    @PutMapping("/teacher")
-    public ResponseEntity<?> updateTeacher(@ModelAttribute("teacher") Teacher teacher) {
-        teacherService.updateTeacher(teacher);
-        return new ResponseEntity<>(teacher, HttpStatus.OK);
+    @PutMapping("/organization/teachers")
+    public ResponseEntity<?> updateTeacher(@RequestBody User user) {
+        userService.updateUser(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
