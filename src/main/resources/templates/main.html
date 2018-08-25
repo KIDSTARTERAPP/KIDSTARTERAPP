@@ -8,18 +8,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="/css/styles.css"/>
-
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
 
     <title>KidStarter</title>
-    <script
-            src="http://code.jquery.com/jquery-3.3.1.js"
+
+    <script src="http://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
 
-    <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -27,9 +24,8 @@
 
 <body>
 <th:block sec:authorize="isAuthenticated()">
-    <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
+    <div th:replace="fragments/htmlFragment::general-nav-sidebar"></div>
 </th:block>
-<!--<div th:replace="fragments/htmlFragment::nav-sidebar"></div>-->
 <div th:replace="fragments/htmlFragment::main-header"></div>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

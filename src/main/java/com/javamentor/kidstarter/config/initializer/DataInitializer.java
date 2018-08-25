@@ -9,20 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import com.javamentor.kidstarter.model.user.Role;
-import com.javamentor.kidstarter.model.user.User;
-import com.javamentor.kidstarter.service.interfaces.JobService;
-import com.javamentor.kidstarter.service.interfaces.RoleService;
-import com.javamentor.kidstarter.service.interfaces.TagService;
-import com.javamentor.kidstarter.service.interfaces.UserService;
-import com.javamentor.kidstarter.service.interfaces.*;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-
 
 public class DataInitializer {
 
@@ -60,19 +46,19 @@ public class DataInitializer {
         roleService.addRole(new Role("USER"));
         roleService.addRole(new Role("ADMIN"));
         roleService.addRole(new Role("TEACHER"));
-        roleService.addRole(new Role("SPONSOR"));
+//        roleService.addRole(new Role("SPONSOR"));
         roleService.addRole(new Role("OWNER"));
         roleService.addRole(new Role("MENTOR"));
-        roleService.addRole(new Role("MODERATOR"));
+//        roleService.addRole(new Role("MODERATOR"));
         roleService.addRole(new Role("KID"));
 
         Role roleUser = roleService.getByName("USER");
         Role roleAdmin = roleService.getByName("ADMIN");
         Role roleTeacher = roleService.getByName("TEACHER");
-        Role roleSponsor = roleService.getByName("SPONSOR");
+//        Role roleSponsor = roleService.getByName("SPONSOR");
         Role roleOwner = roleService.getByName("OWNER");
         Role roleMentor = roleService.getByName("MENTOR");
-        Role roleModerator = roleService.getByName("MODERATOR");
+//        Role roleModerator = roleService.getByName("MODERATOR");
         Role roleKid = roleService.getByName("KID");
 
         List<Role> adminRole = new ArrayList<>(Arrays.asList(roleAdmin));
@@ -80,9 +66,9 @@ public class DataInitializer {
         List<Role> kidRoles = new ArrayList<>(Arrays.asList(roleKid));
         List<Role> teacherRoles = new ArrayList<>(Arrays.asList(roleTeacher));
         List<Role> mentorRoles = new ArrayList<>(Arrays.asList(roleUser, roleMentor));
-        List<Role> userRoles = new ArrayList<>(Arrays.asList(roleUser, roleSponsor));
+        List<Role> userRoles = new ArrayList<>(Arrays.asList(roleUser));
         List<Role> ownerRoles = new ArrayList<>(Arrays.asList(roleOwner));
-        List<Role> moderatorRoles = new ArrayList<>(Arrays.asList(roleModerator));
+//        List<Role> moderatorRoles = new ArrayList<>(Arrays.asList(roleModerator));
 
         User adminUser = new User("Ivan", "Ivanov", "Ivanovich", "ADMIN", "123",
                 adminRole, 23, "MALE", 23 - 12 - 34, "admin@mail.ru", "RUSSIA", "house 8");
@@ -102,8 +88,8 @@ public class DataInitializer {
         User ownerUser = new User("Mentor", "Mentor", "Mentor", "owner", "123",
                 ownerRoles, 28, "MALE", 23 - 12 - 34, "Mentor@mail.ru", "RUSSIA", "house 15");
 
-        User moderatorUser = new User("Mentor", "Mentor", "Mentor", "moderator", "123",
-                moderatorRoles, 28, "MALE", 23 - 12 - 34, "Mentor@mail.ru", "RUSSIA", "house 15");
+//        User moderatorUser = new User("Mentor", "Mentor", "Mentor", "moderator", "123",
+//                moderatorRoles, 28, "MALE", 23 - 12 - 34, "Mentor@mail.ru", "RUSSIA", "house 15");
 
 
         adminUser = userService.addUser(adminUser);
@@ -112,7 +98,7 @@ public class DataInitializer {
         teacherUser = userService.addUser(teacherUser);
         userUser = userService.addUser(userUser);
         ownerUser = userService.addUser(ownerUser);
-        moderatorUser = userService.addUser(moderatorUser);
+//        moderatorUser = userService.addUser(moderatorUser);
 
         Tag tag1 = tagService.addTag(new Tag("Программирование", new HashSet<>()));
         Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
