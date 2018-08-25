@@ -98,8 +98,18 @@ public class MainController {
         return "kid_pick_jobs";
     }
 
+    @GetMapping("/teacher")
+    public String showTeacherPage() {
+        return "teacher-page";
+    }
+
     @GetMapping("/teacher/jobs")
     public String showTeacherJobPickPage() {
-    return "teacher_pick_jobs";
+    return "teacher-pick-jobs";
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "test";
     }
 }

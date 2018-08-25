@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
             <ul class="nav nav-sidebar">
-                <li><a href="/main">Главная</a></li>
+                <li class="active"><a href="/main">Главная</a></li>
                 <li><a href="/tagPage">Теги</a></li>
                 <li><a href="/cretejobtag">Создать интерес/тэг</a></li>
                 <li><a href="/createUser">Создать пользователя</a></li>
@@ -37,11 +37,15 @@
                 <li><a href="/editUser/1">Изменить пользователя</a></li>
                 <li><a href="/jobPage">Интересы</a></li>
                 <li><a href="/adminpage">Пользователи</a></li>
+                <li class="active"><a href="/jobPage">Выбор интересов</a></li>
                 <li><a href="#">Контакты</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h2 class="sub-header">Список интересов:</h2>
+            <form class="navbar-form" action="/teacher" method="get">
+                <input class="form-control" type="submit" value="Назад">
+            </form>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -55,7 +59,7 @@
                         <th>Учителя</th>
                     </tr>
                     </thead>
-                    <tbody id="table_joblist">
+                    <tbody id="table_pick_joblist">
                     </tbody>
                 </table>
             </div>
@@ -69,7 +73,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
-<script src="/scripts/all_scripts.js"></script>
-<script src="/scripts/jobPage.js"></script>
+<script async  src="/scripts/all_scripts.js"></script>
+<script async  src="/scripts/teacher_pick_jobs.js"></script>
 </body>
 </html>

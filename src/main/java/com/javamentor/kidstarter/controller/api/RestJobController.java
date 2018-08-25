@@ -61,6 +61,13 @@ public class RestJobController {
         return new ResponseEntity<>(kidService.getUserKidById(principal.getId()).getJobInterest(), HttpStatus.OK);
     }
 
+    @GetMapping("/jobs/teacher")
+    public ResponseEntity<Set<Job>> listAllTeacherJobs() {
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Set<Job> set = teacherService.getUserTeacherById(principal.getId()).getSpecialization();
+        return ResponseEntity.ok(set);
+    }
+
     @DeleteMapping("/job/{id}")
     public HttpStatus deleteJobById(@PathVariable("id") long id) {
         jobService.deleteJobById(id);
