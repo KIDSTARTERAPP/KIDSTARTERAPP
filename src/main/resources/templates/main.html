@@ -29,27 +29,8 @@
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
 
-<th:block sec:authorize="hasAnyAuthority('USER')">
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="/main">Главная</a></li>
-                <li><a href="/tagPage">Теги</a></li>
-                <li><a href="/cretejobtag">Создать интерес/тэг</a></li>
-                <li class="active"><a href="/createUser">Создать пользователя</a></li>
-                <li class="active"><a href="/organizationPage">Список организаций</a></li>
-                <li class="active"><a href="/createOrganization">Создать организацию</a></li>
-                <li><a href="/editOrganization/1">Изменить организацию</a></li>
-                <li><a href="/editUser/1">Изменить пользователя</a></li>
-                <li><a href="/jobPage">Интересы</a></li>
-                <li><a href="/jobPage">Выбор интересов</a></li>
-                <li><a href="/adminpage">Пользователи</a></li>
-                <li><a href="/kid">Страница ребенка</a></li>
-                <li><a href="#">Контакты</a></li>
-            </ul>
-        </div>
-</th:block>
+<div th:replace="fragments/htmlFragment::nav-sidebar"></div>
+
 <div class="text-center">
             <h1 class="page-header">Здравствуй, добрый человек!</h1>
             <div>

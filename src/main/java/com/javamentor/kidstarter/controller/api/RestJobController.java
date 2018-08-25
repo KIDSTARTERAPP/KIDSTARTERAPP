@@ -46,7 +46,7 @@ public class RestJobController {
 
     @GetMapping("/job/{id}/tags")
     public ResponseEntity<?> getJobsById(@PathVariable("id") long id) {
-        return new ResponseEntity<>(jobService.getJobById(id).getTags(), HttpStatus.OK);
+        return new ResponseEntity<>(jobService.getAllJob(), HttpStatus.OK);
     }
 
     @GetMapping("/jobs")
@@ -76,9 +76,6 @@ public class RestJobController {
     @PutMapping("/job")
     public ResponseEntity<?> updateJob(@RequestBody Job job) {
         Job currentJob = jobService.getJobById(job.getId());
-        job.setKids(currentJob.getKids());
-        job.setMentors(currentJob.getMentors());
-        job.setTeachers(currentJob.getTeachers());
         jobService.updateJob(job);
         return new ResponseEntity<>(job, HttpStatus.OK);
     }
