@@ -30,10 +30,10 @@ public class RestKidController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping("/kid/{id}")
+    @GetMapping("/organization/kid/{id}")
     public ResponseEntity<?> getKidId(@PathVariable("id") long id) {
-        Kid kid = kidService.getKidById(id);
-        return new ResponseEntity<>(kid, HttpStatus.OK);
+        User user = userService.getUserById(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @GetMapping("/organization/kids/all")
@@ -44,12 +44,6 @@ public class RestKidController {
             kids.add(user);
         }
         return new ResponseEntity<>(kids, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/kid/{id}")
-    public HttpStatus deleteKidById(@PathVariable("id") long id) {
-        kidService.deleteKidById(id);
-        return HttpStatus.OK;
     }
 
     @PostMapping("/organization/kid/create")
@@ -70,10 +64,14 @@ public class RestKidController {
 
     @PutMapping("/organization/kid")
     public ResponseEntity<?> updateKid(@RequestBody User user) {
-        Kid kid = kidService.getUserKidById(user.getId());
-        userService.addUser(user);
-        kid.setUser(user);
-        kidService.addKid(kid);
-        return new ResponseEntity<>(kid, HttpStatus.OK);
+        userService.updateUser(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/organization/kid/{id}")
+    public HttpStatus deleteKidById(@PathVariable("id") long id) {
+        Kid kid = kidService.getUserKidById(id);
+        kidService.deleteKidById(kid.getId());
+        return HttpStatus.OK;
     }
 }

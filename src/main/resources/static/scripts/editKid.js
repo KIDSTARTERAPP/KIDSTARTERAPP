@@ -5,7 +5,7 @@ $(document).ready(function () {
 function fillform() {
     var pathname = window.location.pathname;
     var id = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
-    var url = "/api/user/" + id;
+    var url = "/api/organization/kid/" + id;
     $.ajax({
         type: "GET",
         url: url,
@@ -31,7 +31,7 @@ function fillform() {
     })
 }
 
-function updateUser() {
+function updateKid() {
     var role_list = JSON.stringify($("#role").val());
     $.ajax({
         type: "GET",
@@ -63,12 +63,12 @@ function updateUser() {
 function send_update(data) {
     $.ajax({
         type: "PUT",
-        url: "/api/user/",
+        url: "/api/organization/kid",
         contentType : "application/json; charset=UTF-8",
         encoding: "UTF-8",
         data: data,
         success: function (response) {
-            window.location.replace("/adminpage");
+            window.location.replace("/organization/kids");
         }
     })
 }

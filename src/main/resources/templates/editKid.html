@@ -34,24 +34,39 @@
             <div class="table-responsive">
                 <form class="form-signup" onsubmit= "updateKid();return false">
                     <input id="hidden_id" type="hidden">
-                    <label for="firstname">First Name</label>
+                    <label for="firstname">Имя</label>
                     <input id="firstname" class="form-control" required type="text" name="firstname"/>
 
-                    <label for="lastname">Last Name</label>
+                    <label for="lastname">Фамилия</label>
                     <input id="lastname" class="form-control" required type="text" name="lastname"/>
 
-                    <label for="patronymic">Patronymic</label>
+                    <label for="patronymic">Отчество</label>
                     <input id="patronymic" class="form-control" required type="text" name="patronymic"/>
 
-                    <label for="login">Login</label>
+                    <label for="login">Логин</label>
                     <input id="login" class="form-control" required type="text" name="username"/>
 
-                    <label for="password">Password</label>
+                    <label for="password">Пароль</label>
                     <input id="password" class="form-control" required type="password" name="password"/>
+
+                    <div hidden class="form-group">
+                        <label class="control-label center" for="role">Выберите роль пользователя</label>
+                        <div class="">
+                            <select multiple name="role" class="form-control input-width center-block" id="role">
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="TEACHER">TEACHER</option>
+                                <option value="SPONSOR">SPONSOR</option>
+                                <option value="OWNER">OWNER</option>
+                                <option value="MENTOR">MENTOR</option>
+                                <option value="MODERATOR">MODERATOR</option>
+                                <option value="KID">KID</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <input id="createDate" type="hidden">
 
-                    <label for="age">Age</label>
+                    <label for="age">Возраст</label>
                     <input id="age" class="form-control" required type="number" name="age"/>
 
                     <div class="form-group">
@@ -64,16 +79,16 @@
                         </div>
                     </div>
 
-                    <label for="phone">Phone</label>
+                    <label for="phone">Телефон</label>
                     <input id="phone" class="form-control" required type="number" name="phone"/>
 
                     <label for="email">Email</label>
                     <input id="email" class="form-control" required type="email" name="email"/>
 
-                    <label for="country">Country</label>
+                    <label for="country">Страна</label>
                     <input id="country" class="form-control" required type="text" name="country"/>
 
-                    <label for="address">Address</label>
+                    <label for="address">Адресс</label>
                     <input id="address" class="form-control" required type="text" name="address"/>
                     <br/>
                     <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit" value="Обновить пользователя" />

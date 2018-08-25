@@ -16,10 +16,11 @@ function fillusertable(){
                 }
                 $("#table_body_kidlist").append("<tr><td>" +
                     response[i].id + "</td><td>" +
-                    response[i].lastName + "</td><td>" +
                     response[i].firstName + "</td><td>" +
+                    response[i].lastName + "</td><td>" +
                     response[i].patronymic + "</td><td>" +
                     response[i].login + "</td><td>" +
+                    roles.hidden + "</td><td>" +
                     response[i].createDate + "</td><td>" +
                     response[i].age + "</td><td>" +
                     response[i].sex + "</td><td>" +
@@ -27,21 +28,21 @@ function fillusertable(){
                     response[i].email + "</td><td>" +
                     response[i].country + "</td><td>" +
                     response[i].address + "</td><td>" +
-                    "<form class='navbar-form' onsubmit='edit_user(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Изменить'></form></td><td>" +
-                    "<form class='navbar-form' onsubmit='delete_user(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Удалить'></form></td><td>" +
+                    "<form class='navbar-form' onsubmit='edit_kid(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Изменить'></form></td><td>" +
+                    "<form class='navbar-form' onsubmit='delete_kid(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Удалить'></form></td><td>" +
                     "</tr>");
             }
         }
     })
 }
 
-function edit_user(userid) {
+function edit_kid(userid) {
     var url = "/organization/kids/" + userid;
     window.location.replace(url);
 }
 
-function delete_user(userid) {
-    var url = "./api/user/" + userid;
+function delete_kid(userid) {
+    var url = "/api/organization/kid/" + userid;
     $.ajax({
         type: "DELETE",
         url: url,
