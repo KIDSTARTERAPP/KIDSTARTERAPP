@@ -1,16 +1,14 @@
 package com.javamentor.kidstarter.model.user;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -44,15 +42,9 @@ public class Organization {
     @JoinColumn (name = "account_fk")
     private Account account;
 
-    @Column
-    @OneToMany
-    @JoinColumn (name = "kids")
-    private List<Kid> kid;
-
-    @Column
-    @OneToMany
-    @JoinColumn (name = "teachers")
-    private List<Teacher> teachers;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "organization")
+    private Set<Kid> kid;
 
     public Organization(String name, String address, String country, String email, Integer phone, LocalDateTime createDate, Account account) {
         this.name = name;
@@ -63,8 +55,4 @@ public class Organization {
         this.createDate = createDate;
         this.account = account;
     }
-
-    //    @ManyToMany (cascade = CascadeType.ALL)
-//    @JoinColumn (name = "request", foreignKey = @ForeignKey(name = "organization_request_fk"))
-//    private Set<Request> request;
 }

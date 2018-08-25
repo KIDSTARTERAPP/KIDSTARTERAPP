@@ -20,7 +20,6 @@ function fillusertable(){
                     response[i].lastName + "</td><td>" +
                     response[i].patronymic + "</td><td>" +
                     response[i].login + "</td><td>" +
-                    roles.hidden + "</td><td>" +
                     response[i].createDate + "</td><td>" +
                     response[i].age + "</td><td>" +
                     response[i].sex + "</td><td>" +

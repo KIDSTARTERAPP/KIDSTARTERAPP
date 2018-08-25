@@ -48,7 +48,7 @@ public class OrganizationServeImpl implements OrganizationService {
 	}
 
 	@Override
-	public List<User> getAllKidThisOrganization() {
-		return organiztionDao.getAllKidThisOrganization();
+	public List<User> getAllKidThisOrganization(long id) {
+		return organiztionDao.getAllKidThisOrganization(id);
 	}
 }

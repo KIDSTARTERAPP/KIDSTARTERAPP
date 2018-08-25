@@ -6,5 +6,5 @@ import com.javamentor.kidstarter.model.user.User;
 import java.util.List;
 
 public interface OrganiztionDao extends GenericDao<Long,Organization> {
-    List<User> getAllKidThisOrganization();
+    List<User> getAllKidThisOrganization(long id);
 }

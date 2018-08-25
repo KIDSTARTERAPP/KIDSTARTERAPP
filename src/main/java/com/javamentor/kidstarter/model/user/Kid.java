@@ -28,8 +28,9 @@ public class Kid {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne
-    @JoinColumn(name = "organization_id")
+    @JsonIgnore
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn (name="organization_id")
     private Organization organization;
 
     @JsonIgnore

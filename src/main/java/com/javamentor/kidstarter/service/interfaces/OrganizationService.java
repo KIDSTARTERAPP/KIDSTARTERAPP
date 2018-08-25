@@ -13,5 +13,5 @@ public interface OrganizationService {
 	List<Organization> getAllOrganization();
 	void deleteOrganizationById(Long id);
 	void updateOrganization(Organization organization);
-	List<User> getAllKidThisOrganization();
+	List<User> getAllKidThisOrganization(long id);
 }

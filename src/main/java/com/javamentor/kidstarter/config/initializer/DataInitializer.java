@@ -9,18 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import com.javamentor.kidstarter.model.user.Role;
-import com.javamentor.kidstarter.model.user.User;
-import com.javamentor.kidstarter.service.interfaces.JobService;
-import com.javamentor.kidstarter.service.interfaces.RoleService;
-import com.javamentor.kidstarter.service.interfaces.TagService;
-import com.javamentor.kidstarter.service.interfaces.UserService;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 
 
 public class DataInitializer {
@@ -38,7 +26,7 @@ public class DataInitializer {
     private RoleService roleService;
 
     @Autowired
-	private AccountService accountService;
+    private AccountService accountService;
 
     @Autowired
     private OrganizationService organizationService;
@@ -58,7 +46,7 @@ public class DataInitializer {
     @Autowired
     private RequestService requestService;
 
-    public void init(){
+    public void init() {
 
         Role role0 = new Role("USER");
         Role role1 = new Role("ADMIN");
@@ -93,69 +81,72 @@ public class DataInitializer {
         List<Role> teacherRoles = new ArrayList<>(Arrays.asList(roleUser, roleTeacher, roleSponsor));
         List<Role> mentorRoles = new ArrayList<>(Arrays.asList(roleUser, roleMentor, roleSponsor));
 
-        User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
-                roles, 23, "MALE",23-12-34,"admin@mail.ru","RUSSIA","house 8");
+        User user1 = new User("Ivan", "Ivanov", "Ivanovich", "qwer", "1234",
+                roles, 23, "MALE", 23 - 12 - 34, "admin@mail.ru", "RUSSIA", "house 8");
 
-	    User user2  = new User("Vovan","Vovanov","Huevich","user2","qwer",
-			    roles,28, "MALE",23-12-34,"user@mail.ru","Ukraine","house 15");
+        User user2 = new User("Vovan", "Vovanov", "Huevich", "user2", "qwer",
+                roles, 28, "MALE", 23 - 12 - 34, "user@mail.ru", "Ukraine", "house 15");
 
-        User kidUser  = new User("Kid","Kid","Kid","kid","qwer",
-                kidRoles,28, "MALE",23-12-34,"Kid@mail.ru","RUSSIA","house 15");
+        User kidUser = new User("Kid", "Kid", "Kid", "kid", "qwer",
+                kidRoles, 28, "MALE", 23 - 12 - 34, "Kid@mail.ru", "RUSSIA", "house 15");
 
-        User kidUser2  = new User("Kid2","Kid2","Kid2","kid2","qwer",
-                kidRoles,28, "MALE",23-12-34,"Kid2@mail.ru","RUSSIA","house 15");
+        User kidUser2 = new User("Kid2", "Kid2", "Kid2", "kid2", "qwer",
+                kidRoles, 28, "MALE", 23 - 12 - 34, "Kid2@mail.ru", "RUSSIA", "house 15");
 
-        User teacherUser  = new User("Teacher","Teacher","Teacher","teacher","qwer",
-                teacherRoles,28, "MALE",23-12-34,"Teacher@mail.ru","RUSSIA","house 15");
+        User teacherUser = new User("Teacher", "Teacher", "Teacher", "teacher", "qwer",
+                teacherRoles, 28, "MALE", 23 - 12 - 34, "Teacher@mail.ru", "RUSSIA", "house 15");
 
-        User mentorUser  = new User("Mentor","Mentor","Mentor","mentor","qwer",
-                mentorRoles,28, "MALE",23-12-34,"Mentor@mail.ru","RUSSIA","house 15");
+        User mentorUser = new User("Mentor", "Mentor", "Mentor", "mentor", "qwer",
+                mentorRoles, 28, "MALE", 23 - 12 - 34, "Mentor@mail.ru", "RUSSIA", "house 15");
 
 
-      user1 = userService.addUser(user1);
-      user2 = userService.addUser(user2);
-      kidUser = userService.addUser(kidUser);
-      kidUser2 = userService.addUser(kidUser2);
-      teacherUser = userService.addUser(teacherUser);
-      mentorUser = userService.addUser(mentorUser);
+        user1 = userService.addUser(user1);
+        user2 = userService.addUser(user2);
+        kidUser = userService.addUser(kidUser);
+        kidUser2 = userService.addUser(kidUser2);
+        teacherUser = userService.addUser(teacherUser);
+        mentorUser = userService.addUser(mentorUser);
 
-	    Tag tag1 = tagService.addTag(new Tag("Программирование", new HashSet<>()));
-	    Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
-	    Tag tag3 = tagService.addTag(new Tag("Бэкаенд", new HashSet<>()));
+        Tag tag1 = tagService.addTag(new Tag("Программирование", new HashSet<>()));
+        Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
+        Tag tag3 = tagService.addTag(new Tag("Бэкаенд", new HashSet<>()));
 
-	    Account acc1 = new Account();
-	    Account acc2 = new Account();
-	    Account acc3 = new Account();
-	    Account acc4 = new Account();
+        Account acc1 = new Account();
+        Account acc2 = new Account();
+        Account acc3 = new Account();
+        Account acc4 = new Account();
 
-	    acc1 = accountService.addAccount(acc1);
-	    acc2 = accountService.addAccount(acc2);
-	    acc3 = accountService.addAccount(acc3);
-	    acc4 = accountService.addAccount(acc4);
+        acc1 = accountService.addAccount(acc1);
+        acc2 = accountService.addAccount(acc2);
+        acc3 = accountService.addAccount(acc3);
+        acc4 = accountService.addAccount(acc4);
 
-        Organization org1 = new Organization("Name1","adress1","Мавродия", "mak@l2ff.ru", 8944,LocalDateTime.now(), acc1);
-        Organization org2 = new Organization("Name2","adress2","Мавродия", "mak@lf4f.ru", 8944,LocalDateTime.now(), acc2);
-        Organization org3 = new Organization("Name3","adress3","Мавродия", "mak@lf5f.ru", 8944,LocalDateTime.now(), acc3);
-        Organization org4 = new Organization("Name4","adress4","Мавродия", "mak@lf6f.ru", 8944,LocalDateTime.now(), acc4);
+        Organization org1 = new Organization("Name1", "adress1", "Мавродия", "mak@l2ff.ru", 8944, LocalDateTime.now(), acc1);
+        Organization org2 = new Organization("Name2", "adress2", "Мавродия", "mak@lf4f.ru", 8944, LocalDateTime.now(), acc2);
+        Organization org3 = new Organization("Name3", "adress3", "Мавродия", "mak@lf5f.ru", 8944, LocalDateTime.now(), acc3);
+        Organization org4 = new Organization("Name4", "adress4", "Мавродия", "mak@lf6f.ru", 8944, LocalDateTime.now(), acc4);
 
         org1 = organizationService.addOrganization(org1);
         org2 = organizationService.addOrganization(org2);
         org3 = organizationService.addOrganization(org3);
         org4 = organizationService.addOrganization(org4);
 
+        Owner owner1 = new Owner(null, user1);
+        Owner owner2 = new Owner(null, user2);
 
-	    Owner owner1 = new Owner(null, user1);
-	    Owner owner2 = new Owner(null, user2);
+        ownerService.addOwner(owner1);
+        ownerService.addOwner(owner2);
 
-	    ownerService.addOwner(owner1);
-	    ownerService.addOwner(owner2);
-
-
-	    Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
-	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
+        Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
+        Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
 
         Kid kid1 = kidService.addKid(new Kid(kidUser, new HashSet<>(Collections.singletonList(job1))));
         Kid kid2 = kidService.addKid(new Kid(kidUser2, new HashSet<>(Collections.singletonList(job2))));
+
+        kid1.setOrganization(org1);
+        kidService.updateKid(kid1);
+        kid2.setOrganization(org2);
+        kidService.updateKid(kid2);
 
         Teacher teacher1 = teacherService.addTeacher(new Teacher(teacherUser, new HashSet<>(Collections.singletonList(job1))));
         Teacher teacher2 = teacherService.addTeacher(new Teacher(teacherUser, new HashSet<>(Collections.singletonList(job2))));
@@ -171,7 +162,6 @@ public class DataInitializer {
 
         requestService.addRequest(request1);
         requestService.addRequest(request2);
-
 
         job1.setTags(new HashSet<>(Arrays.asList(tag1, tag3)));
         job2.setTags(new HashSet<>(Arrays.asList(tag1, tag2)));

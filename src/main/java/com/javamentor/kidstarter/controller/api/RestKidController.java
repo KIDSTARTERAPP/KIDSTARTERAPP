@@ -40,8 +40,8 @@ public class RestKidController {
     }
 
     @GetMapping("/organization/kids/all")
-    public ResponseEntity<List<User>> listAllKids() {
-        List<User> kids = organizationService.getAllKidThisOrganization();
+    public ResponseEntity<List<User>> listAllKids(long id) {
+        List<User> kids = organizationService.getAllKidThisOrganization(id);
         return new ResponseEntity<>(kids, HttpStatus.OK);
     }
 
