@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
 
     <title>KidStarter</title>
-    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,13 +23,15 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
-
+<div th:replace="fragments/htmlFragment::crumbs"></div>
+<div th:replace="fragments/htmlFragment::nav-sidebar"></div>
 
 <div class="container-fluid">
-    <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
+    <div class="row">
 
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Tag page</h1>
+        <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h2 class="sub-header">Список тегов:</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -38,15 +39,9 @@
                     <tr>
                         <th>#</th>
                         <th>Тег</th>
-                        <th>Интересы</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr th:each= "tag,stat : ${tags}">
-                        <td th:text="${stat.count}"></td>
-                        <td th:text="${tag.name}"></td>
-                        <td>Бобруйск</td>
-                    </tr>
+                    <tbody id="table_tag_list">
                     </tbody>
                 </table>
             </div>
@@ -61,5 +56,8 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<script src="/scripts/tag_page.js"></script>
+<link rel="stylesheet"   href="/css/styles.css"/>
+
 </body>
 </html>

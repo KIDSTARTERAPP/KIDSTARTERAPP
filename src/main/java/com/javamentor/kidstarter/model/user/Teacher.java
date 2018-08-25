@@ -34,14 +34,6 @@ public class Teacher  {
             inverseJoinColumns = @JoinColumn(name = "job_id") )
     private Set<Job> specialization;
 
-    @JsonIgnore
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @ManyToMany
-    @JoinTable(name = "request_to_teacher",
-            joinColumns = @JoinColumn(name = "teacher_id"),
-            inverseJoinColumns = @JoinColumn(name = "request_id"))
-    private Set<Request> requests;
 
     public Teacher(User user, Set<Job> specialization) {
         this.user = user;

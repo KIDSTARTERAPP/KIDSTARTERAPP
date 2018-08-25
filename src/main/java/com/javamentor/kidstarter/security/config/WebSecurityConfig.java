@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/main", "/style/**", "/scripts/**", "/", "/**");
+        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/main", "/css/**", "/scripts/**", "/", "/**");
     }
 
     @Override
@@ -44,9 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
 
-                .antMatchers("/main", "/style/**", "/scripts/**", "/", "/**").permitAll()
-                .antMatchers("/insert_user").permitAll()
-                .antMatchers("/main/**", "/create_user", "/style/**", "/scripts/**", "/api/**").permitAll()
+                .antMatchers("/main", "/css/**", "/scripts/**", "/", "/**").permitAll()
+                .antMatchers("/main/**", "/createUser", "/css/**", "/scripts/**", "/api/**").permitAll()
 
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()

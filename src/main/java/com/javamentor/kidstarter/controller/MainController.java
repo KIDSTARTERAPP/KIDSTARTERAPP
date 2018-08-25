@@ -63,16 +63,11 @@ public class MainController {
         return "createUser";
     }
 
-    @GetMapping("/createKid")
-    public String createKidPage() {
-        return "createKid";
-    }
-
     @GetMapping("/tagPage")
-    public String showTagsPage(Model model) {
-        model.addAttribute("tags", tagService.getAllTag());
+    public String showTagsPage() {
         return "tagPage";
     }
+
 
     @GetMapping("/requestPage")
     public String showRequestPage(Model model) {
@@ -90,13 +85,9 @@ public class MainController {
         return "organizationPage";
     }
 
-    @RequestMapping("/createOrganization")
+    @GetMapping("/createOrganization")
     public String createOrganizationPage() {
         return "createOrganization";
-    }
-    @RequestMapping("/createTeacher")
-    public String createTeacher(){
-        return "createTeacher";
     }
 
     @GetMapping("/editJob/{id}")
@@ -119,8 +110,25 @@ public class MainController {
     return "teacher_pick_jobs";
     }
 
-    @GetMapping ("/organizationInfoPage/{id}/createRequest")
-    public String showNewRequestPage() {
-        return "create_request";
+    @GetMapping("/organization/kids/add")
+    public String createKidPage() {
+        return "createKid";
+    }
+    @GetMapping("/organization/kids")
+    public String getAllKids() {
+        return "getAllKids";
+    }
+    @GetMapping("/organization/kids/{id}")
+    public String showKidEdit(@PathVariable("id") String id) {
+        return "editKid";
+    }
+
+    @GetMapping("/organization/teachers/add")
+    public String createTeacher(){
+        return "createTeacher";
+    }
+    @GetMapping("/organization/teachers")
+    public String getAllTeachers() {
+        return "getAllTeachers";
     }
 }

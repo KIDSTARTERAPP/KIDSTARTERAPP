@@ -7,13 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
+    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <title>KidStarter</title>
-    <link rel="stylesheet" href="/css/styles.css"/>
-
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -24,30 +22,37 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
-<div th:replace="fragments/htmlFragment::crumbs"></div>
 
 <div class="container-fluid">
     <div class="row">
         <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
+
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header">Список организаций:</h2>
+            <h1 class="page-header">Список детей:</h1>
+            <form class="navbar-form" action="/organization/kids/add" method="get">
+                <input class="form-control" type="submit" value="Добавить ребёнка">
+            </form>
             <div class="table-responsive">
-                <form class="navbar-form" action="/createOrganization" method="get">
-                    <input class="form-control" type="submit" value="Создать организацию">
-                </form>
-                <table class="table table-striped">
+                <table id="table_userlist"  class="table table-striped">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Название организации</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Отчество</th>
+                        <th>Логин</th>
                         <th>Дата создания</th>
-                        <th>Номер телефона</th>
-                        <th>Адресс организации</th>
-                        <th>Страна расположения</th>
-                        <th>Электронная почта</th>
+                        <th>Возраст</th>
+                        <th>Пол</th>
+                        <th>Телефон</th>
+                        <th>Почта</th>
+                        <th>Страна</th>
+                        <th>Адрес</th>
+                        <th>Изменить</th>
+                        <th>Удалить</th>
                     </tr>
                     </thead>
-                    <tbody id="table_body_organizationlist">
+                    <tbody id="table_body_kidlist">
 
                     </tbody>
                 </table>
@@ -63,6 +68,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
-<script src="/scripts/create_organization.js"></script>
+<script src="/scripts/getAllKids.js"></script>
 </body>
 </html>

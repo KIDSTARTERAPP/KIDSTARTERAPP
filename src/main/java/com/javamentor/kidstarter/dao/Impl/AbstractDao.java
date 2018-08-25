@@ -41,7 +41,6 @@ public abstract class AbstractDao<PK, T> {
 
 	public T persist(T entity) {
 		entityManager.persist(entity);
-		entityManager.flush();
 		return entity;
 	}
 
