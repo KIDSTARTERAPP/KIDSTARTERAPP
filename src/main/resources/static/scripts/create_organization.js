@@ -1,4 +1,4 @@
-function createOrganization() {
+function create_organization() {
     let url = '/api/organization';
     let wrap = {
         name: $("#name").val(),
@@ -45,6 +45,7 @@ function fill_organization_table(){
                     response[i].email + "</td><td>" +
                     "<form class='navbar-form' onsubmit='edit_organization(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Изменить'></form></td><td>" +
                     "<form class='navbar-form' onsubmit='delete_organization(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Удалить'></form></td><td>" +
+                    "<form class='navbar-form' onsubmit='show_organization_list(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Информация об организации'></form></td><td>" +
                     "</tr>");
             }
         }
@@ -53,6 +54,11 @@ function fill_organization_table(){
 
 function edit_organization(organizationId) {
     var url = "/editOrganization/" + organizationId;
+    window.location.replace(url);
+}
+
+function show_organization_list(requestId) {
+    var url = "/organizationInfoPage/" + requestId;
     window.location.replace(url);
 }
 

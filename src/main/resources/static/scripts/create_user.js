@@ -1,4 +1,4 @@
-function createUser() {
+function create_user() {
     var role_list = JSON.stringify($("#role").val());
     $.ajax({
         type: "GET",

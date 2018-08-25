@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
 
     <title>KidStarter</title>
-    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,10 +27,24 @@
 
 
 <div class="container-fluid">
-    <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
+            <ul class="nav nav-sidebar nav-stacked">
+                <li class="active"><a href="/main">Главная</a></li>
+                <li><a href="/tagPage">Теги</a></li>
+                <li><a href="/cretejobtag">Создать интерес/тэг</a></li>
+                <li class="active"><a href="/createUser">Создать пользователя</a></li>
+                <li class="active"><a href="/organizationPage">Список организаций</a></li>
+                <li class="active"><a href="/createOrganization">Создать организацию</a></li>
+                <li><a href="/editOrganization/1">Изменить организацию</a></li>
+                <li><a href="/editUser/1">Изменить пользователя</a></li>
+                <li><a href="/jobPage">Интересы</a></li>
+                <li><a href="/adminpage">Пользователи</a></li>
+                <li><a href="#">Контакты</a></li>
 
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Tag page</h1>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h2 class="sub-header">Список тегов:</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -39,15 +52,9 @@
                     <tr>
                         <th>#</th>
                         <th>Тег</th>
-                        <th>Интересы</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr th:each= "tag,stat : ${tags}">
-                        <td th:text="${stat.count}"></td>
-                        <td th:text="${tag.name}"></td>
-                        <td>Бобруйск</td>
-                    </tr>
+                    <tbody id="table_tag_list">
                     </tbody>
                 </table>
             </div>
@@ -62,5 +69,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<script src="/scripts/tag_page.js"></script>
 </body>
 </html>

@@ -53,3 +53,8 @@ function add_job_to_whish_list(job_id) {
         }
     })
 }
+
+function edit_job(jobId) {
+    var url = "/editJob/" + jobId;
+    window.location.replace(url);
+}

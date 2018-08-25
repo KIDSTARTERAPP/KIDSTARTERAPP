@@ -82,5 +82,3 @@ function setLinks() {
     if (pathname.includes('/kid')) {
         $('#kid-link').attr('class', 'active');
     }
-
-}
