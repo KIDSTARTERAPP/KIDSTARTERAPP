@@ -136,6 +136,7 @@ public class DataInitializer {
         org3 = organizationService.addOrganization(org3);
         org4 = organizationService.addOrganization(org4);
 
+
 	    Owner owner1 = new Owner(null, user1);
 	    Owner owner2 = new Owner(null, user2);
 

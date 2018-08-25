@@ -4,6 +4,7 @@ import com.javamentor.kidstarter.dao.interfaces.OrganiztionDao;
 import com.javamentor.kidstarter.dao.interfaces.RoleDao;
 import com.javamentor.kidstarter.model.user.Organization;
 import com.javamentor.kidstarter.model.user.Role;
+import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.service.interfaces.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,10 @@ public class OrganizationServeImpl implements OrganizationService {
 	@Override
 	public void updateOrganization(Organization organization) {
 		organiztionDao.update(organization);
+	}
+
+	@Override
+	public List<User> getAllKidThisOrganization() {
+		return organiztionDao.getAllKidThisOrganization();
 	}
 }

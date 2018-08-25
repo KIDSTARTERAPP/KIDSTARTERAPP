@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -43,13 +44,15 @@ public class Organization {
     @JoinColumn (name = "account_fk")
     private Account account;
 
+    @Column
     @OneToMany
     @JoinColumn (name = "kids")
-    private Set<Kid> kid;
+    private List<Kid> kid;
 
+    @Column
     @OneToMany
     @JoinColumn (name = "teachers")
-    private Set<Teacher> teachers;
+    private List<Teacher> teachers;
 
     public Organization(String name, String address, String country, String email, Integer phone, LocalDateTime createDate, Account account) {
         this.name = name;

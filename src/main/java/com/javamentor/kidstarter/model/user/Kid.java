@@ -24,8 +24,12 @@ public class Kid {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "user_fk")
+    @JoinColumn(name = "user_id")
     private User user;
+    
+    @OneToOne
+    @JoinColumn(name = "organization_id")
+    private Organization organization;
 
     @JsonIgnore
     @EqualsAndHashCode.Exclude

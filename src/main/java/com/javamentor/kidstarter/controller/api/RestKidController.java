@@ -4,6 +4,7 @@ import com.javamentor.kidstarter.model.user.Kid;
 import com.javamentor.kidstarter.model.user.Role;
 import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.service.interfaces.KidService;
+import com.javamentor.kidstarter.service.interfaces.OrganizationService;
 import com.javamentor.kidstarter.service.interfaces.RoleService;
 import com.javamentor.kidstarter.service.interfaces.UserService;
 import org.slf4j.Logger;
@@ -29,6 +30,8 @@ public class RestKidController {
     private UserService userService;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private OrganizationService organizationService;
 
     @GetMapping("/organization/kid/{id}")
     public ResponseEntity<?> getKidId(@PathVariable("id") long id) {
@@ -38,11 +41,7 @@ public class RestKidController {
 
     @GetMapping("/organization/kids/all")
     public ResponseEntity<List<User>> listAllKids() {
-        List<User> kids = new ArrayList<>();
-        for (Kid kid : kidService.getAllKids()) {
-            User user = kid.getUser();
-            kids.add(user);
-        }
+        List<User> kids = organizationService.getAllKidThisOrganization();
         return new ResponseEntity<>(kids, HttpStatus.OK);
     }
 
