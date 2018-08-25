@@ -72,6 +72,10 @@ public class User implements UserDetails {
     @Column(name = "address", nullable = false)
     private String address;
 
+    @OneToOne
+    @JoinColumn(name = "account_fk")
+    private Account account;
+
 
 
     public User(String firstName, String lastName, String patronymic, String login, String password,
