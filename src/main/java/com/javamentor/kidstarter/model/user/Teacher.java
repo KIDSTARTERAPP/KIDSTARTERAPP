@@ -29,7 +29,7 @@ public class Teacher  {
 
     @JsonIgnore
     @EqualsAndHashCode.Exclude
-    @OneToMany
+    @ManyToMany
     @JoinTable(name = "job_to_teacher",
             joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "job_id") )

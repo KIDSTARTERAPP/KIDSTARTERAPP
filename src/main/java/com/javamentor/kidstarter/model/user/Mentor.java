@@ -29,8 +29,8 @@ public class Mentor  {
 
     @JsonIgnore
     @EqualsAndHashCode.Exclude
-    @OneToMany(fetch =  FetchType.EAGER)
-    @JoinTable(name = "mentor_to_jobs",
+    @ManyToMany
+    @JoinTable(name = "job_to_mentor",
             joinColumns = @JoinColumn(name = "mentor_id"),
             inverseJoinColumns = @JoinColumn(name = "job_id") )
     private Set<Job> job;

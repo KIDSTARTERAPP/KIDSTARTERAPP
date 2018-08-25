@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -24,7 +25,7 @@ public class MainController {
     OrganizationService organizationService;
 
     @RequestMapping("/main")
-    public String showMain(Model model) {
+    public String showMain() {
         return "main";
     }
 
@@ -50,7 +51,6 @@ public class MainController {
 
     @GetMapping("/jobPage")
     public String showJobPage() {
-//        model.addAttribute("tags", jobService.getAllJob());
         return "jobPage";
     }
 
@@ -60,8 +60,7 @@ public class MainController {
     }
 
     @GetMapping("/tagPage")
-    public String showTagsPage(Model model) {
-        model.addAttribute("tags", tagService.getAllTag());
+    public String showTagsPage() {
         return "tagPage";
     }
 
@@ -73,6 +72,26 @@ public class MainController {
     @RequestMapping("/createOrganization")
     public String createOrganizationPage() {
         return "createOrganization";
+    }
+
+    @GetMapping("/editJob/{id}")
+    public String showEditJob(@PathVariable("id") Long id) {
+        return "editJob";
+    }
+
+    @GetMapping("/kid")
+    public String showKidPage() {
+        return "kid_page";
+    }
+
+    @GetMapping("/kid/jobs")
+    public String showKidJobPickPage() {
+        return "kid_pick_jobs";
+    }
+
+    @GetMapping("/teacher/jobs")
+    public String showTeacherJobPickPage() {
+    return "teacher_pick_jobs";
     }
 
     @GetMapping("/organization/kids/add")
