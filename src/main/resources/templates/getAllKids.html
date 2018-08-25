@@ -7,12 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
+    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <title>KidStarter</title>
-
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -24,36 +23,37 @@
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
 
-
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
-            <ul class="nav nav-sidebar nav-stacked">
-                <li class="active"><a href="/main">Главная</a></li>
-                <li><a href="/tagPage">Теги</a></li>
-                <li><a href="/cretejobtag">Создать интерес/тэг</a></li>
-                <li class="active"><a href="/createUser">Создать пользователя</a></li>
-                <li class="active"><a href="/organizationPage">Список организаций</a></li>
-                <li class="active"><a href="/createOrganization">Создать организацию</a></li>
-                <li><a href="/editOrganization/1">Изменить организацию</a></li>
-                <li><a href="/editUser/1">Изменить пользователя</a></li>
-                <li><a href="/jobPage">Интересы</a></li>
-                <li><a href="/adminpage">Пользователи</a></li>
-                <li><a href="#">Контакты</a></li>
+        <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
 
-            </ul>
-        </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header">Список тегов:</h2>
+            <h1 class="page-header">Список детей:</h1>
+            <form class="navbar-form" action="/organization/kids/add" method="get">
+                <input class="form-control" type="submit" value="Добавить ребёнка">
+            </form>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table id="table_userlist"  class="table table-striped">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Тег</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Отчество</th>
+                        <th>Логин</th>
+                        <th>Дата создания</th>
+                        <th>Возраст</th>
+                        <th>Пол</th>
+                        <th>Телефон</th>
+                        <th>Почта</th>
+                        <th>Страна</th>
+                        <th>Адрес</th>
+                        <th>Изменить</th>
+                        <th>Удалить</th>
                     </tr>
                     </thead>
-                    <tbody id="table_tag_list">
+                    <tbody id="table_body_kidlist">
+
                     </tbody>
                 </table>
             </div>
@@ -68,6 +68,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
-<script src="/scripts/tag_page.js"></script>
+<script src="/scripts/getAllKids.js"></script>
 </body>
 </html>
