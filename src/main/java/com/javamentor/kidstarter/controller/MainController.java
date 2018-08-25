@@ -4,6 +4,7 @@ import com.javamentor.kidstarter.service.interfaces.JobService;
 import com.javamentor.kidstarter.service.interfaces.OrganizationService;
 import com.javamentor.kidstarter.service.interfaces.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,7 @@ public class MainController {
         return "cretejobtag";
     }
 
-    @RequestMapping("/adminpage")
+    @RequestMapping("/admin")
     public String showAdminPage() {
         return "adminpage";
     }
@@ -78,6 +79,7 @@ public class MainController {
     @GetMapping("/editJob/{id}")
     public String showEditJob(@PathVariable("id") Long id) {
         return "editJob";
+    }
 
     @RequestMapping("/createTeacher")
     public String createTeacher() {

@@ -10,7 +10,7 @@ function setActiveLink() {
         main.className += "active";
     }
     if (pathname.includes('/tagPage')) {
-        var tag = document.getElementById("tage-link");
+        var tag = document.getElementById("tag-link");
         tag.className += "active";
     }
     if (pathname.includes('/cretejobtag')) {

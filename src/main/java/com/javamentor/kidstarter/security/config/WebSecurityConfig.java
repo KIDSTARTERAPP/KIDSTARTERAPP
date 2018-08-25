@@ -35,29 +35,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/main", "/style/**", "/scripts/**", "/", "/**");
+        web.ignoring().antMatchers("/resources/static/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
-                .authorizeRequests()
-
-                .antMatchers("/main", "/style/**", "/scripts/**", "/").permitAll()
-                .antMatchers("/insert_user").permitAll()
-                .antMatchers("/main/**", "/createUser", "/style/**", "/scripts/**", "/api/**").permitAll()
-
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/main/login")
-                .permitAll()
+                .formLogin().loginPage("/main/login").permitAll()
                 .successHandler(securityHandler)
                 .and()
-                .logout()
-                .permitAll();
+                .logout().permitAll();
+        http
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/", "/main/**").permitAll()
+                .anyRequest().authenticated()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/users/**").hasAuthority("USER")
+                .antMatchers("/mentor/**").hasAuthority("MENTOR")
+                .antMatchers("/organization/**").hasAuthority("OWNER")
+                .antMatchers("/organization/kids/**").hasAuthority("KID");
 
         http
                 .sessionManagement()
@@ -84,6 +81,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authProvider());
     }
-
 
 }
