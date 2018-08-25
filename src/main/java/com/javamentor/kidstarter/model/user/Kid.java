@@ -3,10 +3,7 @@ package com.javamentor.kidstarter.model.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javamentor.kidstarter.model.Job;
 import com.javamentor.kidstarter.model.Request;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,7 +11,6 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode()
 @Entity
 @Table(name = "kids")
 public class Kid {
@@ -30,6 +26,7 @@ public class Kid {
 
     @JsonIgnore
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(name = "job_to_kid",
             joinColumns = @JoinColumn(name = "kid_id"),
@@ -37,6 +34,8 @@ public class Kid {
     private Set<Job> jobInterest;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "request_to_kid",
             joinColumns = @JoinColumn(name = "kid_id"),

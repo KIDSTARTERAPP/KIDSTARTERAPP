@@ -1,8 +1,6 @@
 package com.javamentor.kidstarter.controller.api;
 
-import com.javamentor.kidstarter.model.user.Organization;
-import com.javamentor.kidstarter.model.user.Owner;
-import com.javamentor.kidstarter.model.user.User;
+import com.javamentor.kidstarter.model.user.*;
 import com.javamentor.kidstarter.service.interfaces.OrganizationService;
 import com.javamentor.kidstarter.service.interfaces.OwnerService;
 import org.slf4j.Logger;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
@@ -31,6 +30,16 @@ public class OrganizationRestController {
 	public OrganizationRestController(OrganizationService organizationService, OwnerService ownerService) {
 		this.organizationService = organizationService;
 		this.ownerService = ownerService;
+	}
+
+	@GetMapping ("/organization/{id}/kids")
+	public ResponseEntity<Set<Kid>> getKidsByOrganizationId(@PathVariable("id") long id) {
+		return new ResponseEntity<>(organizationService.getOrganizationById(id).getKid(), HttpStatus.OK);
+	}
+
+	@GetMapping ("/organization/{id}/teachers")
+	public ResponseEntity<Set<Teacher>> getTeachersByOrganizationId(@PathVariable("id") long id) {
+		return new ResponseEntity<>(organizationService.getOrganizationById(id).getTeachers(), HttpStatus.OK);
 	}
 
 	@GetMapping("/organization/{id}")
@@ -72,4 +81,6 @@ public class OrganizationRestController {
 		organizationService.updateOrganization(newOrganization);
 		return new ResponseEntity<>(newOrganization, HttpStatus.OK);
 	}
+
+
 }

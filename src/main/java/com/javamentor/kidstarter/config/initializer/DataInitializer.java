@@ -173,5 +173,9 @@ public class DataInitializer {
 
         jobService.updateJob(job1);
         jobService.updateJob(job2);
+
+        org1.setKid(new HashSet<>(Collections.singletonList(kid1)));
+        org1.setTeachers(new HashSet<>(Collections.singletonList(teacher1)));
+        organizationService.updateOrganization(org1);
     }
 }
