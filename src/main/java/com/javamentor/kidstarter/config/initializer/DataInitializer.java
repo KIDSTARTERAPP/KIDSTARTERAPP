@@ -102,6 +102,9 @@ public class DataInitializer {
         User kidUser  = new User("Kid","Kid","Kid","kid","qwer",
                 kidRoles,28, "MALE",23-12-34,"Kid@mail.ru","RUSSIA","house 15");
 
+        User kidUser2  = new User("Kid2","Kid2","Kid2","kid2","qwer",
+                kidRoles,28, "MALE",23-12-34,"Kid2@mail.ru","RUSSIA","house 15");
+
         User teacherUser  = new User("Teacher","Teacher","Teacher","teacher","qwer",
                 teacherRoles,28, "MALE",23-12-34,"Teacher@mail.ru","RUSSIA","house 15");
 
@@ -112,6 +115,7 @@ public class DataInitializer {
       user1 = userService.addUser(user1);
       user2 = userService.addUser(user2);
       kidUser = userService.addUser(kidUser);
+      kidUser2 = userService.addUser(kidUser2);
       teacherUser = userService.addUser(teacherUser);
       mentorUser = userService.addUser(mentorUser);
 
@@ -150,7 +154,7 @@ public class DataInitializer {
 	    Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
 
         Kid kid1 = kidService.addKid(new Kid(kidUser, new HashSet<>(Collections.singletonList(job1))));
-        Kid kid2 = kidService.addKid(new Kid(kidUser, new HashSet<>(Collections.singletonList(job2))));
+        Kid kid2 = kidService.addKid(new Kid(kidUser2, new HashSet<>(Collections.singletonList(job2))));
 
         Teacher teacher1 = teacherService.addTeacher(new Teacher(teacherUser, new HashSet<>(Collections.singletonList(job1))));
         Teacher teacher2 = teacherService.addTeacher(new Teacher(teacherUser, new HashSet<>(Collections.singletonList(job2))));
