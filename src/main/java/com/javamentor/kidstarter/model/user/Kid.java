@@ -36,13 +36,6 @@ public class Kid {
             inverseJoinColumns = @JoinColumn(name = "job_id") )
     private Set<Job> jobInterest;
 
-    @EqualsAndHashCode.Exclude
-    @ManyToMany
-    @JoinTable(name = "request_to_kid",
-            joinColumns = @JoinColumn(name = "kid_id"),
-            inverseJoinColumns = @JoinColumn(name = "request_id"))
-    private Set<Request> requests;
-
     public Kid(User user, Set<Job> jobInterest) {
         this.user = user;
         this.jobInterest = jobInterest;
