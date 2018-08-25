@@ -2,6 +2,7 @@ package com.javamentor.kidstarter.controller;
 
 import com.javamentor.kidstarter.service.interfaces.JobService;
 import com.javamentor.kidstarter.service.interfaces.OrganizationService;
+import com.javamentor.kidstarter.service.interfaces.RequestService;
 import com.javamentor.kidstarter.service.interfaces.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class MainController {
 
     @Autowired
     OrganizationService organizationService;
+
+    @Autowired
+    RequestService requestService;
 
     @RequestMapping("/main")
     public String showMain(Model model) {
@@ -65,7 +69,13 @@ public class MainController {
         return "tagPage";
     }
 
-    @RequestMapping("/organizationInfoPage")
+    @GetMapping("/requestPage")
+    public String showRequestPage(Model model) {
+        model.addAttribute("tags", requestService.getAllRequest());
+        return "requestPage";
+    }
+
+    @RequestMapping("/organizationInfoPage/{id}")
     public String showListOrganizationPage() {
         return "organizationInfoPage";
     }
