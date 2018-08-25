@@ -26,7 +26,7 @@ public class Kid {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-    
+
     @OneToOne
     @JoinColumn(name = "organization_id")
     private Organization organization;
