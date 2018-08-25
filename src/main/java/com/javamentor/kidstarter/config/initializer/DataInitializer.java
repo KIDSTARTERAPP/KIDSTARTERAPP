@@ -95,26 +95,26 @@ public class DataInitializer {
         List<Role> mentorRoles = new ArrayList<>(Arrays.asList(roleUser, roleMentor, roleSponsor));
 
         User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
-                roles, 23, "MALE",23-12-34,"admin@mail.ru","RUSSIA","house 8");
+                roles, 23, "MALE","23-12-34","admin@mail.ru","RUSSIA","house 8");
 
         User user2  = new User("Vovan","Vovanov","Huevich","user2","qwer",
-                roles,28, "MALE",23-12-34,"user@mail.ru","Ukraine","house 15");
+                roles,28, "MALE","23-12-34","user@mail.ru","Ukraine","house 15");
 
         User kidUser1  = new User("Kid","Kid","Kid","kid","qwer",
-                kidRoles,28, "MALE",23-12-34,"Kid@mail.ru","RUSSIA","house 15");
+                kidRoles,28, "MALE","23-12-34","Kid@mail.ru","RUSSIA","house 15");
 
         User kidUser2  = new User("Kid2","Kid2","Kid2","kid2","qwer2",
-                kidRoles,32, "MALE",23-12-34,"Kid2@mail.ru","RUSSIA","house 15");
+                kidRoles,32, "MALE","23-12-34","Kid2@mail.ru","RUSSIA","house 15");
 
 
         User teacherUser1  = new User("Teacher","Teacher","Teacher","teacher","qwer",
-                teacherRoles,28, "MALE",23-12-34,"Teacher@mail.ru","RUSSIA","house 15");
+                teacherRoles,28, "MALE","23-12-34","Teacher@mail.ru","RUSSIA","house 15");
 
         User teacherUser2  = new User("Teacher2","Teacher2","Teacher","teacher2","qwer",
-                teacherRoles,28, "MALE",23-12-34,"Teacher@mail.ru","RUSSIA","house 15");
+                teacherRoles,28, "MALE","23-12-34","Teacher@mail.ru","RUSSIA","house 15");
 
         User mentorUser  = new User("Mentor","Mentor","Mentor","mentor","qwer",
-                mentorRoles,28, "MALE",23-12-34,"Mentor@mail.ru","RUSSIA","house 15");
+                mentorRoles,28, "MALE","23-12-34","Mentor@mail.ru","RUSSIA","house 15");
 
 
         user1 = userService.addUser(user1);
