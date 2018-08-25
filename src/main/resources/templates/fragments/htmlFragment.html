@@ -25,19 +25,64 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!--<li><a id="current-user" href="#Profile">Ivan</a></li>-->
                     <!--<li><a>:</a></li>-->
-                    <!--<li><a id="user-role">User</a></li>-->
                     <th:block sec:authorize="hasAnyAuthority('USER')">
-                        <li><a href="/home/mentor/add">Стать наставником</a></li>
+                        <li><a href="/mentor/add">Стать наставником</a></li>
                     </th:block>
-                    <li><a href="/main/registration">Регистрация</a></li>
-                    <li><a href="/main/login">Войти</a></li>
+                    <th:block sec:authorize="isAnonymous()">
+                        <li><a href="/main/registration">Регистрация</a></li>
+                        <li><a href="/main/login">Войти</a></li>
+                    </th:block>
                     <th:block sec:authorize="hasAnyAuthority('USER')">
-                        <li><a href="/logout">Выйти</a></li>
+                        <button data-toggle="dropdown" class="user-icon"
+                                th:text="${#authentication.principal.login}">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <th:block sec:authorize="hasAnyAuthority('USER')">
+                                <li><a href="#">Профиль</a></li>
+                                <li><a href="#">Настройки</a></li>
+                                <li><a href="/logout">Выход</a></li>
+                            </th:block>
+                        </ul>
                     </th:block>
                 </ul>
             </div>
         </div>
     </div>
+</th:block>
+<th:block th:fragment="nav-sidebar">
+    <th:block sec:authorize="hasAnyAuthority('USER')">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
+                    <ul class="nav nav-sidebar">
+                        <li id="main-link"><a href="/main">Главная</a></li>
+                        <th:block sec:authorize="hasAnyAuthority('ADMIN')">
+                            <li id="tage-link"><a href="/tagPage">Теги</a></li>
+                        </th:block>
+                        <th:block sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')">
+                            <li id="create-tag-link"><a href="/cretejobtag">Создать интерес/тэг</a></li>
+                        </th:block>
+                        <th:block sec:authorize="hasAnyAuthority('ADMIN')">
+                            <li id="create-user-link"><a href="/createUser">Создать пользователя</a></li>
+                            <li id="edit-user-link"><a href="/editUser/1">Изменить пользователя</a></li>
+                        </th:block>
+                        <th:block sec:authorize="hasAnyAuthority('ADMIN')">
+                            <li id="organization-page"><a href="/organizationPage">Организации</a></li>
+                            <li id="request-page"><a href="/requestPage">Заявки</a></li>
+                        </th:block>
+                        <th:block sec:authorize="hasAnyAuthority('USER')">
+
+                            <li id="jobs-link"><a href="/jobPage">Интересы</a></li>
+                        </th:block>
+                        <th:block sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')">
+                            <li id="users-link"><a href="/adminpage">Пользователи</a></li>
+                        </th:block>
+                        <li id="contacts-link"><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </th:block>
 </th:block>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>

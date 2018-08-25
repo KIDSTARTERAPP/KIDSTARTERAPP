@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script type="text/javascript" th:src="@{/scripts/home.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts/registration.js}"></script>
     <script
             src="http://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -15,13 +15,14 @@
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
 </head>
 <body>
 <div class="registr">
     <div th:replace="fragments/htmlFragment::main-header"></div>
 
-    <div class="text-center">
-        <h1 class="page-header">Регистрация пользователя</h1>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+    <h1 class="text-center">Регистрация пользователя</h1>
         <div class="table-responsive">
             <form class="form-signup" onsubmit=" addUser();return false">
                 <label for="firstname">Имя</label>
@@ -45,7 +46,7 @@
                 <input id="age" class="form-control" required placeholder="Возраст" type="number" name="age"/>
 
                 <label for="sex">Пол</label>
-                <select id="sex" name="sex" required>
+                <select id="sex" name="sex"  required class="form-control input-width center-block">
                     <option>Мужской</option>
                     <option>Женский</option>
                 </select>
@@ -68,6 +69,7 @@
         </div>
     </div>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
