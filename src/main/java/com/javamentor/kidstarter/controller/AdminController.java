@@ -7,34 +7,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminController {
 
+    @RequestMapping
+    public String adminProfile() {
+        return "admin-page";
+
+    }
     @RequestMapping("/users")
     public String getAllUsers() {
-        return "allUsersForAdmin";
+        return "all-users-admin";
     }
 
     @RequestMapping("/organizations")
     public String getAllOrganizations() {
-        return "allOrganizationsForAdmin";
+        return "all-organizations-admin";
     }
 
     @RequestMapping("/tags")
     public String getAllTags() {
-        return "allTagsForAdmin";
+        return "all-tags-admin";
     }
 
     @RequestMapping("/jobs")
     public String getAllJobs() {
-        return "allJobsForAdmin";
+        return "all-jobs-admin";
     }
 
     @RequestMapping("/mentors")
     public String getAllMentors() {
-        return "allMentorsForAdmin";
+        return "all-mentors-admin";
     }
 
     @RequestMapping("/sponsors")
     public String getAllSponsors() {
-        return "allSponsorsForAdmin";
+        return "all-sponsors-admin";
     }
 
 }

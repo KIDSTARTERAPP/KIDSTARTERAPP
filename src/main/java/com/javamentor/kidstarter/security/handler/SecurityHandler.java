@@ -21,7 +21,7 @@ public class SecurityHandler implements AuthenticationSuccessHandler {
             return;
         }
         if (roles.contains("MENTOR")) {
-            response.sendRedirect("/mentor");
+            response.sendRedirect("/mentor/profile");
             return;
         }
         if ( roles.contains("USER")) {
@@ -30,6 +30,11 @@ public class SecurityHandler implements AuthenticationSuccessHandler {
         }
         if ( roles.contains("KID")) {
             response.sendRedirect("/main");
+            return;
         }
+        if ( roles.contains("OWNER")) {
+            response.sendRedirect("/organization");
+        }
+
     }
 }

@@ -9,16 +9,17 @@ public class MentorController {
 
     @RequestMapping("/profile")
     public String getMentorProfile() {
-        return "mentorProfile";
+        return "mentor-page";
     }
 
     @RequestMapping("/my-requests")
     public String getMyRequests() {
-        return "myRequests";
+        return "my-requests";
     }
 
     @RequestMapping("/suitable-requests")
     public String getAllRequests() {
-        return "suitableRequests";
+        return "suitable-requests";
     }
+
 }

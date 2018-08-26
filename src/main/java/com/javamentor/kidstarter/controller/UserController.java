@@ -4,21 +4,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/users")
 public class UserController {
 
-    @RequestMapping("/profile")
-    public String getUserProfile() {
-        return "userProfile";
+    @RequestMapping("/main/create-organization")
+    public String createOrganization() {
+        return "create-organization";
     }
 
-    @RequestMapping("/add-organization")
-    public String addOrganization() {
-        return "addOrganization";
+    @RequestMapping("/main/active-requests")
+    public String getActiveRequests() {
+        return "active-requests";
     }
 
-    @RequestMapping("/become-mentor")
+    @RequestMapping("/main/become-mentor")
     public String becomeMentor() {
-        return "becomeMentor";
+        return "become-mentor";
     }
 }
