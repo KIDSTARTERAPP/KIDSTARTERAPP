@@ -29,12 +29,12 @@ public class AdminController {
 
     @RequestMapping("/mentors")
     public String getAllMentors() {
-        return "allMentorsForAdmin";
+        return "all-mentors-admin";
     }
 
     @RequestMapping("/sponsors")
     public String getAllSponsors() {
-        return "allSponsorsForAdmin";
+        return "all-sponsors-admin";
     }
 
 }

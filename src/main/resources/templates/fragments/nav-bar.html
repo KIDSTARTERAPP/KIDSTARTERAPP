@@ -32,6 +32,10 @@
                         <li><a href="/main/become-mentor">Стать наставником</a></li>
                         <li><a href="/main/create-organization">Добавить организацию</a></li>
                     </th:block>
+                    <th:block sec:authorize="hasAuthority('MENTOR') and !hasAuthority('OWNER')">
+                        <!--<li><a href="/main/become-mentor">Стать наставником</a></li>-->
+                        <li><a href="/main/create-organization">Добавить организацию</a></li>
+                    </th:block>
                     <th:block sec:authorize="isAuthenticated()">
                         <li>
                             <button data-toggle="dropdown" class="user-icon">
@@ -69,7 +73,7 @@
                         </th:block>
 
                         <th:block sec:authorize="hasAuthority('OWNER')">
-                            <div th:replace="fragments/nav-bar::owner-nav-sidebar"></div>
+                            <div th:replace="fragments/nav-bar::general-owner-nav-sidebar"></div>
                         </th:block>
 
                         <th:block sec:authorize="hasAuthority('MENTOR')">
@@ -86,10 +90,6 @@
     </th:block>
 </th:block>
 
-<!--USER-->
-<!--<th:block th:fragment="user-nav-sidebar">-->
-<!--<li id="user-active-requests"><a href="/active-requests">Активные заявки</a></li>-->
-<!--</th:block>-->
 <th:block th:fragment="active-requests-nav-sidebar">
     <li id="user-active-requests"><a href="/main/active-requests">Активные заявки</a></li>
 </th:block>
@@ -109,10 +109,15 @@
     <li id="admin-sponsors"><a href="/admin/sponsors">Спонсоры</a></li>
 </th:block>
 
+<!--GENERAS OWNER-->
+<th:block th:fragment="general-owner-nav-sidebar">
+    <li id="organization-profile"><a href="/organization/profile">Профиль организации</a></li>
+</th:block>
+
 <!--OWNER-->
 <th:block th:fragment="owner-nav-sidebar">
     <li id="organization-page"><a href="/organization">Организация</a></li> <!--what the fuck is the difference???-->
-    <li id="organization-profile"><a href="/organization/profile">Профиль организации</a></li>
+    <!--<li id="organization-profile"><a href="/organization/profile">Профиль организации</a></li>-->
     <li id="organization-kids"><a href="/organization/kids">Дети</a></li>
     <li id="organization-kids-addkid"><a href="/organization/kids/add-kid">Добавить ребенка</a></li>
     <li id="organization-teachers"><a href="/organization/teachers">Учителя</a></li>
@@ -123,18 +128,18 @@
 
 <!--GENERAL-MENTOR-->
 <th:block th:fragment="general-mentor-nav-sidebar">
-    <li id="mentor-profile"><a href="/mentor">Профиль ментора</a></li>
+    <li id="mentor-profile"><a href="/mentor/profile">Профиль ментора</a></li>
 </th:block>
 
 <!--MENTOR-->
 <th:block th:fragment="mentor-nav-sidebar">
     <li id="mentor-requests"><a href="/mentor/suitable-requests">Подходящие заявки</a></li>
-    <li id="mentor-active-requests"><a href="/mentor/requests/my-requests">Мои заявки</a></li>
+    <li id="mentor-active-requests"><a href="/mentor/my-requests">Мои заявки</a></li>
 </th:block>
 
 <!--KID-->
 <th:block th:fragment="kid-nav-sidebar">
-    <li id="kid-profile"><a href="/profile">Мой профиль</a></li>
+    <!--<li id="kid-profile"><a href="/profile">Мой профиль</a></li>-->
     <li id="kid-jobs"><a href="/kid/jobs">Интересы</a></li>
 </th:block>
 
