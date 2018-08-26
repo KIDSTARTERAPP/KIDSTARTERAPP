@@ -66,7 +66,7 @@ function send_update(data) {
         encoding: "UTF-8",
         data: data,
         success: function () {
-            window.location.replace("/organization/" + $("#id_org").val() + "/kids");
+            window.location.replace("/main/organization/" + $("#id_org").val() + "/kids");
         }
     })
 }

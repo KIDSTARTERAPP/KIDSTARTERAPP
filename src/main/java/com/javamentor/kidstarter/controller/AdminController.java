@@ -10,7 +10,6 @@ public class AdminController {
     @RequestMapping
     public String adminProfile() {
         return "admin-page";
-
     }
     @RequestMapping("/users")
     public String getAllUsers() {

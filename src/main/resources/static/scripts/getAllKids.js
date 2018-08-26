@@ -35,7 +35,7 @@ function fillusertable() {
 }
 
 function edit_kid(id_kid) {
-    var url = "/organization/" + $("#id_org").val() + "/kids/" + id_kid;
+    var url = "/main/organization/" + $("#id_org").val() + "/kids/" + id_kid;
     window.location.replace(url);
 }
 
@@ -46,7 +46,7 @@ function delete_kid(id_kid) {
         url: url,
         datatype: "JSON",
         success: function () {
-            window.location.replace("/organization/" + $("#id_org").val() + "/kids");
+            window.location.replace("/main/organization/" + $("#id_org").val() + "/kids");
         }
     });
 }

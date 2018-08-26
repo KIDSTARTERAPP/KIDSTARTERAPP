@@ -1,6 +1,5 @@
 package com.javamentor.kidstarter.controller.api;
 
-import com.javamentor.kidstarter.model.Job;
 import com.javamentor.kidstarter.model.user.*;
 import com.javamentor.kidstarter.service.interfaces.*;
 import org.slf4j.Logger;

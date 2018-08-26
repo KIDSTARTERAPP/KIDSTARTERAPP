@@ -22,10 +22,10 @@
 <div th:replace="fragments/nav-bar::main-header"></div>
 <div class="container-fluid">
     <div class="row">
-        <div th:replace="fragments/nav-bar::nav-sidebar"></div>
+        <div th:replace="fragments/nav-bar::owner-nav-sidebar"></div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Список детей:</h1>
-                <form class="navbar-form" th:action="@{/organization/} + ${id_org} + @{/kids/create}" method="get">
+                <form class="navbar-form" th:action="@{/main/organization/} + ${id_org} + @{/kids/create}" method="get">
                 <input class="form-control" type="submit" value="Добавить ребёнка">
             </form>
             <div class="table-responsive">

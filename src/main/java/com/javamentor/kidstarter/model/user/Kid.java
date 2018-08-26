@@ -48,10 +48,9 @@ public class Kid {
             inverseJoinColumns = @JoinColumn(name = "request_id"))
     private Set<Request> requests;
 
-    public Kid(User user, Organization org, Set<Job> jobInterest, Set<Request> requests) {
+    public Kid(User user, Organization org, Set<Job> jobInterest) {
         this.user = user;
         this.jobInterest = jobInterest;
         this.organization = org;
-        this.requests = requests;
     }
 }

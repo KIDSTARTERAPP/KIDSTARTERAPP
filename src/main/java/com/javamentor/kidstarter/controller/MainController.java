@@ -17,21 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 
     @Autowired
-    private JobService jobService;
-
-    @Autowired
-    private TagService tagService;
-
-    @Autowired
     OrganizationService organizationService;
-
     @Autowired
     RequestService requestService;
-
     @Autowired
     RoleService roleService;
 
-    @RequestMapping("/main")
+    @GetMapping
     public String showMain() {
         return "main";
     }

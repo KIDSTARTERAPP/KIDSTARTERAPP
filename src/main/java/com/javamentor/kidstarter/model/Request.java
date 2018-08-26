@@ -81,7 +81,7 @@ public class Request {
 		REFUNDING
 	}
 
-	public Request(String description, Job job, Set<Kid> kids, Set<Teacher> teachers, Long price, Set<User> sponsors, Mentor mentor, Account account, Owner creator, RequestStatus status) {
+	public Request(String description, Job job, Set<Kid> kids, Set<Teacher> teachers, Long price, Set<User> sponsors, Mentor mentor, Account account, Owner creator) {
 		this.description = description;
 		this.job = job;
 		this.kids = kids;
@@ -91,6 +91,5 @@ public class Request {
 		this.mentor = mentor;
 		this.account = account;
 		this.creator = creator;
-		this.status = status;
 	}
 }
