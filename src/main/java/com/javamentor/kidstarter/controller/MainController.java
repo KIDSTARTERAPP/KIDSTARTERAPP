@@ -1,27 +1,40 @@
 package com.javamentor.kidstarter.controller;
 
 import com.javamentor.kidstarter.service.interfaces.*;
+
 import com.javamentor.kidstarter.service.interfaces.JobService;
 import com.javamentor.kidstarter.service.interfaces.OrganizationService;
 import com.javamentor.kidstarter.service.interfaces.TagService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 @Controller
 @RequestMapping("/main")
 public class MainController {
 
     @Autowired
-    OrganizationService organizationService;
+    private JobService jobService;
+
     @Autowired
-    RequestService requestService;
+    private TagService tagService;
+
     @Autowired
-    RoleService roleService;
+    private OrganizationService organizationService;
+
+    @Autowired
+    private RequestService requestService;
+
+    @Autowired
+    private UserService userService;
+
 
     @GetMapping
     public String showMain() {
@@ -102,8 +115,40 @@ public class MainController {
 
     @GetMapping("/teacher/jobs")
     public String showTeacherJobPickPage() {
-    return "teacher_pick_jobs";
+        return "teacher_pick_jobs";
     }
+
+
+    @GetMapping("/organization/kids/add")
+    public String createKidPage() {
+        return "createKid";
+    }
+
+    @GetMapping("/organization/kids")
+    public String getAllKids() {
+        return "getAllKids";
+    }
+
+    @GetMapping("/organization/kids/{id}")
+    public String showKidEdit(@PathVariable("id") String id) {
+        return "editKid";
+    }
+
+    @GetMapping("/organization/teachers/add")
+    public String createTeacher() {
+        return "createTeacher";
+    }
+
+    @GetMapping("/organization/teachers")
+    public String getAllTeachers() {
+        return "getAllTeachers";
+    }
+
+    @GetMapping("/main/profile/{id}")//profile
+    public String showProfile(@PathVariable("id") String id) {
+        return "profile";
+    }
+
 
     /**------------------------------Organization------------------------------**/
     @GetMapping("/organization/{id_org}/kids")
@@ -123,4 +168,5 @@ public class MainController {
         return "editKid";
     }
     /**------------------------------------------------------------------------**/
+
 }
