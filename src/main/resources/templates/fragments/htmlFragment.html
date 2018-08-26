@@ -44,10 +44,13 @@
                     <th:block sec:authorize="hasAnyAuthority('USER')">
                         <button data-toggle="dropdown" class="user-icon"
                                 th:text="${#authentication.principal.login}">
+                            <!--<a th:href="@{/main/profile(id=${#authentication.principal.id})}">-->
                         </button>
                         <ul class="dropdown-menu">
                             <th:block sec:authorize="hasAnyAuthority('USER')">
-                                <li><a href="#">Профиль</a></li>
+                                <li><a th:href="@{/main/profile/__${#authentication.principal.id}__}">Профиль</a></li>
+                                <!--"@{'/users/doDelete/__${user.id}__}"-->
+                                <!--"@{/users/doDelete/__${user.id}__}"-->
                                 <li><a href="#">Настройки</a></li>
                                 <li><a href="/logout">Выход</a></li>
                             </th:block>
@@ -73,7 +76,8 @@
                         </th:block>
                         <th:block sec:authorize="hasAnyAuthority('ADMIN')">
                             <li id="create-user-link"><a href="/createUser">Создать пользователя</a></li>
-                            <li id="edit-user-link"><a href="/editUser/1">Изменить пользователя</a></li>
+                            <li id="edit-user-link"><a  href="/editUser/1">Изменить пользователя</a></li>
+
                         </th:block>
                         <th:block sec:authorize="hasAnyAuthority('ADMIN')">
                             <li id="organization-page"><a href="/organizationPage">Организации</a></li>

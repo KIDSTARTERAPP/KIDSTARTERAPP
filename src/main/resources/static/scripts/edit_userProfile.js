@@ -16,9 +16,9 @@ function fillform() {
             $("#firstname").val(response.firstName);
             $("#lastname").val(response.lastName);
             $("#patronymic").val(response.patronymic);
-            $("#login").val(response.firstName);
+            $("#login").val(response.login);
             $("#password").val('');
-            $.each(response.roles, function (i,e) {
+            $.each(response.roles, function (i, e) {
                 $("#role option[value='" + e.name + "']").prop("selected", true);
             });
             $("#createDate").val(response.createDate);
@@ -38,7 +38,7 @@ function updateUser() {
         type: "GET",
         url: "/api/select_roles",
         datatype: "JSON",
-        data: {roles : role_list},
+        data: {roles: role_list},
         success: function (response) {
             var data = {
                 id: $("#hidden_id").val(),
@@ -65,7 +65,7 @@ function send_update(data) {
     $.ajax({
         type: "PUT",
         url: "/api/user/",
-        contentType : "application/json; charset=UTF-8",
+        contentType: "application/json; charset=UTF-8",
         encoding: "UTF-8",
         data: data,
         success: function (response) {
