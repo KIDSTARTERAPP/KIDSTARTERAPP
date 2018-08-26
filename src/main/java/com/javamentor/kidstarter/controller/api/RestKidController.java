@@ -34,13 +34,6 @@ public class RestKidController {
         User user = userService.getUserById(id_kid);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
-
-    @GetMapping("/organization/{id}/kids")
-    public ResponseEntity<List<User>> listAllKids(@PathVariable("id") long id) {
-        List<User> kids = organizationService.getAllKidThisOrganization(id);
-        return new ResponseEntity<>(kids, HttpStatus.OK);
-    }
-
     @PostMapping("/organization/{id_org}/kids/create")
     public HttpStatus addKid(@PathVariable("id_org") Long id_org, @RequestBody User user) {
         List<Role> roles = new ArrayList<>();

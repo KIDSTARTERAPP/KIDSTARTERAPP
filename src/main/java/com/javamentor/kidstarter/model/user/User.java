@@ -1,12 +1,7 @@
 package com.javamentor.kidstarter.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -44,7 +39,7 @@ public class User implements UserDetails {
     @Column(name = "login", unique = true, nullable = false)
     private String login;
 
-    @JsonIgnore
+    //@JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @Column(name = "password", nullable = false)

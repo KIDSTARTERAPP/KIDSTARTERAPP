@@ -34,12 +34,12 @@ public class OrganizationRestController {
 
 	@GetMapping ("/organization/{id}/kids")
 	public ResponseEntity<Set<Kid>> getKidsByOrganizationId(@PathVariable("id") long id) {
-		return new ResponseEntity<>(organizationService.getOrganizationById(id).getKid(), HttpStatus.OK);
+		return new ResponseEntity<>( HttpStatus.OK);
 	}
 
 	@GetMapping ("/organization/{id}/teachers")
 	public ResponseEntity<Set<Teacher>> getTeachersByOrganizationId(@PathVariable("id") long id) {
-		return new ResponseEntity<>(organizationService.getOrganizationById(id).getTeachers(), HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@GetMapping("/organization/{id}")
