@@ -19,14 +19,14 @@
 
 <body>
 
-<div th:replace="fragments/htmlFragment::main-header"></div>
+<div th:replace="fragments/nav-bar::main-header"></div>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
             <ul class="nav nav-sidebar">
                 <li id="main-link"><a href="/main">Главная</a></li>
-                <div th:replace="fragments/htmlFragment::mentor-nav-sidebar"></div>
+                <div th:replace="fragments/nav-bar::mentor-nav-sidebar"></div>
             </ul>
         </div>
     </div>

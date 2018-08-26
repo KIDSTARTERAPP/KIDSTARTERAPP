@@ -71,22 +71,22 @@ public class DataInitializer {
 //        List<Role> moderatorRoles = new ArrayList<>(Arrays.asList(roleModerator));
 
         User adminUser = new User("Ivan", "Ivanov", "Ivanovich", "ADMIN", "123",
-                adminRole, 23, "MALE", 23 - 12 - 34, "admin@mail.ru", "RUSSIA", "house 8");
+                adminRole, 23, "MALE", "23 - 12 - 34", "admin@mail.ru", "RUSSIA", "house 8");
 
         User mentorUser = new User("Vovan", "Vovanov", "Huevich", "mentor", "123",
-                mentorRoles, 28, "MALE", 23 - 12 - 34, "user@mail.ru", "Ukraine", "house 15");
+                mentorRoles, 28, "MALE", "23 - 12 - 34", "user@mail.ru", "Ukraine", "house 15");
 
         User kidUser = new User("Kid", "Kid", "Kid", "kid", "123",
-                kidRoles, 28, "MALE", 23 - 12 - 34, "Kid@mail.ru", "RUSSIA", "house 15");
+                kidRoles, 28, "MALE", "23 - 12 - 34", "Kid@mail.ru", "RUSSIA", "house 15");
 
         User teacherUser = new User("Teacher", "Teacher", "Teacher", "teacher", "123",
-                teacherRoles, 28, "MALE", 23 - 12 - 34, "Teacher@mail.ru", "RUSSIA", "house 15");
+                teacherRoles, 28, "MALE", "23 - 12 - 34", "Teacher@mail.ru", "RUSSIA", "house 15");
 
         User userUser = new User("Mentor", "Mentor", "Mentor", "user", "123",
-                userRoles, 28, "MALE", 23 - 12 - 34, "Mentor@mail.ru", "RUSSIA", "house 15");
+                userRoles, 28, "MALE", "23 - 12 - 34", "Mentor@mail.ru", "RUSSIA", "house 15");
 
         User ownerUser = new User("Mentor", "Mentor", "Mentor", "owner", "123",
-                ownerRoles, 28, "MALE", 23 - 12 - 34, "Mentor@mail.ru", "RUSSIA", "house 15");
+                ownerRoles, 28, "MALE", "23 - 12 - 34", "Mentor@mail.ru", "RUSSIA", "house 15");
 
 //        User moderatorUser = new User("Mentor", "Mentor", "Mentor", "moderator", "123",
 //                moderatorRoles, 28, "MALE", 23 - 12 - 34, "Mentor@mail.ru", "RUSSIA", "house 15");
@@ -131,8 +131,8 @@ public class DataInitializer {
         ownerService.addOwner(owner2);
 
 
-        Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
-        Job job2 = jobService.addJob(new Job("JavaScript", "ugly toad", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
+        Job job1 = jobService.addJob(new Job("Java", "Топовый язык"));
+        Job job2 = jobService.addJob(new Job("JavaScript", "ugly toad"));
 
         Kid kid1 = kidService.addKid(new Kid(kidUser, new HashSet<>(Collections.singletonList(job1))));
 
@@ -140,10 +140,6 @@ public class DataInitializer {
 
         Mentor mentor1 = mentorService.addMentor(new Mentor(userUser, new HashSet<>(Collections.singletonList(job2)), 3, "Description"));
 
-        job1.setTags(new HashSet<>(Arrays.asList(tag1, tag3)));
-        job2.setTags(new HashSet<>(Arrays.asList(tag1, tag2)));
-
-        jobService.updateJob(job1);
-        jobService.updateJob(job2);
     }
+
 }

@@ -29,8 +29,8 @@
                         <li><a href="/main/login">Войти</a></li>
                     </th:block>
                     <th:block sec:authorize="hasAuthority('USER') and !hasAnyAuthority('MENTOR', 'KID', 'TEACHER')">
-                        <li><a href="/users/become-mentor">Стать наставником</a></li>
-                        <li><a href="/users/add-organization">Добавить организацию</a></li>
+                        <li><a href="/main/become-mentor">Стать наставником</a></li>
+                        <li><a href="/main/create-organization">Добавить организацию</a></li>
                     </th:block>
                     <th:block sec:authorize="isAuthenticated()">
                         <li>
@@ -39,7 +39,7 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <th:block sec:authorize="isAuthenticated()">
-                                    <li><a href="/profile">Профиль</a></li>
+                                    <li><a href="/main/profile">Профиль</a></li>
                                     <li><a href="/logout">Выход</a></li>
                                 </th:block>
                             </ul>
@@ -91,7 +91,7 @@
 <!--<li id="user-active-requests"><a href="/active-requests">Активные заявки</a></li>-->
 <!--</th:block>-->
 <th:block th:fragment="active-requests-nav-sidebar">
-    <li id="user-active-requests"><a href="/active-requests">Активные заявки</a></li>
+    <li id="user-active-requests"><a href="/main/active-requests">Активные заявки</a></li>
 </th:block>
 
 <!--GENERAL ADMIN-->
