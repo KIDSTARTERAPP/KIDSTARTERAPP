@@ -18,6 +18,14 @@ public class Account {
     @Column (name = "account_id")
     private Long id;
 
-    @Column (name = "amount")
-    private Long amount;
+    @Column (name = "need_amount")
+    private Long needAmount;
+
+    @Column (name = "currenr_amount")
+    private Long currentAmount;
+
+    public Account(Long needAmount, Long currentAmount) {
+        this.needAmount = needAmount;
+        this.currentAmount = currentAmount;
+    }
 }

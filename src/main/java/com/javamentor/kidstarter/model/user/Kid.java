@@ -36,6 +36,7 @@ public class Kid {
             inverseJoinColumns = @JoinColumn(name = "job_id") )
     private Set<Job> jobInterest;
 
+
     public Kid(User user, Set<Job> jobInterest) {
         this.user = user;
         this.jobInterest = jobInterest;

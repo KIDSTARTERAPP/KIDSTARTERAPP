@@ -4,6 +4,19 @@
     width: 1000px;
 }
 
+.donate-info-button {
+    float: right;
+}
+
+.donate-button {
+    float: right;
+}
+
+.request-modal:hover {
+}
+
+.skype-panel:hover{}
+
 .user-icon {
     border: black;
     border-radius: 40px;

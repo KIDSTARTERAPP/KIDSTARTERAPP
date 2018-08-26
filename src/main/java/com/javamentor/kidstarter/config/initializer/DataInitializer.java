@@ -129,10 +129,10 @@ public class DataInitializer {
         Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
         Tag tag3 = tagService.addTag(new Tag("Бэкаенд", new HashSet<>()));
 
-        Account acc1 = new Account();
-        Account acc2 = new Account();
-        Account acc3 = new Account();
-        Account acc4 = new Account();
+        Account acc1 = new Account(1500L, 500L);
+        Account acc2 = new Account(2500L, 0L);
+        Account acc3 = new Account(4000L, 0L);
+        Account acc4 = new Account(5000L, 0L);
 
         acc1 = accountService.addAccount(acc1);
         acc2 = accountService.addAccount(acc2);
