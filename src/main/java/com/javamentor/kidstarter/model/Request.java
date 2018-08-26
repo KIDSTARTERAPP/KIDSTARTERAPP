@@ -4,13 +4,14 @@ package com.javamentor.kidstarter.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javamentor.kidstarter.model.user.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -80,7 +81,7 @@ public class Request {
 		REFUNDING
 	}
 
-	public Request(String description, Job job, Set<Kid> kids, Set<Teacher> teachers, Long price, Set<User> sponsors, Mentor mentor, Account account, Owner creator) {
+	public Request(String description, Job job, Set<Kid> kids, Set<Teacher> teachers, Long price, Set<User> sponsors, Mentor mentor, Account account, Owner creator, RequestStatus status) {
 		this.description = description;
 		this.job = job;
 		this.kids = kids;
@@ -90,5 +91,6 @@ public class Request {
 		this.mentor = mentor;
 		this.account = account;
 		this.creator = creator;
+		this.status = status;
 	}
 }

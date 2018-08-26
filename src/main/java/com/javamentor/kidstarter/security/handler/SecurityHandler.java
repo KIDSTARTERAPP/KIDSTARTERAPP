@@ -13,15 +13,28 @@ import java.util.Set;
 @Component
 public class SecurityHandler implements AuthenticationSuccessHandler {
 
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+                                        Authentication authentication) throws IOException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ADMIN")) {
-            response.sendRedirect("/main");
+            response.sendRedirect("/admin");
+            return;
+        }
+        if (roles.contains("MENTOR")) {
+            response.sendRedirect("/mentor/profile");
             return;
         }
         if ( roles.contains("USER")) {
             response.sendRedirect("/main");
             return;
         }
+        if ( roles.contains("KID")) {
+            response.sendRedirect("/main");
+            return;
+        }
+        if ( roles.contains("OWNER")) {
+            response.sendRedirect("/organization");
+        }
+
     }
 }

@@ -19,7 +19,8 @@
 </head>
 <body>
 <div class="registr">
-    <div th:replace="fragments/htmlFragment::main-header"></div>
+    <div th:replace="fragments/nav-bar::main-header"></div>
+    <div th:replace="fragments/nav-bar::crumbs"></div>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
     <h1 class="text-center">Регистрация пользователя</h1>
@@ -52,7 +53,7 @@
                 </select>
                 <br>
                 <label for="phone">Телефон</label>
-                <input id="phone" class="form-control" required placeholder="Телефон" type="number" name="phone"/>
+                <input id="phone" class="form-control" required placeholder="Телефон" type="text" name="phone"/>
 
                 <label for="email">Электронная почта</label>
                 <input id="email" class="form-control" required placeholder="Электронная почта" type="email"
@@ -73,5 +74,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
+<script src="/scripts/all_scripts.js"></script>
+
 </body>
 </html>
