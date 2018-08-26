@@ -22,9 +22,9 @@ public class OwnerController {
         return "owner-kids";
     }
 
-    @RequestMapping("/kids/add")
+    @RequestMapping("/kids/add-kid")
     public String addKid() {
-        return "owner-add-kid";
+        return "createKid";
     }
 
     @RequestMapping("/teachers")
@@ -32,9 +32,9 @@ public class OwnerController {
         return "owner-teachers";
     }
 
-    @RequestMapping("/teachers/add")
+    @RequestMapping("/teachers/add-teacher")
     public String addTeacher() {
-        return "owner-add-teacher";
+        return "createTeacher";
     }
 
     @RequestMapping("/active-requests")
@@ -42,8 +42,8 @@ public class OwnerController {
         return "owner-active-requests";
     }
 
-    @RequestMapping("/add-request")
+    @RequestMapping("/requests/add-request")
     public String addRequest() {
-        return "owner-add-request";
+        return "create_request";
     }
 }

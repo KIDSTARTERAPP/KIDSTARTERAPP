@@ -42,4 +42,9 @@ public class MentorServiceImpl implements MentorService {
     public void updateMentor(Mentor mentor) {
         mentorDao.update(mentor);
     }
+
+    @Override
+    public Mentor getUserMentorById(Long id) {
+        return mentorDao.getUserMentorById(id);
+    }
 }

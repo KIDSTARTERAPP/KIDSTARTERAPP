@@ -3,10 +3,7 @@ package com.javamentor.kidstarter.model.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javamentor.kidstarter.model.Job;
 import com.javamentor.kidstarter.model.Request;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -30,6 +27,7 @@ public class Teacher  {
 
     @JsonIgnore
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(name = "job_to_teacher",
             joinColumns = @JoinColumn(name = "teacher_id"),
