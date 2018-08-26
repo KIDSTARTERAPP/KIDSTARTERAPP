@@ -27,13 +27,22 @@
 </head>
 
 <body>
-git
+
 <div th:replace="fragments/nav-bar::main-header"></div>
+<!--<div th:replace="fragments/htmlFragment::crumbs"></div>-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
+            <ul class="nav nav-sidebar">
+                <li id="main-link"><a href="/main">Главная</a></li>
+                <div th:replace="fragments/nav-bar::owner-nav-sidebar"></div>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <div class="container-fluid">
     <div class="row">
-        <div th:replace="fragments/nav-bar::nav-sidebar"></div>
-
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Добавление учителя</h1>
             <div class="table-responsive">
