@@ -68,10 +68,6 @@ function setLinks() {
     if (pathname.includes('/activerequests')) {
         $('#active-requests-link').attr('class', 'active');
     }
-    if (pathname == ('/profile')) {
-        $('#profile-link').attr('class', 'active');
-    }
-
 
     if (pathname.includes('/mentor')) {
         $('#mentor-link').attr('class', 'active');
