@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class RestMentorController {
     private MentorService mentorService;
 
     @GetMapping("/mentor/{id}")
-    public ResponseEntity<?> getMentorById(@PathVariable("id") long id) {
+    public ResponseEntity<?> getMentorById(@PathVariable("id") long id, Model model) {
+        model.addAttribute("id_model", id);
         Mentor mentor = mentorService.getMentorById(id);
         return new ResponseEntity<>(mentor, HttpStatus.OK);
     }

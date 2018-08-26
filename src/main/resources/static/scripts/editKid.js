@@ -3,9 +3,7 @@ $(document).ready(function () {
 });
 
 function fillform() {
-    var pathname = window.location.pathname;
-    var id = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
-    var url = "/api/organization/kid/" + id;
+    var url = "/api/organization/" + $("#id_org").val() + "/kids/" + $("#id_kid").val();
     $.ajax({
         type: "GET",
         url: url,
@@ -63,12 +61,12 @@ function updateKid() {
 function send_update(data) {
     $.ajax({
         type: "PUT",
-        url: "/api/organization/kid",
+        url: "/api/organization/" + $("#id_org").val() + "/kids/" + $("#id_kid").val(),
         contentType : "application/json; charset=UTF-8",
         encoding: "UTF-8",
         data: data,
-        success: function (response) {
-            window.location.replace("/organization/kids");
+        success: function () {
+            window.location.replace("/main/organization/" + $("#id_org").val() + "/kids");
         }
     })
 }

@@ -59,9 +59,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserById(Long id) {
         List<Role> roles = userDAO.getByKey(id).getRoles();
-        if (roles.contains(roleDao.getByName("KID"))) {
-            kidDao.deleteByKey(kidDao.getUserKidbyId(id).getId());
-        }
         if (roles.contains(roleDao.getByName("TEACHER"))) {
             teacherDao.deleteByKey(teacherDao.getUserTeacherById(id).getId());
         }
@@ -83,5 +80,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getByLogin(String login) {
         return userDAO.getByLogin(login);
+    }
+
+    @Override
+    public void deleteKidByUserId(long id) {
+        userDAO.deleteKidByUserId(id);
     }
 }

@@ -2,11 +2,11 @@ $(document).ready(function () {
     fillusertable();
 });
 
-function fillusertable(){
+function fillusertable() {
     $("#table_body_kidlist").empty();
     $.ajax({
         type: "GET",
-        url: "/api/organization/kids/all",
+        url: "/api/organization/" + $("#id_org").val() + "/kids",
         datatype: "JSON",
         success: function (response) {
             for (var i in response) {
@@ -20,8 +20,6 @@ function fillusertable(){
                     response[i].lastName + "</td><td>" +
                     response[i].patronymic + "</td><td>" +
                     response[i].login + "</td><td>" +
-                    roles.hidden + "</td><td>" +
-                    response[i].createDate + "</td><td>" +
                     response[i].age + "</td><td>" +
                     response[i].sex + "</td><td>" +
                     response[i].phone + "</td><td>" +
@@ -36,19 +34,19 @@ function fillusertable(){
     })
 }
 
-function edit_kid(userid) {
-    var url = "/organization/kids/" + userid;
+function edit_kid(id_kid) {
+    var url = "/main/organization/" + $("#id_org").val() + "/kids/" + id_kid;
     window.location.replace(url);
 }
 
-function delete_kid(userid) {
-    var url = "/api/organization/kid/" + userid;
+function delete_kid(id_kid) {
+    var url = "/api/organization/" + $("#id_org").val() + "/kid/" + id_kid;
     $.ajax({
         type: "DELETE",
         url: url,
         datatype: "JSON",
         success: function () {
-            fillusertable();
+            window.location.replace("/main/organization/" + $("#id_org").val() + "/kids");
         }
     });
 }

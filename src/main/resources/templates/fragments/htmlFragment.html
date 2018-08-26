@@ -2,22 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <link rel="stylesheet"   href="/css/styles.css"/>
-
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
-<body>
-<th:block th:fragment="crumbs">
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <ol  id="breadcrumbMain" class="breadcrumb">
 
-        </ol>
-    </div>
-</th:block>
+<body>
 <th:block th:fragment="main-header">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
@@ -28,18 +20,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">KidStarter</a>
+                <a class="navbar-brand" href="/main">KidStarter</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
 
+
                     <th:block sec:authorize="hasAnyAuthority('USER')">
                         <li><a href="/mentor/add">Стать наставником</a></li>
                     </th:block>
+
                     <th:block sec:authorize="isAnonymous()">
                         <li><a href="/main/registration">Регистрация</a></li>
                         <li><a href="/main/login">Войти</a></li>
                     </th:block>
+
                     <th:block sec:authorize="hasAnyAuthority('USER')">
                         <button data-toggle="dropdown" class="user-icon"
                                 th:text="${#authentication.principal.login}">
@@ -51,42 +46,63 @@
                                 <li><a href="/logout">Выход</a></li>
                             </th:block>
                         </ul>
+
+                    <th:block sec:authorize="hasAuthority('USER') and !hasAnyAuthority('MENTOR', 'KID', 'TEACHER')">
+                        <li><a href="/users/become-mentor">Стать наставником</a></li>
+                        <li><a href="/users/add-organization">Добавить организацию</a></li>
+                    </th:block>
+                    <th:block sec:authorize="isAuthenticated()">
+                        <li>
+                            <button data-toggle="dropdown" class="user-icon">
+                                [[${#httpServletRequest.remoteUser}]]
+                            </button>
+                            <ul class="dropdown-menu">
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <li><a href="/profile">Профиль</a></li>
+                                    <li><a href="/logout">Выход</a></li>
+                                </th:block>
+                            </ul>
+                        </li>
                     </th:block>
                 </ul>
             </div>
         </div>
     </div>
 </th:block>
-<th:block th:fragment="nav-sidebar">
-    <th:block sec:authorize="hasAnyAuthority('USER')">
+
+<!--GENERAL-->
+<th:block th:fragment="general-nav-sidebar">
+    <th:block sec:authorize="isAuthenticated()">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
                     <ul class="nav nav-sidebar">
-                        <li id="main-link"><a  href="/main">Главная</a></li>
-                        <th:block sec:authorize="hasAnyAuthority('ADMIN')">
-                            <li id="tage-link"><a href="/tagPage">Теги</a></li>
-                        </th:block>
-                        <th:block sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')">
-                            <li id="create-tag-link"><a href="/cretejobtag">Создать интерес/тэг</a></li>
+                        <li id="main-link"><a href="/main">Главная</a></li>
+                        <th:block sec:authorize="hasAuthority('USER')">
+                            <div th:replace="fragments/nav-bar::active-requests-nav-sidebar"></div>
                         </th:block>
                         <th:block sec:authorize="hasAnyAuthority('ADMIN')">
                             <li id="create-user-link"><a href="/createUser">Создать пользователя</a></li>
                             <li id="edit-user-link"><a  href="/editUser/1">Изменить пользователя</a></li>
 
-                        </th:block>
-                        <th:block sec:authorize="hasAnyAuthority('ADMIN')">
-                            <li id="organization-page"><a href="/organizationPage">Организации</a></li>
-                            <li id="request-page"><a href="/requestPage">Заявки</a></li>
-                        </th:block>
-                        <th:block sec:authorize="hasAnyAuthority('USER')">
 
-                            <li id="jobs-link"><a href="/jobPage">Интересы</a></li>
+
+                        <th:block sec:authorize="hasAuthority('ADMIN')">
+                            <div th:replace="fragments/nav-bar::active-requests-nav-sidebar"></div>
+                            <div th:replace="fragments/nav-bar::general-admin-nav-sidebar"></div>
                         </th:block>
-                        <th:block sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')">
-                            <li id="users-link"><a href="/adminpage">Пользователи</a></li>
+
+                        <th:block sec:authorize="hasAuthority('OWNER')">
+                            <div th:replace="fragments/nav-bar::owner-nav-sidebar"></div>
                         </th:block>
-                        <li id="contacts-link"><a href="#">Контакты</a></li>
+
+                        <th:block sec:authorize="hasAuthority('MENTOR')">
+                            <div th:replace="fragments/nav-bar::general-mentor-nav-sidebar"></div>
+                        </th:block>
+
+                        <th:block sec:authorize="hasAuthority('KID')">
+                            <div th:replace="fragments/nav-bar::kid-nav-sidebar"></div>
+                        </th:block>
                     </ul>
                 </div>
             </div>
@@ -94,8 +110,61 @@
     </th:block>
 </th:block>
 
+<!--USER-->
+<!--<th:block th:fragment="user-nav-sidebar">-->
+<!--<li id="user-active-requests"><a href="/active-requests">Активные заявки</a></li>-->
+<!--</th:block>-->
+<th:block th:fragment="active-requests-nav-sidebar">
+    <li id="user-active-requests"><a href="/active-requests">Активные заявки</a></li>
+</th:block>
+
+<!--GENERAL ADMIN-->
+<th:block th:fragment="general-admin-nav-sidebar">
+    <li id="admin-page"><a href="/admin">Админка</a></li>
+</th:block>
+
+<!--ADMIN-->
+<th:block th:fragment="admin-nav-sidebar">
+    <li id="admin-organizations"><a href="/admin/organizations">Организации</a></li>
+    <li id="admin-users"><a href="/admin/users">Пользователи</a></li>
+    <li id="admin-tags"><a href="/admin/tags">Тэги</a></li>
+    <li id="admin-jobs"><a href="/admin/jobs">Джобы</a></li>
+    <li id="admin-mentors"><a href="/admin/mentors">Менторы</a></li>
+    <li id="admin-sponsors"><a href="/admin/sponsors">Спонсоры</a></li>
+</th:block>
+
+<!--OWNER-->
+<th:block th:fragment="owner-nav-sidebar">
+    <li id="organization-page"><a href="/organization">Организация</a></li> <!--what the fuck is the difference???-->
+    <li id="organization-profile"><a href="/organization/profile">Профиль организации</a></li>
+    <li id="organization-kids"><a href="/organization/kids">Дети</a></li>
+    <li id="organization-kids-addkid"><a href="/organization/kids/add-kid">Добавить ребенка</a></li>
+    <li id="organization-teachers"><a href="/organization/teachers">Учителя</a></li>
+    <li id="organization-teachers-add"><a href="/organization/teachers/add-teacher">Добавить учителя</a></li>
+    <li id="organization-active-requests"><a href="/organization/requests/active-requests">Активные заявки</a></li>
+    <li id="organization-add-request"><a href="/organization/requests/add-request">Добавить заявку</a></li>
+</th:block>
+
+<!--GENERAL-MENTOR-->
+<th:block th:fragment="general-mentor-nav-sidebar">
+    <li id="mentor-profile"><a href="/mentor">Профиль ментора</a></li>
+</th:block>
+
+<!--MENTOR-->
+<th:block th:fragment="mentor-nav-sidebar">
+    <li id="mentor-requests"><a href="/mentor/suitable-requests">Подходящие заявки</a></li>
+    <li id="mentor-active-requests"><a href="/mentor/requests/my-requests">Мои заявки</a></li>
+</th:block>
+
+<!--KID-->
+<th:block th:fragment="kid-nav-sidebar">
+    <li id="kid-profile"><a href="/profile">Мой профиль</a></li>
+    <li id="kid-jobs"><a href="/kid/jobs">Интересы</a></li>
+</th:block>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
+
 </body>
 </html>
