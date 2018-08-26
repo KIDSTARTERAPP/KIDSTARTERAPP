@@ -32,8 +32,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <!--<li><a id="current-user" href="#Profile">Ivan</a></li>-->
-                    <!--<li><a>:</a></li>-->
+
                     <th:block sec:authorize="hasAnyAuthority('USER')">
                         <li><a href="/mentor/add">Стать наставником</a></li>
                     </th:block>
@@ -44,13 +43,10 @@
                     <th:block sec:authorize="hasAnyAuthority('USER')">
                         <button data-toggle="dropdown" class="user-icon"
                                 th:text="${#authentication.principal.login}">
-                            <!--<a th:href="@{/main/profile(id=${#authentication.principal.id})}">-->
                         </button>
                         <ul class="dropdown-menu">
                             <th:block sec:authorize="hasAnyAuthority('USER')">
                                 <li><a th:href="@{/main/profile/__${#authentication.principal.id}__}">Профиль</a></li>
-                                <!--"@{'/users/doDelete/__${user.id}__}"-->
-                                <!--"@{/users/doDelete/__${user.id}__}"-->
                                 <li><a href="#">Настройки</a></li>
                                 <li><a href="/logout">Выход</a></li>
                             </th:block>

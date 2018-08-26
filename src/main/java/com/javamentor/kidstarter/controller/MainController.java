@@ -1,12 +1,12 @@
 package com.javamentor.kidstarter.controller;
 
-import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.service.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
@@ -19,13 +19,13 @@ public class MainController {
     private TagService tagService;
 
     @Autowired
-    OrganizationService organizationService;
+    private OrganizationService organizationService;
 
     @Autowired
-    RequestService requestService;
+    private RequestService requestService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @RequestMapping("/main")
     public String showMain() {
