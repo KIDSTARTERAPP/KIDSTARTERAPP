@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
 
     <title>KidStarter</title>
-    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +23,7 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
-<div th:replace="fragments/htmlFragment::crumbs"></div>
+<div th:replace="fragments/crumbs::crumbs"></div>
 
 <div class="container-fluid">
     <div class="row">
@@ -33,7 +32,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Создание пользователя</h1>
             <div class="table-responsive">
-                <form class="form-signup" onsubmit= "updateUser();return false">
+                <form class="form-signup" onsubmit="updateUser();return false">
                     <input id="hidden_id" type="hidden">
                     <label for="firstname">First Name</label>
                     <input id="firstname" class="form-control" required type="text" name="firstname"/>
@@ -90,7 +89,8 @@
                     <label for="address">Address</label>
                     <input id="address" class="form-control" required type="text" name="address"/>
                     <br/>
-                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit" value="Обновить пользователя" />
+                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit"
+                           value="Обновить пользователя"/>
                 </form>
             </div>
         </div>
@@ -105,6 +105,7 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<link rel="stylesheet" href="/css/styles.css"/>
 <script src="/scripts/edit_user.js"></script>
 </body>
 </html>

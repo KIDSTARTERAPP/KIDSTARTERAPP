@@ -6,7 +6,7 @@ $(document).ready(function () {
 function fillTeacherForm() {
     var pathname = window.location.pathname;
     var id = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
-    var url = "/api/organization/teachers/" + id;
+    var url = "/api/organization/teacher/" + id;
     $.ajax({
         type: "GET",
         url: url,
@@ -65,7 +65,7 @@ function updateTeacher() {
 function send_update(data) {
     $.ajax({
         type: "PUT",
-        url: "/api/organization/teachers",
+        url: "/api/organization/teacher",
         contentType: "application/json; charset=UTF-8",
         encoding: "UTF-8",
         data: data,

@@ -13,7 +13,6 @@
             src="http://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
-    <link rel="stylesheet"   href="/css/styles.css"/>
     <script src="/scripts/createTeacher.js"></script>
 
     <!-- Bootstrap core CSS -->
@@ -29,7 +28,7 @@
 <body>
 git
 <div th:replace="fragments/htmlFragment::main-header"></div>
-
+<div th:replace="fragments/crumbs::crumbs"></div>
 <div class="container-fluid">
     <div class="row">
         <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
@@ -42,7 +41,8 @@ git
                     <input id="firstname" class="form-control" required placeholder="Имя" type="text" name="firstname"/>
 
                     <label for="lastname">Фамилия</label>
-                    <input id="lastname" class="form-control" required placeholder="Фамилия" type="text" name="lastname"/>
+                    <input id="lastname" class="form-control" required placeholder="Фамилия" type="text"
+                           name="lastname"/>
 
                     <label for="patronymic">Отчество</label>
                     <input id="patronymic" class="form-control" required placeholder="Отчество" type="text"
@@ -59,7 +59,7 @@ git
                     <input id="age" class="form-control" required placeholder="Возраст" type="number" name="age"/>
 
                     <label for="sex">Пол</label>
-                    <select id="sex" name="sex"  required class="form-control input-width center-block">
+                    <select id="sex" name="sex" required class="form-control input-width center-block">
                         <option>Мужской</option>
                         <option>Женский</option>
                     </select>
@@ -91,6 +91,7 @@ git
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<link rel="stylesheet" href="/css/styles.css"/>
 <script src="/scripts/createjobtag.js"></script>
 <script src="/scripts/user.js"></script>
 <script src="/scripts/roles.js"></script>

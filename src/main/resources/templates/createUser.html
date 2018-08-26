@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
 
     <title>KidStarter</title>
-    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +23,7 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
-<div th:replace="fragments/htmlFragment::crumbs"></div>
+<div th:replace="fragments/crumbs::crumbs"></div>
 
 <div class="container-fluid">
     <div class="row">
@@ -33,22 +32,26 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Создание пользователя</h1>
             <div class="table-responsive">
-                <form class="form-signup" onsubmit= " create_user();return false">
+                <form class="form-signup" onsubmit=" create_user();return false">
 
                     <label for="firstname">First Name</label>
-                    <input id="firstname" class="form-control" required placeholder="First Name" type="text" name="firstname"/>
+                    <input id="firstname" class="form-control" required placeholder="First Name" type="text"
+                           name="firstname"/>
 
                     <label for="lastname">Last Name</label>
-                    <input id="lastname" class="form-control" required placeholder="Last Name" type="text" name="lastname"/>
+                    <input id="lastname" class="form-control" required placeholder="Last Name" type="text"
+                           name="lastname"/>
 
                     <label for="patronymic">Patronymic</label>
-                    <input id="patronymic" class="form-control" required placeholder="Patronymic" type="text" name="patronymic"/>
+                    <input id="patronymic" class="form-control" required placeholder="Patronymic" type="text"
+                           name="patronymic"/>
 
                     <label for="login">Login</label>
                     <input id="login" class="form-control" required placeholder="Login" type="text" name="username"/>
 
                     <label for="password">Password</label>
-                    <input id="password" class="form-control" required placeholder="Password" type="password" name="password"/>
+                    <input id="password" class="form-control" required placeholder="Password" type="password"
+                           name="password"/>
 
                     <div class="form-group">
                         <label class="control-label center" for="role">Выберите роль пользователя</label>
@@ -90,7 +93,7 @@
                     <label for="address">Address</label>
                     <input id="address" class="form-control" required placeholder="Address" type="text" name="address"/>
                     <br/>
-                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit" />
+                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit"/>
                 </form>
             </div>
         </div>
@@ -104,6 +107,7 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<link rel="stylesheet" href="/css/styles.css"/>
 <script src="/scripts/createjobtag.js"></script>
 <script src="/scripts/user.js"></script>
 <script src="/scripts/roles.js"></script>

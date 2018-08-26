@@ -36,7 +36,7 @@ public class RestTeacherController {
         this.roleService = roleService;
     }
 
-    @GetMapping("/organization/teachers/{id}")
+    @GetMapping("/organization/teacher/{id}")
     public ResponseEntity<?> getTeacherById(@PathVariable("id") long id) {
         User  teacher = userService.getUserById(id);
         return new ResponseEntity<>(teacher, HttpStatus.OK);
@@ -76,7 +76,7 @@ public class RestTeacherController {
         return HttpStatus.OK;
     }
 
-    @PutMapping("/organization/teachers")
+    @PutMapping("/organization/teacher")
     public ResponseEntity<?> updateTeacher(@RequestBody User user) {
         userService.updateUser(user);
         return new ResponseEntity<>(user, HttpStatus.OK);

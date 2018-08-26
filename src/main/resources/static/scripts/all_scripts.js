@@ -28,8 +28,8 @@ function setBreadCrumb() {
         "addrequest": "Добавление  запроса",
         "kid": "Главная страница ребёнка",
         "registration": "Регистрация",
-        "login": "Логин"
-
+        "login": "Логин",
+        "become-mentor": "Стать ментором"
     };
 
     var linksArray = ["editUser"];
@@ -40,13 +40,14 @@ function setBreadCrumb() {
         if (i == 0) {
             continue;
         }
-
         name = myArray[splitter[i]];
-        if (linksArray.includes(splitter[i])) {
+        if ( linksArray.includes(splitter[i])) {
             link += "/" + splitter[i];
             continue;
         }
-        link += "/" + splitter[i];
+        else {
+            link += "/" + splitter[i];
+        }
         console.log(link);
         if (i == splitter.length - 1) {
             $('#breadcrumbMain').append("<li class='breadcrumb-item active' >" + name + "</li>");

@@ -33,7 +33,7 @@ function fillteacherstable(){
 }
 
 function edit_teacher(userid) {
-    var url = "/organization/teachers/" + userid;
+    var url = "/organization/teacher/" + userid;
     window.location.replace(url);
 }
 

@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
 
     <title>KidStarter</title>
-    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,6 +23,7 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
+<div th:replace="fragments/crumbs::crumbs"></div>
 
 <div class="container-fluid">
     <div class="row">
@@ -35,20 +35,25 @@
                 <form class="form-signup">
                     <input id="hidden_id" type="hidden">
                     <label for="name">Название организации</label>
-                    <input id="name" class="form-control" required placeholder="Название организации" type="text" name="name"/>
+                    <input id="name" class="form-control" required placeholder="Название организации" type="text"
+                           name="name"/>
                     <input id="createDate" type="hidden">
 
                     <label for="address">Адрес организации</label>
-                    <input id="address" class="form-control" required placeholder="Адрес организации" type="text" name="address"/>
+                    <input id="address" class="form-control" required placeholder="Адрес организации" type="text"
+                           name="address"/>
 
                     <label for="country">Страна расположения</label>
-                    <input id="country" class="form-control" required placeholder="Страна расположения" type="text" name="country"/>
+                    <input id="country" class="form-control" required placeholder="Страна расположения" type="text"
+                           name="country"/>
 
                     <label for="phone">Номер телефона</label>
-                    <input id="phone" class="form-control" required placeholder="Номер телефона" type="number" name="phone"/>
+                    <input id="phone" class="form-control" required placeholder="Номер телефона" type="number"
+                           name="phone"/>
 
                     <label for="email">Электронная почта</label>
-                    <input id="email" class="form-control" required placeholder="Электронная почта" type="email" name="email"/>
+                    <input id="email" class="form-control" required placeholder="Электронная почта" type="email"
+                           name="email"/>
                     <br/>
                 </form>
             </div>
@@ -64,6 +69,7 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<link rel="stylesheet" href="/css/styles.css"/>
 <script src="/scripts/edit_organization.js"></script>
 </body>
 </html>

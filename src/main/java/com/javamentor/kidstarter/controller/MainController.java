@@ -124,12 +124,12 @@ public class MainController {
         return "editKid";
     }
 
-    @GetMapping("/organization/teachers/add")
+    @GetMapping("/organization/teacher/add")
     public String createTeacher() {
         return "createTeacher";
     }
 
-    @GetMapping("/organization/teachers/{id}")
+    @GetMapping("/organization/teacher/{id}")
     public String editTeacher(@PathVariable("id") String id) {
         return "editTeacher";
     }

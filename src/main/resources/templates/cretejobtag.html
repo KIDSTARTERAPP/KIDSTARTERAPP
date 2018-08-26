@@ -8,7 +8,6 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
     <title>KidStarter</title>
-    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +20,7 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
-<div th:replace="fragments/htmlFragment::crumbs"></div>
+<div th:replace="fragments/crumbs::crumbs"></div>
 
 <div class="container-fluid">
     <div class="row">
@@ -33,16 +32,19 @@
                     <table>
                         <tr>
                             <td><label for="input_jobname">Введите имя интереса:</label></td>
-                            <td colspan="2"><input class="form-control" id="input_jobname" width="100%" type="text" name="input_jobname"></td>
+                            <td colspan="2"><input class="form-control" id="input_jobname" width="100%" type="text"
+                                                   name="input_jobname"></td>
                         </tr>
                         <tr>
                             <td><label for="input_jobdesc">Введите описание интереса:</label></td>
-                            <td colspan="2"><input class="form-control" id="input_jobdesc" type="text" name="input_jobdesc"></td>
+                            <td colspan="2"><input class="form-control" id="input_jobdesc" type="text"
+                                                   name="input_jobdesc"></td>
                         </tr>
                         <tr>
                             <td><label for="select_tagselect">Добавьте тэги:</label></td>
                             <td>
-                                <select multiple class="btn btn-default dropdown-toggle" id="select_tagselect" name="select_tagselect">
+                                <select multiple class="btn btn-default dropdown-toggle" id="select_tagselect"
+                                        name="select_tagselect">
                                 </select>
                             </td>
                         </tr>
@@ -56,7 +58,8 @@
             </div>
             <h2 class="sub-header">Добавить новый тэг:</h2>
             <div>
-                <form class="navbar-form" onsubmit="createtag(document.getElementById('input_tag_name').value); return false">
+                <form class="navbar-form"
+                      onsubmit="createtag(document.getElementById('input_tag_name').value); return false">
                     <table>
                         <tr>
                             <td><label for="input_tag_name">Введите имя тэга:</label></td>
@@ -78,6 +81,7 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<link rel="stylesheet" href="/css/styles.css"/>
 <script src="/scripts/create_job_tag.js"></script>
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 </body>

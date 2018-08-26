@@ -23,25 +23,25 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
-<div th:replace="fragments/htmlFragment::crumbs"></div>
+<div th:replace="fragments/crumbs::crumbs"></div>
 <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header">Список тегов:</h2>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Тег</th>
-                    </tr>
-                    </thead>
-                    <tbody id="table_tag_list">
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h2 class="sub-header">Список тегов:</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Тег</th>
+            </tr>
+            </thead>
+            <tbody id="table_tag_list">
+            </tbody>
+        </table>
     </div>
+</div>
+</div>
 </div>
 
 <!-- Bootstrap core JavaScript
@@ -51,8 +51,9 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<link rel="stylesheet" href="/css/styles.css"/>
 <script src="/scripts/tag_page.js"></script>
-<link rel="stylesheet"   href="/css/styles.css"/>
+<link rel="stylesheet" href="/css/styles.css"/>
 
 </body>
 </html>

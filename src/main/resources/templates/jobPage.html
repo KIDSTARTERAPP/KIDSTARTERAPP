@@ -8,7 +8,6 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
     <title>KidStarter</title>
-    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +22,7 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
-<div th:replace="fragments/htmlFragment::crumbs"></div>
+<div th:replace="fragments/crumbs::crumbs"></div>
 
 <div class="container-fluid">
     <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
@@ -58,6 +57,7 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<link rel="stylesheet"   href="/css/styles.css"/>
 <script src="/scripts/job_page.js"></script>
 </body>
 </html>

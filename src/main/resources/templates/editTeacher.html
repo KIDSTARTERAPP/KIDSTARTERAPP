@@ -23,7 +23,7 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
-
+<div th:replace="fragments/crumbs::crumbs"></div>
 <div class="container-fluid">
     <div class="row">
         <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
@@ -31,7 +31,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Редактирование </h1>
             <div class="table-responsive">
-                <form class="form-signup" onsubmit= "updateTeacher();return false">
+                <form class="form-signup" onsubmit="updateTeacher();return false">
                     <input id="hidden_id" type="hidden">
                     <label for="firstname">Имя</label>
                     <input id="firstname" class="form-control" required type="text" name="firstname"/>
@@ -90,7 +90,8 @@
                     <label for="address">Адресс</label>
                     <input id="address" class="form-control" required type="text" name="address"/>
                     <br/>
-                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit" value="Обновить пользователя" />
+                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit"
+                           value="Обновить пользователя"/>
                 </form>
             </div>
         </div>
@@ -105,6 +106,7 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<link rel="stylesheet" href="/css/styles.css"/>
 <script src="/scripts/editTeacher.js"></script>
 
 <link rel="stylesheet" href="/css/styles.css"/>

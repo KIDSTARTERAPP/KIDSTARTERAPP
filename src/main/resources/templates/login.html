@@ -5,7 +5,6 @@
     <meta charset="UTF-8"/>
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -15,7 +14,7 @@
 
 <div class="login">
     <div th:replace="fragments/htmlFragment::main-header"></div>
-    <div th:replace="fragments/htmlFragment::crumbs"></div>
+    <div th:replace="fragments/crumbs::crumbs"></div>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
         <h1 class="text-center">Авторизация</h1>
@@ -38,6 +37,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
-
+<link rel="stylesheet" href="/css/styles.css"/>
 </body>
 </html>

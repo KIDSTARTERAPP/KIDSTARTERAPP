@@ -1,5 +1,5 @@
 function createTeacher() {
-    let url = '/api/teacher';
+    let url = '/api/organization/teacher';
     let wrap = {
         firstName: $('#firstname').val(),
         lastName: $('#lastname').val(),
@@ -21,6 +21,7 @@ function createTeacher() {
         contentType: "application/json; charset=utf-8",
         data: data,
         success: function () {
+            window.location.replace("/organization/teachers");
 
         },
         error: function (e) {
