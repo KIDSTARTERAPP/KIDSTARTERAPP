@@ -36,9 +36,6 @@ function fill_job_list(kid_jobs) {
                         response[i].name + "</td><td>" +
                         response[i].description + "</td><td>" +
                         tags + "</td><td>" +
-                        response[i].kids.length + "</td><td>" +
-                        response[i].mentors.length + "</td><td>" +
-                        response[i].teachers.length + "</td><td>" +
                         "<form class='navbar-form' onsubmit='add_job_to_whish_list(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Хочу изучить'></form></td><td>" +
                         "</tr>");
                 }
