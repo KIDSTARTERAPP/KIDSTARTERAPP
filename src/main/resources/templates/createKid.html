@@ -27,6 +27,7 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
         <h1 class="text-center">Добавление ребёнка</h1>
         <div class="table-responsive">
+            <input id="id_org" th:value="${id_org}" type="hidden">
             <form class="form-signup" onsubmit="createKid(); return false">
                 <label for="firstname">Имя</label>
                 <input id="firstname" class="form-control" required placeholder="Имя" type="text" name="firstname"/>
@@ -66,6 +67,17 @@
 
                 <label for="address">Адрес</label>
                 <input id="address" class="form-control" required placeholder="Адрес" type="text" name="address"/>
+
+                <div hidden class="form-group">
+                    <label class="control-label center" for="role">Выберите роль пользователя</label>
+                    <div class="">
+                        <select multiple name="role" class="form-control input-width center-block" id="role">
+                            <option selected value="USER">USER</option>
+                            <option selected value="KID">KID</option>
+                        </select>
+                    </div>
+                </div>
+
                 <br/>
                 <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit"/>
             </form>

@@ -44,7 +44,7 @@ public class Organization {
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "organization")
-    private Set<Kid> kid;
+    private Set<Kid> kids;
 
     public Organization(String name, String address, String country, String email, Integer phone, LocalDateTime createDate, Account account) {
         this.name = name;

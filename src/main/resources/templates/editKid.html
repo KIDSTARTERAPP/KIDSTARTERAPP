@@ -32,6 +32,8 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Редактирование ребёнка</h1>
             <div class="table-responsive">
+                <input id="id_org" th:value="${id_org}" type="hidden">
+                <input id="id_kid" th:value="${id_kid}" type="hidden">
                 <form class="form-signup" onsubmit= "updateKid();return false">
                     <input id="hidden_id" type="hidden">
                     <label for="firstname">Имя</label>
@@ -53,18 +55,13 @@
                         <label class="control-label center" for="role">Выберите роль пользователя</label>
                         <div class="">
                             <select multiple name="role" class="form-control input-width center-block" id="role">
-                                <option value="ADMIN">ADMIN</option>
-                                <option value="TEACHER">TEACHER</option>
-                                <option value="SPONSOR">SPONSOR</option>
-                                <option value="OWNER">OWNER</option>
-                                <option value="MENTOR">MENTOR</option>
-                                <option value="MODERATOR">MODERATOR</option>
+                                <option value="USER">USER</option>
                                 <option value="KID">KID</option>
                             </select>
                         </div>
                     </div>
 
-                    <input id="createDate" type="hidden">
+                    <input hidden id="createDate">
 
                     <label for="age">Возраст</label>
                     <input id="age" class="form-control" required type="number" name="age"/>

@@ -84,4 +84,9 @@ public class UserServiceImpl implements UserService {
     public User getByLogin(String login) {
         return userDAO.getByLogin(login);
     }
+
+    @Override
+    public void deleteKidByUserId(long id) {
+        userDAO.deleteKidByUserId(id);
+    }
 }

@@ -1,12 +1,11 @@
 package com.javamentor.kidstarter.controller.api;
 
+import com.javamentor.kidstarter.dao.Impl.UserDaoImpl;
+import com.javamentor.kidstarter.model.user.Account;
 import com.javamentor.kidstarter.model.user.Kid;
 import com.javamentor.kidstarter.model.user.Role;
 import com.javamentor.kidstarter.model.user.User;
-import com.javamentor.kidstarter.service.interfaces.KidService;
-import com.javamentor.kidstarter.service.interfaces.OrganizationService;
-import com.javamentor.kidstarter.service.interfaces.RoleService;
-import com.javamentor.kidstarter.service.interfaces.UserService;
+import com.javamentor.kidstarter.service.interfaces.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,21 +31,23 @@ public class RestKidController {
     private RoleService roleService;
     @Autowired
     private OrganizationService organizationService;
+    @Autowired
+    private AccountService accountService;
 
-    @GetMapping("/organization/kid/{id}")
-    public ResponseEntity<?> getKidId(@PathVariable("id") long id) {
-        User user = userService.getUserById(id);
+    @GetMapping("/organization/{id_org}/kids/{id_kid}")
+    public ResponseEntity<?> getKidId(@PathVariable("id_kid") long id_kid) {
+        User user = userService.getUserById(id_kid);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping("/organization/kids/all")
-    public ResponseEntity<List<User>> listAllKids(long id) {
+    @GetMapping("/organization/{id}/kids")
+    public ResponseEntity<List<User>> listAllKids(@PathVariable("id") long id) {
         List<User> kids = organizationService.getAllKidThisOrganization(id);
         return new ResponseEntity<>(kids, HttpStatus.OK);
     }
 
-    @PostMapping("/organization/kid/create")
-    public HttpStatus addKid(@RequestBody User user) {
+    @PostMapping("/organization/{id_org}/kids/create")
+    public HttpStatus addKid(@PathVariable("id_org") Long id_org, @RequestBody User user) {
         List<Role> roles = new ArrayList<>();
         Role userRole = roleService.getByName("USER");
         Role userKid = roleService.getByName("KID");
@@ -54,23 +55,24 @@ public class RestKidController {
         roles.add(userKid);
         user.setRoles(roles);
         user.setCreateDate(LocalDateTime.now());
+        user.setAccount(accountService.addAccount(new Account()));
         userService.addUser(user);
         Kid kid = new Kid();
         kid.setUser(user);
+        kid.setOrganization(organizationService.getOrganizationById(id_org));
         kidService.addKid(kid);
         return HttpStatus.OK;
     }
 
-    @PutMapping("/organization/kid")
+    @PutMapping("/organization/{id_org}/kids/{id_kid}")
     public ResponseEntity<?> updateKid(@RequestBody User user) {
         userService.updateUser(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @DeleteMapping("/organization/kid/{id}")
-    public HttpStatus deleteKidById(@PathVariable("id") long id) {
-        Kid kid = kidService.getUserKidById(id);
-        kidService.deleteKidById(kid.getId());
+    @DeleteMapping("/organization/{id_org}/kid/{id_user}")
+    public HttpStatus deleteKidById(@PathVariable("id_user") long id_user) {
+        userService.deleteKidByUserId(id_user);
         return HttpStatus.OK;
     }
 }

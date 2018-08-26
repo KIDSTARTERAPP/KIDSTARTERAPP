@@ -20,4 +20,8 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
         }
         return user;
     }
+
+    public void deleteKidByUserId(long id) {
+        entityManager.createQuery("DELETE FROM Kid k WHERE k.user.id = :id").setParameter("id", id).executeUpdate();
+    }
 }

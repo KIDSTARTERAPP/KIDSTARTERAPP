@@ -8,7 +8,9 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
     <link rel="stylesheet"   href="/css/styles.css"/>
-
+    <title>Быстрый старт. Размещение интерактивной карты на странице</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <title>KidStarter</title>
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,19 +22,18 @@
 </head>
 
 <body>
-
 <div th:replace="fragments/htmlFragment::main-header"></div>
-
 <div class="container-fluid">
     <div class="row">
         <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
-
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div id="map" style="width: 1200px; height: 400px;"></div>
             <h1 class="page-header">Список детей:</h1>
-            <form class="navbar-form" action="/organization/kids/add" method="get">
+                <form class="navbar-form" th:action="@{/organization/} + ${id_org} + @{/kids/create}" method="get">
                 <input class="form-control" type="submit" value="Добавить ребёнка">
             </form>
             <div class="table-responsive">
+                <input id="id_org" th:value="${id_org}" type="hidden">
                 <table id="table_userlist"  class="table table-striped">
                     <thead>
                     <tr>
@@ -41,7 +42,6 @@
                         <th>Фамилия</th>
                         <th>Отчество</th>
                         <th>Логин</th>
-                        <th>Дата создания</th>
                         <th>Возраст</th>
                         <th>Пол</th>
                         <th>Телефон</th>
@@ -53,7 +53,6 @@
                     </tr>
                     </thead>
                     <tbody id="table_body_kidlist">
-
                     </tbody>
                 </table>
             </div>
