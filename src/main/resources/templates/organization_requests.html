@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
+
+    <title>KidStarter</title>
+    <script
+            src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div th:replace="fragments/htmlFragment::main-header"></div>
+
+<div th:replace="fragments/htmlFragment::crumbs"></div>
+<div th:replace="fragments/htmlFragment::nav-sidebar"></div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h2 class="sub-header">Список запросов организации:</h2>
+    <label id="request_result"></label>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Описание</th>
+                <th>Интерес</th>
+                <th>Количество детей</th>
+                <th>Количество учителей</th>
+                <th>Цена</th>
+                <th>Статус</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="table_organization_requests">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
+<script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
+<script src="/scripts/all_scripts.js"></script>
+<script src="/scripts/organization_requests.js"></script>
+<link rel="stylesheet"   href="/css/styles.css"/>
+
+</body>
+</html>
