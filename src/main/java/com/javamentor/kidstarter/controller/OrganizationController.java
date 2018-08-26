@@ -12,4 +12,5 @@ public class OrganizationController {
     public String showOrganizationRequests() {
         return "organization_requests";
     }
+
 }
