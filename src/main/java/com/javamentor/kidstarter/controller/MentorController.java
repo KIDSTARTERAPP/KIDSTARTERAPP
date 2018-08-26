@@ -1,6 +1,7 @@
 package com.javamentor.kidstarter.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -17,12 +18,12 @@ public class MentorController {
         return "my-requests";
     }
 
-    @GetMapping("/mentor/requests")
+    @GetMapping("/requests")
     public String showAvailableRequests() {
         return "mentor_requests";
     }
 
-    @GetMapping("/mentor/activerequests")
+    @GetMapping("/activerequests")
     public String showMentorActiveRequests() {
         return "mentor_active_requests";
     }

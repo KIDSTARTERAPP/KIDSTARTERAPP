@@ -1,7 +1,6 @@
 package com.javamentor.kidstarter.config.initializer;
 
 import com.javamentor.kidstarter.model.Job;
-import com.javamentor.kidstarter.model.Request;
 import com.javamentor.kidstarter.model.Tag;
 import com.javamentor.kidstarter.model.user.*;
 import com.javamentor.kidstarter.service.interfaces.*;
@@ -9,18 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import com.javamentor.kidstarter.model.user.Role;
-import com.javamentor.kidstarter.model.user.User;
-import com.javamentor.kidstarter.service.interfaces.JobService;
-import com.javamentor.kidstarter.service.interfaces.RoleService;
-import com.javamentor.kidstarter.service.interfaces.TagService;
-import com.javamentor.kidstarter.service.interfaces.UserService;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 
 
 public class DataInitializer {
@@ -101,16 +88,12 @@ public class DataInitializer {
         User ownerUser = new User("Mentor", "Mentor", "Mentor", "owner", "123",
                 ownerRoles, 28, "MALE", "23 - 12 - 34", "Mentor@mail.ru", "RUSSIA", "house 15");
 
-        User mentorUser2  = new User("Mentor","Mentor","Mentor","mentor2","qwer",
-                mentorRoles,28, "MALE","23-12-34","Mentor@mail.ru","RUSSIA","house 15");
-
 //        User moderatorUser = new User("Mentor", "Mentor", "Mentor", "moderator", "123",
 //                moderatorRoles, 28, "MALE", 23 - 12 - 34, "Mentor@mail.ru", "RUSSIA", "house 15");
 
 
         adminUser = userService.addUser(adminUser);
         mentorUser = userService.addUser(mentorUser);
-        mentorUser2 = userService.addUser(mentorUser2);
         kidUser = userService.addUser(kidUser);
         teacherUser = userService.addUser(teacherUser);
         userUser = userService.addUser(userUser);
@@ -149,19 +132,7 @@ public class DataInitializer {
 
 
         Job job1 = jobService.addJob(new Job("Java", "Топовый язык"));
-        Job job2 = jobService.addJob(new Job("JavaScript", "Какашка"));
-
-        Kid kid1 = kidService.addKid(new Kid(kidUser1, new HashSet<>(Collections.singletonList(job1))));
-        Kid kid2 = kidService.addKid(new Kid(kidUser2, new HashSet<>(Collections.singletonList(job2))));
-
-        Teacher teacher1 = teacherService.addTeacher(new Teacher(teacherUser1, new HashSet<>(Collections.singletonList(job1))));
-        Teacher teacher2 = teacherService.addTeacher(new Teacher(teacherUser2, new HashSet<>(Collections.singletonList(job2))));
-
-        Mentor mentor1 = mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job1)), 3, "Description"));
-        Mentor mentor2 = mentorService.addMentor(new Mentor(mentorUser2, new HashSet<>(Collections.singletonList(job2)), 7, "Pergription"));
-
-        Request request1 = new Request("Заявка на обучение", job1, new HashSet<>(Collections.singletonList(kid1)), new HashSet<>(Collections.singletonList(teacher1)),
-                1500L, new HashSet<>(Collections.singletonList(user1)), null, acc1, owner1, Request.RequestStatus.NEW);
+        Job job2 = jobService.addJob(new Job("JavaScript", "ugly toad"));
 
         Kid kid1 = kidService.addKid(new Kid(kidUser, new HashSet<>(Collections.singletonList(job1))));
 
@@ -169,13 +140,6 @@ public class DataInitializer {
 
         Mentor mentor1 = mentorService.addMentor(new Mentor(userUser, new HashSet<>(Collections.singletonList(job2)), 3, "Description"));
 
-        jobService.updateJob(job1);
-        jobService.updateJob(job2);
-
-        org1.setKid(new HashSet<>(Collections.singletonList(kid1)));
-        org1.setTeachers(new HashSet<>(Collections.singletonList(teacher1)));
-        organizationService.updateOrganization(org1);
     }
 
 }
-
