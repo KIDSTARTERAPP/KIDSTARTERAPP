@@ -24,7 +24,7 @@ public class Kid {
     @Column(name = "kid_id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -48,7 +48,7 @@ public class Kid {
             inverseJoinColumns = @JoinColumn(name = "request_id"))
     private Set<Request> requests;
 
-    public Kid(User user, Set<Job> jobInterest) {
+    public Kid(User user, Set<Job> jobInterest, Organization org) {
         this.user = user;
         this.jobInterest = jobInterest;
     }

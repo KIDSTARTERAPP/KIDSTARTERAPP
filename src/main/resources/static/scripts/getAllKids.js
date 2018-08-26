@@ -1,10 +1,8 @@
 $(document).ready(function () {
     fillusertable();
-    init();
 });
 
-function fillusertable(){
-    ymaps.ready(init);
+function fillusertable() {
     $("#table_body_kidlist").empty();
     $.ajax({
         type: "GET",
@@ -48,22 +46,7 @@ function delete_kid(id_kid) {
         url: url,
         datatype: "JSON",
         success: function () {
-            fillusertable();
+            window.location.replace("/organization/" + $("#id_org").val() + "/kids");
         }
     });
-}
-
-
-function init(){
-    var myMap = new ymaps.Map("map", {
-        center: [55.76, 37.64],
-        zoom: 7
-    });
-
-    var myPlacemark = new ymaps.Placemark([55.76, 37.64], {
-        hintContent: 'Содержимое всплывающей подсказки',
-        balloonContent: 'Содержимое балуна'
-    });
-
-    myMap.geoObjects.add(myPlacemark);
 }

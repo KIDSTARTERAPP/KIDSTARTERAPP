@@ -1,10 +1,7 @@
 package com.javamentor.kidstarter.controller.api;
 
-import com.javamentor.kidstarter.dao.Impl.UserDaoImpl;
-import com.javamentor.kidstarter.model.user.Account;
-import com.javamentor.kidstarter.model.user.Kid;
-import com.javamentor.kidstarter.model.user.Role;
-import com.javamentor.kidstarter.model.user.User;
+import com.javamentor.kidstarter.model.Job;
+import com.javamentor.kidstarter.model.user.*;
 import com.javamentor.kidstarter.service.interfaces.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api")
@@ -70,9 +66,10 @@ public class RestKidController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @DeleteMapping("/organization/{id_org}/kid/{id_user}")
-    public HttpStatus deleteKidById(@PathVariable("id_user") long id_user) {
-        userService.deleteKidByUserId(id_user);
+    @DeleteMapping("/organization/{id_org}/kid/{id_kid}")
+    public HttpStatus deleteKidById(@PathVariable("id_kid") long id_kid) {
+        userService.deleteKidByUserId(id_kid);
+        userService.deleteUserById(id_kid);
         return HttpStatus.OK;
     }
 }

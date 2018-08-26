@@ -99,7 +99,6 @@ public class DataInitializer {
         User mentorUser = new User("Mentor", "Mentor", "Mentor", "mentor", "qwer",
                 mentorRoles, 28, "MALE", 23 - 12 - 34, "Mentor@mail.ru", "RUSSIA", "house 15");
 
-
         user1 = userService.addUser(user1);
         user2 = userService.addUser(user2);
         kidUser = userService.addUser(kidUser);
@@ -140,8 +139,8 @@ public class DataInitializer {
         Job job1 = jobService.addJob(new Job("Java", "Топовый язык", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
         Job job2 = jobService.addJob(new Job("JavaScript", "Какашка", new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
 
-        Kid kid1 = kidService.addKid(new Kid(kidUser, new HashSet<>(Collections.singletonList(job1))));
-        Kid kid2 = kidService.addKid(new Kid(kidUser2, new HashSet<>(Collections.singletonList(job2))));
+        Kid kid1 = kidService.addKid(new Kid(kidUser, new HashSet<>(Collections.singletonList(job1)), org1));
+        Kid kid2 = kidService.addKid(new Kid(kidUser2, new HashSet<>(Collections.singletonList(job2)), org2));
 
         kid1.setOrganization(org1);
         kidService.updateKid(kid1);
@@ -151,8 +150,14 @@ public class DataInitializer {
         Teacher teacher1 = teacherService.addTeacher(new Teacher(teacherUser, new HashSet<>(Collections.singletonList(job1))));
         Teacher teacher2 = teacherService.addTeacher(new Teacher(teacherUser, new HashSet<>(Collections.singletonList(job2))));
 
-        Mentor mentor1 = mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job1)), 3, "Description"));
-        Mentor mentor2 = mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job2)), 7, "Pergription"));
+        Mentor mentor11 = new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job1)), 3, "Description");
+        Mentor mentor22 = new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job2)), 7, "Pergription");
+        mentor11.setPointX(55.76);
+        mentor11.setPointY(37.64);
+        mentor22.setPointY(55.76);
+        mentor22.setPointY(37.64);
+        Mentor mentor1 = mentorService.addMentor(mentor11);
+        Mentor mentor2 = mentorService.addMentor(mentor22);
 
         Request request1 = new Request("Заявка на обучеие", job1, new HashSet<>(Collections.singletonList(kid1)), new HashSet<>(Collections.singletonList(teacher1)),
                 1500L, new HashSet<>(Collections.singletonList(user1)), mentor1, acc1, owner1);

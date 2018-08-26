@@ -1,13 +1,16 @@
 package com.javamentor.kidstarter.controller;
 
-import com.javamentor.kidstarter.service.interfaces.JobService;
-import com.javamentor.kidstarter.service.interfaces.OrganizationService;
-import com.javamentor.kidstarter.service.interfaces.RequestService;
-import com.javamentor.kidstarter.service.interfaces.TagService;
+import com.javamentor.kidstarter.model.Job;
+import com.javamentor.kidstarter.model.user.Mentor;
+import com.javamentor.kidstarter.model.user.Role;
+import com.javamentor.kidstarter.model.user.User;
+import com.javamentor.kidstarter.service.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
 
 
 @Controller
@@ -24,6 +27,9 @@ public class MainController {
 
     @Autowired
     RequestService requestService;
+
+    @Autowired
+    RoleService roleService;
 
     @RequestMapping("/main")
     public String showMain() {
@@ -112,7 +118,7 @@ public class MainController {
         model.addAttribute("id_org", id_org);
         return "getAllKids";
     }
-    @GetMapping("/organization/{id_org}/kids/create") //todo Возвращаю строку
+    @GetMapping("/organization/{id_org}/kids/create")
     public String createKidPage(@PathVariable("id_org") String id_org, Model model) {
         model.addAttribute("id_org", id_org);
         return "createKid";
