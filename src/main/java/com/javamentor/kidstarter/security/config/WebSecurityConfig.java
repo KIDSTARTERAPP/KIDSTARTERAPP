@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/static/**","/resources/templates/**");
+        web.ignoring().antMatchers("/css/**", "/scripts/**");
     }
 
     @Override
@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/main/**", "/resources/static/**","/resources/templates/**").permitAll()
+                .antMatchers("/", "/main/**", "/api/**").permitAll()
                 .antMatchers("/main/become-mentor").hasAnyAuthority("USER")
                 .anyRequest().authenticated()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")

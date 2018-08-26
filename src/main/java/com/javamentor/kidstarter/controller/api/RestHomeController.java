@@ -33,11 +33,10 @@ public class RestHomeController {
     public ResponseEntity registration(@RequestBody User user) {
 
         Role roleUser = roleService.getByName("USER");
-        Role roleSponsor = roleService.getByName("SPONSOR");
 
         List<Role> roles = new ArrayList<>();
         roles.add(roleUser);
-        roles.add(roleSponsor);
+
         user.setRoles(roles);
 
         user.setCreateDate(LocalDateTime.now());
