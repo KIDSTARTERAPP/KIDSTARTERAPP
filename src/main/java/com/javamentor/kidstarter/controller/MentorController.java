@@ -10,4 +10,15 @@ public class MentorController {
     public String  getRegistrationMentor(Model model){
         return "createMentor";
     }
+
+    @GetMapping("/mentor/requests")
+    public String showAvailableRequests() {
+        return "mentor_requests";
+    }
+
+    @GetMapping("/mentor/activerequests")
+    public String showMentorActiveRequests() {
+        return "mentor_active_requests";
+    }
+
 }

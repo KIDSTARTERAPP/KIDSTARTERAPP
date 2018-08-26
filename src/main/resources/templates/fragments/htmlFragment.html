@@ -79,6 +79,10 @@
                             <li id="organization-page"><a href="/organizationPage">Организации</a></li>
                             <li id="request-page"><a href="/requestPage">Заявки</a></li>
                         </th:block>
+                        <th:block sec:authorize="hasAnyAuthority('MENTOR')">
+                            <li id="mentor-opened-requests-page"><a href="/mentor/requests">Открытые запросы</a></li>
+                            <li id="mentor-active-requests-page"><a href="/mentor/activerequests">Мои активные запросы</a></li>
+                        </th:block>
                         <th:block sec:authorize="hasAnyAuthority('USER')">
 
                             <li id="jobs-link"><a href="/jobPage">Интересы</a></li>

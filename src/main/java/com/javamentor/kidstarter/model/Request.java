@@ -67,7 +67,7 @@ public class Request {
 
 	public enum RequestStatus {
 		NEW,
-		MODIFIED,
+		READY,
 		FUNDING,
 		PAID,
 		IN_PROGRESS,

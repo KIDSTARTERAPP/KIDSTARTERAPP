@@ -116,6 +116,9 @@ public class DataInitializer {
         User mentorUser  = new User("Mentor","Mentor","Mentor","mentor","qwer",
                 mentorRoles,28, "MALE","23-12-34","Mentor@mail.ru","RUSSIA","house 15");
 
+        User mentorUser2  = new User("Mentor","Mentor","Mentor","mentor2","qwer",
+                mentorRoles,28, "MALE","23-12-34","Mentor@mail.ru","RUSSIA","house 15");
+
 
         user1 = userService.addUser(user1);
         user2 = userService.addUser(user2);
@@ -124,6 +127,7 @@ public class DataInitializer {
         teacherUser1 = userService.addUser(teacherUser1);
         teacherUser2 = userService.addUser(teacherUser2);
         mentorUser = userService.addUser(mentorUser);
+        mentorUser2 = userService.addUser(mentorUser2);
 
         Tag tag1 = tagService.addTag(new Tag("Программирование", new HashSet<>()));
         Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
@@ -166,10 +170,10 @@ public class DataInitializer {
         Teacher teacher2 = teacherService.addTeacher(new Teacher(teacherUser2, new HashSet<>(Collections.singletonList(job2))));
 
         Mentor mentor1 = mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job1)), 3, "Description"));
-        Mentor mentor2 = mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job2)), 7, "Pergription"));
+        Mentor mentor2 = mentorService.addMentor(new Mentor(mentorUser2, new HashSet<>(Collections.singletonList(job2)), 7, "Pergription"));
 
         Request request1 = new Request("Заявка на обучение", job1, new HashSet<>(Collections.singletonList(kid1)), new HashSet<>(Collections.singletonList(teacher1)),
-                1500L, new HashSet<>(Collections.singletonList(user1)), mentor1, acc1, owner1, Request.RequestStatus.IN_PROGRESS);
+                1500L, new HashSet<>(Collections.singletonList(user1)), null, acc1, owner1, Request.RequestStatus.NEW);
 
         Request request2 = new Request("Хочет учиться", job2, new HashSet<>(Collections.singletonList(kid2)), new HashSet<>(Collections.singletonList(teacher2)),
                 2000L, new HashSet<>(Collections.singletonList(user2)), mentor2, acc2, owner2, Request.RequestStatus.IN_PROGRESS);
