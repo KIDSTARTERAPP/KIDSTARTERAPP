@@ -19,12 +19,12 @@
 
 <body>
 
-<div th:replace="fragments/htmlFragment::main-header"></div>
-<div th:replace="fragments/crumbs::crumbs"></div>
+<div th:replace="fragments/nav-bar::main-header"></div>
+<div th:replace="fragments/nav-bar::crumbs"></div>
 
 <div class="container-fluid">
     <div class="row">
-        <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
+        <div th:replace="fragments/nav-bar::nav-sidebar"></div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Создать интерес:</h1>
             <div>

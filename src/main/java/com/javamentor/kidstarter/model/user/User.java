@@ -60,7 +60,7 @@ public class User implements UserDetails {
     private String sex;
 
     @Column(name ="phone", nullable = false)
-    private String  phone;
+    private String phone;
 
     @Column(name = "email", nullable = false)
   //  @Email(regexp = ValidationPattern.EMAIL_PATTERN)
