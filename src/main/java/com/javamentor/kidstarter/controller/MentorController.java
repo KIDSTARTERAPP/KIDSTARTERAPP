@@ -34,4 +34,8 @@ public class MentorController {
         return "suitable-requests";
     }
 
+    @GetMapping(value = "/mapPage")
+    public String  mapsPage(){
+        return "mapPage";
+    }
 }
