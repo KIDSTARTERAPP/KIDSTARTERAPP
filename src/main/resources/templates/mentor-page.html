@@ -7,18 +7,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
-
-    <title>KidStarter</title>
     <link rel="stylesheet" href="/css/styles.css"/>
 
+    <title>KidStarter</title>
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -27,30 +23,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div th:replace="fragments/nav-bar::nav-sidebar"></div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header">Список заявок:</h2>
-            <div class="table-responsive">
-                <form class="navbar-form" action="/createOrganization" method="get">
-                    <input class="form-control" type="submit" value="Создать организацию">
-                </form>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Название организации</th>
-                        <th>Дата создания</th>
-                        <th>Номер телефона</th>
-                        <th>Адресс организации</th>
-                        <th>Страна расположения</th>
-                        <th>Электронная почта</th>
-                    </tr>
-                    </thead>
-                    <tbody id="table_body_organizationlist">
-
-                    </tbody>
-                </table>
-            </div>
+        <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
+            <ul class="nav nav-sidebar">
+                <li id="main-link"><a href="/main">Главная</a></li>
+                <div th:replace="fragments/nav-bar::mentor-nav-sidebar"></div>
+            </ul>
         </div>
     </div>
 </div>
@@ -62,6 +39,7 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
-<script src="/scripts/create_organization.js"></script>
+<script src="/scripts/adminpage.js"></script>
+
 </body>
 </html>
