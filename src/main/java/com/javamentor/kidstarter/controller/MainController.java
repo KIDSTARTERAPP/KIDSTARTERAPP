@@ -2,7 +2,6 @@ package com.javamentor.kidstarter.controller;
 
 import com.javamentor.kidstarter.service.interfaces.JobService;
 import com.javamentor.kidstarter.service.interfaces.OrganizationService;
-import com.javamentor.kidstarter.service.interfaces.RequestService;
 import com.javamentor.kidstarter.service.interfaces.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 public class MainController {
@@ -25,22 +22,36 @@ public class MainController {
     @Autowired
     OrganizationService organizationService;
 
-    @Autowired
-    RequestService requestService;
-
     @RequestMapping("/main")
     public String showMain() {
         return "main";
     }
 
+    @RequestMapping("/admin")
+    public String showAdminPage() {
+        return "admin-page";
+    }
+
+    @RequestMapping("/mentor")
+    public String showMentorPage() {
+        return "mentor-page";
+    }
+
+    @RequestMapping("/active-requests")
+    public String getActiveRequests() {
+        return "active-requests";
+    }
+
+    @RequestMapping("/profile")
+    public String showProfilePage() {
+        return "profile-page";
+    }
+
+    //----------------------------------------------------------
+
     @RequestMapping("/cretejobtag")
     public String showCreateJobTag() {
         return "cretejobtag";
-    }
-
-    @RequestMapping("/adminpage")
-    public String showAdminPage() {
-        return "adminpage";
     }
 
     @GetMapping("/editUser/{id}")
@@ -68,24 +79,12 @@ public class MainController {
         return "tagPage";
     }
 
-
-    @GetMapping("/requestPage")
-    public String showRequestPage(Model model) {
-        model.addAttribute("tags", requestService.getAllRequest());
-        return "requestPage";
-    }
-
-    @RequestMapping("/organizationInfoPage/{id}")
-    public String showListOrganizationPage() {
-        return "organizationInfoPage";
-    }
-
     @RequestMapping("/organizationPage")
-    public String showOrganizationPage() {
+    public String showListOrganizationPage() {
         return "organizationPage";
     }
 
-    @GetMapping("/createOrganization")
+    @RequestMapping("/createOrganization")
     public String createOrganizationPage() {
         return "createOrganization";
     }
@@ -94,41 +93,8 @@ public class MainController {
     public String showEditJob(@PathVariable("id") Long id) {
         return "editJob";
     }
-
-    @GetMapping("/kid")
-    public String showKidPage() {
-        return "kid_page";
-    }
-
-    @GetMapping("/kid/jobs")
-    public String showKidJobPickPage() {
-        return "kid_pick_jobs";
-    }
-
-    @GetMapping("/teacher/jobs")
-    public String showTeacherJobPickPage() {
-    return "teacher_pick_jobs";
-    }
-
-    @GetMapping("/organization/kids/add")
-    public String createKidPage() {
-        return "createKid";
-    }
-    @GetMapping("/organization/kids")
-    public String getAllKids() {
-        return "getAllKids";
-    }
-    @GetMapping("/organization/kids/{id}")
-    public String showKidEdit(@PathVariable("id") String id) {
-        return "editKid";
-    }
-
-    @GetMapping("/organization/teachers/add")
-    public String createTeacher(){
+    @RequestMapping("/createTeacher")
+    public String createTeacher() {
         return "createTeacher";
-    }
-    @GetMapping("/organization/teachers")
-    public String getAllTeachers() {
-        return "getAllTeachers";
     }
 }
