@@ -12,4 +12,5 @@ public interface MentorService {
     List<Mentor> getAllMentors();
     void deleteMentorById(Long id);
     void updateMentor(Mentor mentor);
+    Mentor getUserMentorById(Long id);
 }

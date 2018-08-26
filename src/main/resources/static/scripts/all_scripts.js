@@ -47,7 +47,7 @@ function setBreadCrumb() {
             continue;
         }
         link += "/" + splitter[i];
-        console.log(link);
+        // console.log(link);
         if (i == splitter.length - 1) {
             $('#breadcrumbMain').append("<li class='breadcrumb-item active' >" + name + "</li>");
         }
@@ -83,7 +83,6 @@ function setLinks() {
         $('#kid-link').attr('class', 'active');
     }
 }
-
 //---------------Get-user-principal-------------------
 var current_user;
 

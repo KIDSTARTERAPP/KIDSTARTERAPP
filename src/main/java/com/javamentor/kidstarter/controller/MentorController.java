@@ -17,6 +17,17 @@ public class MentorController {
         return "my-requests";
     }
 
+    @GetMapping("/mentor/requests")
+    public String showAvailableRequests() {
+        return "mentor_requests";
+    }
+
+    @GetMapping("/mentor/activerequests")
+    public String showMentorActiveRequests() {
+        return "mentor_active_requests";
+    }
+
+
     @RequestMapping("/suitable-requests")
     public String getAllRequests() {
         return "suitable-requests";
