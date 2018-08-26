@@ -32,14 +32,16 @@ public class OrganizationRestController {
 		this.ownerService = ownerService;
 	}
 
-	@GetMapping ("/organization/{id}/kids")
-	public ResponseEntity<Set<Kid>> getKidsByOrganizationId(@PathVariable("id") long id) {
-		return new ResponseEntity<>(organizationService.getOrganizationById(id).getKid(), HttpStatus.OK);
+	@GetMapping ("/organization/kids")
+	public ResponseEntity<Set<Kid>> getKidsByOrganizationId() {
+		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return new ResponseEntity<>(ownerService.getUserOwner(principal.getId()).getOrganization().getKid(), HttpStatus.OK);
 	}
 
-	@GetMapping ("/organization/{id}/teachers")
-	public ResponseEntity<Set<Teacher>> getTeachersByOrganizationId(@PathVariable("id") long id) {
-		return new ResponseEntity<>(organizationService.getOrganizationById(id).getTeachers(), HttpStatus.OK);
+	@GetMapping ("/organization/teachers")
+	public ResponseEntity<Set<Teacher>> getTeachersByOrganizationId() {
+		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return new ResponseEntity<>(ownerService.getUserOwner(principal.getId()).getOrganization().getTeachers(), HttpStatus.OK);
 	}
 
 	@GetMapping("/organization/{id}")

@@ -12,20 +12,95 @@ function fill_organization_requests_table() {
         dataType: "JSON",
         success: function (response) {
             $.each(response, function(i, item) {
-                var tr = $('<tr>').append(
-                    $('<td>').text(item.id),
-                    $('<td>').text(item.description),
-                    $('<td>').text(item.job.name),
-                    $('<td>').text(item.kids.length),
-                    $('<td>').text(item.teachers.length),
-                    $('<td>').text(item.price),
-                    $('<td>').text(item.status),
-                    $('<td>').append("<form onsubmit='add_mentor(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Подать заявку'></form>")
-                );
-                if (item.mentor.user.id == current_user.id) {
+                var tr;
+                if(item.status == "NEW") {
+                    tr = $('<tr>').append(
+                        $('<td>').text(item.id),
+                        $('<td>').text(item.description),
+                        $('<td>').text(item.job.name),
+                        $('<td>').text(item.kids.length),
+                        $('<td>').text(item.teachers.length),
+                        $('<td>').text(item.price),
+                        $('<td>').text(item.status),
+                        $('<td>').append("<form onsubmit='remove_request(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Удалить запрос'></form>")
+                    );
+                } else if(item.status == "READY") {
+                    tr = $('<tr>').append(
+                        $('<td>').text(item.id),
+                        $('<td>').text(item.description),
+                        $('<td>').text(item.job.name),
+                        $('<td>').text(item.kids.length),
+                        $('<td>').text(item.teachers.length),
+                        $('<td>').text(item.price),
+                        $('<td>').text(item.status),
+                        $('<td>').append("<form onsubmit='get_request_for_update(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Подтвердить запрос'></form>")
+                    );
+                } else {
+                    tr = $('<tr>').append(
+                        $('<td>').text(item.id),
+                        $('<td>').text(item.description),
+                        $('<td>').text(item.job.name),
+                        $('<td>').text(item.kids.length),
+                        $('<td>').text(item.teachers.length),
+                        $('<td>').text(item.price),
+                        $('<td>').text(item.status)
+                    );
+                }
+                if (item.creator.user.id == current_user.id) {
                     $("#table_organization_requests").append(tr);
                 }
             });
+        }
+    })
+}
+
+function remove_request(requestId) {
+    var url = "/api/request/" + requestId;
+    $.ajax({
+        type: "DELETE",
+        url: url,
+        datatype: "JSON",
+        success: function () {
+            fill_organization_requests_table();
+        }
+    })
+}
+
+
+function get_request_for_update(requestId) {
+    var url = "/api/request/" + requestId;
+    $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "JSON",
+        success: function (response) {
+            var data = {
+                id: response.id,
+                description: response.description,
+                job: response.job,
+                kids: response.kids,
+                teachers: response.teachers,
+                price: response.price,
+                sponsors: response.sponsors,
+                mentor: response.mentor,
+                account: response.account,
+                creator: response.creator,
+                status: "IN_PROGRESS"
+            };
+            approve_request(JSON.stringify(data));
+        }
+    })
+}
+
+function approve_request(response) {
+    $.ajax({
+        type: "PUT",
+        url: "/api/request",
+        contentType : "application/json; charset=UTF-8",
+        dataType: "JSON",
+        data: response,
+        success: function () {
+            fill_organization_requests_table();
         }
     })
 }

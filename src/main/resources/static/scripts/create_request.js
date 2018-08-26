@@ -88,13 +88,9 @@ function fill_job_select() {
 }
 
 function fill_kids_modal() {
-    var pathname = window.location.pathname;
-    var predicate = "/organizationInfoPage/";
-    var id = pathname.substring(pathname.indexOf(predicate) + predicate.length, pathname.lastIndexOf("/"));
-    var url = "/api/organization/" + id + "/kids";
     $.ajax({
         type: "GET",
-        url: url,
+        url: "/api/organization/kids",
         contentType : "application/json; charset=UTF-8",
         dataType: "JSON",
         success: function (response) {
@@ -108,16 +104,13 @@ function fill_kids_modal() {
 }
 
 function fill_teachers_modal() {
-    var pathname = window.location.pathname;
-    var predicate = "/organizationInfoPage/";
-    var id = pathname.substring(pathname.indexOf(predicate) + predicate.length, pathname.lastIndexOf("/"));
-    var url = "/api/organization/" + id + "/teachers";
     $.ajax({
         type: "GET",
-        url: url,
+        url: "/api/organization/teachers",
         contentType : "application/json; charset=UTF-8",
         dataType: "JSON",
         success: function (response) {
+            console.log(response);
             for (var i in response) {
                 var fio = response[i].user.lastName + " " + response[i].user.firstName + " " + response[i].user.patronymic;
                 $("#teachers_sortable1").append("<li class='ui-state-default' rel='" + response[i].id + "'>" + fio + "</li>");
@@ -219,11 +212,7 @@ function create_request() {
         async: false,
         data: json,
         success: function () {
-            var pathname = window.location.pathname;
-            var predicate = "/organizationInfoPage/";
-            var id = pathname.substring(pathname.indexOf(predicate) + predicate.length, pathname.lastIndexOf("/"));
-            var url = "/organizationInfoPage/" + id;
-            window.location.replace(url);
+            window.location.replace("/organization/requests");
         }
     })
 }

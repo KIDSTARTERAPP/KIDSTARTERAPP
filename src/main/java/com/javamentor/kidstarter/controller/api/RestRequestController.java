@@ -62,7 +62,7 @@ public class RestRequestController {
 	}
 
 	@PutMapping("/request")
-	public ResponseEntity<?>  updateRequest(@ModelAttribute("kid") Request request) {
+	public ResponseEntity<?>  updateRequest(@RequestBody Request request) {
 		requestService.updateRequest(request);
 		return new ResponseEntity<>(request, HttpStatus.OK);
 	}
