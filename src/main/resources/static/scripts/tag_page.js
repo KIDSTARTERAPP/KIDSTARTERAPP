@@ -13,7 +13,7 @@ function fill_tag_list() {
             for (var i in response) {
                 $("#table_tag_list").append("<tr><td>" + response[i].id + "</td><td>" +
                     response[i].name + "</td><td>" +
-                    // response[i].jobs + "</td><td>" +
+                    response[i].jobs + "</td><td>" +
                     "<form class='navbar-form' onsubmit='delete_tag(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Удалить'></form></td><td>" +
                     "</tr>");
             }
