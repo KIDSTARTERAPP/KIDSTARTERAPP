@@ -4,6 +4,10 @@ import com.javamentor.kidstarter.model.Request;
 import com.javamentor.kidstarter.model.user.Mentor;
 import com.javamentor.kidstarter.model.user.User;
 import com.javamentor.kidstarter.service.interfaces.MentorService;
+import com.javamentor.kidstarter.model.user.Account;
+import com.javamentor.kidstarter.model.user.User;
+import com.javamentor.kidstarter.service.interfaces.AccountService;
+import com.javamentor.kidstarter.service.interfaces.OwnerService;
 import com.javamentor.kidstarter.service.interfaces.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +23,12 @@ public class RestRequestController {
 
 	@Autowired
 	private RequestService requestService;
+
+	@Autowired
+	private OwnerService ownerService;
+
+	@Autowired
+	private AccountService accountService;
 
 	@Autowired
 	private MentorService mentorService;
@@ -43,6 +53,10 @@ public class RestRequestController {
 
 	@PostMapping("/request")
 	public ResponseEntity<?> addRequest(@RequestBody Request request) {
+		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		request.setCreator(ownerService.getUserOwner(principal.getId()));
+		Account account = accountService.addAccount(new Account());
+		request.setAccount(account);
 		requestService.addRequest(request);
 		return new ResponseEntity<>(request, HttpStatus.OK);
 	}
