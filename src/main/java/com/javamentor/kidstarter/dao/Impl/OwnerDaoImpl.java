@@ -10,6 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class OwnerDaoImpl extends AbstractDao<Long,Owner> implements OwnerDao {
 
 	public Owner getUserOwner(Long id) {
-		return entityManager.createQuery("SELECT o from Owner o WHERE o.user.id = :id", Owner.class).setParameter("id",id).getSingleResult();
+		return entityManager.createQuery("SELECT o from Owner o WHERE o.user.id = :id", Owner.class).setParameter("id",id).getResultList().stream().findAny().orElse(null);
 	}
 }

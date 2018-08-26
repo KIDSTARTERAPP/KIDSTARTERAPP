@@ -3,14 +3,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script type="text/javascript" th:src="@{/scripts/registration.js}"></script>
+    <title>KidStarter</title>
+    <script type="text/javascript" th:src="@{/scripts/createKid.js}"></script>
     <script
             src="http://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"   href="/css/styles.css"/>
+
+    <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
 
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -20,12 +23,11 @@
 <body>
 <div class="registr">
     <div th:replace="fragments/htmlFragment::main-header"></div>
-    <div th:replace="fragments/htmlFragment::crumbs"></div>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
-    <h1 class="text-center">Регистрация пользователя</h1>
+        <h1 class="text-center">Добавление ребёнка</h1>
         <div class="table-responsive">
-            <form class="form-signup" onsubmit=" addUser();return false">
+            <form class="form-signup" onsubmit="createKid(); return false">
                 <label for="firstname">Имя</label>
                 <input id="firstname" class="form-control" required placeholder="Имя" type="text" name="firstname"/>
 
@@ -47,13 +49,13 @@
                 <input id="age" class="form-control" required placeholder="Возраст" type="number" name="age"/>
 
                 <label for="sex">Пол</label>
-                <select id="sex" name="sex"  required class="form-control input-width center-block">
+                <select id="sex" name="sex" required class="form-control input-width center-block">
                     <option>Мужской</option>
                     <option>Женский</option>
                 </select>
                 <br>
                 <label for="phone">Телефон</label>
-                <input id="phone" class="form-control" required placeholder="Телефон" type="text" name="phone"/>
+                <input id="phone" class="form-control" required placeholder="Телефон" type="number" name="phone"/>
 
                 <label for="email">Электронная почта</label>
                 <input id="email" class="form-control" required placeholder="Электронная почта" type="email"
@@ -74,7 +76,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
-<script src="/scripts/all_scripts.js"></script>
-
 </body>
 </html>

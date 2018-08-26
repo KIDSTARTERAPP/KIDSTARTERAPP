@@ -2,6 +2,7 @@ package com.javamentor.kidstarter.controller;
 
 import com.javamentor.kidstarter.service.interfaces.JobService;
 import com.javamentor.kidstarter.service.interfaces.OrganizationService;
+import com.javamentor.kidstarter.service.interfaces.RequestService;
 import com.javamentor.kidstarter.service.interfaces.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,11 @@ public class MainController {
     @Autowired
     OrganizationService organizationService;
 
+    @Autowired
+    RequestService requestService;
+
     @RequestMapping("/main")
-    public String showMain(Model model) {
+    public String showMain() {
         return "main";
     }
 
@@ -60,17 +64,28 @@ public class MainController {
     }
 
     @GetMapping("/tagPage")
-    public String showTagsPage(Model model) {
-        model.addAttribute("tags", tagService.getAllTag());
+    public String showTagsPage() {
         return "tagPage";
     }
 
-    @RequestMapping("/organizationPage")
+
+    @GetMapping("/requestPage")
+    public String showRequestPage(Model model) {
+        model.addAttribute("tags", requestService.getAllRequest());
+        return "requestPage";
+    }
+
+    @RequestMapping("/organizationInfoPage/{id}")
     public String showListOrganizationPage() {
+        return "organizationInfoPage";
+    }
+
+    @RequestMapping("/organizationPage")
+    public String showOrganizationPage() {
         return "organizationPage";
     }
 
-    @RequestMapping("/createOrganization")
+    @GetMapping("/createOrganization")
     public String createOrganizationPage() {
         return "createOrganization";
     }
@@ -78,9 +93,42 @@ public class MainController {
     @GetMapping("/editJob/{id}")
     public String showEditJob(@PathVariable("id") Long id) {
         return "editJob";
+    }
 
-    @RequestMapping("/createTeacher")
-    public String createTeacher() {
+    @GetMapping("/kid")
+    public String showKidPage() {
+        return "kid_page";
+    }
+
+    @GetMapping("/kid/jobs")
+    public String showKidJobPickPage() {
+        return "kid_pick_jobs";
+    }
+
+    @GetMapping("/teacher/jobs")
+    public String showTeacherJobPickPage() {
+    return "teacher_pick_jobs";
+    }
+
+    @GetMapping("/organization/kids/add")
+    public String createKidPage() {
+        return "createKid";
+    }
+    @GetMapping("/organization/kids")
+    public String getAllKids() {
+        return "getAllKids";
+    }
+    @GetMapping("/organization/kids/{id}")
+    public String showKidEdit(@PathVariable("id") String id) {
+        return "editKid";
+    }
+
+    @GetMapping("/organization/teachers/add")
+    public String createTeacher(){
         return "createTeacher";
+    }
+    @GetMapping("/organization/teachers")
+    public String getAllTeachers() {
+        return "getAllTeachers";
     }
 }

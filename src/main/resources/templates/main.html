@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
 
@@ -29,9 +27,12 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
+
+<div th:replace="fragments/htmlFragment::crumbs"></div>
 <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="text-center">Здравствуй, добрый человек!</h1>
+
             <div>
                 <p class="text-center">На этом портале ты можешь помочь детям стать лучше.</p>
             </div>
@@ -71,5 +72,7 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<link rel="stylesheet"   href="/css/styles.css"/>
+
 </body>
 </html>

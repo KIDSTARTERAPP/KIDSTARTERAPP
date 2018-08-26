@@ -10,6 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrganiztionDaoImpl extends AbstractDao<Long,Organization> implements OrganiztionDao {
 
 	public Organization getByName (String name){
-		return entityManager.createQuery("SELECT org from  Organization org WHERE org.name = :name", Organization.class).setParameter("name",name).getSingleResult();
+		return entityManager.createQuery("SELECT org from  Organization org WHERE org.name = :name", Organization.class).setParameter("name",name).getResultList().stream().findAny().orElse(null);
 	}
 }
