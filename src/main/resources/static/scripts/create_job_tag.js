@@ -5,7 +5,7 @@ $(document).ready(function () {
 function filltagselect() {
     $.ajax({
         type: "GET",
-        url: "./api/tags",
+        url: "/api/tags",
         datatype: "JSON",
         success: function (response) {
             for (var i in response) {
@@ -18,7 +18,7 @@ function filltagselect() {
 function createtag(name) {
     $.ajax({
         type: "POST",
-        url: "./api/tag",
+        url: "/api/tag",
         datatype: "JSON",
         data: {name:name},
         success: function (response) {

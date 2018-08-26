@@ -137,21 +137,21 @@ public class DataInitializer {
         Kid kid1 = kidService.addKid(new Kid(kidUser, new HashSet<>(Collections.singletonList(job1))));
 
         Teacher teacher1 = teacherService.addTeacher(new Teacher(teacherUser, new HashSet<>(Collections.singletonList(job1))));
-        Teacher teacher2 = teacherService.addTeacher(new Teacher(teacherUser2, new HashSet<>(Collections.singletonList(job2))));
+       // Teacher teacher2 = teacherService.addTeacher(new Teacher(teacherUser2, new HashSet<>(Collections.singletonList(job2))));
 
         Mentor mentor1 = mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job1)), 3, "Description"));
         Mentor mentor2 = mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job2)), 7, "Pergription"));
 
-        Request request1 = new Request("Заявка на обучеие", job1, new HashSet<>(Collections.singletonList(kid1)), new HashSet<>(Collections.singletonList(teacher1)),
-                1500L, new HashSet<>(Collections.singletonList(user1)), mentor1, acc1, owner1);
-
-        Request request2 = new Request("Хочет учиться", job2, new HashSet<>(Collections.singletonList(kid2)), new HashSet<>(Collections.singletonList(teacher2)),
-                2000L, new HashSet<>(Collections.singletonList(user2)), mentor2, acc2, owner2);
-
-        requestService.addRequest(request1);
-        requestService.addRequest(request2);
-
-        Mentor mentor1 = mentorService.addMentor(new Mentor(userUser, new HashSet<>(Collections.singletonList(job2)), 3, "Description"));
+//        Request request1 = new Request("Заявка на обучеие", job1, new HashSet<>(Collections.singletonList(kid1)), new HashSet<>(Collections.singletonList(teacher1)),
+//                1500L, new HashSet<>(Collections.singletonList(user1)), mentor1, acc1, owner1);
+//
+//        Request request2 = new Request("Хочет учиться", job2, new HashSet<>(Collections.singletonList(kid2)), new HashSet<>(Collections.singletonList(teacher2)),
+//                2000L, new HashSet<>(Collections.singletonList(user2)), mentor2, acc2, owner2);
+//
+//        requestService.addRequest(request1);
+//        requestService.addRequest(request2);
+//
+//        Mentor mentor1 = mentorService.addMentor(new Mentor(userUser, new HashSet<>(Collections.singletonList(job2)), 3, "Description"));
 
     }
 

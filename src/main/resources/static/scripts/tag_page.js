@@ -6,7 +6,7 @@ function fill_tag_list() {
     $("#table_tag_list").empty();
     $.ajax({
         type: "GET",
-        url: "./api/tags",
+        url: "/api/tags",
         dataType: "JSON",
         success: function (response) {
             console.log(response);
@@ -22,7 +22,7 @@ function fill_tag_list() {
 }
 
 function delete_tag(tagId) {
-    var url = "./api/tag/" + tagId;
+    var url = "/api/tag/" + tagId;
     $.ajax({
         type: "DELETE",
         url: url,

@@ -9,22 +9,22 @@ public class AdminController {
 
     @RequestMapping("/users")
     public String getAllUsers() {
-        return "allUsersForAdmin";
+        return "admin-page";
     }
 
     @RequestMapping("/organizations")
     public String getAllOrganizations() {
-        return "allOrganizationsForAdmin";
+        return "organizationPage";
     }
 
     @RequestMapping("/tags")
     public String getAllTags() {
-        return "allTagsForAdmin";
+        return "tagPage";
     }
 
     @RequestMapping("/jobs")
     public String getAllJobs() {
-        return "allJobsForAdmin";
+        return "jobPage";
     }
 
     @RequestMapping("/mentors")

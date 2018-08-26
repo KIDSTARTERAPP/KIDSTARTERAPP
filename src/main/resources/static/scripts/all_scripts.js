@@ -29,10 +29,11 @@ function setBreadCrumb() {
         "kid": "Главная страница ребёнка",
         "registration": "Регистрация",
         "login": "Логин",
-        "become-mentor": "Стать ментором"
+        "become-mentor": "Стать ментором",
+        "teacher" : "Учитель"
     };
 
-    var linksArray = ["editUser"];
+    var linksArray = ["editUser","teacher","kid"];
 
     let splitter = pathname.split("/");
     for (let i  in splitter) {
@@ -40,7 +41,9 @@ function setBreadCrumb() {
         if (i == 0) {
             continue;
         }
-        name = myArray[splitter[i]];
+        if (splitter[i].match(/^[-\+]?\d+/) === null) {
+            name = myArray[splitter[i]]
+        }
         if ( linksArray.includes(splitter[i])) {
             link += "/" + splitter[i];
             continue;
@@ -48,6 +51,8 @@ function setBreadCrumb() {
         else {
             link += "/" + splitter[i];
         }
+
+
         console.log(link);
         if (i == splitter.length - 1) {
             $('#breadcrumbMain').append("<li class='breadcrumb-item active' >" + name + "</li>");
@@ -56,7 +61,6 @@ function setBreadCrumb() {
             $('#breadcrumbMain').append("<li class='breadcrumb-item'><a href=" + link + " >" + name + "</li>");
         }
     }
-
 }
 
 function setLinks() {

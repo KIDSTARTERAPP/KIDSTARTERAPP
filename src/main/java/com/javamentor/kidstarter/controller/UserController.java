@@ -17,8 +17,4 @@ public class UserController {
         return "addOrganization";
     }
 
-    @RequestMapping("/become-mentor")
-    public String becomeMentor() {
-        return "becomeMentor";
-    }
 }

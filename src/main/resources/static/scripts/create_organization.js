@@ -32,7 +32,7 @@ function fill_organization_table(){
     $("#table_body_organizationlist").empty();
     $.ajax({
         type: "GET",
-        url: "./api/organizations",
+        url: "/api/organizations",
         datatype: "JSON",
         success: function (response) {
             for (var i in response) {
@@ -63,7 +63,7 @@ function show_organization_list(requestId) {
 }
 
 function delete_organization(organizationId) {
-    var url = "./api/organization/" + organizationId;
+    var url = "/api/organization/" + organizationId;
     $.ajax({
         type: "DELETE",
         url: url,

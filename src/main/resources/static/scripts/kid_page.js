@@ -6,7 +6,7 @@ function fill_kid_job_list() {
     $("#table_kid_joblist").empty();
     $.ajax({
         type: "GET",
-        url: "./api/jobs/kid",
+        url: "/api/jobs/kid",
         dataType: "JSON",
         success: function (response) {
             for (var i in response) {
