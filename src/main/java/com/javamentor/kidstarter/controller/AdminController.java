@@ -1,6 +1,8 @@
 package com.javamentor.kidstarter.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -37,4 +39,48 @@ public class AdminController {
         return "all-sponsors-admin";
     }
 
+    @RequestMapping("/cretejobtag")
+    public String showCreateJobTag() {
+        return "cretejobtag";
+    }
+
+    @GetMapping("/editUser/{id}")
+    public String showUserEdit(@PathVariable("id") String id) {
+        return "editUser";
+    }
+
+    @GetMapping("/editOrganization/{id}")
+    public String showOrganizationEdit(@PathVariable("id") String id) {
+        return "editOrganization";
+    }
+
+    @GetMapping("/jobPage")
+    public String showJobPage() {
+        return "jobPage";
+    }
+
+    @GetMapping("/createUser")
+    public String createUserPage() {
+        return "createUser";
+    }
+
+    @GetMapping("/tagPage")
+    public String showTagsPage() {
+        return "tagPage";
+    }
+
+    @RequestMapping("/organizationPage")
+    public String showListOrganizationPage() {
+        return "organizationPage";
+    }
+
+    @RequestMapping("/createOrganization")
+    public String createOrganizationPage() {
+        return "createOrganization";
+    }
+
+    @GetMapping("/editJob/{id}")
+    public String showEditJob(@PathVariable("id") Long id) {
+        return "editJob";
+    }
 }

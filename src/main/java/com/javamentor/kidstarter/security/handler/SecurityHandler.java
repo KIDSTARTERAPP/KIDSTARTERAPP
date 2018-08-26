@@ -17,7 +17,7 @@ public class SecurityHandler implements AuthenticationSuccessHandler {
                                         Authentication authentication) throws IOException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ADMIN")) {
-            response.sendRedirect("/admin");
+            response.sendRedirect("/admin/users");
             return;
         }
         if (roles.contains("MENTOR")) {

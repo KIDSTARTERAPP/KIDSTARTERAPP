@@ -68,7 +68,7 @@ function send_update(data) {
         encoding: "UTF-8",
         data: data,
         success: function (response) {
-            window.location.replace("/adminpage");
+            window.location.replace("/admin/users");
         }
     })
 }

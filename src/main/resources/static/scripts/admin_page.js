@@ -37,7 +37,7 @@ function fillusertable(){
 }
 
 function edit_user(userid) {
-    var url = "/editUser/" + userid;
+    var url = "/admin/editUser/" + userid;
     window.location.replace(url);
 }
 

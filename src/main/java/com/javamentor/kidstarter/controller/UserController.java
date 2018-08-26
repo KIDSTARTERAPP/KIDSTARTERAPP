@@ -18,6 +18,6 @@ public class UserController {
 
     @RequestMapping("/main/become-mentor")
     public String becomeMentor() {
-        return "become-mentor";
+        return "createMentor";
     }
 }
