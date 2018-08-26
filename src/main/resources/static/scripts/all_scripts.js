@@ -84,3 +84,18 @@ function setLinks() {
         $('#kid-link').attr('class', 'active');
     }
 }
+//---------------Get-user-principal-------------------
+var current_user;
+
+function get_current_user() {
+    $.ajax({
+        type: "GET",
+        url: "/api/user/current",
+        dataType: "JSON",
+        async: false,
+        success: function (response) {
+            current_user = response;
+        }
+    })
+}
+//---------------Get-user-principal-------------------

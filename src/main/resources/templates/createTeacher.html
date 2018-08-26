@@ -26,9 +26,19 @@
 </head>
 
 <body>
-git
+
 <div th:replace="fragments/nav-bar::main-header"></div>
 <div th:replace="fragments/crumbs::crumbs"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
+            <ul class="nav nav-sidebar">
+                <li id="main-link"><a href="/main">Главная</a></li>
+                <div th:replace="fragments/nav-bar::owner-nav-sidebar"></div>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <div class="container-fluid">
     <div class="row">
@@ -42,8 +52,7 @@ git
                     <input id="firstname" class="form-control" required placeholder="Имя" type="text" name="firstname"/>
 
                     <label for="lastname">Фамилия</label>
-                    <input id="lastname" class="form-control" required placeholder="Фамилия" type="text"
-                           name="lastname"/>
+                    <input id="lastname" class="form-control" required placeholder="Фамилия" type="text" name="lastname"/>
 
                     <label for="patronymic">Отчество</label>
                     <input id="patronymic" class="form-control" required placeholder="Отчество" type="text"
