@@ -74,9 +74,9 @@ public class AdminController {
         return "organizationPage";
     }
 
-    @RequestMapping("/createOrganization")
+    @RequestMapping("/create-organization")
     public String createOrganizationPage() {
-        return "createOrganization";
+        return "create-organization";
     }
 
     @GetMapping("/editJob/{id}")

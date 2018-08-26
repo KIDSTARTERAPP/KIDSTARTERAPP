@@ -15,7 +15,7 @@ function create_organization() {
         contentType : "application/json; charset=UTF-8",
         data: data,
         success: function () {
-            window.location.replace("/organizationPage");
+            window.location.replace("/organization");
         },
         error: function (e) {
             console.log("ERROR");

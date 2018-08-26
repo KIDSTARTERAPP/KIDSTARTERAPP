@@ -3,6 +3,8 @@ package com.javamentor.kidstarter.controller.api;
 import com.javamentor.kidstarter.model.user.*;
 import com.javamentor.kidstarter.service.interfaces.OrganizationService;
 import com.javamentor.kidstarter.service.interfaces.OwnerService;
+import com.javamentor.kidstarter.service.interfaces.RoleService;
+import com.javamentor.kidstarter.service.interfaces.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +28,15 @@ public class OrganizationRestController {
 
 	private OwnerService ownerService;
 
+	private final RoleService roleService;
+
+	private final UserService userService;
 	@Autowired
-	public OrganizationRestController(OrganizationService organizationService, OwnerService ownerService) {
+	public OrganizationRestController(OrganizationService organizationService, OwnerService ownerService, RoleService roleService, UserService userService) {
 		this.organizationService = organizationService;
 		this.ownerService = ownerService;
+		this.roleService = roleService;
+		this.userService = userService;
 	}
 
 	@GetMapping ("/organization/{id}/kids")
@@ -63,6 +70,10 @@ public class OrganizationRestController {
 	@PostMapping("/organization")
 	public ResponseEntity<?> addOrganization(@RequestBody Organization currentOrganization) {
 		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Role  role =  roleService.getByName("OWNER");
+		principal.getRoles().add(role);
+		userService.updateUser(principal);
+
 		Owner currentOwner = ownerService.getUserOwner(principal.getId());
 		if (currentOwner == null) {
 			currentOwner = ownerService.addOwner(new Owner());
@@ -73,6 +84,8 @@ public class OrganizationRestController {
 		Organization organization = organizationService.addOrganization(currentOrganization);
 		currentOwner.setOrganization(organization);
 		ownerService.updateOwner(currentOwner);
+		SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
+
 		return new ResponseEntity<>(organization, HttpStatus.OK);
 	}
 

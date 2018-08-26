@@ -1,6 +1,7 @@
 package com.javamentor.kidstarter.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -19,7 +20,7 @@ public class OwnerController {
 
     @RequestMapping("/kids")
     public String getKids() {
-        return "owner-kids";
+        return "getAllKids";
     }
 
     @RequestMapping("/kids/add-kid")
@@ -39,11 +40,16 @@ public class OwnerController {
 
     @RequestMapping("/active-requests")
     public String getActiveRequests() {
-        return "owner-active-requests";
+        return "organization_requests";
     }
 
     @RequestMapping("/requests/add-request")
     public String addRequest() {
         return "create_request";
+    }
+
+    @GetMapping("/requests")
+    public String showOrganizationRequests() {
+        return "organization_requests";
     }
 }

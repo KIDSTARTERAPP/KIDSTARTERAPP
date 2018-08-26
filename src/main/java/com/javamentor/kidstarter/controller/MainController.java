@@ -38,10 +38,7 @@ public class MainController {
         return "registration";
     }
 
-    @RequestMapping("/profile") // общая для всех страница, заполняется которая из логина
-    public String getUserProfile() {
-        return "profile-page";
-    }
+
 
     //----------------------------------------------------------
 
