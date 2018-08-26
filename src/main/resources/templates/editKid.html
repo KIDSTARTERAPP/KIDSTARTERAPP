@@ -24,33 +24,32 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
-<div th:replace="fragments/htmlFragment::crumbs"></div>
 
 <div class="container-fluid">
     <div class="row">
         <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Создание пользователя</h1>
+            <h1 class="page-header">Редактирование ребёнка</h1>
             <div class="table-responsive">
-                <form class="form-signup" onsubmit= "updateUser();return false">
+                <form class="form-signup" onsubmit= "updateKid();return false">
                     <input id="hidden_id" type="hidden">
-                    <label for="firstname">First Name</label>
+                    <label for="firstname">Имя</label>
                     <input id="firstname" class="form-control" required type="text" name="firstname"/>
 
-                    <label for="lastname">Last Name</label>
+                    <label for="lastname">Фамилия</label>
                     <input id="lastname" class="form-control" required type="text" name="lastname"/>
 
-                    <label for="patronymic">Patronymic</label>
+                    <label for="patronymic">Отчество</label>
                     <input id="patronymic" class="form-control" required type="text" name="patronymic"/>
 
-                    <label for="login">Login</label>
+                    <label for="login">Логин</label>
                     <input id="login" class="form-control" required type="text" name="username"/>
 
-                    <label for="password">Password</label>
+                    <label for="password">Пароль</label>
                     <input id="password" class="form-control" required type="password" name="password"/>
 
-                    <div class="form-group">
+                    <div hidden class="form-group">
                         <label class="control-label center" for="role">Выберите роль пользователя</label>
                         <div class="">
                             <select multiple name="role" class="form-control input-width center-block" id="role">
@@ -64,8 +63,10 @@
                             </select>
                         </div>
                     </div>
+
                     <input id="createDate" type="hidden">
-                    <label for="age">Age</label>
+
+                    <label for="age">Возраст</label>
                     <input id="age" class="form-control" required type="number" name="age"/>
 
                     <div class="form-group">
@@ -78,16 +79,16 @@
                         </div>
                     </div>
 
-                    <label for="phone">Phone</label>
-                    <input id="phone" class="form-control" required type="text" name="phone"/>
+                    <label for="phone">Телефон</label>
+                    <input id="phone" class="form-control" required type="number" name="phone"/>
 
                     <label for="email">Email</label>
                     <input id="email" class="form-control" required type="email" name="email"/>
 
-                    <label for="country">Country</label>
+                    <label for="country">Страна</label>
                     <input id="country" class="form-control" required type="text" name="country"/>
 
-                    <label for="address">Address</label>
+                    <label for="address">Адресс</label>
                     <input id="address" class="form-control" required type="text" name="address"/>
                     <br/>
                     <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit" value="Обновить пользователя" />
@@ -105,6 +106,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
-<script src="/scripts/edit_user.js"></script>
+<script src="/scripts/editKid.js"></script>
 </body>
 </html>

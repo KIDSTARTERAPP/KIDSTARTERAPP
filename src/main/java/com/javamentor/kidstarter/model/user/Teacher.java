@@ -2,6 +2,7 @@ package com.javamentor.kidstarter.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javamentor.kidstarter.model.Job;
+import com.javamentor.kidstarter.model.Request;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -34,6 +35,7 @@ public class Teacher  {
             joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "job_id") )
     private Set<Job> specialization;
+
 
     public Teacher(User user, Set<Job> specialization) {
         this.user = user;

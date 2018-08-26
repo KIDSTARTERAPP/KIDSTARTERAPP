@@ -17,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 
 @RestController
@@ -45,13 +46,19 @@ public class RestJobController {
 
     @GetMapping("/job/{id}/tags")
     public ResponseEntity<?> getJobsById(@PathVariable("id") long id) {
-        return new ResponseEntity<>(jobService.getJobById(id).getTags(), HttpStatus.OK);
+        return new ResponseEntity<>(jobService.getAllJob(), HttpStatus.OK);
     }
 
     @GetMapping("/jobs")
     public ResponseEntity<List<Job>> listAllJobs() {
         List<Job> job = jobService.getAllJob();
         return new ResponseEntity<>(job, HttpStatus.OK);
+    }
+
+    @GetMapping("/jobs/kid")
+    public ResponseEntity<Set<Job>> listAllKidJobs() {
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return new ResponseEntity<>(kidService.getUserKidById(principal.getId()).getJobInterest(), HttpStatus.OK);
     }
 
     @DeleteMapping("/job/{id}")
@@ -69,16 +76,12 @@ public class RestJobController {
     @PutMapping("/job")
     public ResponseEntity<?> updateJob(@RequestBody Job job) {
         Job currentJob = jobService.getJobById(job.getId());
-        job.setKids(currentJob.getKids());
-        job.setMentors(currentJob.getMentors());
-        job.setTeachers(currentJob.getTeachers());
         jobService.updateJob(job);
         return new ResponseEntity<>(job, HttpStatus.OK);
     }
 
     @PutMapping("/job/wish_job/{id}")
     public HttpStatus addJobToWishList(@PathVariable("id") Long jobId) {
-        System.out.println("!!! " + jobId);
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         HttpStatus status = HttpStatus.NOT_MODIFIED;
         if (principal.getAuthorities().contains(roleService.getByName("KID"))) {
@@ -94,6 +97,31 @@ public class RestJobController {
             Job currentJob = jobService.getJobById(jobId);
             if (!currentTeacher.getSpecialization().contains(currentJob)) {
                 currentTeacher.getSpecialization().add(jobService.getJobById(jobId));
+                teacherService.updateTeacher(currentTeacher);
+                status = HttpStatus.OK;
+            }
+        }
+        return status;
+    }
+
+    @PutMapping("/job/unwish_job/{id}")
+    public HttpStatus removeJobFromWishList(@PathVariable("id") Long jobId) {
+        System.out.println("!!! " + jobId);
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        HttpStatus status = HttpStatus.NOT_MODIFIED;
+        if (principal.getAuthorities().contains(roleService.getByName("KID"))) {
+            Kid currentKid = kidService.getUserKidById(principal.getId());
+            Job currentJob = jobService.getJobById(jobId);
+            if (currentKid.getJobInterest().contains(currentJob)) {
+                currentKid.getJobInterest().remove(currentJob);
+                kidService.updateKid(currentKid);
+                status = HttpStatus.OK;
+            }
+        } else if (principal.getAuthorities().contains(roleService.getByName("TEACHER"))) {
+            Teacher currentTeacher = teacherService.getUserTeacherById(principal.getId());
+            Job currentJob = jobService.getJobById(jobId);
+            if (currentTeacher.getSpecialization().contains(currentJob)) {
+                currentTeacher.getSpecialization().remove(jobService.getJobById(jobId));
                 teacherService.updateTeacher(currentTeacher);
                 status = HttpStatus.OK;
             }

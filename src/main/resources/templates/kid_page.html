@@ -7,9 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
-
     <title>KidStarter</title>
-    <link rel="stylesheet" href="/css/styles.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,31 +22,41 @@
 <body>
 
 <div th:replace="fragments/htmlFragment::main-header"></div>
-<div th:replace="fragments/htmlFragment::crumbs"></div>
 
 <div class="container-fluid">
     <div class="row">
-        <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
+        <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
+            <ul class="nav nav-sidebar">
+                <li><a href="/main">Главная</a></li>
+                <li><a href="/tagPage">Теги</a></li>
+                <li><a href="/cretejobtag">Создать интерес/тэг</a></li>
+                <li><a href="/createUser">Создать пользователя</a></li>
+                <li><a href="/organizationPage">Список организаций</a></li>
+                <li><a href="/createOrganization">Создать организацию</a></li>
+                <li><a href="/editOrganization/1">Изменить организацию</a></li>
+                <li><a href="/editUser/1">Изменить пользователя</a></li>
+                <li><a href="/jobPage">Интересы</a></li>
+                <li><a href="/adminpage">Пользователи</a></li>
+                <li class="active"><a href="/kid">Страница ребенка</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header">Список организаций:</h2>
+            <h2 class="sub-header">Мои интересы:</h2>
+            <form class="navbar-form" action="/kid/jobs" method="get">
+                <input class="form-control" type="submit" value="Хочу учиться">
+            </form>
             <div class="table-responsive">
-                <form class="navbar-form" action="/createOrganization" method="get">
-                    <input class="form-control" type="submit" value="Создать организацию">
-                </form>
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Название организации</th>
-                        <th>Дата создания</th>
-                        <th>Номер телефона</th>
-                        <th>Адресс организации</th>
-                        <th>Страна расположения</th>
-                        <th>Электронная почта</th>
+                        <th>Интерес</th>
+                        <th>Описание</th>
+                        <th>Теги</th>
                     </tr>
                     </thead>
-                    <tbody id="table_body_organizationlist">
-
+                    <tbody id="table_kid_joblist">
                     </tbody>
                 </table>
             </div>
@@ -63,6 +71,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
-<script src="/scripts/create_organization.js"></script>
+<script src="/scripts/kid_page.js"></script>
 </body>
 </html>

@@ -60,7 +60,7 @@ public class User implements UserDetails {
     private String sex;
 
     @Column(name ="phone", nullable = false)
-    private Integer phone;
+    private String phone;
 
     @Column(name = "email", nullable = false)
   //  @Email(regexp = ValidationPattern.EMAIL_PATTERN)
@@ -72,10 +72,14 @@ public class User implements UserDetails {
     @Column(name = "address", nullable = false)
     private String address;
 
+    @OneToOne
+    @JoinColumn(name = "account_fk")
+    private Account account;
+
 
 
     public User(String firstName, String lastName, String patronymic, String login, String password,
-                @NotNull List<Role> roles, Integer age, String sex, Integer phone,
+                @NotNull List<Role> roles, Integer age, String sex, String  phone,
                 String email, String country, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
