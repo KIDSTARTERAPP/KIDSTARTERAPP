@@ -168,10 +168,10 @@ public class DataInitializer {
         Mentor mentor2 = mentorService.addMentor(new Mentor(mentorUser2, new HashSet<>(Collections.singletonList(job2)), 7, "Pergription", 1, 1));
 
         Request request1 = new Request("Обучение детей детского дома №1 Java", job1, new HashSet<>(Collections.singletonList(kid1)),
-                150000L, new HashSet<>(Collections.singletonList(user1)), null, acc1, owner1, Request.RequestStatus.NEW);
+                1500L, new HashSet<>(Collections.singletonList(user1)), null, acc1, owner1, Request.RequestStatus.NEW);
 
         Request request2 = new Request("Обучение детей детского дома №3 JavaScript", job2, new HashSet<>(Collections.singletonList(kid2)),
-                200000L, new HashSet<>(Collections.singletonList(user2)), mentor2, acc2, owner2, Request.RequestStatus.IN_PROGRESS);
+                1800L, new HashSet<>(Collections.singletonList(user2)), mentor2, acc2, owner2, Request.RequestStatus.IN_PROGRESS);
 
         requestService.addRequest(request1);
         requestService.addRequest(request2);
@@ -249,13 +249,13 @@ public class DataInitializer {
         Account progressRequestAccount = accountService.addAccount(new Account( 5000L));
 
         Request demoNewRequest = new Request("Новая заявка на обучение", demoJob1, new HashSet<>(Collections.singletonList(demoKid1)),
-                300L, new HashSet<>(), null, newRequestAccount, demoOwner, Request.RequestStatus.NEW);
+                1000L, new HashSet<>(), null, newRequestAccount, demoOwner, Request.RequestStatus.NEW);
 
         Request demoActiveRequest = new Request("Готовая к одобрению заявка на обучение", demoJob2, new HashSet<>(Collections.singletonList(demoKid2)),
-                300L, new HashSet<>(), demoMentor, activeRequestAccount, demoOwner, Request.RequestStatus.READY);
+                2000L, new HashSet<>(), demoMentor, activeRequestAccount, demoOwner, Request.RequestStatus.READY);
 
         Request demoProgressRequest = new Request("Текущая заявка на обучение", demoJob3, new HashSet<>(Collections.singletonList(demoKid1)),
-                300L, new HashSet<>(), demoMentor, progressRequestAccount, demoOwner, Request.RequestStatus.IN_PROGRESS);
+                3000L, new HashSet<>(), demoMentor, progressRequestAccount, demoOwner, Request.RequestStatus.IN_PROGRESS);
 
         demoNewRequest = requestService.addRequest(demoNewRequest);
         demoActiveRequest = requestService.addRequest(demoActiveRequest);
