@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -29,13 +30,17 @@ public class RestKidController {
     @Autowired
     private AccountService accountService;
 
-    @GetMapping("/organization/{id_org}/kids/{id_kid}")
+    @GetMapping("/organization/kids/{id_kid}")
     public ResponseEntity<?> getKidId(@PathVariable("id_kid") long id_kid) {
         User user = userService.getUserById(id_kid);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
-    @PostMapping("/organization/{id_org}/kids/create")
-    public HttpStatus addKid(@PathVariable("id_org") Long id_org, @RequestBody User user) {
+    @PostMapping("/organization/kids/create")
+    public HttpStatus addKid(@RequestBody User user) {
+
+
+
+
         List<Role> roles = new ArrayList<>();
         Role userRole = roleService.getByName("USER");
         Role userKid = roleService.getByName("KID");
@@ -47,18 +52,18 @@ public class RestKidController {
         userService.addUser(user);
         Kid kid = new Kid();
         kid.setUser(user);
-        kid.setOrganization(organizationService.getOrganizationById(id_org));
+        kid.setOrganization(organizationService.getOrganizationByUserId(((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()));
         kidService.addKid(kid);
         return HttpStatus.OK;
     }
 
-    @PutMapping("/organization/{id_org}/kids/{id_kid}")
+    @PutMapping("/organization/kids/{id_kid}")
     public ResponseEntity<?> updateKid(@RequestBody User user) {
         userService.updateUser(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @DeleteMapping("/organization/{id_org}/kid/{id_kid}")
+    @DeleteMapping("/organization/kid/{id_kid}")
     public HttpStatus deleteKidById(@PathVariable("id_kid") long id_kid) {
         userService.deleteKidByUserId(id_kid);
         userService.deleteUserById(id_kid);

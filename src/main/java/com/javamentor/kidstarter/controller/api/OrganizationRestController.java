@@ -1,8 +1,10 @@
 package com.javamentor.kidstarter.controller.api;
 
 import com.javamentor.kidstarter.model.user.*;
+import com.javamentor.kidstarter.service.Impl.UserServiceImpl;
 import com.javamentor.kidstarter.service.interfaces.OrganizationService;
 import com.javamentor.kidstarter.service.interfaces.OwnerService;
+import com.javamentor.kidstarter.service.interfaces.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +28,13 @@ public class OrganizationRestController {
 
 	private OwnerService ownerService;
 
+	private final UserService userService;
+
 	@Autowired
-	public OrganizationRestController(OrganizationService organizationService, OwnerService ownerService) {
+	public OrganizationRestController(OrganizationService organizationService, OwnerService ownerService, UserService userService) {
 		this.organizationService = organizationService;
 		this.ownerService = ownerService;
+		this.userService = userService;
 	}
 
 	@GetMapping ("/organization/{id}/kids")
@@ -63,10 +68,11 @@ public class OrganizationRestController {
 	@PostMapping("/organization")
 	public ResponseEntity<?> addOrganization(@RequestBody Organization currentOrganization) {
 		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
 		Owner currentOwner = ownerService.getUserOwner(principal.getId());
 		if (currentOwner == null) {
 			currentOwner = ownerService.addOwner(new Owner());
-			currentOwner.setUser(principal);
+			currentOwner.setUser(userService.getUserById(principal.getId()));
 			ownerService.updateOwner(currentOwner);
 		}
 		currentOrganization.setCreateDate(LocalDateTime.now());

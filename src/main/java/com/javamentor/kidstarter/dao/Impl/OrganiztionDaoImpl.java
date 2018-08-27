@@ -22,4 +22,9 @@ public class OrganiztionDaoImpl extends AbstractDao<Long,Organization> implement
         List<User> id1 = entityManager.createQuery("SELECT k.user FROM Kid k WHERE k.organization.id = :id", User.class).setParameter("id", id).getResultList();
         return id1;
 	}
+
+	@Override
+	public Organization getOrganizationByUserId(Long id) {
+		return entityManager.createQuery("SELECT o.organization FROM Owner o WHERE o.user.id = :id",Organization.class).setParameter("id", id).getSingleResult();
+	}
 }

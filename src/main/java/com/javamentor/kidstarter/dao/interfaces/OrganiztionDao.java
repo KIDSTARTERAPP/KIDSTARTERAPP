@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface OrganiztionDao extends GenericDao<Long,Organization> {
     List<User> getAllKidThisOrganization(long id);
+
+    Organization getOrganizationByUserId(Long id);
 }

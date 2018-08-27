@@ -95,7 +95,7 @@ public class MainController {
 
     @RequestMapping("/createOrganization")
     public String createOrganizationPage() {
-        return "createOrganization";
+        return "create-organization";
     }
 
     @GetMapping("/editJob/{id}")
