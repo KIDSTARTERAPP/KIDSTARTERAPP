@@ -11,15 +11,17 @@
             crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"   href="/css/styles.css"/>
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
 <body>
+
 <div class="registr">
     <div th:replace="fragments/nav-bar::main-header"></div>
+    <div th:replace="fragments/crumbs::crumbs"></div>
+
     <div class="col-sm-9 col-sm-offset-3 col-md-3 col-md-offset-4 main">
         <h1 class="text-center">Добавление ребёнка</h1>
         <div class="table-responsive">
@@ -72,5 +74,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
+<link rel="stylesheet"   href="/css/styles.css"/>
+<script src="/scripts/all_scripts.js"></script>
+
 </body>
 </html>

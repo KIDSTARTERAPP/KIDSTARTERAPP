@@ -11,6 +11,14 @@ public class MentorDaoImpl extends AbstractDao<Long, Mentor> implements MentorDa
 
     @Override
     public Mentor getUserMentorById(Long id) {
-        return entityManager.createQuery("SELECT m from Mentor m WHERE m.user.id = :id", Mentor.class).setParameter("id",id).getSingleResult();
+        Mentor mentor;
+        try {
+            mentor =  entityManager.createQuery("SELECT m from Mentor m WHERE m.user.id = :id", Mentor.class).setParameter("id",id).getSingleResult();
+
+        } catch (Exception e){
+            return  null;
+        }
+
+        return mentor;
     }
 }

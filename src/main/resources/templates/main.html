@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="stylesheet" href="/css/styles.css"/>
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
 
     <title>KidStarter</title>
@@ -25,7 +24,9 @@
 <th:block sec:authorize="isAuthenticated()">
     <div th:replace="fragments/nav-bar::general-nav-sidebar"></div>
 </th:block>
+
 <div th:replace="fragments/nav-bar::main-header"></div>
+<div th:replace="fragments/crumbs::crumbs"></div>
 
 <div class="raw">
     <h1 class="text-center">Здравствуй, добрый человек!</h1>
@@ -41,5 +42,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
+<link rel="stylesheet" href="/css/styles.css"/>
 </body>
 </html>

@@ -1,7 +1,6 @@
 package com.javamentor.kidstarter.controller.api;
 
 import com.javamentor.kidstarter.model.user.*;
-import com.javamentor.kidstarter.service.Impl.UserServiceImpl;
 import com.javamentor.kidstarter.service.interfaces.OrganizationService;
 import com.javamentor.kidstarter.service.interfaces.OwnerService;
 import com.javamentor.kidstarter.service.interfaces.RoleService;
@@ -12,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -90,17 +87,18 @@ public class OrganizationRestController {
             user.getRoles().add(role);
             List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) user.getAuthorities());
 			userService.updateUser(user);
+			currentOrganization.setCreateDate(LocalDateTime.now());
+			 Organization organization = organizationService.addOrganization(currentOrganization);
+			currentOwner.setOrganization(organization);
+			ownerService.updateOwner(currentOwner);
             SecurityContextHolder.getContext().setAuthentication(
                     new UsernamePasswordAuthenticationToken(
                             user,
                             SecurityContextHolder.getContext().getAuthentication().getCredentials(),
                             updatedAuthorities));
 		}
-		currentOrganization.setCreateDate(LocalDateTime.now());
-		Organization organization = organizationService.addOrganization(currentOrganization);
-		currentOwner.setOrganization(organization);
-		ownerService.updateOwner(currentOwner);
-		return new ResponseEntity<>(organization, HttpStatus.OK);
+
+		return new ResponseEntity<>( HttpStatus.OK);
 	}
 
 	@PutMapping("/organization")
