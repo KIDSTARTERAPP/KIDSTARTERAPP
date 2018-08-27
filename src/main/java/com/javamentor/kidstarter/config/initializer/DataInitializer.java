@@ -244,18 +244,18 @@ public class DataInitializer {
 
         Mentor demoMentor = mentorService.addMentor(new Mentor(demoMentorUser, new HashSet<>(Collections.singletonList(demoJob1)), 3, "Description", 1, 1));
 
-        Account newRequestAccount = accountService.addAccount(new Account(1500L, 500L));
-        Account activeRequestAccount = accountService.addAccount(new Account(2000L, 400L));
-        Account progressRequestAccount = accountService.addAccount(new Account(7000L, 5000L));
+        Account newRequestAccount = accountService.addAccount(new Account());
+        Account activeRequestAccount = accountService.addAccount(new Account());
+        Account progressRequestAccount = accountService.addAccount(new Account(5000L, 3000L));
 
         Request demoNewRequest = new Request("Новая заявка на обучение", demoJob1, new HashSet<>(Collections.singletonList(demoKid1)),
-                300L, new HashSet<>(), null, newRequestAccount, demoOwner, Request.RequestStatus.NEW);
+                5000L, new HashSet<>(), null, newRequestAccount, demoOwner, Request.RequestStatus.NEW);
 
         Request demoActiveRequest = new Request("Готовая к одобрению заявка на обучение", demoJob2, new HashSet<>(Collections.singletonList(demoKid2)),
-                300L, new HashSet<>(), demoMentor, activeRequestAccount, demoOwner, Request.RequestStatus.READY);
+                4000L, new HashSet<>(), demoMentor, activeRequestAccount, demoOwner, Request.RequestStatus.READY);
 
         Request demoProgressRequest = new Request("Текущая заявка на обучение", demoJob3, new HashSet<>(Collections.singletonList(demoKid1)),
-                300L, new HashSet<>(), demoMentor, progressRequestAccount, demoOwner, Request.RequestStatus.IN_PROGRESS);
+                5000L, new HashSet<>(), demoMentor, progressRequestAccount, demoOwner, Request.RequestStatus.IN_PROGRESS);
 
         demoNewRequest = requestService.addRequest(demoNewRequest);
         demoActiveRequest = requestService.addRequest(demoActiveRequest);
