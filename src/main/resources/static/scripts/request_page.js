@@ -8,7 +8,11 @@ function fill_request_table() {
         url: "./api/requests",
         datatype: "JSON",
         success: function (response) {
-            for (var i in response) {
+                for (var i in response) {
+                    // var kidsString;
+                    // for(var kid in response[i].kids.user){
+                    //     console.log(kid)
+                        // kidsString += kid.user.name;
                 if (response[i].status === "IN_PROGRESS") {
                     var currentAmount = response[i].account.needAmount;
                     var currentPercent = currentAmount / 100;
@@ -21,14 +25,21 @@ function fill_request_table() {
                         '            <div class="modal-dialog">\n' +
                         '                <div class="modal-content">\n' +
                         '                    <div class="modal-header">\n' +
-                        '                        <h5 class="modal-title">Подтвердите свое действие</h5>\n' +
+                        '                        <h5 class="modal-title">Информация о заявке</h5>\n' +
                         '                    </div>\n' +
                         '                    <div class="modal-body">' +
-                        '                        '+response[i].description+'\n' +
+                        '                        Описание заявки: '+response[i].description+'\n' + '<br/>' +
+                        '                        Интересы: '+response[i].job.name+'\n' + '<br/>' +
+                        '                        Необходимо собрать: '+response[i].price+'\n' + '<br/>' +
+                        '                        Ментор заявки: '+response[i].mentor.user.firstName+'  '+response[i].mentor.user.lastName+'  '+response[i].mentor.user.patronymic+'\n' + '<br/>' +
+                        '                        Счет аккаунта: '+response[i].account.currentAmount+'\n' + '<br/>' +
+                        '                        Создатель заявки: '+response[i].creator.user.firstName+'  '+response[i].creator.user.lastName+'  '+response[i].creator.user.patronymic+'\n' + '<br/>' +
+                        '                        Список детей: '+response[i].kids.kid+'<br/>' +
+                        '                        Список спонсоров: '+response[i].kids.kid+'<br/>' +
+
                         '                    </div>\n' +
                         '                    <div class="modal-footer">\n' +
                         '                        <span class="send-fixed-template"></span>\n' +
-                        '                        <button type="button" class="btn btn-primary send-all-message">Отправить</button>\n' +
                         '                    </div>\n' +
                         '                </div>\n' +
                         '            </div>\n' +
@@ -42,8 +53,6 @@ function fill_request_table() {
             }
         }
     });
-
-
 }
 
 $('.donate-modal').on('show.bs.modal', function (e) {
