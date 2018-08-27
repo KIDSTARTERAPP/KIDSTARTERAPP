@@ -14,7 +14,7 @@ function setBreadCrumb() {
         "createorganization": "Добавление организации",
         "mentor": "Главная страница ментора",
         "requests": "Список не активных заявок",
-        "activerequests": "Список активных заявок",
+        "active-requests": "Список активных заявок",
         "profile": "Профиль",
         "admin": "Главная страница админа",
         "organizations": "Список организаций",
@@ -47,6 +47,7 @@ function setBreadCrumb() {
             name = myArray[splitter[i]]
 
         }
+        console.log(name);
         link += "/" + splitter[i];
 
         if (linksArray.includes(splitter[i])) {
