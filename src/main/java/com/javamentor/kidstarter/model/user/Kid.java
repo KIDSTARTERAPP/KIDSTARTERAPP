@@ -29,7 +29,6 @@ public class Kid {
     @JoinColumn (name="organization_id")
     private Organization organization;
 
-    @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToMany

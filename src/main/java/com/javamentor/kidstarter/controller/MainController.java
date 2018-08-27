@@ -118,7 +118,7 @@ public class MainController {
 
     @GetMapping("/organization/kids")
     public String getAllKids() {
-        return "getAllKids";
+        return "owner-kids";
     }
 
     @GetMapping("/organization/kids/{id}")
@@ -146,7 +146,7 @@ public class MainController {
     @GetMapping("/organization/{id_org}/kids")
     public String getAllKids(@PathVariable("id_org") long id_org, Model model) {
         model.addAttribute("id_org", id_org);
-        return "getAllKids";
+        return "owner-kids";
     }
     @GetMapping("/organization/{id_org}/kids/create")
     public String createKidPage(@PathVariable("id_org") String id_org, Model model) {

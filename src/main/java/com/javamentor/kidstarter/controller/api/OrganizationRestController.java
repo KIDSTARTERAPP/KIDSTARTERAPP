@@ -4,16 +4,23 @@ import com.javamentor.kidstarter.model.user.*;
 import com.javamentor.kidstarter.service.Impl.UserServiceImpl;
 import com.javamentor.kidstarter.service.interfaces.OrganizationService;
 import com.javamentor.kidstarter.service.interfaces.OwnerService;
+import com.javamentor.kidstarter.service.interfaces.RoleService;
 import com.javamentor.kidstarter.service.interfaces.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -30,16 +37,22 @@ public class OrganizationRestController {
 
 	private final UserService userService;
 
+	private final RoleService roleService;
+
 	@Autowired
-	public OrganizationRestController(OrganizationService organizationService, OwnerService ownerService, UserService userService) {
+	public OrganizationRestController(OrganizationService organizationService, OwnerService ownerService, UserService userService, RoleService roleService) {
 		this.organizationService = organizationService;
 		this.ownerService = ownerService;
 		this.userService = userService;
+		this.roleService = roleService;
 	}
 
-	@GetMapping ("/organization/{id}/kids")
-	public ResponseEntity<Set<Kid>> getKidsByOrganizationId(@PathVariable("id") long id) {
-		return new ResponseEntity<>( HttpStatus.OK);
+	@GetMapping ("/organization//kids")
+	public ResponseEntity<Set<Kid>> getKidsByOrganizationId() {
+
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		return new ResponseEntity<>(organizationService.getOrganizationByUserId(user.getId()).getKids(),HttpStatus.OK);
 	}
 
 	@GetMapping ("/organization/{id}/teachers")
@@ -72,8 +85,19 @@ public class OrganizationRestController {
 		Owner currentOwner = ownerService.getUserOwner(principal.getId());
 		if (currentOwner == null) {
 			currentOwner = ownerService.addOwner(new Owner());
-			currentOwner.setUser(userService.getUserById(principal.getId()));
+			User user = userService.getUserById(principal.getId());
+			currentOwner.setUser(user);
 			ownerService.updateOwner(currentOwner);
+			Role role = roleService.getByName("OWNER");
+			user.getRoles().add(role);
+			List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) user.getAuthorities());
+
+			SecurityContextHolder.getContext().setAuthentication(
+					new UsernamePasswordAuthenticationToken(
+							user,
+							SecurityContextHolder.getContext().getAuthentication().getCredentials(),
+							updatedAuthorities));
+
 		}
 		currentOrganization.setCreateDate(LocalDateTime.now());
 		Organization organization = organizationService.addOrganization(currentOrganization);
@@ -88,5 +112,11 @@ public class OrganizationRestController {
 		return new ResponseEntity<>(newOrganization, HttpStatus.OK);
 	}
 
+	@PutMapping("/organization/kids")
+	public ResponseEntity<List<Kid>> getAllOrganizationKids() {
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<Kid> kids = organizationService.getAllKidThisOrganization(organizationService.getOrganizationByUserId(user.getId()).getId());
+		return new ResponseEntity<>(kids, HttpStatus.OK);
+	}
 
 }
