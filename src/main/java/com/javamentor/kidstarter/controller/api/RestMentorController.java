@@ -26,13 +26,16 @@ import java.util.List;
 public class RestMentorController {
 
     static final Logger logger = LoggerFactory.getLogger(RestMentorController.class);
+    private final MentorService mentorService;
+    private final UserService userService;
+    private final RoleService roleService;
 
     @Autowired
-    private MentorService mentorService;
-    @Autowired
-    private RoleService roleService;
-    @Autowired
-    private UserService userService;
+    public RestMentorController(MentorService mentorService, UserService userService, RoleService roleService) {
+        this.mentorService = mentorService;
+        this.userService = userService;
+        this.roleService = roleService;
+    }
 
     @GetMapping("/mentor/{id}")
     public ResponseEntity<?> getMentorById(@PathVariable("id") long id, Model model) {
@@ -56,17 +59,23 @@ public class RestMentorController {
     @PostMapping("/mentor")
     public ResponseEntity<?> addMentor(@RequestBody Mentor mentor) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Role role = roleService.getByName("MENTOR");
-        principal.getRoles().add(role);
-        List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) principal.getAuthorities());
-        userService.updateUserNoPasswordEncoder(principal);
-        SecurityContextHolder.getContext().setAuthentication(
-                new UsernamePasswordAuthenticationToken(
-                        principal,
-                        SecurityContextHolder.getContext().getAuthentication().getCredentials(),
-                        updatedAuthorities));
-        mentor.setUser(principal);
-        mentorService.addMentor(mentor);
+
+        Mentor currentMentor = mentorService.getUserMentorById(principal.getId());
+        if (currentMentor == null) {
+            Role role = roleService.getByName("MENTOR");
+            principal.getRoles().add(role);
+            userService.updateUser(principal);
+            mentor.setUser(principal);
+            currentMentor = mentorService.addMentor(mentor);
+            List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) principal.getAuthorities());
+
+            SecurityContextHolder.getContext().setAuthentication(
+                    new UsernamePasswordAuthenticationToken(
+                            principal,
+                            SecurityContextHolder.getContext().getAuthentication().getCredentials(),
+                            updatedAuthorities));
+        }
+       // SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
         return new ResponseEntity<>(mentor, HttpStatus.OK);
     }
 

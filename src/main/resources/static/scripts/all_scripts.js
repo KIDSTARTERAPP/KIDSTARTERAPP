@@ -13,7 +13,7 @@ function setBreadCrumb() {
         "main": "Главная",
         "createorganization": "Добавление организации",
         "mentor": "Главная страница ментора",
-        "requests": "Список не активных заявок",
+        "requests": "Список запросов",
         "activerequests": "Список активных заявок",
         "profile": "Профиль",
         "admin": "Главная страница админа",
@@ -28,11 +28,16 @@ function setBreadCrumb() {
         "addrequest": "Добавление  запроса",
         "kid": "Главная страница ребёнка",
         "registration": "Регистрация",
-        "login": "Логин"
-
+        "login": "Логин",
+        "create-organization" : "Создание организации",
+        "become-mentor": "Стать ментором",
+        "suitable-requests": "Список открытых запросов",
+        "my-requests": "Список моих запросов",
+        "add-kid": "Добавление ребёнка",
+        "add-request": "Создание запроса"
     };
 
-    var linksArray = ["editUser"];
+    var linksArray = ["editUser","editOrganization","editJob"];
 
     let splitter = pathname.split("/");
     for (let i  in splitter) {
@@ -40,13 +45,13 @@ function setBreadCrumb() {
         if (i == 0) {
             continue;
         }
-
-        name = myArray[splitter[i]];
-        if (linksArray.includes(splitter[i])) {
-            link += "/" + splitter[i];
-            continue;
+        if (splitter[i].match(/^[-\+]?\d+/) === null) {
+            name = myArray[splitter[i]]
         }
         link += "/" + splitter[i];
+        if (linksArray.includes(splitter[i])) {
+            continue;
+        }
         // console.log(link);
         if (i == splitter.length - 1) {
             $('#breadcrumbMain').append("<li class='breadcrumb-item active' >" + name + "</li>");

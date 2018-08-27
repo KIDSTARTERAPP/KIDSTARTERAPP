@@ -9,18 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import com.javamentor.kidstarter.model.user.Role;
-import com.javamentor.kidstarter.model.user.User;
-import com.javamentor.kidstarter.service.interfaces.JobService;
-import com.javamentor.kidstarter.service.interfaces.RoleService;
-import com.javamentor.kidstarter.service.interfaces.TagService;
-import com.javamentor.kidstarter.service.interfaces.UserService;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 
 
 public class DataInitializer {
@@ -99,7 +87,7 @@ public class DataInitializer {
                 roles, 23, "MALE","23-12-34","admin@mail.ru","RUSSIA","house 8");
 
         User user2  = new User("Vovan","Vovanov","Huevich","user2","qwer",
-                roles,28, "MALE","23-12-34","user@mail.ru","Ukraine","house 15");
+                Collections.singletonList(roleUser),28, "MALE","23-12-34","user@mail.ru","Ukraine","house 15");
 
         User kidUser1  = new User("Kid","Kid","Kid","kid","qwer",
                 kidRoles,28, "MALE","23-12-34","Kid@mail.ru","RUSSIA","house 15");
