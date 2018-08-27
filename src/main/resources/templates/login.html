@@ -17,19 +17,19 @@
     <div th:replace="fragments/nav-bar::main-header"></div>
     <!--<div th:replace="fragments/nav-bar::crumbs"></div>-->
 
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+    <div class="col-sm-9 col-sm-offset-3 col-md-3 col-md-offset-4 main" style="margin-top: 120px">
         <h1 class="text-center">Авторизация</h1>
 
         <div class="table-responsive">
 
             <form class="form-signin" name='loginForm' action="/main/login" method='POST'>
-                <label for="login">Login</label>
-                <input id="login" class="form-control" required placeholder="Login" type="text" name="username"/>
-                <label for="password">Password</label>
-                <input id="password" class="form-control" required placeholder="Password" type="password"
+                <label for="login">Логин</label>
+                <input id="login" class="form-control" required placeholder="Логин" type="text" name="username"/>
+                <label for="password">Пароль</label>
+                <input id="password" class="form-control" required placeholder="Пароль" type="password"
                        name="password"/>
                 <br/>
-                <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Login"/>
+                <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Войти"/>
             </form>
         </div>
     </div>

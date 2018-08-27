@@ -20,7 +20,7 @@
 <body>
 <div class="registr">
     <div th:replace="fragments/nav-bar::main-header"></div>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+    <div class="col-sm-9 col-sm-offset-3 col-md-3 col-md-offset-4 main">
         <h1 class="text-center">Добавление ребёнка</h1>
         <div class="table-responsive">
             <input id="id_org" th:value="${id_org}" type="hidden">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <br/>
-                <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit"/>
+                <input class="btn btn-lg btn-primary btn-block" value="Добавить" name="saveUser" type="submit"/>
             </form>
         </div>
     </div>
