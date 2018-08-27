@@ -7,6 +7,7 @@ import com.javamentor.kidstarter.service.interfaces.AccountService;
 import com.javamentor.kidstarter.service.interfaces.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -43,27 +44,26 @@ public class DonateController {
     }
 
     @RequestMapping(value = "/donate", method = RequestMethod.POST)
-    public HttpStatus donateAccept(@RequestParam(value = "amount") String amount,
-                                   @RequestParam(value = "operation_id") String operationId,
-                                   @RequestParam(value = "sha1_hash") String sha,
-                                   @RequestParam(value = "sender") String sender,
-                                   @RequestParam(value = "notification_type") String notification_type,
-                                   @RequestParam(value = "datetime") String datetime,
-                                   @RequestParam(value = "label") String label) {
+    public ResponseEntity donateAccept(@RequestParam(value = "amount") String amount,
+                                       @RequestParam(value = "operation_id") String operationId,
+                                       @RequestParam(value = "sha1_hash") String sha,
+                                       @RequestParam(value = "sender") String sender,
+                                       @RequestParam(value = "notification_type") String notification_type,
+                                       @RequestParam(value = "datetime") String datetime,
+                                       @RequestParam(value = "label") String label) {
         System.out.println(label);
         System.out.println(sender);
         System.out.println(operationId);
         System.out.println(amount);
         System.out.println(sha);
         System.out.println(datetime);
-//        Request program = requestService.getRequestById(Long.parseLong(label));
-        Request program = requestService.getRequestById(2L); //хардкод второй программы для тестов бара.
+        Request program = requestService.getRequestById(Long.parseLong(label));
         Account programAccount = program.getAccount();
         amount=amount.replace(".","");
         Long newCurrentAmount = programAccount.getCurrentAmount() + Long.parseLong(amount);
         programAccount.setCurrentAmount(newCurrentAmount);
         accountService.updateAccount(programAccount);
-        return HttpStatus.OK;
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     /*
