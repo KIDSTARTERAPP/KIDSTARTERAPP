@@ -85,7 +85,6 @@ public class OrganizationRestController {
             Role role = roleService.getByName("OWNER");
             user.getRoles().add(role);
             List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) user.getAuthorities());
-			userService.updateUser(user);
 			currentOrganization.setCreateDate(LocalDateTime.now());
 			 Organization organization = organizationService.addOrganization(currentOrganization);
 			currentOwner.setOrganization(organization);
