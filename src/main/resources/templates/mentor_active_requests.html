@@ -24,9 +24,11 @@
 
 </head>
 
+
 <body>
-<div th:replace="fragments/htmlFragment::main-header"></div>
-<!--<div th:replace="fragments/htmlFragment::crumbs"></div>-->
+<div th:replace="fragments/nav-bar::main-header"></div>
+<div th:replace="fragments/crumbs::crumbs"></div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
@@ -37,6 +39,7 @@
         </div>
     </div>
 </div>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h2 class="sub-header">Список моих запросов:</h2>
     <label id="request_result"></label>

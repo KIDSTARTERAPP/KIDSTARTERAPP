@@ -13,12 +13,12 @@ public class AdminController {
     }
     @RequestMapping("/users")
     public String getAllUsers() {
-        return "all-users-admin";
+        return "admin-page";
     }
 
     @RequestMapping("/organizations")
     public String getAllOrganizations() {
-        return "all-organizations-admin";
+        return "organizationPage";
     }
 
     @RequestMapping("/tags")
