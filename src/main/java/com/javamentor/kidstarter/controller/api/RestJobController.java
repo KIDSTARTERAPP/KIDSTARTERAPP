@@ -16,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -127,6 +129,19 @@ public class RestJobController {
             }
         }
         return status;
+    }
+
+    @GetMapping("/job/select_jobs")
+    private ResponseEntity<Set<Job>> getJobsById(@RequestParam("jobs") String json) {
+        List<String> roles = Arrays.asList(json.replace("\"","")
+                .replace("]","")
+                .replace("[","")
+                .split(","));
+        Set<Job> result = new HashSet<>();
+        for (String role : roles) {
+            result.add(jobService.getJobById(Long.valueOf(role)));
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
 
