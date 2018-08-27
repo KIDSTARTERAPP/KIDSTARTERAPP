@@ -21,20 +21,37 @@
 
 <body>
 
-<div th:replace="fragments/nav-bar::main-header"></div>
-
+<div th:replace="fragments/htmlFragment::main-header"></div>
+<!--<div th:replace="fragments/htmlFragment::crumbs"></div>-->
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
             <ul class="nav nav-sidebar">
-                <li><a href="/main">Главная</a></li>
-                <li><a href="/kid/jobs">Добавить интерес</a></li>
+                <li id="main-link"><a href="/main">Главная</a></li>
+                <div th:replace="fragments/nav-bar::kid-nav-sidebar"></div>
             </ul>
         </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h2 class="sub-header">Мои интересы:</h2>
+            <form class="navbar-form" action="/kid/pick-jobs" method="get">
+                <input class="form-control" type="submit" value="Хочу учиться">
+            </form>
             <div class="table-responsive">
                 <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Интерес</th>
+                        <th>Описание</th>
+                        <th>Теги</th>
+                    </tr>
+                    </thead>
                     <tbody id="table_kid_joblist">
                     </tbody>
                 </table>

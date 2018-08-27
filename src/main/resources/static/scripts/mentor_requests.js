@@ -16,7 +16,6 @@ function fill_new_requests_table() {
                     $('<td>').text(item.description),
                     $('<td>').text(item.job.name),
                     $('<td>').text(item.kids.length),
-                    $('<td>').text(item.teachers.length),
                     $('<td>').text(item.price),
                     $('<td>').text(item.status),
                     $('<td>').append("<form onsubmit='add_mentor(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Подать заявку'></form>")
@@ -36,6 +35,7 @@ function add_mentor(item) {
         url: url,
         dataType: "JSON",
         success: function () {
+            $("#request_result").empty();
             $("#request_result").append('Заявка принята!');
             fill_new_requests_table();
         }

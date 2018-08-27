@@ -13,4 +13,14 @@ public class OrganizationController {
         return "organization_requests";
     }
 
+    @GetMapping("/kids")
+    public String showOrganizationKids() {
+        return "getAllKids";
+    }
+
+    @GetMapping("/kids/add")
+    public String showOrganizationCreateKid() {
+        return "createKid";
+    }
+
 }

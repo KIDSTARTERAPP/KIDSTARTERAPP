@@ -47,18 +47,17 @@ public class OrganizationRestController {
 		this.roleService = roleService;
 	}
 
-	@GetMapping ("/organization//kids")
+	@GetMapping ("/organization/kids")
 	public ResponseEntity<Set<Kid>> getKidsByOrganizationId() {
-
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		return new ResponseEntity<>(organizationService.getOrganizationByUserId(user.getId()).getKids(),HttpStatus.OK);
+		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return new ResponseEntity<>(ownerService.getUserOwner(principal.getId()).getOrganization().getKids(), HttpStatus.OK);
 	}
 
-	@GetMapping ("/organization/{id}/teachers")
-	public ResponseEntity<Set<Teacher>> getTeachersByOrganizationId(@PathVariable("id") long id) {
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
+//	@GetMapping ("/organization/teachers")
+//	public ResponseEntity<Set<Teacher>> getTeachersByOrganizationId() {
+//		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		return new ResponseEntity<>(ownerService.getUserOwner(principal.getId()).getOrganization().getTeachers(), HttpStatus.OK);
+//	}
 
 	@GetMapping("/organization/{id}")
 	public ResponseEntity<?> getOrganizationId(@PathVariable("id") long id) {
@@ -85,19 +84,17 @@ public class OrganizationRestController {
 		Owner currentOwner = ownerService.getUserOwner(principal.getId());
 		if (currentOwner == null) {
 			currentOwner = ownerService.addOwner(new Owner());
-			User user = userService.getUserById(principal.getId());
-			currentOwner.setUser(user);
+			currentOwner.setUser(principal);
 			ownerService.updateOwner(currentOwner);
-			Role role = roleService.getByName("OWNER");
-			user.getRoles().add(role);
-			List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) user.getAuthorities());
-
-			SecurityContextHolder.getContext().setAuthentication(
-					new UsernamePasswordAuthenticationToken(
-							user,
-							SecurityContextHolder.getContext().getAuthentication().getCredentials(),
-							updatedAuthorities));
-
+//            Role role = roleService.getByName("OWNER");
+//            user.getRoles().add(role);
+//            List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) user.getAuthorities());
+//
+//            SecurityContextHolder.getContext().setAuthentication(
+//                    new UsernamePasswordAuthenticationToken(
+//                            user,
+//                            SecurityContextHolder.getContext().getAuthentication().getCredentials(),
+//                            updatedAuthorities));
 		}
 		currentOrganization.setCreateDate(LocalDateTime.now());
 		Organization organization = organizationService.addOrganization(currentOrganization);

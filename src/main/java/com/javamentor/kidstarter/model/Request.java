@@ -31,20 +31,19 @@ public class Request {
 	private Job job;
 
 	@EqualsAndHashCode.Exclude
-    @JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "request_to_kid",
 			joinColumns = @JoinColumn(name = "request_id"),
 			inverseJoinColumns = @JoinColumn(name = "kid_id"))
 	private Set<Kid> kids;
 
-	@EqualsAndHashCode.Exclude
-    @JsonIgnore
-	@ManyToMany
-	@JoinTable(name = "request_to_teacher",
-			joinColumns = @JoinColumn(name = "request_id"),
-			inverseJoinColumns = @JoinColumn(name = "teacher_id"))
-	private Set<Teacher> teachers;
+//	@EqualsAndHashCode.Exclude
+//    @JsonIgnore
+//	@ManyToMany
+//	@JoinTable(name = "request_to_teacher",
+//			joinColumns = @JoinColumn(name = "request_id"),
+//			inverseJoinColumns = @JoinColumn(name = "teacher_id"))
+//	private Set<Teacher> teachers;
 
 	@Column (name = "price", nullable = false)
 	private Long price;
@@ -81,15 +80,15 @@ public class Request {
 		REFUNDING
 	}
 
-	public Request(String description, Job job, Set<Kid> kids, Set<Teacher> teachers, Long price, Set<User> sponsors, Mentor mentor, Account account, Owner creator) {
+	public Request(String description, Job job, Set<Kid> kids, Long price, Set<User> sponsors, Mentor mentor, Account account, Owner creator, RequestStatus status) {
 		this.description = description;
 		this.job = job;
 		this.kids = kids;
-		this.teachers = teachers;
 		this.price = price;
 		this.sponsors = sponsors;
 		this.mentor = mentor;
 		this.account = account;
 		this.creator = creator;
+		this.status = status;
 	}
 }

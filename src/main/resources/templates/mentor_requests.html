@@ -21,15 +21,22 @@
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 </head>
 
 <body>
-
 <div th:replace="fragments/htmlFragment::main-header"></div>
-
-<div th:replace="fragments/htmlFragment::crumbs"></div>
-<div th:replace="fragments/htmlFragment::nav-sidebar"></div>
+<!--<div th:replace="fragments/htmlFragment::crumbs"></div>-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
+            <ul class="nav nav-sidebar">
+                <li id="main-link"><a href="/main">Главная</a></li>
+                <div th:replace="fragments/nav-bar::mentor-nav-sidebar"></div>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h2 class="sub-header">Список открытых запросов:</h2>
     <label id="request_result"></label>
@@ -41,7 +48,7 @@
                 <th>Описание</th>
                 <th>Интерес</th>
                 <th>Количество детей</th>
-                <th>Количество учителей</th>
+                <!--<th>Количество учителей</th>-->
                 <th>Цена</th>
                 <th>Статус</th>
                 <th></th>
