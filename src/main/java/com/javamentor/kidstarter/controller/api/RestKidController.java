@@ -27,6 +27,9 @@ public class RestKidController {
     private RoleService roleService;
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private OrganizationService organizationService;
+
 
     @GetMapping("/organization/kids/{id_kid}")
     public ResponseEntity<?> getKidId(@PathVariable("id_kid") long id_kid) {
@@ -47,6 +50,10 @@ public class RestKidController {
         Kid kid = new Kid();
         kid.setUser(user);
         kidService.addKid(kid);
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Organization organization = organizationService.getOrganizationByUserId(principal.getId());
+        organization.getKids().add(kid);
+        organizationService.updateOrganization(organization);
         return HttpStatus.OK;
     }
 
