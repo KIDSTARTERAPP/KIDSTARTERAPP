@@ -24,11 +24,11 @@ public class SecurityHandler implements AuthenticationSuccessHandler {
             response.sendRedirect("/mentor/profile");
             return;
         }
-        if ( roles.contains("USER")) {
-            response.sendRedirect("/main");
+        if ( roles.contains("KID")) {
+            response.sendRedirect("/kid");
             return;
         }
-        if ( roles.contains("KID")) {
+        if ( roles.contains("USER")) {
             response.sendRedirect("/main");
             return;
         }

@@ -2,6 +2,7 @@ package com.javamentor.kidstarter.service.Impl;
 
 import com.javamentor.kidstarter.dao.interfaces.OrganiztionDao;
 import com.javamentor.kidstarter.dao.interfaces.RoleDao;
+import com.javamentor.kidstarter.model.user.Kid;
 import com.javamentor.kidstarter.model.user.Organization;
 import com.javamentor.kidstarter.model.user.Role;
 import com.javamentor.kidstarter.model.user.User;
@@ -48,7 +49,12 @@ public class OrganizationServeImpl implements OrganizationService {
 	}
 
 	@Override
-	public List<User> getAllKidThisOrganization(long id) {
+	public List<Kid> getAllKidThisOrganization(long id) {
 		return organiztionDao.getAllKidThisOrganization(id);
+	}
+
+	@Override
+	public Organization getOrganizationByUserId(Long id) {
+		return organiztionDao.getOrganizationByUserId(id);
 	}
 }

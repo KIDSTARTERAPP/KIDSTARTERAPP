@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -7,16 +8,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
-    <title>KidStarter</title>
+    <link rel="stylesheet" href="/css/styles.css"/>
 
+    <title>KidStarter</title>
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -27,29 +26,49 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
             <ul class="nav nav-sidebar">
-                <li><a href="/main">Главная</a></li>
-                <li><a href="/kid">Мои интересы</a></li>
+                <li id="main-link"><a href="/main">Главная</a></li>
+                <div th:replace="fragments/nav-bar::owner-nav-sidebar"></div>
             </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header">Добавить интерес:</h2>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <tbody id="table_pick_joblist">
-                    </tbody>
-                </table>
-            </div>
         </div>
     </div>
 </div>
-
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1 class="page-header">Список детей:</h1>
+    <div class="table-responsive">
+        <table id="table_userlist"  class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Отчество</th>
+                <th>Логин</th>
+                <th>Возраст</th>
+                <th>Пол</th>
+                <th>Телефон</th>
+                <th>Почта</th>
+                <th>Страна</th>
+                <th>Адрес</th>
+                <th>Интересы</th>
+                <th>Изменить</th>
+                <th>Удалить</th>
+            </tr>
+            </thead>
+            <tbody id="table_body_kidlist">
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
-<script src="/scripts/all_scripts.js"></script>
-<script src="/scripts/kid_pick_jobs.js"></script>
+<!--<script src="/scripts/all_scripts.js"></script>-->
+<script src="/scripts/getAllKids.js"></script>
+
 </body>
 </html>
