@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table (name = "accounts")
@@ -21,11 +20,11 @@ public class Account {
     @Column (name = "current_amount")
     private Long currentAmount;
 
-    @Column (name = "need_amount")
-    private Long needAmount;
-
-    public Account(Long needAmount, Long currentAmount) {
+    public Account(Long currentAmount) {
         this.currentAmount = currentAmount;
-        this.needAmount = needAmount;
+    }
+
+    public Account() {
+        this.currentAmount = 0L;
     }
 }

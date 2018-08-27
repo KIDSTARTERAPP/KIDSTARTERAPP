@@ -127,13 +127,13 @@ function select_kids() {
     selected_kids = localSelected;
 }
 
-function select_teachers() {
-    var localSelected = []
-    $("#teachers_sortable2 li").each(function (i) {
-        localSelected.push($(this).attr('rel'));
-    });
-    selected_teachers = localSelected;
-}
+// function select_teachers() {
+//     var localSelected = []
+//     $("#teachers_sortable2 li").each(function (i) {
+//         localSelected.push($(this).attr('rel'));
+//     });
+//     selected_teachers = localSelected;
+// }
 
 var jobJSON;
 var kidJSON;
@@ -157,7 +157,8 @@ function job_to_JSON() {
 function kids_to_JSON() {
     var localKids = [];
     for (var i in selected_kids) {
-        var url = "/api/kid/" + selected_kids[i];
+        var url = "/api/organization/kid/" + selected_kids[i];
+        console.log(url);
         $.ajax({
             type: "GET",
             url: url,
@@ -171,27 +172,27 @@ function kids_to_JSON() {
     kidJSON = localKids;
 }
 
-function teachers_to_JSON() {
-    var localTeachers = [];
-    for (var i in selected_teachers) {
-        var url = "/api/teacher/" + selected_teachers[i];
-        $.ajax({
-            type: "GET",
-            url: url,
-            dataType: "JSON",
-            async: false,
-            success: function (response) {
-                localTeachers.push(response);
-            }
-        })
-    }
-    teacherJSON = localTeachers;
-}
+// function teachers_to_JSON() {
+//     var localTeachers = [];
+//     for (var i in selected_teachers) {
+//         var url = "/api/teacher/" + selected_teachers[i];
+//         $.ajax({
+//             type: "GET",
+//             url: url,
+//             dataType: "JSON",
+//             async: false,
+//             success: function (response) {
+//                 localTeachers.push(response);
+//             }
+//         })
+//     }
+//     teacherJSON = localTeachers;
+// }
 
 function create_request() {
     job_to_JSON();
     kids_to_JSON();
-    teachers_to_JSON();
+    // teachers_to_JSON();
 
     var data = {
         description: $("#request_description").val(),

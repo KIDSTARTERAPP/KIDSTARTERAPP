@@ -64,7 +64,7 @@ public class RestMentorController {
         if (currentMentor == null) {
             Role role = roleService.getByName("MENTOR");
             principal.getRoles().add(role);
-            userService.updateUser(principal);
+            userService.updateUserNoPasswordEncoder(principal);
             mentor.setUser(principal);
             currentMentor = mentorService.addMentor(mentor);
             List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) principal.getAuthorities());
@@ -75,7 +75,6 @@ public class RestMentorController {
                             SecurityContextHolder.getContext().getAuthentication().getCredentials(),
                             updatedAuthorities));
         }
-       // SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
         return new ResponseEntity<>(mentor, HttpStatus.OK);
     }
 

@@ -55,6 +55,7 @@ public class RestRequestController {
 	public ResponseEntity<?> addRequest(@RequestBody Request request) {
 		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		request.setCreator(ownerService.getUserOwner(principal.getId()));
+		request.setPrice(request.getPrice() * 100L);
 		Account account = accountService.addAccount(new Account());
 		request.setAccount(account);
 		requestService.addRequest(request);
