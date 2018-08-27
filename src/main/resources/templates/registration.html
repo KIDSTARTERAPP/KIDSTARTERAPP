@@ -22,8 +22,8 @@
     <div th:replace="fragments/nav-bar::main-header"></div>
     <!--<div th:replace="fragments/nav-bar::crumbs"></div>-->
 
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
-    <h1 class="text-center">Регистрация пользователя</h1>
+    <div class="col-sm-4 col-sm-offset-3 col-md-3 col-md-offset-4 main">
+    <h1 class="text-center">Регистрация</h1>
         <div class="table-responsive">
             <form class="form-signup" onsubmit=" addUser();return false">
                 <label for="firstname">Имя</label>
@@ -65,7 +65,7 @@
                 <label for="address">Адрес</label>
                 <input id="address" class="form-control" required placeholder="Адрес" type="text" name="address"/>
                 <br/>
-                <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit"/>
+                <input class="btn btn-lg btn-primary btn-block" name="saveUser" value="Зарегистрироваться" type="submit"/>
             </form>
         </div>
     </div>
