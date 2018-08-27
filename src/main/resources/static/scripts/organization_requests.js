@@ -5,12 +5,14 @@ $(document).ready(function () {
 });
 
 function fill_organization_requests_table() {
+    console.log("here");
     $("#table_organization_requests").empty();
     $.ajax({
         type: "GET",
         url: "/api/requests",
         dataType: "JSON",
         success: function (response) {
+            console.log(response);
             $.each(response, function(i, item) {
                 var tr;
                 if(item.status == "NEW") {
@@ -19,7 +21,7 @@ function fill_organization_requests_table() {
                         $('<td>').text(item.description),
                         $('<td>').text(item.job.name),
                         $('<td>').text(item.kids.length),
-                        $('<td>').text(item.teachers.length),
+                        // $('<td>').text(item.teachers.length),
                         $('<td>').text(item.price),
                         $('<td>').text(item.status),
                         $('<td>').append("<form onsubmit='remove_request(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Удалить запрос'></form>")
@@ -30,7 +32,7 @@ function fill_organization_requests_table() {
                         $('<td>').text(item.description),
                         $('<td>').text(item.job.name),
                         $('<td>').text(item.kids.length),
-                        $('<td>').text(item.teachers.length),
+                        // $('<td>').text(item.teachers.length),
                         $('<td>').text(item.price),
                         $('<td>').text(item.status),
                         $('<td>').append("<form onsubmit='get_request_for_update(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Подтвердить запрос'></form>")
@@ -41,7 +43,7 @@ function fill_organization_requests_table() {
                         $('<td>').text(item.description),
                         $('<td>').text(item.job.name),
                         $('<td>').text(item.kids.length),
-                        $('<td>').text(item.teachers.length),
+                        // $('<td>').text(item.teachers.length),
                         $('<td>').text(item.price),
                         $('<td>').text(item.status)
                     );

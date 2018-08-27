@@ -176,13 +176,13 @@ public class DataInitializer {
         Teacher teacher1 = teacherService.addTeacher(new Teacher(teacherUser1, new HashSet<>(Collections.singletonList(job1))));
         Teacher teacher2 = teacherService.addTeacher(new Teacher(teacherUser2, new HashSet<>(Collections.singletonList(job2))));
 
-        Mentor mentor1 = mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job1)), 3, "Description"));
-        Mentor mentor2 = mentorService.addMentor(new Mentor(mentorUser2, new HashSet<>(Collections.singletonList(job2)), 7, "Pergription"));
+        Mentor mentor1 = mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job1)), 3, "Description", 1, 1));
+        Mentor mentor2 = mentorService.addMentor(new Mentor(mentorUser2, new HashSet<>(Collections.singletonList(job2)), 7, "Pergription", 1, 1));
 
-        Request request1 = new Request("Заявка на обучение", job1, new HashSet<>(Collections.singletonList(kid1)), new HashSet<>(Collections.singletonList(teacher1)),
+        Request request1 = new Request("Заявка на обучение", job1, new HashSet<>(Collections.singletonList(kid1)),
                 1500L, new HashSet<>(Collections.singletonList(user1)), null, acc1, owner1, Request.RequestStatus.NEW);
 
-        Request request2 = new Request("Хочет учиться", job2, new HashSet<>(Collections.singletonList(kid2)), new HashSet<>(Collections.singletonList(teacher2)),
+        Request request2 = new Request("Хочет учиться", job2, new HashSet<>(Collections.singletonList(kid2)),
                 2000L, new HashSet<>(Collections.singletonList(user2)), mentor2, acc2, owner2, Request.RequestStatus.IN_PROGRESS);
 
         requestService.addRequest(request1);
@@ -246,30 +246,30 @@ public class DataInitializer {
         Job demoJob2 = jobService.addJob(new Job("JavaScript(DEMO)", "Фронтенд язык программирования JavaScript"));
         Job demoJob3 = jobService.addJob(new Job("Рисование(DEMO)", "Рисование"));
 
-        Kid kid1 = kidService.addKid(new Kid(demoKidUser1, new HashSet<>(Collections.singletonList(demoJob1))));
-        Kid kid2 = kidService.addKid(new Kid(demoKidUser2, new HashSet<>(Collections.singletonList(demoJob3))));
+        Kid demoKid1 = kidService.addKid(new Kid(demoKidUser1, new HashSet<>(Collections.singletonList(demoJob1))));
+        Kid demoKid2 = kidService.addKid(new Kid(demoKidUser2, new HashSet<>(Collections.singletonList(demoJob3))));
 
         Teacher teacher1 = teacherService.addTeacher(new Teacher(demoTeacherUser1, new HashSet<>(Collections.singletonList(demoJob1))));
         Teacher teacher2 = teacherService.addTeacher(new Teacher(demoTeacherUser2, new HashSet<>(Collections.singletonList(demoJob2))));
 
-        demoOrg.setKid(new HashSet<>(Arrays.asList(kid1, kid2)));
-        demoOrg.setTeachers(new HashSet<>(Arrays.asList(teacher1, teacher2)));
+        demoOrg.setKids(new HashSet<>(Arrays.asList(demoKid1, demoKid2)));
+//        demoOrg.setTeachers(new HashSet<>(Arrays.asList(teacher1, teacher2)));
         organizationService.updateOrganization(demoOrg);
 
-        Mentor demoMentor = mentorService.addMentor(new Mentor(demoMentorUser, new HashSet<>(Collections.singletonList(demoJob1)), 3, "Description"));
+        Mentor demoMentor = mentorService.addMentor(new Mentor(demoMentorUser, new HashSet<>(Collections.singletonList(demoJob1)), 3, "Description", 1, 1));
 
         Account newRequestAccount = accountService.addAccount(new Account());
         Account activeRequestAccount = accountService.addAccount(new Account());
         Account progressRequestAccount = accountService.addAccount(new Account());
 
-        Request demoNewRequest = new Request("Новая заявка на обучение", demoJob1, new HashSet<>(Collections.singletonList(kid1)), new HashSet<>(Collections.singletonList(teacher1)),
+        Request demoNewRequest = new Request("Новая заявка на обучение", demoJob1, new HashSet<>(Collections.singletonList(demoKid1)),
                 300L, new HashSet<>(), null, newRequestAccount, demoOwner, Request.RequestStatus.NEW);
 
-        Request demoActiveRequest = new Request("Готовая к одобрению заявка на обучение", demoJob2, new HashSet<>(Collections.singletonList(kid2)), new HashSet<>(Collections.singletonList(teacher2)),
-                300L, new HashSet<>(), null, activeRequestAccount, demoOwner, Request.RequestStatus.READY);
+        Request demoActiveRequest = new Request("Готовая к одобрению заявка на обучение", demoJob2, new HashSet<>(Collections.singletonList(demoKid2)),
+                300L, new HashSet<>(), demoMentor, activeRequestAccount, demoOwner, Request.RequestStatus.READY);
 
-        Request demoProgressRequest = new Request("Текущая заявка на обучение", demoJob3, new HashSet<>(Collections.singletonList(kid1)), new HashSet<>(Collections.singletonList(teacher1)),
-                300L, new HashSet<>(), null, progressRequestAccount, demoOwner, Request.RequestStatus.IN_PROGRESS);
+        Request demoProgressRequest = new Request("Текущая заявка на обучение", demoJob3, new HashSet<>(Collections.singletonList(demoKid1)),
+                300L, new HashSet<>(), demoMentor, progressRequestAccount, demoOwner, Request.RequestStatus.IN_PROGRESS);
 
         demoNewRequest = requestService.addRequest(demoNewRequest);
         demoActiveRequest = requestService.addRequest(demoActiveRequest);

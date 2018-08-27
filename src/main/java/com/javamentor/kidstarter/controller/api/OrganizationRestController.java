@@ -50,14 +50,14 @@ public class OrganizationRestController {
 	@GetMapping ("/organization/kids")
 	public ResponseEntity<Set<Kid>> getKidsByOrganizationId() {
 		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return new ResponseEntity<>(ownerService.getUserOwner(principal.getId()).getOrganization().getKid(), HttpStatus.OK);
+		return new ResponseEntity<>(ownerService.getUserOwner(principal.getId()).getOrganization().getKids(), HttpStatus.OK);
 	}
 
-	@GetMapping ("/organization/teachers")
-	public ResponseEntity<Set<Teacher>> getTeachersByOrganizationId() {
-		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return new ResponseEntity<>(ownerService.getUserOwner(principal.getId()).getOrganization().getTeachers(), HttpStatus.OK);
-	}
+//	@GetMapping ("/organization/teachers")
+//	public ResponseEntity<Set<Teacher>> getTeachersByOrganizationId() {
+//		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		return new ResponseEntity<>(ownerService.getUserOwner(principal.getId()).getOrganization().getTeachers(), HttpStatus.OK);
+//	}
 
 	@GetMapping("/organization/{id}")
 	public ResponseEntity<?> getOrganizationId(@PathVariable("id") long id) {
