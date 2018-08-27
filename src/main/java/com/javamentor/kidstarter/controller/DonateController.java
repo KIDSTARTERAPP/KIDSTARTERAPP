@@ -13,7 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -23,7 +22,6 @@ public class DonateController {
 
 	private final RequestService requestService;
 	private final AccountService accountService;
-
 
 	@Autowired
 	public DonateController(RequestService requestService, AccountService accountService) {
@@ -44,14 +42,18 @@ public class DonateController {
 
 	@RequestMapping(value = "/donate", method = RequestMethod.POST)
 	public ResponseEntity donateAccept(@RequestParam(value = "amount") String amount,
-	                                   @RequestParam(value = "operation_id") String operationId,
-	                                   @RequestParam(value = "sha1_hash") String sha,
-	                                   @RequestParam(value = "sender") String sender,
-	                                   @RequestParam(value = "notification_type") String notification_type,
+//	                                   @RequestParam(value = "operation_id") String operationId,
+//	                                   @RequestParam(value = "sha1_hash") String sha,
+//	                                   @RequestParam(value = "sender") String sender,
+//	                                   @RequestParam(value = "notification_type") String notification_type,
 	                                   @RequestParam(value = "datetime") String datetime,
 	                                   @RequestParam(value = "label") String label) {
-
-		Request program = requestService.getRequestById(Long.parseLong(label));
+        System.out.println(label);
+        System.out.println(amount);
+        System.out.println(datetime);
+        Long id = Long.parseLong(label);
+		Request program = requestService.getRequestById(id);
+        //Request program = requestService.getRequestById(5L);
 		Account programAccount = program.getAccount();
 		amount = amount.replace(".", "");
 		Long newCurrentAmount = programAccount.getCurrentAmount() + Long.parseLong(amount);

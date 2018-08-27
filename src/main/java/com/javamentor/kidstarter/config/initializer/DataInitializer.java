@@ -141,8 +141,6 @@ public class DataInitializer {
         Organization org3 = new Organization("Name3","adress3","Мавродия", "mak@lf5f.ru", 8944,LocalDateTime.now(), acc3);
         Organization org4 = new Organization("Name4","adress4","Мавродия", "mak@lf6f.ru", 8944,LocalDateTime.now(), acc4);
 
-
-
         org1 = organizationService.addOrganization(org1);
         org2 = organizationService.addOrganization(org2);
         org3 = organizationService.addOrganization(org3);
@@ -153,7 +151,6 @@ public class DataInitializer {
 
         ownerService.addOwner(owner1);
         ownerService.addOwner(owner2);
-
 
         Job job1 = jobService.addJob(new Job("Java", "Топовый язык"));
         Job job2 = jobService.addJob(new Job("JavaScript", "Какашка"));
@@ -171,7 +168,7 @@ public class DataInitializer {
                 1500L, new HashSet<>(Collections.singletonList(user1)), null, acc1, owner1, Request.RequestStatus.NEW);
 
         Request request2 = new Request("Обучение детей детского дома №3 JavaScript", job2, new HashSet<>(Collections.singletonList(kid2)),
-                1800L, new HashSet<>(Collections.singletonList(user2)), mentor2, acc2, owner2, Request.RequestStatus.IN_PROGRESS);
+                400L, new HashSet<>(Collections.singletonList(user2)), mentor2, acc2, owner2, Request.RequestStatus.IN_PROGRESS);
 
         requestService.addRequest(request1);
         requestService.addRequest(request2);
@@ -212,7 +209,6 @@ public class DataInitializer {
         User demoTeacherUser2  = new User("","demoTeacherUser2","","teacher21","1234",
                 teacherRoles,28, "MALE","23-12-34","Teacher@mail.ru","RUSSIA","house 15");
 
-
         demoAdminUser = userService.addUser(demoAdminUser);
         demoOwnerUser = userService.addUser(demoOwnerUser);
         demoMentorUser = userService.addUser(demoMentorUser);
@@ -246,7 +242,7 @@ public class DataInitializer {
 
         Account newRequestAccount = accountService.addAccount(new Account(500L));
         Account activeRequestAccount = accountService.addAccount(new Account( 400L));
-        Account progressRequestAccount = accountService.addAccount(new Account( 5000L));
+        Account progressRequestAccount = accountService.addAccount(new Account( 500L));
 
         Request demoNewRequest = new Request("Новая заявка на обучение", demoJob1, new HashSet<>(Collections.singletonList(demoKid1)),
                 1000L, new HashSet<>(), null, newRequestAccount, demoOwner, Request.RequestStatus.NEW);
