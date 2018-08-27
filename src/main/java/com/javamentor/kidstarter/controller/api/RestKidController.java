@@ -31,10 +31,9 @@ public class RestKidController {
     private OrganizationService organizationService;
 
 
-    @GetMapping("/organization/kids/{id_kid}")
+    @GetMapping("/organization/kid/{id_kid}")
     public ResponseEntity<?> getKidId(@PathVariable("id_kid") long id_kid) {
-        User user = userService.getUserById(id_kid);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(kidService.getKidById(id_kid), HttpStatus.OK);
     }
     @PostMapping("/organization/kids/create")
     public HttpStatus addKid(@RequestBody User user) {
