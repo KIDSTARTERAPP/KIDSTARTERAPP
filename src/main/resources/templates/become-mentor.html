@@ -29,10 +29,13 @@
             <h1 class="text-center">Стать наставником</h1>
                 <div class="table-responsive">
                     <form class="form-signup-mentor" onsubmit="addMentor();return false">
-                        <!--<label for="select-jobs">Выберите работы по которым вы имеете опыт</label>-->
-                        <!--<br>-->
-                        <!--<select class="btn btn-default dropdown-toggle" multiple id="select-jobs" name="select-jobs">-->
-                        <!--</select>-->
+                        <label for="select-jobs">Выберите работы по которым вы имеете опыт</label>
+                        <br>
+                        <select class="form-control input-width center-block" multiple id="select-jobs" name="select-jobs">
+                        </select>
+                        <br>
+                        <label for="experience">Введите свой опыт работы:</label>
+                        <input class="form-control" id="experience" type="text">
                         <br>
                         <label for="description">Расскажите о себе </label>
                         <textarea style="height: 300px" id="description" class="form-control" required type="text"
