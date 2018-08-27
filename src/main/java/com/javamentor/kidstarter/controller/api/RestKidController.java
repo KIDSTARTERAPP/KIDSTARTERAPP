@@ -26,9 +26,10 @@ public class RestKidController {
     @Autowired
     private RoleService roleService;
     @Autowired
-    private OrganizationService organizationService;
-    @Autowired
     private AccountService accountService;
+    @Autowired
+    private OrganizationService organizationService;
+
 
     @GetMapping("/organization/kids/{id_kid}")
     public ResponseEntity<?> getKidId(@PathVariable("id_kid") long id_kid) {
@@ -37,10 +38,6 @@ public class RestKidController {
     }
     @PostMapping("/organization/kids/create")
     public HttpStatus addKid(@RequestBody User user) {
-
-
-
-
         List<Role> roles = new ArrayList<>();
         Role userRole = roleService.getByName("USER");
         Role userKid = roleService.getByName("KID");
@@ -52,8 +49,11 @@ public class RestKidController {
         userService.addUser(user);
         Kid kid = new Kid();
         kid.setUser(user);
-        kid.setOrganization(organizationService.getOrganizationByUserId(((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()));
         kidService.addKid(kid);
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Organization organization = organizationService.getOrganizationByUserId(principal.getId());
+        organization.getKids().add(kid);
+        organizationService.updateOrganization(organization);
         return HttpStatus.OK;
     }
 

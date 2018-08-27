@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
+    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <title>KidStarter</title>
-    <script
-            src="http://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
-
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-
+    <![endif]-->
 </head>
 
 <body>
+
 <div th:replace="fragments/htmlFragment::main-header"></div>
 <!--<div th:replace="fragments/htmlFragment::crumbs"></div>-->
 <div class="container-fluid">
@@ -32,35 +28,46 @@
         <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
             <ul class="nav nav-sidebar">
                 <li id="main-link"><a href="/main">Главная</a></li>
-                <div th:replace="fragments/nav-bar::mentor-nav-sidebar"></div>
+                <div th:replace="fragments/nav-bar::owner-nav-sidebar"></div>
             </ul>
         </div>
     </div>
 </div>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h2 class="sub-header">Список моих запросов:</h2>
-    <label id="request_result"></label>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Описание</th>
-                <th>Интерес</th>
-                <th>Количество детей</th>
-                <!--<th>Количество учителей</th>-->
-                <th>Цена</th>
-                <th>Статус</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody id="table_active_requests">
 
-            </tbody>
-        </table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Список детей:</h1>
+            <form class="navbar-form" action="/organization/kids/add" method="get">
+                <input class="form-control" type="submit" value="Добавить ребёнка">
+            </form>
+            <div class="table-responsive">
+                <table id="table_userlist"  class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Отчество</th>
+                        <th>Логин</th>
+                        <th>Дата создания</th>
+                        <th>Возраст</th>
+                        <th>Пол</th>
+                        <th>Телефон</th>
+                        <th>Почта</th>
+                        <th>Страна</th>
+                        <th>Адрес</th>
+                        <th>Изменить</th>
+                        <th>Удалить</th>
+                    </tr>
+                    </thead>
+                    <tbody id="table_body_kidlist">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 </div>
 
 <!-- Bootstrap core JavaScript
@@ -70,8 +77,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
-<script src="/scripts/mentor_active_requests.js"></script>
-<link rel="stylesheet"   href="/css/styles.css"/>
-
+<script src="/scripts/getAllKids.js"></script>
 </body>
 </html>

@@ -18,7 +18,6 @@ function fill_active_requests_table() {
                     $('<td>').text(item.description),
                     $('<td>').text(item.job.name),
                     $('<td>').text(item.kids.length),
-                    $('<td>').text(item.teachers.length),
                     $('<td>').text(item.price),
                     $('<td>').text(item.status)
                 );

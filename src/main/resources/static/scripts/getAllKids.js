@@ -13,7 +13,7 @@ function fillusertable() {
 
 
 
-var jobs = "";
+                var jobs = "";
                 for (var job in response[i].jobInterest) {
                     jobs += response[i].jobInterest[job].name += "</br>";
                 }
