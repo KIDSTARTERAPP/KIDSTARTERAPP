@@ -13,7 +13,7 @@ function fill_request_table() {
                     // for(var kid in response[i].kids.user){
                     //     console.log(kid)
                         // kidsString += kid.user.name;
-                if (response[i].status === "IN_PROGRESS") {
+                // if (response[i].status === "IN_PROGRESS") {
                     var currentAmount = response[i].account.needAmount;
                     var currentPercent = currentAmount / 100;
                     var drawPercent = response[i].account.currentAmount / currentPercent;
@@ -31,7 +31,7 @@ function fill_request_table() {
                         '                        Описание заявки: '+response[i].description+'\n' + '<br/>' +
                         '                        Интересы: '+response[i].job.name+'\n' + '<br/>' +
                         '                        Необходимо собрать: '+response[i].price / 100 +'\n' + '<br/>' +
-                        '                        Ментор заявки: '+response[i].mentor.user.firstName+'  '+response[i].mentor.user.lastName+'  '+response[i].mentor.user.patronymic+'\n' + '<br/>' +
+                        // '                        Ментор заявки: '+response[i].mentor.user.firstName+'  '+response[i].mentor.user.lastName+'  '+response[i].mentor.user.patronymic+'\n' + '<br/>' +
                         '                        Счет аккаунта: '+response[i].account.currentAmount / 100+'\n' + '<br/>' +
                         '                        Создатель заявки: '+response[i].creator.user.firstName+'  '+response[i].creator.user.lastName+'  '+response[i].creator.user.patronymic+'\n' + '<br/>' +
                         '                        Список детей: '+response[i].kids.kid+'<br/>' +
@@ -49,8 +49,12 @@ function fill_request_table() {
                         var requestId = $(this).data('id');
                         $('#donateModal'+requestId).modal('show');
                     });
+                    $('.donate-button').on('click', function (event) {
+                        var requestId = $(this).data('id');
+                        $(location).attr('href',"/donate/" + requestId);
+                    });
                 }
-            }
+            // }
         }
     });
 }
