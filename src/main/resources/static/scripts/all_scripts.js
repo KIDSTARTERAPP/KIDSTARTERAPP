@@ -30,10 +30,11 @@ function setBreadCrumb() {
         "registration": "Регистрация",
         "login": "Логин",
         "become-mentor": "Стать ментором",
-        "teacher" : "Учитель"
+        "teacher": "Учитель",
+        "create-organization" : "Создать организацию"
     };
 
-    var linksArray = ["editUser","teacher","kid"];
+    var linksArray = ["editUser", "teacher", "kid"];
 
     let splitter = pathname.split("/");
     for (let i  in splitter) {
@@ -41,19 +42,17 @@ function setBreadCrumb() {
         if (i == 0) {
             continue;
         }
+
         if (splitter[i].match(/^[-\+]?\d+/) === null) {
             name = myArray[splitter[i]]
+
         }
-        if ( linksArray.includes(splitter[i])) {
-            link += "/" + splitter[i];
+        link += "/" + splitter[i];
+
+        if (linksArray.includes(splitter[i])) {
             continue;
         }
-        else {
-            link += "/" + splitter[i];
-        }
 
-
-        console.log(link);
         if (i == splitter.length - 1) {
             $('#breadcrumbMain').append("<li class='breadcrumb-item active' >" + name + "</li>");
         }
@@ -84,6 +83,7 @@ function setLinks() {
         $('#kid-link').attr('class', 'active');
     }
 }
+
 //---------------Get-user-principal-------------------
 var current_user;
 
@@ -98,4 +98,5 @@ function get_current_user() {
         }
     })
 }
+
 //---------------Get-user-principal-------------------
