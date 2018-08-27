@@ -1,7 +1,6 @@
 $(document).ready(function () {
     setLinks();
     setBreadCrumb();
-
 });
 
 function setBreadCrumb() {
@@ -9,7 +8,7 @@ function setBreadCrumb() {
     var link = "";
     var name;
     var myArray = {
-
+        "": "Главная",
         "main": "Главная",
         "createorganization": "Добавление организации",
         "mentor": "Главная страница ментора",
@@ -40,11 +39,13 @@ function setBreadCrumb() {
     var linksArray = ["editUser","editOrganization","editJob"];
 
     let splitter = pathname.split("/");
-    for (let i  in splitter) {
 
+
+    for (let i  in splitter) {
         if (i == 0) {
             continue;
         }
+
         if (splitter[i].match(/^[-\+]?\d+/) === null) {
             name = myArray[splitter[i]]
         }
