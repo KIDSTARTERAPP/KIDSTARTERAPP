@@ -79,22 +79,22 @@ public class OrganizationRestController {
 
 	@PostMapping("/organization")
 	public ResponseEntity<?> addOrganization(@RequestBody Organization currentOrganization) {
-		User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		Owner currentOwner = ownerService.getUserOwner(principal.getId());
+		Owner currentOwner = ownerService.getUserOwner(user.getId());
 		if (currentOwner == null) {
 			currentOwner = ownerService.addOwner(new Owner());
-			currentOwner.setUser(principal);
+			currentOwner.setUser(user);
 			ownerService.updateOwner(currentOwner);
-//            Role role = roleService.getByName("OWNER");
-//            user.getRoles().add(role);
-//            List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) user.getAuthorities());
-//
-//            SecurityContextHolder.getContext().setAuthentication(
-//                    new UsernamePasswordAuthenticationToken(
-//                            user,
-//                            SecurityContextHolder.getContext().getAuthentication().getCredentials(),
-//                            updatedAuthorities));
+            Role role = roleService.getByName("OWNER");
+            user.getRoles().add(role);
+            List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) user.getAuthorities());
+			userService.updateUser(user);
+            SecurityContextHolder.getContext().setAuthentication(
+                    new UsernamePasswordAuthenticationToken(
+                            user,
+                            SecurityContextHolder.getContext().getAuthentication().getCredentials(),
+                            updatedAuthorities));
 		}
 		currentOrganization.setCreateDate(LocalDateTime.now());
 		Organization organization = organizationService.addOrganization(currentOrganization);
