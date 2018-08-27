@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <link rel="stylesheet"   href="/css/styles.css"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+<body>
+<th:block th:fragment="crumbs">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <ol  id="breadcrumbMain" class="breadcrumb">
+        </ol>
+    </div>
+</th:block>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
+<script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
+</body>
+</html>

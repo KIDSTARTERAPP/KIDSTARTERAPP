@@ -9,18 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import com.javamentor.kidstarter.model.user.Role;
-import com.javamentor.kidstarter.model.user.User;
-import com.javamentor.kidstarter.service.interfaces.JobService;
-import com.javamentor.kidstarter.service.interfaces.RoleService;
-import com.javamentor.kidstarter.service.interfaces.TagService;
-import com.javamentor.kidstarter.service.interfaces.UserService;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 
 
 public class DataInitializer {
@@ -99,7 +87,7 @@ public class DataInitializer {
                 roles, 23, "MALE","23-12-34","admin@mail.ru","RUSSIA","house 8");
 
         User user2  = new User("Vovan","Vovanov","Huevich","user2","qwer",
-                roles,28, "MALE","23-12-34","user@mail.ru","Ukraine","house 15");
+                Collections.singletonList(roleUser),28, "MALE","23-12-34","user@mail.ru","Ukraine","house 15");
 
         User kidUser1  = new User("Kid","Kid","Kid","kid","qwer",
                 kidRoles,28, "MALE","23-12-34","Kid@mail.ru","RUSSIA","house 15");
@@ -138,10 +126,10 @@ public class DataInitializer {
         Tag tag2 = tagService.addTag(new Tag("Фронтенд", new HashSet<>()));
         Tag tag3 = tagService.addTag(new Tag("Бэкаенд", new HashSet<>()));
 
-        Account acc1 = new Account(150000L,0L);
-        Account acc2 = new Account(20000L,500L);
-        Account acc3 = new Account();
-        Account acc4 = new Account();
+        Account acc1 = new Account(0L);
+        Account acc2 = new Account(0L);
+        Account acc3 = new Account(0L);
+        Account acc4 = new Account(0L);
 
         acc1 = accountService.addAccount(acc1);
         acc2 = accountService.addAccount(acc2);
@@ -256,9 +244,9 @@ public class DataInitializer {
 
         Mentor demoMentor = mentorService.addMentor(new Mentor(demoMentorUser, new HashSet<>(Collections.singletonList(demoJob1)), 3, "Description", 1, 1));
 
-        Account newRequestAccount = accountService.addAccount(new Account(1500L, 500L));
-        Account activeRequestAccount = accountService.addAccount(new Account(2000L, 400L));
-        Account progressRequestAccount = accountService.addAccount(new Account(7000L, 5000L));
+        Account newRequestAccount = accountService.addAccount(new Account(500L));
+        Account activeRequestAccount = accountService.addAccount(new Account( 400L));
+        Account progressRequestAccount = accountService.addAccount(new Account( 5000L));
 
         Request demoNewRequest = new Request("Новая заявка на обучение", demoJob1, new HashSet<>(Collections.singletonList(demoKid1)),
                 300L, new HashSet<>(), null, newRequestAccount, demoOwner, Request.RequestStatus.NEW);

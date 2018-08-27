@@ -21,11 +21,7 @@ public class Account {
     @Column (name = "current_amount")
     private Long currentAmount;
 
-    @Column (name = "need_amount")
-    private Long needAmount;
-
-    public Account(Long needAmount, Long currentAmount) {
+    public Account(Long currentAmount) {
         this.currentAmount = currentAmount;
-        this.needAmount = needAmount;
     }
 }
