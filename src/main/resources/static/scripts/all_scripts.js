@@ -76,7 +76,6 @@ function setLinks() {
         $('#profile-link').attr('class', 'active');
     }
 
-
     if (pathname.includes('/mentor')) {
         $('#mentor-link').attr('class', 'active');
     }

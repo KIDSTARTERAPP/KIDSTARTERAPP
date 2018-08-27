@@ -17,6 +17,8 @@ public interface UserService {
 
     void updateUser(User user);
 
+    void updateUserNoPasswordEncoder(User user);
+
     User getByLogin(String login);
 
     void deleteKidByUserId(long id);

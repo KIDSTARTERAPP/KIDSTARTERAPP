@@ -4,6 +4,14 @@
     width: 1000px;
 }
 
+.donate-button {
+    float: right;
+}
+
+.donate-info-button{
+    float: right;
+}
+
 .user-icon {
     border: black;
     border-radius: 40px;
