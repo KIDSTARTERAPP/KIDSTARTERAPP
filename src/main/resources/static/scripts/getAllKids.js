@@ -1,14 +1,17 @@
 $(document).ready(function () {
+    console.log("ready");
     fillusertable();
 });
 
 function fillusertable() {
+    console.log("here");
     $("#table_body_kidlist").empty();
     $.ajax({
         type: "GET",
         url: "/api/organization/kids",
         datatype: "JSON",
         success: function (response) {
+            console.log(response);
             for (var i in response) {
 
 
