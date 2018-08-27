@@ -80,7 +80,6 @@ public class OrganizationRestController {
 	@PostMapping("/organization")
 	public ResponseEntity<?> addOrganization(@RequestBody Organization currentOrganization) {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
 		Owner currentOwner = ownerService.getUserOwner(user.getId());
 		if (currentOwner == null) {
 			currentOwner = ownerService.addOwner(new Owner());
@@ -89,7 +88,7 @@ public class OrganizationRestController {
             Role role = roleService.getByName("OWNER");
             user.getRoles().add(role);
             List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) user.getAuthorities());
-			userService.updateUser(user);
+			userService.updateUserNoPasswordEncoder(user);
             SecurityContextHolder.getContext().setAuthentication(
                     new UsernamePasswordAuthenticationToken(
                             user,
