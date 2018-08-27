@@ -59,7 +59,7 @@ public class DonateController {
         System.out.println(datetime);
         Request program = requestService.getRequestById(Long.parseLong(label));
         Account programAccount = program.getAccount();
-        amount=amount.replace(".","");
+        amount = amount.replace(".", "");
         Long newCurrentAmount = programAccount.getCurrentAmount() + Long.parseLong(amount);
         programAccount.setCurrentAmount(newCurrentAmount);
         accountService.updateAccount(programAccount);
