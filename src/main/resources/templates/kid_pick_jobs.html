@@ -27,38 +27,14 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="/main">Главная</a></li>
-                <li><a href="/tagPage">Теги</a></li>
-                <li><a href="/cretejobtag">Создать интерес/тэг</a></li>
-                <li><a href="/createUser">Создать пользователя</a></li>
-                <li><a href="/organizationPage">Список организаций</a></li>
-                <li><a href="/createOrganization">Создать организацию</a></li>
-                <li><a href="/editOrganization/1">Изменить организацию</a></li>
-                <li><a href="/editUser/1">Изменить пользователя</a></li>
-                <li><a href="/jobPage">Интересы</a></li>
-                <li class="active"><a href="/jobPage">Выбор интересов</a></li>
-                <li><a href="/adminpage">Пользователи</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="/main">Главная</a></li>
+                <li><a href="/kid">Мои интересы</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header">Список интересов:</h2>
-            <form class="navbar-form" action="/kid" method="get">
-                <input class="form-control" type="submit" value="Назад">
-            </form>
+            <h2 class="sub-header">Добавить интерес:</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Интерес</th>
-                        <th>Описание</th>
-                        <th>Теги</th>
-                        <th>Дети</th>
-                        <th>Наставники</th>
-                        <th>Учителя</th>
-                    </tr>
-                    </thead>
                     <tbody id="table_pick_joblist">
                     </tbody>
                 </table>

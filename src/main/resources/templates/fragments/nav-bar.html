@@ -63,7 +63,7 @@
                 <div class="col-sm-3 col-md-2 sidebar" style="max-width: 200px">
                     <ul class="nav nav-sidebar">
                         <li id="main-link"><a href="/main">Главная</a></li>
-                        <th:block sec:authorize="hasAuthority('USER')">
+                        <th:block sec:authorize="hasAuthority('USER') and !hasAuthority('KID')">
                             <div th:replace="fragments/nav-bar::active-requests-nav-sidebar"></div>
                         </th:block>
 
@@ -81,7 +81,7 @@
                         </th:block>
 
                         <th:block sec:authorize="hasAuthority('KID')">
-                            <div th:replace="fragments/nav-bar::kid-nav-sidebar"></div>
+                            <li id="kid"><a href="/kid">Мои интересы</a></li>
                         </th:block>
                     </ul>
                 </div>
