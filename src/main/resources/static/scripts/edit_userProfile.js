@@ -3,7 +3,10 @@ $(document).ready(function () {
 });
 
 function fillform() {
-    var url = "/api/organization/" + $("#id_org").val() + "/kids/" + $("#id_kid").val();
+    var pathname = window.location.pathname;
+    var id = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
+
+    var url = "/api/user/" + id;
     $.ajax({
         type: "GET",
         url: url,
@@ -13,9 +16,9 @@ function fillform() {
             $("#firstname").val(response.firstName);
             $("#lastname").val(response.lastName);
             $("#patronymic").val(response.patronymic);
-            $("#login").val(response.firstName);
+            $("#login").val(response.login);
             $("#password").val('');
-            $.each(response.roles, function (i,e) {
+            $.each(response.roles, function (i, e) {
                 $("#role option[value='" + e.name + "']").prop("selected", true);
             });
             $("#createDate").val(response.createDate);
@@ -29,13 +32,13 @@ function fillform() {
     })
 }
 
-function updateKid() {
+function updateUser() {
     var role_list = JSON.stringify($("#role").val());
     $.ajax({
         type: "GET",
         url: "/api/select_roles",
         datatype: "JSON",
-        data: {roles : role_list},
+        data: {roles: role_list},
         success: function (response) {
             var data = {
                 id: $("#hidden_id").val(),
@@ -61,12 +64,12 @@ function updateKid() {
 function send_update(data) {
     $.ajax({
         type: "PUT",
-        url: "/api/organization/" + $("#id_org").val() + "/kids/" + $("#id_kid").val(),
-        contentType : "application/json; charset=UTF-8",
+        url: "/api/user/",
+        contentType: "application/json; charset=UTF-8",
         encoding: "UTF-8",
         data: data,
-        success: function () {
-            window.location.replace("/main/organization/" + $("#id_org").val() + "/kids");
+        success: function (response) {
+            window.location.replace("/adminpage");
         }
     })
 }

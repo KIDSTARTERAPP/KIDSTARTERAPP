@@ -41,15 +41,23 @@ public class Mentor  {
     @Column (name = "experience")
     private Integer experience;
 
+    @Column (name = "x")
+    private double pointX;
+
+    @Column (name = "y")
+    private double pointY;
+
 //    @OneToMany (cascade = CascadeType.ALL)
 //    @JoinColumn (name = "comment", foreignKey = @ForeignKey(name = "mentor_comment_fk"))
 //    private Set<Comment> comment;
 
 
-    public Mentor(User user, Set<Job> job, Integer experience, String description) {
+    public Mentor(User user, Set<Job> job, Integer experience, String description, double pointX, double pointY) {
         this.user = user;
         this.job = job;
         this.experience = experience;
         this.description = description;
+        this.pointX = pointX;
+        this.pointY = pointY;
     }
 }

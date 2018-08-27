@@ -21,10 +21,14 @@ public class Kid {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "user_fk")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @JsonIgnore
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn (name="organization_id")
+    private Organization organization;
+
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToMany
@@ -33,8 +37,16 @@ public class Kid {
             inverseJoinColumns = @JoinColumn(name = "job_id") )
     private Set<Job> jobInterest;
 
-    public Kid(User user, Set<Job> jobInterest) {
+    @EqualsAndHashCode.Exclude
+    @ManyToMany
+    @JoinTable(name = "request_to_kid",
+            joinColumns = @JoinColumn(name = "kid_id"),
+            inverseJoinColumns = @JoinColumn(name = "request_id"))
+    private Set<Request> requests;
+
+    public Kid(User user, Organization org, Set<Job> jobInterest) {
         this.user = user;
         this.jobInterest = jobInterest;
+        this.organization = org;
     }
 }

@@ -1,6 +1,9 @@
 package com.javamentor.kidstarter.service.interfaces;
 
+import com.javamentor.kidstarter.model.user.Kid;
 import com.javamentor.kidstarter.model.user.Organization;
+import com.javamentor.kidstarter.model.user.User;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -11,4 +14,7 @@ public interface OrganizationService {
 	List<Organization> getAllOrganization();
 	void deleteOrganizationById(Long id);
 	void updateOrganization(Organization organization);
+	List<Kid> getAllKidThisOrganization(long id);
+	Organization getOrganizationByUserId(Long id);
+
 }

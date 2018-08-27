@@ -5,6 +5,7 @@ $(document).ready(function () {
 function fillform() {
     var pathname = window.location.pathname;
     var id = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
+
     var url = "/api/user/" + id;
     $.ajax({
         type: "GET",

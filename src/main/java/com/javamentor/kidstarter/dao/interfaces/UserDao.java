@@ -6,4 +6,5 @@ import com.javamentor.kidstarter.model.user.User;
 public interface UserDao extends GenericDao<Long , User> {
 
     User getByLogin(String login);
+    void deleteKidByUserId(long id);
 }

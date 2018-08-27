@@ -20,6 +20,7 @@ function fill_job_list(kid_jobs) {
         url: "/api/jobs",
         dataType: "JSON",
         success: function (response) {
+            console.log(response);
             for (var i in response) {
                 var notContains = true;
                 for (var j in kid_jobs) {

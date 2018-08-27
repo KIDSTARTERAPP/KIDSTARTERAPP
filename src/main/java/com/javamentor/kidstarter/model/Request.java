@@ -1,9 +1,12 @@
 package com.javamentor.kidstarter.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javamentor.kidstarter.model.user.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -28,6 +31,7 @@ public class Request {
 	private Job job;
 
 	@EqualsAndHashCode.Exclude
+    @JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "request_to_kid",
 			joinColumns = @JoinColumn(name = "request_id"),
@@ -35,6 +39,7 @@ public class Request {
 	private Set<Kid> kids;
 
 	@EqualsAndHashCode.Exclude
+    @JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "request_to_teacher",
 			joinColumns = @JoinColumn(name = "request_id"),
@@ -76,7 +81,7 @@ public class Request {
 		REFUNDING
 	}
 
-	public Request(String description, Job job, Set<Kid> kids, Set<Teacher> teachers, Long price, Set<User> sponsors, Mentor mentor, Account account, Owner creator, RequestStatus status) {
+	public Request(String description, Job job, Set<Kid> kids, Set<Teacher> teachers, Long price, Set<User> sponsors, Mentor mentor, Account account, Owner creator) {
 		this.description = description;
 		this.job = job;
 		this.kids = kids;
@@ -86,6 +91,5 @@ public class Request {
 		this.mentor = mentor;
 		this.account = account;
 		this.creator = creator;
-		this.status = status;
 	}
 }

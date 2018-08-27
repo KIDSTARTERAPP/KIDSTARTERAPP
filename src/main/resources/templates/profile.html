@@ -8,8 +8,8 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
 
-    <title>KidStarter</title>
-    <link rel="stylesheet" href="/css/styles.css"/>
+    <title>Введите новые данные</title>
+    <link rel="stylesheet"   href="/css/styles.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,17 +23,17 @@
 
 <body>
 
-<div th:replace="fragments/nav-bar::main-header"></div>
-<div th:replace="fragments/nav-bar::crumbs"></div>
+<div th:replace="fragments/htmlFragment::main-header"></div>
+<div th:replace="fragments/htmlFragment::crumbs"></div>
 
 <div class="container-fluid">
     <div class="row">
-        <div th:replace="fragments/nav-bar::nav-sidebar"></div>
+        <div th:replace="fragments/htmlFragment::nav-sidebar"></div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Создание пользователя</h1>
+            <h1 class="page-header">Редактирование профиля</h1>
             <div class="table-responsive">
-                <form class="form-signup" onsubmit="updateUser();return false">
+                <form class="form-signup" onsubmit= "updateUser();return false">
                     <input id="hidden_id" type="hidden">
                     <label for="firstname">First Name</label>
                     <input id="firstname" class="form-control" required type="text" name="firstname"/>
@@ -44,13 +44,13 @@
                     <label for="patronymic">Patronymic</label>
                     <input id="patronymic" class="form-control" required type="text" name="patronymic"/>
 
-                    <label for="login">Login</label>
-                    <input id="login" class="form-control" required type="text" name="username"/>
+                    <!--<label for="login">Login</label>-->
+                    <input id="login" class="form-control" required type="hidden" name="username"/>
 
                     <label for="password">Password</label>
                     <input id="password" class="form-control" required type="password" name="password"/>
 
-                    <div class="form-group">
+                    <div class="form-group" hidden>
                         <label class="control-label center" for="role">Выберите роль пользователя</label>
                         <div class="">
                             <select multiple name="role" class="form-control input-width center-block" id="role">
@@ -90,8 +90,7 @@
                     <label for="address">Address</label>
                     <input id="address" class="form-control" required type="text" name="address"/>
                     <br/>
-                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit"
-                           value="Обновить пользователя"/>
+                    <input class="btn btn-lg btn-primary btn-block" name="saveUser" type="submit" value="Обновить пользователя" />
                 </form>
             </div>
         </div>
@@ -106,6 +105,6 @@
 <script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
 <script src="/scripts/all_scripts.js"></script>
-<script src="/scripts/edit_user.js"></script>
+<script src="/scripts/edit_userProfile.js"></script>
 </body>
 </html>
