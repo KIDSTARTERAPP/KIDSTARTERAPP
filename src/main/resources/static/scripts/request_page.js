@@ -13,9 +13,9 @@ function fill_request_table() {
                     // for(var kid in response[i].kids.user){
                     //     console.log(kid)
                         // kidsString += kid.user.name;
-                // if (response[i].status === "IN_PROGRESS") {
-                    var currentAmount = response[i].price / 100;
-                    var currentPercent = currentAmount / 100;
+                 if (response[i].status === "IN_PROGRESS") {
+                    var targetAmount = response[i].price;
+                    var currentPercent = targetAmount / 100;
                     var drawPercent = response[i].account.currentAmount / currentPercent;
 
                     $(".request-field").append('<div class="panel-group donate-panel-class" id="donate-panel'+response[i].id +'" data-request-id="'+response[i].id +'"><div class="panel panel-default request-modal"><div class="panel-heading skype-panel-head">' + response[i].description + '</div>' +
@@ -54,8 +54,9 @@ function fill_request_table() {
                         $(location).attr('href',"/donate/" + requestId);
                     });
                 }
-            // }
+            }
         }
+
     });
 }
 
