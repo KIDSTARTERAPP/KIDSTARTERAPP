@@ -215,15 +215,15 @@ public class DataInitializer {
         User demoMentorUser  = new User("demoMentorUser","demoMentorUser","demoMentorUser","mentor1","1234",
                 mentorRoles, 23, "MALE","23-12-34","Owner@mail.ru","RUSSIA","house 8");
 
-        User demoKidUser1  = new User("demoKidUser1","demoKidUser1","demoKidUser1","kid11","1234",
+        User demoKidUser1  = new User("","demoKidUser1","","kid11","1234",
                 kidRoles,28, "MALE","23-12-34","Kid@mail.ru","RUSSIA","house 15");
-        User demoKidUser2  = new User("demoKidUser2","demoKidUser2","demoKidUser2","kid21","1234",
+        User demoKidUser2  = new User("","demoKidUser2","","kid21","1234",
                 kidRoles,32, "MALE","23-12-34","Kid2@mail.ru","RUSSIA","house 15");
 
 
-        User demoTeacherUser1  = new User("demoTeacherUser1","demoTeacherUser1","demoTeacherUser1","teacher11","1234",
+        User demoTeacherUser1  = new User("","demoTeacherUser1","","teacher11","1234",
                 teacherRoles,28, "MALE","23-12-34","Teacher@mail.ru","RUSSIA","house 15");
-        User demoTeacherUser2  = new User("TeachdemoTeacherUser2er2","demoTeacherUser2","demoTeacherUser2","teacher21","1234",
+        User demoTeacherUser2  = new User("","demoTeacherUser2","","teacher21","1234",
                 teacherRoles,28, "MALE","23-12-34","Teacher@mail.ru","RUSSIA","house 15");
 
 

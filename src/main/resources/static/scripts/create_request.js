@@ -101,7 +101,7 @@ function fill_kids_modal() {
 
         }
     })
-}
+}   
 
 function fill_teachers_modal() {
     $.ajax({

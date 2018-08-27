@@ -44,7 +44,6 @@ public class User implements UserDetails {
     @Column(name = "login", unique = true, nullable = false)
     private String login;
 
-    @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @Column(name = "password", nullable = false)
