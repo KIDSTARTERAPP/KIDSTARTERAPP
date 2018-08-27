@@ -5,12 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/organization")
+    @RequestMapping("/organization")
 public class OrganizationController {
 
     @GetMapping("/requests")
     public String showOrganizationRequests() {
         return "organization_requests";
+    }
+
+    @GetMapping("/add_map")
+    public String addMapThisOrganization() {
+        return "addMapThisOrganization";
     }
 
 }

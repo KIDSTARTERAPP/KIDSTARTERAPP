@@ -18,6 +18,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -117,6 +118,15 @@ public class OrganizationRestController {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		List<Kid> kids = organizationService.getAllKidThisOrganization(organizationService.getOrganizationByUserId(user.getId()).getId());
 		return new ResponseEntity<>(kids, HttpStatus.OK);
+	}
+
+	@PostMapping("/organization/add_map")
+	public ResponseEntity<Organization> addMapThisOrganization(@RequestParam(value="myArray[]") Double[] myArray) {
+	    Organization organization = organizationService.getOrganizationById(2L);
+		organization.setPointX(myArray[0]);
+		organization.setPointY(myArray[1]);
+		organizationService.updateOrganization(organization);
+		return new ResponseEntity<>(organization, HttpStatus.OK);
 	}
 
 }

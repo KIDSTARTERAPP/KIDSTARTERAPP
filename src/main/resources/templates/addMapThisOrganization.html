@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="http://bootstrap-3.ru/assets/ico/favicon.ico">
+    <link rel="stylesheet"   href="/css/styles.css"/>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <title>KidStarter</title>
+    <!-- Bootstrap core CSS -->
+    <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="http://bootstrap-3.ru/examples/dashboard/dashboard.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div th:replace="fragments/nav-bar::main-header"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="fragments/nav-bar::owner-nav-sidebar"></div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div id="map" style="width: 1200px; height: 400px;"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://bootstrap-3.ru/dist/js/bootstrap.min.js"></script>
+<script src="http://bootstrap-3.ru/assets/js/docs.min.js"></script>
+<script src="/scripts/all_scripts.js"></script>
+<script src="/scripts/mapPage.js"></script>
+</body>
+</html>

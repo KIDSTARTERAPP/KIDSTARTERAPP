@@ -46,6 +46,12 @@ public class Organization {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "organization")
     private Set<Kid> kids;
 
+    @Column (name = "x")
+    private double pointX;
+
+    @Column (name = "y")
+    private double pointY;
+
     public Organization(String name, String address, String country, String email, Integer phone, LocalDateTime createDate, Account account) {
         this.name = name;
         this.address = address;
@@ -55,4 +61,5 @@ public class Organization {
         this.createDate = createDate;
         this.account = account;
     }
+
 }

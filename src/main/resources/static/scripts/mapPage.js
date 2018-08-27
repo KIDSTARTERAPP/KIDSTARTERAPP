@@ -18,7 +18,7 @@ function init(response) {
     ymaps.ready(function () {
         var myMap = new ymaps.Map('map', {
             center: [65, 95],
-            zoom: 3
+            zoom: 1
         });
 
         myMap.events.add('click', function (e) {
@@ -29,8 +29,23 @@ function init(response) {
             var myPlacemark = new ymaps.Placemark([coordsX, coordsY], {
                 hintContent: 'Содержимое всплывающей подсказки',
                 balloonContent: 'Содержимое балуна'
+
             });
+            var coodr = [];
+            coodr[0] = coordsX;
+            coodr[1] = coordsY;
+
             myMap.geoObjects.add(myPlacemark);
+            $.ajax({
+                type: "POST",
+                url: "/../api/organization/add_map",
+                data: {
+                    myArray: coodr
+                },
+                success: function () {
+                    window.location.replace("/organization/add_maps");
+                }
+            })
         });
     });
 }
