@@ -78,6 +78,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void updateUserNoPasswordEncoder(User user) {
+        userDAO.update(user);
+    }
+
+    @Override
     public User getByLogin(String login) {
         return userDAO.getByLogin(login);
     }

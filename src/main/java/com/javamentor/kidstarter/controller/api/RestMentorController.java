@@ -59,7 +59,7 @@ public class RestMentorController {
         Role role = roleService.getByName("MENTOR");
         principal.getRoles().add(role);
         List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>((Collection<? extends SimpleGrantedAuthority>) principal.getAuthorities());
-        userService.updateUser(principal);
+        userService.updateUserNoPasswordEncoder(principal);
         SecurityContextHolder.getContext().setAuthentication(
                 new UsernamePasswordAuthenticationToken(
                         principal,
