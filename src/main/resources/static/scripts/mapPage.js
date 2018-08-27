@@ -17,19 +17,20 @@ function get_mentor() {
 function init(response) {
     ymaps.ready(function () {
         var myMap = new ymaps.Map('map', {
-            center: [response['pointX'], response['pointY']],
-            zoom: 9
+            center: [65, 95],
+            zoom: 3
         });
 
-        var myPlacemark = new ymaps.Placemark([response['pointX'], response['pointY']], {
-            hintContent: 'Содержимое всплывающей подсказки',
-            balloonContent: 'Содержимое балуна'
+        myMap.events.add('click', function (e) {
+            var coordsX = e.get('coords')[0];
+            console.log(coordsX);
+            var coordsY = e.get('coords')[1];
+            console.log(coordsY);
+            var myPlacemark = new ymaps.Placemark([coordsX, coordsY], {
+                hintContent: 'Содержимое всплывающей подсказки',
+                balloonContent: 'Содержимое балуна'
+            });
+            myMap.geoObjects.add(myPlacemark);
         });
-
-        myMap.geoObjects.add(myPlacemark);
     });
-
-
-
-
 }
