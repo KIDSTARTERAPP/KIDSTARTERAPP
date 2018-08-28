@@ -129,40 +129,30 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Создание запроса</h1>
+        <div class="col-sm-9 col-sm-offset-3 col-md-5 col-md-offset-4 main">
+            <h1 class="page-header">Создание заявки на сбор средств</h1>
             <div class="table-responsive">
                 <form class="form-signup" onsubmit= "create_request();return false">
-                    <table>
-                        <tr>
-                            <td><label for="request_description">Введите описание:</label></td>
+                        <p class="pi">
+                            <td><label for="request_description">Описание заявки:</label></td>
                             <td><input id="request_description" class="form-control" type="text" name="request_description"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="select_job">Выберите интерес:</label></td>
+                        </p>
+                    <p class="pi">
+                            <td><label for="select_job">Компетенции наставника:</label></td>
                             <td>
                                 <select id="select_job">
                                 </select>
                             </td>
-                        </tr>
-                        <tr>
-                            <td><label for="button_select_kid">Добавить детей:</label></td>
-                            <td><button class="btn btn-lg btn-primary btn-block" type="button" id="button_select_kid">Выбрать</button></td>
-                        </tr>
-                        <!--<tr>-->
-                            <!--<td><label for="button_select_teacher">Добавить учителей:</label></td>-->
-                            <!--<td><button class="btn btn-lg btn-primary btn-block" type="button" id="button_select_teacher">Выбрать</button></td>-->
-                        <!--</tr>-->
-                        <tr>
-                            <td><label for="request_price">Введите стоимость:</label></td>
+                        </p>
+                    <p class="pi">
+                            <td><button class="btn btn-lg btn-primary btn-block" type="button" id="button_select_kid">Добавить детей</button></td>
+                        </p>
+                    <p class="pi">
+                            <td><label for="request_price">Сумма:</label></td>
                             <td><input id="request_price" class="form-control" type="text" name="request_price"/></td>
-                        </tr>
-                        <tr><td>
-
-                        </td></tr>
-                    </table>
+                        </p>
                     <br/>
-                    <input class="btn btn-lg btn-primary btn-block" value="Добавить запрос" type="submit"/>
+                    <input class="btn btn-lg btn-primary btn-block" value="Создать заявку" type="submit"/>
                 </form>
             </div>
 

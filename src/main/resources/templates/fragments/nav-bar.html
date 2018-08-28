@@ -36,7 +36,7 @@
                     </th:block>
                     <th:block sec:authorize="isAuthenticated()">
                         <li>
-                            <button data-toggle="dropdown" class="user-icon">
+                            <button data-toggle="dropdown" id="topBtn" class="user-icon">
                                 [[${#httpServletRequest.remoteUser}]]
                             </button>
                             <ul class="dropdown-menu">
