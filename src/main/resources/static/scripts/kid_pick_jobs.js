@@ -61,7 +61,7 @@ function fill_job_list(kid_jobs) {
                         response[i].name + "</td><td>" +
                         response[i].description + "</td><td>" +
                         tags + "</td><td>" +
-                        "<form class='navbar-form' onsubmit='add_job_to_whish_list(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Хочу изучить'></form></td><td>" +
+                        "<form class='navbar-form' onsubmit='add_job_to_whish_list(" + response[i].id + ");return false'><input class='form-control btn btn-success' type='submit' value='Интересуюсь'></form></td><td>" +
                         "</tr>");
                 }
             }

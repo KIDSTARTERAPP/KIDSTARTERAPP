@@ -34,24 +34,27 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div>
-                <h2 class="sub-header">Создать свой интерес:</h2>
-                <form class="navbar-form" onsubmit="create_job();return false">
-                    <table>
-                        <tr>
-                            <td><label for="input_jobname">Введите имя интереса:</label></td>
-                            <td colspan="2"><input class="form-control" id="input_jobname" width="100%" type="text" name="input_jobname"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="input_jobdesc">Введите описание интереса:</label></td>
-                            <td colspan="2"><input class="form-control" id="input_jobdesc" type="text" name="input_jobdesc"></td>
-                        </tr>
-                        <tr>
-                            <td><input class="btn btn-default" type="submit" value="Создать интерес"></td>
-                        </tr>
-                    </table>
-                </form>
+
+                <div style="width: 500px; height: 350px; margin: 0 auto" class="panel panel-default">
+                    <div class="panel-heading"  style="font-size: 25px; font-weight: normal; text-align: center">
+                        <h2 class="sub-header">Добавить свой интерес</h2>
+                    </div>
+                    <div class="form-group" style="padding: 35px">
+                        <form class="navbar-form" onsubmit="create_job();return false">
+
+                                    <p style="text-align: center"><label for="input_jobname">Напиши название интереса</label></p>
+                                    <p style="text-align: center"colspan="2"><input class="form-control" id="input_jobname" width="100%" type="text" name="input_jobname"></p>
+
+                                    <p style="text-align: center"><label for="input_jobdesc">Напиши описание интереса</label></p>
+                                    <p style="text-align: center" colspan="2"><input class="form-control" id="input_jobdesc" type="text" name="input_jobdesc"></p>
+
+                                    <input style="margin: 0 auto; display:  block" class="btn btn-lg btn-success" type="submit" value="Добавить">
+                        </form>
+                    </div>
+                </div>
+
             </div>
-            <h2 class="sub-header">Выбрать интерес:</h2>
+            <h2 class="sub-header">Интересы</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <tbody id="table_pick_joblist">
