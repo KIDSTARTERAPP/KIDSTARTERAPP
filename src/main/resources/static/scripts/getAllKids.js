@@ -29,17 +29,12 @@ function fillusertable() {
                     roles.push(response[i].roles[j].name);
                 }
                 $("#table_body_kidlist").append("<tr><td>" +
-                    response[i].user.id + "</td><td>" +
                     response[i].user.firstName + "</td><td>" +
                     response[i].user.lastName + "</td><td>" +
                     response[i].user.patronymic + "</td><td>" +
-                    response[i].user.login + "</td><td>" +
                     response[i].user.age + "</td><td>" +
                     response[i].user.sex + "</td><td>" +
                     response[i].user.phone + "</td><td>" +
-                    response[i].user.email + "</td><td>" +
-                    response[i].user.country + "</td><td>" +
-                    response[i].user.address + "</td><td>" +
                     jobs + "</td><td>" +
                     "<form class='navbar-form' onsubmit='edit_kid(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Изменить'></form></td><td>" +
                     "<form class='navbar-form' onsubmit='delete_kid(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Удалить'></form></td><td>" +
