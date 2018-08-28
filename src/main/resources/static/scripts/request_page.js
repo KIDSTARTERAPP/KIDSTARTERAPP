@@ -21,7 +21,7 @@ function fill_request_table() {
                     $(".request-field").append('<div class="panel-group donate-panel-class" id="donate-panel'+response[i].id +'" data-request-id="'+response[i].id +'"><div class="panel panel-default request-modal"><div class="panel-heading skype-panel-head"> <h4 class="text-center">' + response[i].description + '</h4></div>' +
                         '<div style="padding: 20px"><h3> Необходимо собрать: '+response[i].price / 100 +'\n' + '(рублей) </h3>' +   '<h3>Собрано: '+response[i].account.currentAmount / 100+' ' + '(рублей) </h3><div class="progress">' +
                         '<div class="progress-bar progress-bar-success"  role="progressbar" style="min-width:' + drawPercent + '%" aria-valuenow="' + response[i].account.currentAmount / 100 + '" aria-valuemin="0" aria-valuemax="' + response[i].account.needAmount / 100 + '"></div>' +
-                        '</div>' + '</br> Интерес: ' + response[i].job.name + '<button  data-id="'+response[i].id +'" class="btn btn-sm btn-primary donate-info-button"> Информация о заявке </button>' + '<button  data-id="'+response[i].id +'" class="btn btn-sm btn-success donate-button" style="margin-right: 20px"> Пожертвовать </button>' + '</div>').after('<div class="modal fade donate-modal" id="donateModal'+response[i].id +'" tabindex="-1" role="dialog" aria-hidden="true">\n' +
+                        '</div>' + '</br> Интерес: ' + response[i].job.name  + '<button  data-id="'+response[i].id +'" class="btn btn-lg btn-primary donate-button" style="margin-right: 20px; margin-top: -25px"> Пожертвовать </button>' + '</div>').after('<div class="modal fade donate-modal" id="donateModal'+response[i].id +'" tabindex="-1" role="dialog" aria-hidden="true">\n' +
                         '            <div class="modal-dialog">\n' +
                         '                <div class="modal-content">\n' +
                         '                    <div class="modal-header">\n' +
@@ -45,10 +45,10 @@ function fill_request_table() {
                         '            </div>\n' +
                         '        </div>');
 
-                    $('.donate-info-button').on('click', function (e) {
-                        var requestId = $(this).data('id');
-                        $('#donateModal'+requestId).modal('show');
-                    });
+                    // $('.donate-info-button').on('click', function (e) {
+                    //     var requestId = $(this).data('id');
+                    //     $('#donateModal'+requestId).modal('show');
+                    // });
                     $('.donate-button').on('click', function (event) {
                         var requestId = $(this).data('id');
                         $(location).attr('href',"/donate/" + requestId);

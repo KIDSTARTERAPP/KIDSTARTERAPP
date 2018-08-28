@@ -25,7 +25,7 @@ function fill_organization_requests_table() {
                         $('<td>').text('нет'),
                         $('<td>').text(item.price / 100),
                         $('<td>').text(item.status),
-                        $('<td>').append("<form onsubmit='remove_request(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Удалить запрос'></form>"),
+                        $('<td>').append("<form onsubmit='remove_request(" + item.id + ");return false'><input class='btn btn-lg btn-block btn-danger' type='submit' value='Удалить'></form>"),
                         $('<td>').text(" ")
                     );
                 } else if(item.status == "READY") {
@@ -39,7 +39,7 @@ function fill_organization_requests_table() {
                         $('<td>').text(item.price /100),
                         $('<td>').text(item.status),
                         $('<td>').append("<form onsubmit='get_request_for_update(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Подтвердить'></form>"),
-                        $('<td>').append("<form onsubmit='get_request_for_decline(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Отклонить'></form>")
+                        $('<td>').append("<form onsubmit='get_request_for_decline(" + item.id + ");return false'><input class='btn btn-lg btn-block btn-warning' type='submit' value='Отклонить'></form>")
                     );
                 } else {
                     tr = $('<tr>').append(
@@ -47,8 +47,8 @@ function fill_organization_requests_table() {
                         $('<td>').text(item.description),
                         $('<td>').text(item.job.name),
                         // $('<td>').text(item.kids.length),
-                        $('<td>').text('нет'),
-                        $('<td>').text('нет'),
+                        $('<td>').text(item.mentor.user.email),
+                        $('<td>').text(item.mentor.user.phone),
                         $('<td>').text(item.price / 100),
                         $('<td>').text(item.status),
                         $('<td>').text(" "),

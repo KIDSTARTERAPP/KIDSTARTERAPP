@@ -34,10 +34,9 @@ function fillusertable() {
                     response[i].user.patronymic + "</td><td>" +
                     response[i].user.age + "</td><td>" +
                     response[i].user.sex + "</td><td>" +
-                    response[i].user.phone + "</td><td>" +
                     jobs + "</td><td>" +
-                    "<form class='navbar-form' onsubmit='edit_kid(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Изменить'></form></td><td>" +
-                    "<form class='navbar-form' onsubmit='delete_kid(" + response[i].id + ");return false'><input class='form-control' type='submit' value='Удалить'></form></td><td>" +
+                    "<form class='navbar-form' onsubmit='edit_kid(" + response[i].id + ");return false'><input class='form-control btn-primary' type='submit' value='Изменить'></form></td><td>" +
+                    "<form class='navbar-form' onsubmit='delete_kid(" + response[i].id + ");return false'><input class='form-control btn-danger' type='submit' value='Удалить'></form></td><td>" +
                     "</tr>");
             }
         }

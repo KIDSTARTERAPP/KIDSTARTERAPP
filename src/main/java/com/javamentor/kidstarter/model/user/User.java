@@ -24,25 +24,25 @@ public class User implements UserDetails {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name ="firstName", nullable = false)
+    @Column(name ="firstName")
   // @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false)
+    @Column(name = "lastName")
  //   @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     private String lastName;
 
-    @Column(name = "patronymic", nullable = false)
+    @Column(name = "patronymic")
     //    @Pattern(regexp = ValidationPattern.USER_FIRSTNAME_LASTNAME_PATTERN)
     private String patronymic;
 
-    @Column(name = "login", unique = true, nullable = false)
+    @Column(name = "login")
     private String login;
 
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 
     @EqualsAndHashCode.Exclude
@@ -53,26 +53,26 @@ public class User implements UserDetails {
             inverseJoinColumns = {@JoinColumn(name = "role_id", foreignKey = @ForeignKey(name = "FK_ROLE"))})
     private List<Role> roles = new ArrayList<>();
 
-    @Column(name = "createDate", nullable = false)
+    @Column(name = "createDate")
     private LocalDateTime createDate;
 
-    @Column(name = "age", nullable = false)
+    @Column(name = "age")
     private Integer age;
 
-    @Column(name = "sex", nullable = false)
+    @Column(name = "sex")
     private String sex;
 
-    @Column(name ="phone", nullable = false)
+    @Column(name ="phone")
     private String phone;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
   //  @Email(regexp = ValidationPattern.EMAIL_PATTERN)
     private String email;
 
-    @Column(name = "country", nullable = false)
+    @Column(name = "country")
     private String country;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
 
     @OneToOne
