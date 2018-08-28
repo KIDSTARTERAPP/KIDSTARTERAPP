@@ -15,22 +15,26 @@
 
 <div class="login">
     <div th:replace="fragments/nav-bar::main-header"></div>
-    <div th:replace="fragments/crumbs::crumbs"></div>
+    <!--<div th:replace="fragments/crumbs::crumbs"></div>-->
 
     <div class="col-sm-9 col-sm-offset-3 col-md-3 col-md-offset-4 main" style="margin-top: 120px">
-        <h1 class="text-center">Авторизация</h1>
 
-        <div class="table-responsive">
 
-            <form class="form-signin" name='loginForm' action="/main/login" method='POST'>
-                <label for="login">Логин</label>
-                <input id="login" class="form-control" required placeholder="Логин" type="text" name="username"/>
-                <label for="password">Пароль</label>
-                <input id="password" class="form-control" required placeholder="Пароль" type="password"
-                       name="password"/>
-                <br/>
-                <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Войти"/>
-            </form>
+        <div style="width: 500px; height: 350px;" class="panel panel-default">
+            <div class="panel-heading"  style="font-size: 25px; font-weight: normal; text-align: center">
+                <h1 class="text-center">Авторизация</h1>
+            </div>
+            <div class="form-group" style="padding: 35px">
+                <form class="form-signin" name='loginForm' action="/main/login" method='POST'>
+                    <label for="login">Логин</label>
+                    <input id="login" class="form-control" required placeholder="Логин" type="text" name="username"/>
+                    <label for="password">Пароль</label>
+                    <input id="password" class="form-control" required placeholder="Пароль" type="password"
+                           name="password"/>
+                    <br/>
+                    <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Войти"/>
+                </form>
+            </div>
         </div>
     </div>
 </div>

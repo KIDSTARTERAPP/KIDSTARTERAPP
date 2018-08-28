@@ -35,17 +35,18 @@
                         <li><a href="/main/create-organization">Добавить организацию</a></li>
                     </th:block>
                     <th:block sec:authorize="isAuthenticated()">
-                        <li>
-                            <button data-toggle="dropdown" id="topBtn" class="user-icon">
-                                [[${#httpServletRequest.remoteUser}]]
-                            </button>
-                            <ul class="dropdown-menu">
-                                <th:block sec:authorize="isAuthenticated()">
-                                    <li><a href="/main/profile">Профиль</a></li>
-                                    <li><a href="/logout">Выход</a></li>
-                                </th:block>
-                            </ul>
-                        </li>
+                        <!--<li>-->
+                            <!--<button data-toggle="dropdown" id="topBtn" class="user-icon">-->
+                                <!--[[${#httpServletRequest.remoteUser}]]-->
+                            <!--</button>-->
+                            <!--<ul class="dropdown-menu">-->
+                                <!--<th:block sec:authorize="isAuthenticated()">-->
+                                    <!--<li><a href="/main/profile">Профиль</a></li>-->
+                                    <!--<li><a href="/logout">Выход</a></li>-->
+                                <!--</th:block>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                        <li><a href="/logout">Выход</a></li>
                     </th:block>
                 </ul>
             </div>
@@ -114,7 +115,7 @@
 
 <!--OWNER-->
 <th:block th:fragment="owner-nav-sidebar">
-    <li id="organization-page" class="active"><a href="/organization">Организация</a></li> <!--what the fuck is the difference???-->
+    <li id="organization-page" ><a href="/organization">Организация</a></li> <!--what the fuck is the difference???-->
     <li id="organization-kids"><a href="/organization/kids">Дети</a></li>
     <li id="organization-kids-addkid"><a href="/organization/kids/add-kid">Добавить ребенка</a></li>
     <li id="organization-requests"><a href="/organization/requests">Заявки</a></li>

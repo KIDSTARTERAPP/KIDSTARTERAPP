@@ -17,7 +17,7 @@ function fill_organization_requests_table() {
                 var tr;
                 if(item.status == "NEW") {
                     tr = $('<tr>').append(
-                        $('<td>').text(item.id),
+                        // $('<td>').text(item.id),
                         $('<td>').text(item.description),
                         $('<td>').text(item.job.name),
                         // $('<td>').text(item.kids.length),
@@ -25,11 +25,12 @@ function fill_organization_requests_table() {
                         $('<td>').text('нет'),
                         $('<td>').text(item.price / 100),
                         $('<td>').text(item.status),
-                        $('<td>').append("<form onsubmit='remove_request(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Удалить запрос'></form>")
+                        $('<td>').append("<form onsubmit='remove_request(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Удалить запрос'></form>"),
+                        $('<td>').text(" ")
                     );
                 } else if(item.status == "READY") {
                     tr = $('<tr>').append(
-                        $('<td>').text(item.id),
+                        // $('<td>').text(item.id),
                         $('<td>').text(item.description),
                         $('<td>').text(item.job.name),
                         // $('<td>').text(item.kids.length),
@@ -42,14 +43,16 @@ function fill_organization_requests_table() {
                     );
                 } else {
                     tr = $('<tr>').append(
-                        $('<td>').text(item.id),
+                        // $('<td>').text(item.id),
                         $('<td>').text(item.description),
                         $('<td>').text(item.job.name),
                         // $('<td>').text(item.kids.length),
                         $('<td>').text('нет'),
                         $('<td>').text('нет'),
                         $('<td>').text(item.price / 100),
-                        $('<td>').text(item.status)
+                        $('<td>').text(item.status),
+                        $('<td>').text(" "),
+                        $('<td>').text(" ")
                     );
                 }
                 if (item.creator.user.id == current_user.id) {

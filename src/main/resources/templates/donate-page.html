@@ -30,8 +30,8 @@
 <div th:replace="fragments/nav-bar::main-header"></div>
 <div th:replace="fragments/crumbs::crumbs"></div>
 <div class="col-sm-4 col-sm-offset-3 col-md-3 col-md-offset-4 main">
-    <form  style="height: 400px ; width: 300px; margin: 0 auto; " method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
-        <div style="width: 500px; height: 300px;" class="panel panel-default">
+    <form  style="height: 400px ; width: 300px; margin: 0 auto; margin-top: 70px " method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
+        <div style="width: 500px;" class="panel panel-default">
             <div class="panel-heading"  style="font-size: 25px; font-weight: normal; text-align: center" th:text="${request.description}"></div>
         <!--<h4 th:text="${request.description}"></h4>-->
         <div class="form-group" style="padding: 35px">

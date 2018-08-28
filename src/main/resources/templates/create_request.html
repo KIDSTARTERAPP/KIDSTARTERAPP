@@ -131,31 +131,46 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-5 col-md-offset-4 main">
-            <h1 class="page-header">Создание заявки на сбор средств</h1>
-            <div class="table-responsive">
-                <form class="form-signup" onsubmit= "create_request();return false">
-                        <p class="pi">
+
+
+            <div style="width: 500px; height: 450px; margin-top: 70px" class="panel panel-default">
+                <div class="panel-heading"  style="font-size: 25px; font-weight: normal; text-align: center">
+                    <h1 class="page-header">Создание заявки на сбор средств</h1>
+                </div>
+                <div class="form-group" style="padding: 35px">
+                    <div class="table-responsive">
+                        <form class="form-signup" onsubmit= "create_request();return false">
+                            <p class="pi">
                             <td><label for="request_description">Описание заявки:</label></td>
                             <td><input id="request_description" class="form-control" type="text" name="request_description"/></td>
-                        </p>
-                    <p class="pi">
+                            </p>
+                            <p class="pi">
                             <td><label for="select_job">Компетенции наставника:</label></td>
                             <td>
                                 <select id="select_job">
                                 </select>
                             </td>
-                        </p>
-                    <!--<p class="pi">-->
+                            </p>
+                            <!--<p class="pi">-->
                             <!--<td><button class="btn btn-lg btn-primary btn-block" type="button" id="button_select_kid">Добавить детей</button></td>-->
-                        <!--</p>-->
-                    <p class="pi">
+                            <!--</p>-->
+                            <p class="pi">
                             <td><label for="request_price">Сумма:</label></td>
-                            <td><input id="request_price" class="form-control" type="text" name="request_price"/></td>
-                        </p>
-                    <br/>
-                    <input class="btn btn-lg btn-primary btn-block" value="Создать заявку" type="submit"/>
-                </form>
+                            <td><input id="request_price" type="number" class="form-control"  name="request_price"/></td>
+                            </p>
+                            <br/>
+                            <input class="btn btn-lg btn-primary btn-block" value="Создать заявку" type="submit"/>
+                        </form>
+                    </div>
+                </div>
             </div>
+
+
+
+
+
+
+
 
             <!-- The Kids Modal -->
             <div id="kids_modal" class="modal">

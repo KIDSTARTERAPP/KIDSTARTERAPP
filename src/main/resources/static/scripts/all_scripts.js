@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    setLinks();
+    // setLinks();
     setBreadCrumb();
 });
 
@@ -69,30 +69,30 @@ function setBreadCrumb() {
 function setLinks() {
     let pathname = document.location.pathname;
 
-    if (pathname == ('/main')) {
-        $('#main-link').attr('class', 'active');
-    }
-    if (pathname ==("/main/active-requests")) {
-        $('#user-active-requests').attr('class','active');
-    }
-    if (pathname ==('/activerequests')) {
-        $('#active-requests-link').attr('class', 'active');
-    }
-    if (pathname == ('/profile')) {
-        $('#profile-link').attr('class', 'active');
-    }
-
-    if (pathname == ('/mentor')) {
-        $('#mentor-link').attr('class', 'active');
-    }
-
-    if (pathname.includes('/organization')) {
-        $('#organization-page').attr('class', 'active');
-    }
-
-    if (pathname ==('/kid')) {
-        $('#kid-link').attr('class', 'active');
-    }
+    // if (pathname == ('/main')) {
+    //     $('#main-link').attr('class', 'active');
+    // }
+    // if (pathname ==("/main/active-requests")) {
+    //     $('#user-active-requests').attr('class','active');
+    // }
+    // if (pathname ==('/activerequests')) {
+    //     $('#active-requests-link').attr('class', 'active');
+    // }
+    // if (pathname == ('/profile')) {
+    //     $('#profile-link').attr('class', 'active');
+    // }
+    //
+    // if (pathname == ('/mentor')) {
+    //     $('#mentor-link').attr('class', 'active');
+    // }
+    //
+    // if (pathname.includes('/organization')) {
+    //     $('#organization-page').attr('class', 'active');
+    // }
+    //
+    // if (pathname ==('/kid')) {
+    //     $('#kid-link').attr('class', 'active');
+    // }
 }
 //---------------Get-user-principal-------------------
 var current_user;
