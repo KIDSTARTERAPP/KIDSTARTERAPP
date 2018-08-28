@@ -19,7 +19,7 @@ function fill_kid_job_list() {
                     response[i].description + "</td><td>" +
                     tags + "</td><td>" +
                     "<form class='navbar-form' onsubmit='remove_job_from_whish_list(" + response[i].id + ");return false'><input style='" +
-                    "height: 45px; margin-top: -10px;' class='form-control btn btn-lg btn-danger' type='submit' value='Не интересуюсь'></form></td><td>" +
+                    "height: 45px; margin-top: -10px;' class='form-control btn btn-danger' type='submit' value='Не интересуюсь'></form></td><td>" +
                     "</tr>");
             }
         }
