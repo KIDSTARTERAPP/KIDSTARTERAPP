@@ -1,7 +1,6 @@
 $(document).ready(function () {
     setLinks();
     setBreadCrumb();
-
 });
 
 function setBreadCrumb() {
@@ -9,7 +8,7 @@ function setBreadCrumb() {
     var link = "";
     var name;
     var myArray = {
-
+        "": "Главная",
         "main": "Главная",
         "createorganization": "Добавление организации",
         "mentor": "Главная страница ментора",
@@ -34,17 +33,21 @@ function setBreadCrumb() {
         "suitable-requests": "Список открытых запросов",
         "my-requests": "Список моих запросов",
         "add-kid": "Добавление ребёнка",
-        "add-request": "Создание запроса"
+        "add-request": "Создание запроса",
+        "active-requests": "Список активных заявок",
+        "donate" : "Донат"
     };
 
-    var linksArray = ["editUser","editOrganization","editJob"];
+    var linksArray = ["editUser","editOrganization","editJob","donate"];
 
     let splitter = pathname.split("/");
-    for (let i  in splitter) {
 
+
+    for (let i  in splitter) {
         if (i == 0) {
             continue;
         }
+
         if (splitter[i].match(/^[-\+]?\d+/) === null) {
             name = myArray[splitter[i]]
         }
@@ -66,24 +69,28 @@ function setBreadCrumb() {
 function setLinks() {
     let pathname = document.location.pathname;
 
-    if (pathname.includes('/main')) {
+    if (pathname == ('/main')) {
         $('#main-link').attr('class', 'active');
     }
-    if (pathname.includes('/activerequests')) {
+    if (pathname ==("/main/active-requests")) {
+        $('#user-active-requests').attr('class','active');
+    }
+    if (pathname ==('/activerequests')) {
         $('#active-requests-link').attr('class', 'active');
     }
     if (pathname == ('/profile')) {
         $('#profile-link').attr('class', 'active');
     }
 
-    if (pathname.includes('/mentor')) {
+    if (pathname == ('/mentor')) {
         $('#mentor-link').attr('class', 'active');
     }
 
     if (pathname.includes('/organization')) {
-        $('#organization-link').attr('class', 'active');
+        $('#organization-page').attr('class', 'active');
     }
-    if (pathname.includes('/kid')) {
+
+    if (pathname ==('/kid')) {
         $('#kid-link').attr('class', 'active');
     }
 }
