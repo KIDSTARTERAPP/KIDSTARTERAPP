@@ -225,9 +225,9 @@ public class DataInitializer {
         demoOrg = organizationService.addOrganization(demoOrg);
         Owner demoOwner = ownerService.addOwner(new Owner(demoOrg, demoOwnerUser));
 
-        Job demoJob1 = jobService.addJob(new Job("Java(DEMO)", "Бэкенд язык программирования "));
-        Job demoJob2 = jobService.addJob(new Job("JavaScript(DEMO)", "Фронтенд язык программирования JavaScript"));
-        Job demoJob3 = jobService.addJob(new Job("Рисование(DEMO)", "Рисование"));
+        Job demoJob1 = jobService.addJob(new Job("Рисование", "Рисование масляными красками"));
+        Job demoJob2 = jobService.addJob(new Job("Танцы", "Занятия с хареографом в зале"));
+        Job demoJob3 = jobService.addJob(new Job("Английский язык", "Разговорная практика и грамматика"));
 
         Kid demoKid1 = kidService.addKid(new Kid(demoKidUser1, new HashSet<>(Collections.singletonList(demoJob1))));
         Kid demoKid2 = kidService.addKid(new Kid(demoKidUser2, new HashSet<>(Collections.singletonList(demoJob3))));

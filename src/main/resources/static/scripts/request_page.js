@@ -34,8 +34,8 @@ function fill_request_table() {
                         // '                        Ментор заявки: '+response[i].mentor.user.firstName+'  '+response[i].mentor.user.lastName+'  '+response[i].mentor.user.patronymic+'\n' + '<br/>' +
                         '                        Счет аккаунта: '+response[i].account.currentAmount / 100+'\n' + '<br/>' +
                         '                        Создатель заявки: '+response[i].creator.user.firstName+'  '+response[i].creator.user.lastName+'  '+response[i].creator.user.patronymic+'\n' + '<br/>' +
-                        '                        Список детей: '+response[i].kids.kid+'<br/>' +
-                        '                        Список спонсоров: '+response[i].kids.kid+'<br/>' +
+                        // '                        Список детей: '+response[i].kids.kid+'<br/>' +
+                        // '                        Список спонсоров: '+response[i].kids.kid+'<br/>' +
 
                         '                    </div>\n' +
                         '                    <div class="modal-footer">\n' +

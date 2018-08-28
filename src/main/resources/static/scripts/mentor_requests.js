@@ -18,7 +18,7 @@ function fill_new_requests_table() {
                     $('<td>').text(item.kids.length),
                     $('<td>').text(item.price / 100),
                     $('<td>').text(item.status),
-                    $('<td>').append("<form onsubmit='add_mentor(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Подать заявку'></form>")
+                    $('<td>').append("<form onsubmit='add_mentor(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Откликнуться'></form>")
                 );
                 if (item.status == "NEW") {
                     $("#table_new_requests").append(tr);

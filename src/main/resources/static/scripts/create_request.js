@@ -1,69 +1,69 @@
 $(document).ready(function () {
     fill_job_select();
-    fill_kids_modal();
+    // fill_kids_modal();
     // fill_teachers_modal();
 });
 
 // var selected_kids = [];
-var selected_teachers = [];
+// var selected_teachers = [];
 
 //--------------------------------------------------------------------------------------
 // Get the modal
-var modal_kids = document.getElementById('kids_modal');
+// var modal_kids = document.getElementById('kids_modal');
 // var modal_teachers = document.getElementById('teachers_modal');
 
 // Get the button that opens the modal
-var btn_kids = document.getElementById("button_select_kid");
+// var btn_kids = document.getElementById("button_select_kid");
 // var btn_teachers = document.getElementById("button_select_teacher");
 
 // Get the <span> element that closes the modal
-var span_kids = document.getElementById("span_kids");
+// var span_kids = document.getElementById("span_kids");
 // var span_teachers = document.getElementById("span_teachers");
 
-var submit_kids = document.getElementById("submit_kids");
+// var submit_kids = document.getElementById("submit_kids");
 // var submit_teachers = document.getElementById("submit_teachers");
 
 // When the user clicks the button, open the modal
-btn_kids.onclick = function() {
-    modal_kids.style.display = "block";
-};
+// btn_kids.onclick = function() {
+//     modal_kids.style.display = "block";
+// };
 // btn_teachers.onclick = function() {
 //     modal_teachers.style.display = "block";
 // };
 
 // When the user clicks on <span> (x), close the modal
-span_kids.onclick = function() {
-    modal_kids.style.display = "none";
-};
+// span_kids.onclick = function() {
+//     modal_kids.style.display = "none";
+// };
 
 // span_teachers.onclick = function() {
 //     modal_teachers.style.display = "none";
 // };
 
 // When the user clicks on submit, close the modal
-submit_kids.onclick = function() {
-    modal_kids.style.display = "none";
-};
+// submit_kids.onclick = function() {
+//     modal_kids.style.display = "none";
+// };
 // submit_teachers.onclick = function() {
 //     modal_teachers.style.display = "none";
 // };
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal_kids) {
-        modal_kids.style.display = "none";
-    }
+// window.onclick = function(event) {
+//     if (event.target == modal_kids) {
+//         modal_kids.style.display = "none";
+//     }
     // if (event.target == modal_teachers) {
     //     modal_teachers.style.display = "none";
     // }
-};
+// };
 //--------------------------------------------------------------------------------------
 //Sortable list config
-$( function() {
-    $( "#kids_sortable1, #kids_sortable2" ).sortable({
-        connectWith: ".connectedSortable"
-    }).disableSelection();
-} );
+// $( function() {
+//     $( "#kids_sortable1, #kids_sortable2" ).sortable({
+//         connectWith: ".connectedSortable"
+//     }).disableSelection();
+// } );
 
 // $( function() {
 //     $( "#teachers_sortable1, #teachers_sortable2" ).sortable({
@@ -119,13 +119,13 @@ function fill_kids_modal() {
 //     })
 // }
 
-function select_kids() {
-    var localSelected = []
-    $("#kids_sortable2 li").each(function (i) {
-        localSelected.push($(this).attr('rel'));
-    });
-    selected_kids = localSelected;
-}
+// function select_kids() {
+//     var localSelected = []
+//     $("#kids_sortable2 li").each(function (i) {
+//         localSelected.push($(this).attr('rel'));
+//     });
+//     selected_kids = localSelected;
+// }
 
 // function select_teachers() {
 //     var localSelected = []
@@ -191,14 +191,14 @@ function kids_to_JSON() {
 
 function create_request() {
     job_to_JSON();
-    kids_to_JSON();
+    // kids_to_JSON();
     // teachers_to_JSON();
 
     var data = {
         description: $("#request_description").val(),
         job: jobJSON,
-        kids: kidJSON,
-        teachers: teacherJSON,
+        kids: [],
+        teachers: [],
         price: $("#request_price").val(),
         status: "NEW"
     };
