@@ -46,7 +46,7 @@ public class DataInitializer {
     @Autowired
     private RequestService requestService;
 
-    public void init(){
+    public void init() {
 
         Role role0 = new Role("USER");
         Role role1 = new Role("ADMIN");
@@ -83,33 +83,35 @@ public class DataInitializer {
         List<Role> mentorRoles = new ArrayList<>(Arrays.asList(roleUser, roleMentor, roleSponsor));
         List<Role> ownerRoles = new ArrayList<>(Arrays.asList(roleUser, roleOwner, roleSponsor));
 
-        User user1  = new User("Ivan","Ivanov","Ivanovich","qwer","1234",
-                roles, 23, "MALE","23-12-34","admin@mail.ru","RUSSIA","house 8");
+        User user1 = new User("Иван", "Иванов", "Владимирович", "ivan", "ivan1",
+                roles, 23, "MALE", "23-12-34", "ivanov-ivan@mail.ru", "Россия", "Выборг улица Мира 10");
 
-        User user2  = new User("Vovan","Vovanov","Huevich","user2","qwer",
-                Collections.singletonList(roleUser),28, "MALE","23-12-34","user@mail.ru","Ukraine","house 15");
+        User user2 = new User("Сергей", "Сидоров", "Валерьевич", "sergey", "sergey1",
+                Collections.singletonList(roleUser), 28, "MALE", "23-12-34", "sidorov-sergey@mail.ru", "Россия", "Выборг улица Некрасова, 22");
 
-        User kidUser1  = new User("Kid","Kid","Kid","kid","qwer",
-                kidRoles,28, "MALE","23-12-34","Kid@mail.ru","RUSSIA","house 15");
+        User kidUser1 = new User("Федор", "Абрамов", "Сергеевич", "fabramov", "fabramov1",
+                kidRoles, 20, "MALE", "23-12-34", "fedor-abramov@mail.ru", "RUSSIA", "Санкт-Петербург Большая Разночинная улица 9А");
 
-        User kidUser2  = new User("Kid2","Kid2","Kid2","kid2","qwer2",
-                kidRoles,32, "MALE","23-12-34","Kid2@mail.ru","RUSSIA","house 15");
+        User kidUser2 = new User("Алиса", "Фокина", "Петровна", "falisa", "falisa1",
+                kidRoles, 22, "FIMALE", "23-12-34", "falisa@mail.ru", "RUSSIA", "Санкт-Петербург Гороховая улица 20");
 
 
-        User teacherUser1  = new User("Teacher","Teacher","Teacher","teacher","qwer",
-                teacherRoles,28, "MALE","23-12-34","Teacher@mail.ru","RUSSIA","house 15");
+        User teacherUser1 = new User("Геннадий", "Фокин", "Ривальдович", "fgennadiy", "fgennadiy1",
+                teacherRoles, 39, "MALE", "23-12-34", "Teacher@mail.ru", "RUSSIA", "Санкт-Петербург улица Труда 8");
 
-        User teacherUser2  = new User("Teacher2","Teacher2","Teacher","teacher2","qwer",
-                teacherRoles,28, "MALE","23-12-34","Teacher@mail.ru","RUSSIA","house 15");
+        User teacherUser2 = new User("Тамара", "Лев", "Борисовна", "lev-tamara", "lev-tamara1",
+                teacherRoles, 35, "FIMALE", "23-12-34", "lev-tamara@mail.ru", "RUSSIA", "Санкт-Петербург Съезжинская улица, 19");
 
-        User mentorUser  = new User("Mentor","Mentor","Mentor","mentor","qwer",
-                mentorRoles,28, "MALE","23-12-34","Mentor@mail.ru","RUSSIA","house 15");
 
-        User mentorUser2  = new User("Mentor","Mentor","Mentor","mentor2","qwer",
-                mentorRoles,28, "MALE","23-12-34","Mentor@mail.ru","RUSSIA","house 15");
+        User mentorUser = new User("Алексей", "Петров", "Николаевич", "p-alex", "p-alex1",
+                mentorRoles, 27, "MALE", "23-12-34", "alex-petrov@mail.ru", "RUSSIA", "Санкт-Петербург Ждановская улица 25");
 
-        User ownerUser  = new User("Owner","Owner","Owner","owner","qwer",
-                ownerRoles,28, "MALE","23-12-34","Mentor@mail.ru","RUSSIA","house 15");
+        User mentorUser2 = new User("Денис", "Кабанов", "Николаевич", "denis-kabanov", "denis1",
+                mentorRoles, 29, "MALE", "23-12-34", "denis-kabanov@mail.ru", "RUSSIA", "Санкт-Петербург Диагональная улица 10");
+
+
+        User ownerUser = new User("Руслан", "Прокофьев", "Арнольдович", "rusarn", "rusarn1",
+                ownerRoles, 28, "MALE", "23-12-34", "rusarn@mail.ru", "RUSSIA", "Санкт-Петербург Гражданский проспект 9к7");
 
 
         user1 = userService.addUser(user1);
@@ -136,10 +138,10 @@ public class DataInitializer {
         acc3 = accountService.addAccount(acc3);
         acc4 = accountService.addAccount(acc4);
 
-        Organization org1 = new Organization("Name1","adress1","Мавродия", "mak@l2ff.ru", 8944,LocalDateTime.now(), acc1);
-        Organization org2 = new Organization("Name2","adress2","Мавродия", "mak@lf4f.ru", 8944,LocalDateTime.now(), acc2);
-        Organization org3 = new Organization("Name3","adress3","Мавродия", "mak@lf5f.ru", 8944,LocalDateTime.now(), acc3);
-        Organization org4 = new Organization("Name4","adress4","Мавродия", "mak@lf6f.ru", 8944,LocalDateTime.now(), acc4);
+        Organization org1 = new Organization("ГБОУ школа-интернат № 576", "Санкт-Петербург пер. Каховского, 2Б", "Россия", "internat576@yandex.ru", 3507882, LocalDateTime.now(), acc1);
+        Organization org2 = new Organization("ГБОУ Школа-интернат № 357", "Санкт-Петербург ул Аккуратова 7А", "Россия", "school-357@mail.ru", 3453367, LocalDateTime.now(), acc2);
+        Organization org3 = new Organization("ГБОУ школа-интернат № 33", "Санкт-Петербург 2-й Муринский просп 24", "Россия", "033@shko.la", 2412543, LocalDateTime.now(), acc3);
+        Organization org4 = new Organization("ГБОУ школа-интернат № 6", "Санкт-Петербург Большая Пороховская ул 52", "Россия", "int6@mail.ru", 2271930, LocalDateTime.now(), acc4);
 
         org1 = organizationService.addOrganization(org1);
         org2 = organizationService.addOrganization(org2);
@@ -152,8 +154,8 @@ public class DataInitializer {
         ownerService.addOwner(owner1);
         ownerService.addOwner(owner2);
 
-        Job job1 = jobService.addJob(new Job("Java", "Топовый язык"));
-        Job job2 = jobService.addJob(new Job("JavaScript", "Какашка"));
+        Job job1 = jobService.addJob(new Job("Java", "Back end"));
+        Job job2 = jobService.addJob(new Job("JavaScript", "Front end"));
 
         Kid kid1 = kidService.addKid(new Kid(kidUser1, new HashSet<>(Collections.singletonList(job1))));
         Kid kid2 = kidService.addKid(new Kid(kidUser2, new HashSet<>(Collections.singletonList(job2))));
@@ -164,10 +166,10 @@ public class DataInitializer {
         Mentor mentor1 = mentorService.addMentor(new Mentor(mentorUser, new HashSet<>(Collections.singletonList(job1)), 3, "Description", 1, 1));
         Mentor mentor2 = mentorService.addMentor(new Mentor(mentorUser2, new HashSet<>(Collections.singletonList(job2)), 7, "Pergription", 1, 1));
 
-        Request request1 = new Request("Обучение детей детского дома №1 Java", job1, new HashSet<>(Collections.singletonList(kid1)),
+        Request request1 = new Request("Обучение детей Школа-интернат № 357 Java", job1, new HashSet<>(Collections.singletonList(kid1)),
                 1500L, new HashSet<>(Collections.singletonList(user1)), null, acc1, owner1, Request.RequestStatus.NEW);
 
-        Request request2 = new Request("Обучение детей детского дома №3 JavaScript", job2, new HashSet<>(Collections.singletonList(kid2)),
+        Request request2 = new Request("Обучение детей школа-интернат № 6 JavaScript", job2, new HashSet<>(Collections.singletonList(kid2)),
                 400L, new HashSet<>(Collections.singletonList(user2)), mentor2, acc2, owner2, Request.RequestStatus.IN_PROGRESS);
 
         requestService.addRequest(request1);
@@ -191,23 +193,22 @@ public class DataInitializer {
         List<Role> mentorRoles = new ArrayList<>(Arrays.asList(roleUser, roleMentor));
         List<Role> ownerRoles = new ArrayList<>(Arrays.asList(roleUser, roleOwner));
 
-        User demoAdminUser  = new User("demoAdminUser","demoAdminUser","demoAdminUser","adm1","1234",
-                adminRoles, 23, "MALE","23-12-34","Admin@mail.ru","RUSSIA","house 8");
-        User demoOwnerUser  = new User("demoOwnerUser","demoOwnerUser","demoOwnerUser","owner1","1234",
-                ownerRoles, 23, "MALE","23-12-34","Owner@mail.ru","RUSSIA","house 8");
-        User demoMentorUser  = new User("demoMentorUser","demoMentorUser","demoMentorUser","mentor1","1234",
-                mentorRoles, 23, "MALE","23-12-34","Owner@mail.ru","RUSSIA","house 8");
+        User demoAdminUser = new User("Вадим", "Денисов", "Николаевич", "dvadik", "dvadik1",
+                adminRoles, 24, "MALE", "423-88-44", "dvadik@mail.ru", "RUSSIA", "Санкт-Петербург Ленина улица 1");
+        User demoOwnerUser = new User("Володя", "Никитин", "Николаевич", "nvovka", "nvovka1",
+                ownerRoles, 22, "MALE", "345-35-74", "nvovka@mail.ru", "RUSSIA", "house 8");
+        User demoMentorUser = new User("Николай", "Иванов", "Николаевич", "nikivonov", "nikivonov1",
+                mentorRoles, 26, "MALE", "754-12-65", "nikivonov@mail.ru", "RUSSIA", "Санкт-Петербург Пражская улица 11");
 
-        User demoKidUser1  = new User("","demoKidUser1","","kid11","1234",
-                kidRoles,28, "MALE","23-12-34","Kid@mail.ru","RUSSIA","house 15");
-        User demoKidUser2  = new User("","demoKidUser2","","kid21","1234",
-                kidRoles,32, "MALE","23-12-34","Kid2@mail.ru","RUSSIA","house 15");
+        User demoKidUser1 = new User("Петр", "Архипов", "Васильевич", "a-petryha", "a-petryha1",
+                kidRoles, 14, "MALE", "586-28-34", "a-petryha@mail.ru", "RUSSIA", "Санкт-Петербур Гороховая улица 30");
+        User demoKidUser2 = new User("Вася", "Левакин", "Сергеевич", "vasya-sergeevich", "vasya-sergeevich1",
+                kidRoles, 16, "MALE", "526-58-34", "vasya-sergeevich@mail.ru", "RUSSIA", "Санкт-Петербур Казанская улица 44");
 
-
-        User demoTeacherUser1  = new User("","demoTeacherUser1","","teacher11","1234",
-                teacherRoles,28, "MALE","23-12-34","Teacher@mail.ru","RUSSIA","house 15");
-        User demoTeacherUser2  = new User("","demoTeacherUser2","","teacher21","1234",
-                teacherRoles,28, "MALE","23-12-34","Teacher@mail.ru","RUSSIA","house 15");
+        User demoTeacherUser1 = new User("Роман", "Гафонов", "Николаевич", "pom1k", "pom1k1",
+                teacherRoles, 36, "MALE", "647-17-84", "pom1k@mail.ru", "RUSSIA", "Санкт-Петербур Вознесенский проспект 38");
+        User demoTeacherUser2 = new User("Никита", "Васткин", "Львович", "nikitos", "nikitos1",
+                teacherRoles, 39, "MALE", "563-62-32", "nikitos@mail.ru", "RUSSIA", "Санкт-Петербур Измайловский проспект 1");
 
         demoAdminUser = userService.addUser(demoAdminUser);
         demoOwnerUser = userService.addUser(demoOwnerUser);
@@ -220,7 +221,7 @@ public class DataInitializer {
         demoTeacherUser2 = userService.addUser(demoTeacherUser2);
 
         Account demoOrgAccount = accountService.addAccount(new Account());
-        Organization demoOrg = new Organization("demoOrg","adress1","Россия", "demoOrg@l2ff.ru", 8944,LocalDateTime.now(), demoOrgAccount);
+        Organization demoOrg = new Organization("demoOrg", "adress1", "Россия", "demoOrg@l2ff.ru", 8944, LocalDateTime.now(), demoOrgAccount);
         demoOrg = organizationService.addOrganization(demoOrg);
         Owner demoOwner = ownerService.addOwner(new Owner(demoOrg, demoOwnerUser));
 
@@ -241,8 +242,8 @@ public class DataInitializer {
         Mentor demoMentor = mentorService.addMentor(new Mentor(demoMentorUser, new HashSet<>(Collections.singletonList(demoJob1)), 3, "Description", 1, 1));
 
         Account newRequestAccount = accountService.addAccount(new Account(500L));
-        Account activeRequestAccount = accountService.addAccount(new Account( 400L));
-        Account progressRequestAccount = accountService.addAccount(new Account( 500L));
+        Account activeRequestAccount = accountService.addAccount(new Account(400L));
+        Account progressRequestAccount = accountService.addAccount(new Account(500L));
 
         Request demoNewRequest = new Request("Новая заявка на обучение", demoJob1, new HashSet<>(Collections.singletonList(demoKid1)),
                 1000L, new HashSet<>(), null, newRequestAccount, demoOwner, Request.RequestStatus.NEW);
