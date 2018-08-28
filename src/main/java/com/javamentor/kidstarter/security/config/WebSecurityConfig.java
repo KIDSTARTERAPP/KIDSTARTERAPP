@@ -5,6 +5,7 @@ import com.javamentor.kidstarter.security.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,7 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/cs/**", "/scripts/**");
+        web.ignoring()
+                .antMatchers("/cs/**", "/scripts/**")
+                .antMatchers(HttpMethod.POST, "/donate");
     }
 
     @Override
@@ -47,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/main/**","/api/**").permitAll()
+                .antMatchers("/", "/main/**", "/api/**").permitAll()
                 .antMatchers("/main/become-mentor").hasAnyAuthority("USER")
                 .anyRequest().authenticated()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")

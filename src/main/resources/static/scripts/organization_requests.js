@@ -21,8 +21,9 @@ function fill_organization_requests_table() {
                         $('<td>').text(item.description),
                         $('<td>').text(item.job.name),
                         $('<td>').text(item.kids.length),
-                        // $('<td>').text(item.teachers.length),
-                        $('<td>').text(item.price),
+                        $('<td>').text('нет'),
+                        $('<td>').text('нет'),
+                        $('<td>').text(item.price / 100),
                         $('<td>').text(item.status),
                         $('<td>').append("<form onsubmit='remove_request(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Удалить запрос'></form>")
                     );
@@ -32,10 +33,12 @@ function fill_organization_requests_table() {
                         $('<td>').text(item.description),
                         $('<td>').text(item.job.name),
                         $('<td>').text(item.kids.length),
-                        // $('<td>').text(item.teachers.length),
-                        $('<td>').text(item.price),
+                        $('<td>').text(item.mentor.user.email),
+                        $('<td>').text(item.mentor.user.phone),
+                        $('<td>').text(item.price /100),
                         $('<td>').text(item.status),
-                        $('<td>').append("<form onsubmit='get_request_for_update(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Подтвердить запрос'></form>")
+                        $('<td>').append("<form onsubmit='get_request_for_update(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Подтвердить'></form>"),
+                        $('<td>').append("<form onsubmit='get_request_for_decline(" + item.id + ");return false'><input class='btn btn-lg btn-primary btn-block' type='submit' value='Отклонить'></form>")
                     );
                 } else {
                     tr = $('<tr>').append(
@@ -43,8 +46,9 @@ function fill_organization_requests_table() {
                         $('<td>').text(item.description),
                         $('<td>').text(item.job.name),
                         $('<td>').text(item.kids.length),
-                        // $('<td>').text(item.teachers.length),
-                        $('<td>').text(item.price),
+                        $('<td>').text('нет'),
+                        $('<td>').text('нет'),
+                        $('<td>').text(item.price / 100),
                         $('<td>').text(item.status)
                     );
                 }
@@ -61,7 +65,7 @@ function remove_request(requestId) {
     $.ajax({
         type: "DELETE",
         url: url,
-        datatype: "JSON",
+        dataType: "JSON",
         success: function () {
             fill_organization_requests_table();
         }
@@ -94,6 +98,31 @@ function get_request_for_update(requestId) {
     })
 }
 
+function get_request_for_decline(requestId) {
+    var url = "/api/request/" + requestId;
+    $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "JSON",
+        success: function (response) {
+            var data = {
+                id: response.id,
+                description: response.description,
+                job: response.job,
+                kids: response.kids,
+                teachers: response.teachers,
+                price: response.price,
+                sponsors: response.sponsors,
+                mentor: null,
+                account: response.account,
+                creator: response.creator,
+                status: "NEW"
+            };
+            approve_request(JSON.stringify(data));
+        }
+    })
+}
+
 function approve_request(response) {
     $.ajax({
         type: "PUT",
@@ -106,3 +135,4 @@ function approve_request(response) {
         }
     })
 }
+
