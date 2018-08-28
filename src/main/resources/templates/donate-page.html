@@ -31,10 +31,10 @@
 <div th:replace="fragments/crumbs::crumbs"></div>
 <div class="col-sm-4 col-sm-offset-3 col-md-3 col-md-offset-4 main">
     <form  style="height: 400px ; width: 300px; margin: 0 auto; " method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
-        <div th:width="300" th:height="140" class="panel panel-default">
-            <div class="panel-heading" th:text="${request.description}"></div>
+        <div style="width: 500px; height: 300px;" class="panel panel-default">
+            <div class="panel-heading"  style="font-size: 25px; font-weight: normal; text-align: center" th:text="${request.description}"></div>
         <!--<h4 th:text="${request.description}"></h4>-->
-        <div class="form-group">
+        <div class="form-group" style="padding: 35px">
         <!--410013409494788 мой кошель, 410016231774201 кидстартер кошель-->
         <input class="form-control"   type="hidden" name="receiver" value="410016231774201">
         <input class="form-control"   type="hidden" name="label" th:value="${request.id}">
@@ -45,9 +45,15 @@
         <input  type="hidden" name="successURL" value="localhost:9999/requestPage">
         <input type="hidden" name="need-phone" value="false">
         <input type="hidden" name="need-address" value="false">
-        <input  class="form-control"  name="sum" data-type="number" placeholder="Сумма пожертвования" required>
-        <label><input type="radio" name="paymentType" value="PC">Яндекс.Деньгами</label>
-        <label><input type="radio" name="paymentType" value="AC">Банковской картой</label>
+            <div style="margin-bottom: 25px">
+                <p for="sum">Сумма пожертвованиия (рублей)</p>
+                <input  class="form-control" id="sum" name="sum" type="number" placeholder="Сумма пожертвования" required>
+            </div>
+            <div style="margin-bottom: 25px">
+            <span><input type="radio" name="paymentType" value="PC"> Яндекс.Деньгами          </span>
+            <span style="float: right"><input type="radio" name="paymentType" value="AC"> Банковской картой</span>
+        </div>
+
         <input  class="btn btn-lg btn-primary btn-block" type="submit" value="Пожертвовать">
         </div>
         </div>
