@@ -13,6 +13,31 @@ function get_kid_jobs_and_fill_list() {
     })
 }
 
+
+function create_job() {
+    console.log('1');
+    var data = {
+        id: "",
+        name: $("#input_jobname").val(),
+        description: $("#input_jobdesc").val()
+    };
+    //
+    $.ajax({
+        type: "POST",
+        url: "/api/job",
+        contentType : "application/json; charset=UTF-8",
+        encoding: "UTF-8",
+        data: JSON.stringify(data),
+        success: function (response) {
+            console.log(response);
+            $("#input_jobname").val('');
+            $("#input_jobdesc").val('');
+            get_kid_jobs_and_fill_list();
+        }
+    });
+}
+
+
 function fill_job_list(kid_jobs) {
     $("#table_pick_joblist").empty();
     $.ajax({
@@ -20,7 +45,6 @@ function fill_job_list(kid_jobs) {
         url: "/api/jobs",
         dataType: "JSON",
         success: function (response) {
-            console.log(response);
             for (var i in response) {
                 var notContains = true;
                 for (var j in kid_jobs) {
