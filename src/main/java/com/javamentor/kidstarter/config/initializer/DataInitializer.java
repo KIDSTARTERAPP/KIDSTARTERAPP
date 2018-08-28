@@ -193,19 +193,19 @@ public class DataInitializer {
         List<Role> mentorRoles = new ArrayList<>(Arrays.asList(roleUser, roleMentor));
         List<Role> ownerRoles = new ArrayList<>(Arrays.asList(roleUser, roleOwner));
 
-        User demoAdminUser = new User("Вадим", "Денисов", "Николаевич", "dvadik", "dvadik1",
+        User demoAdminUser = new User("Вадим", "Денисов", "Николаевич", "admin", "1234",
                 adminRoles, 24, "MALE", "423-88-44", "dvadik@mail.ru", "RUSSIA", "Санкт-Петербург Ленина улица 1");
-        User demoOwnerUser = new User("Володя", "Никитин", "Николаевич", "nvovka", "nvovka1",
+        User demoOwnerUser = new User("Володя", "Никитин", "Николаевич", "owner", "1234",
                 ownerRoles, 22, "MALE", "345-35-74", "nvovka@mail.ru", "RUSSIA", "house 8");
-        User demoMentorUser = new User("Николай", "Иванов", "Николаевич", "nikivonov", "nikivonov1",
+        User demoMentorUser = new User("Николай", "Иванов", "Николаевич", "mentor", "1234",
                 mentorRoles, 26, "MALE", "754-12-65", "nikivonov@mail.ru", "RUSSIA", "Санкт-Петербург Пражская улица 11");
 
-        User demoKidUser1 = new User("Петр", "Архипов", "Васильевич", "a-petryha", "a-petryha1",
+        User demoKidUser1 = new User("Петр", "Архипов", "Васильевич", "kid", "1234",
                 kidRoles, 14, "MALE", "586-28-34", "a-petryha@mail.ru", "RUSSIA", "Санкт-Петербур Гороховая улица 30");
         User demoKidUser2 = new User("Вася", "Левакин", "Сергеевич", "vasya-sergeevich", "vasya-sergeevich1",
                 kidRoles, 16, "MALE", "526-58-34", "vasya-sergeevich@mail.ru", "RUSSIA", "Санкт-Петербур Казанская улица 44");
 
-        User demoTeacherUser1 = new User("Роман", "Гафонов", "Николаевич", "pom1k", "pom1k1",
+        User demoTeacherUser1 = new User("Роман", "Гафонов", "Николаевич", "teacher", "1234",
                 teacherRoles, 36, "MALE", "647-17-84", "pom1k@mail.ru", "RUSSIA", "Санкт-Петербур Вознесенский проспект 38");
         User demoTeacherUser2 = new User("Никита", "Васткин", "Львович", "nikitos", "nikitos1",
                 teacherRoles, 39, "MALE", "563-62-32", "nikitos@mail.ru", "RUSSIA", "Санкт-Петербур Измайловский проспект 1");
